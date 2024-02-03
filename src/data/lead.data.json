@@ -1,0 +1,66 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "123-456-7890",
+        "notes": "This is a note about John Doe",
+        "msgs": [
+            {
+                "msg": "5fecb27803f455001f95391a",
+                "creationDate": "2024-02-01T12:00:00Z"
+            }
+        ]
+    }
+    ,
+    {
+        "name": "Alice Smith",
+        "email": "alice.smith@example.com",
+        "phone": "987-654-3210",
+        "notes": "A note about Alice Smith",
+        "msgs": [
+          {
+            "msg": "5fecb27803f455001f95391b",  
+            "creationDate": "2024-02-01T13:30:00Z"
+          }
+        ]
+      },
+      {
+        "name": "Bob Johnson",
+        "email": "bob.johnson@example.com",
+        "phone": "555-123-4567",
+        "notes": "Bob's note",
+        "msgs": [
+          {
+            "msg": "5fecb27803f455001f95391c",  
+            "creationDate": "2024-02-01T14:45:00Z"
+          }
+        ]
+      },
+      {
+        "name": "Eva Miller",
+        "email": "eva.miller@example.com",
+        "phone": "777-888-9999",
+        "notes": "Eva's note",
+        "msgs": [
+          {
+            "msg": "5fecb27803f455001f95391d",  
+            "creationDate": "2024-02-01T16:15:00Z"
+          }
+        ]
+      },{
+        "name": "Sam Brown",
+        "email": "sam.brown@example.com",
+        "phone": "444-555-6666",
+        "notes": "Sam's note",
+        "msgs": [
+          {
+            "msg": "5fecb27803f455001f95391e",  
+            "creationDate": "2024-02-01T17:45:00Z"
+          }
+        ]
+      }
+      
+      
+      
+]
+  

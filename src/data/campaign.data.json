@@ -1,0 +1,95 @@
+[
+    {
+        "user": "65ba97e536d6af41e9beb0d1",
+        "title": "campaign 1",
+        "msg": [
+            {
+                "subject": "we want u with us",
+                "content": " i love israel"
+            },
+            {
+                "subject": "we want u with us",
+                "content": " i love bammba"
+            }
+        ],
+        "leads": [
+            {
+                "lead": "A1bC2dE3f"
+            },
+            {
+                "lead": "X4yZ5kL6m"
+            },
+            {
+                "lead": "G7hI8jK9"
+            },
+            {
+                "lead": "P0qR1sT2u"
+            },
+            {
+                "lead": "V3wX4yZ5"
+            }
+        ]
+    },
+    {
+        "user": "65ba97e552249af41e9beb0d1",
+        "title": "campaign 2",
+        "msg": [
+            {
+                "subject": "we want u with us",
+                "content": " we work"
+            },
+            {
+                "subject": "we want u with us",
+                "content": "come to be part of us  "
+            }
+        ],
+        "leads": [
+            {
+                "lead": "A1b21dE3f"
+            },
+            {
+                "lead": "X4y356kL6m"
+            },
+            {
+                "lead": "G75258jK9"
+            },
+            {
+                "lead": "P0q65sT2u"
+            },
+            {
+                "lead": "V80wX4yZ5"
+            }
+        ]
+    },
+    {
+        "user": "65ba97e536d62541e9beb0d1",
+        "title": "campaign 3",
+        "msg": [
+            {
+                "subject": "are u want beter life ?",
+                "content": "sport jem"
+            },
+            {
+                "subject": "wath is ur dream",
+                "content": " join us"
+            }
+        ],
+        "leads": [
+            {
+                "lead": "A1bC2dE3f"
+            },
+            {
+                "lead": "X4yZffl26m"
+            },
+            {
+                "lead": "G7hI545K9"
+            },
+            {
+                "lead": "P0551sTu"
+            },
+            {
+                "lead": "V3wXj54y"
+            }
+        ]
+    }
+]
