@@ -1,10 +1,10 @@
 import React from 'react'
-import InputTextArea from '../components/InputTextArea'
+import MessageList from '../components/MessageList'
 
 export default function Joshua() {
   return (
     <div>
-      <InputTextArea/>
+<MessageList/>
     </div>
   )
 }

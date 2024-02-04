@@ -1,11 +1,15 @@
-import timeDateFormat from './timeDateFormat';
+// Description : makes arrays of messages by dates
+// Creator : yehoshua preiser
 
-const messagesByDate = data => {
+import dateFormat from './dateFormat';
+
+
+const messagesByDate = (data) => {
   const messagesByDate = {};
 
   data.forEach(entry => {
     const creationDate = new Date(entry.msgs[0].creationDate);
-    const formattedDate = timeDateFormat(creationDate);
+    const formattedDate = dateFormat(creationDate);
 
     if (!messagesByDate[formattedDate]) {
       messagesByDate[formattedDate] = [];
