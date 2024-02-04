@@ -1,9 +1,9 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './style.module.css'
 
-// Description : 
+// Description : ניתוב של 2 הקטגוריות ע"י navlink
 // Props : ____________ , _________
-// Creator : ________
+// Creator : gila
 export default function TabSwitcher() {
   const classHeader = ({ isActive }) => isActive ? styles.active : ""
 
