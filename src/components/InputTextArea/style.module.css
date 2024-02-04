@@ -1,0 +1,13 @@
+.textarea{
+    border: 1px solid grey;
+    border-radius: 5px;
+    
+}
+.textarea:hover{
+    border: 1px solid rgb(81, 81, 232);
+}
+
+.textarea:focus{
+    border: 1px solid rgb(11, 11, 255);
+    
+}
