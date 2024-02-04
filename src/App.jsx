@@ -10,7 +10,6 @@ export default function App() {
         <Route path='/' element={<Layout />} />
         <Route path='/*' element={<Test />} />
       </Routes>
-
     </div>
   )
 }
