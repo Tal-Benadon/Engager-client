@@ -1,0 +1,17 @@
+.threeDots {
+    background-color: transparent;
+    border: none;
+    text-align: end;
+}
+
+.threeDots div {
+    transform: scale(0);
+    opacity: 0;
+    transition: 0.3s;
+    transform-origin: top right;
+}
+.threeDots:focus-within div {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0.3s;
+}
