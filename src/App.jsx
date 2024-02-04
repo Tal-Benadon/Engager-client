@@ -11,10 +11,7 @@ export default function App() {
         <Route path='/*' element={<Test />} />
       </Routes>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> ef3993ffe7abda90fbe3d4494d98669481f5a7da
 
     </div>
   )
