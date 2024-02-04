@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from '../components/Menu/style.module.css'
-import Menu from '../components/Menu/Menu'
+import styles from '../components/ThreeDotsMenu/style.module.css'
+import Menu from '../components/OpenMenu'
 
 // מקבלים מערך של אובייקטים 
 // let list = [{
