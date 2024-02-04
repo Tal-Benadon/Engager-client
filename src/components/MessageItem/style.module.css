@@ -1,0 +1,109 @@
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+  :root {
+
+      --font: 'Heebo', sans-serif;
+      --title-color: #000000;
+      --details-color: #6B6B6B;
+      --border-box-color: #F3F3F5;
+  }
+
+  /* meaasge box */
+
+  .message {
+      width: 454px;
+      height: 90px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: right;
+      border-radius: 8px;
+      padding: 20px, 16px, 20px, 16px;
+  }
+
+  .message:hover {
+      background-color: #F3F3F5;
+  }
+
+  .message:active {
+      background-color: #F3F3F5;
+  }
+
+  .message:active .activeIcon {
+      color: #0E9D85;
+  }
+
+  /* square and icon in the box */
+  .square {
+      width: 44px;
+      height: 44px;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--border-box-color);
+      border-radius: 8px;
+      margin: 16px;
+  }
+
+  .activeIcon {
+      font-size: 18px;
+      color: var(--details-color);
+  }
+
+  .pausedIcon {
+      font-size: 18px;
+      color: #D11B1B;
+  }
+
+
+
+  /* message title, and details */
+  .title {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: var(--font);
+      color: var(--title-color)
+  }
+
+  .titleAndDetails {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .DateAndTime {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      font-family: var(--font);
+      font-size: 12px;
+      color: var(--details-color);
+      justify-content: right;
+  }
+
+
+  /* read or unread icons */
+
+  .checkIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font);
+      font-size: 12px;
+      /* color:#0E9D85; */
+      font-size: 1em;
+  }
+
+  .readIcon {
+      color: #0E9D85;
+  }
+
+  .unreadIcon {
+      color: var(--details-color);
+  }
+
+  .pendingIcon{
+    color: var(--details-color);
+
+  }

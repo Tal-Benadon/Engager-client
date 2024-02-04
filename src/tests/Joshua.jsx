@@ -1,7 +1,10 @@
 import React from 'react'
+import InputTextArea from '../components/InputTextArea'
 
 export default function Joshua() {
   return (
-    <div>Joshua</div>
+    <div>
+      <InputTextArea/>
+    </div>
   )
 }
