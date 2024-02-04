@@ -11,7 +11,7 @@ export default function App() {
         <Route path='/*' element={<Test />} />
       </Routes>
 
-      App
+     
 
 
     </div>
