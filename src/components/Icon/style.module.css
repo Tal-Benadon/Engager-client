@@ -1,9 +1,15 @@
 .icon{
     Width:24px;
     Height:24px;
-    /* padding: 10px; */
+    margin: 5px;
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
+    background-color: aqua;
+}
+.luli{
+    
+    
+    background-color: aqua;
 }
