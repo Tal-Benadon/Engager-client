@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.inputSubTitle {
+    color: grey;
+    font-size: 13px;
+    cursor: default;
+}
+
+.inputSubTitle:hover {
+    cursor: default;
+}
+
+.inputTitle {
+    cursor: default;
+    font-size: 16px;
+}
+
+.inputTitle:hover {
+    cursor: default;
+}
+
+.inputLine {
+    width: 75vw;
+    border: 1px solid #DEE2E9;
+    width: 483px;
+    height: 34px;
+    border-radius: 8px;
+    direction: rtl;
+    text-align: right;
+}
+
+.inputLine:hover {
+    border: 3px solid rgb(81, 81, 232);
+}
+
+.inputLine:focus,
+.inputLine:focus-visible,
+.inputLine:focus-within,
+.inputLine:active {
+    border: 3px solid rgb(11, 11, 255);
+    outline-color: rgb(11, 11, 255);
+}
+
+.MsgName {
+    font-family: 'Heebo';
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+.sidebar {
+    background: #F7F7F7;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    height: 100vh;
+}
+.sidebar h1 {
+    font-family: 'Secular One', sans-serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 52px;
+    letter-spacing: 0em;
+    text-align: right;
+    margin: 0;
+}
+.sidebar ul li {
+    font-family: Heebo;
+font-size: 18px;
+font-weight: 400;
+line-height: 21px;
+letter-spacing: 0em;
+text-align: right;
+list-style: none;
+margin-bottom: 30px;
+}
+.sidebar ul li a {
+    text-decoration: none;
+    color: #6B6B6B;
+}
+.sidebartop {
+    border-bottom:1px solid #E8E8E8;
+    padding: 32px 20px;
+    width: 100%;
+}
+
+.lists {
+padding: 32px 20px;
+border-bottom:1px solid #E8E8E8;
+}
+.liststitle {
+    font-family: Heebo;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;  
+    color: #6B6B6B    ;
+}
