@@ -1,5 +1,5 @@
 import React from 'react'
-import HeadLine from '../components/Example/HeadLine'
+import HeadLine from '../components/HeadLine'
 
 export default function Liel() {
   const title= "כותרת"
