@@ -1,5 +1,6 @@
 import React from 'react'
 import MessageItem from '../components/MessageItem'
+import LeadItem from '../components/LeadItem'
 
 export default function Refael() {
   return (
@@ -7,7 +8,9 @@ export default function Refael() {
 
     <div>
 
-      <MessageItem/>
+      <LeadItem/>
+      
+      
       Refael
       function
       TO
