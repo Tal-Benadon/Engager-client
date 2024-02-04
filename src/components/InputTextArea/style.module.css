@@ -1,13 +1,19 @@
-.textarea{
-    border: 1px solid grey;
+.textarea {
+    border: 3px solid grey;
     border-radius: 5px;
-    
-}
-.textarea:hover{
-    border: 1px solid rgb(81, 81, 232);
+    resize: none;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.textarea:focus{
-    border: 1px solid rgb(11, 11, 255);
-    
+.textarea:hover {
+    border: 3px solid rgb(81, 81, 232);
+}
+
+.textarea:focus,
+.textarea:focus-visible,
+.textarea:focus-within,
+.textarea:active {
+    border: 3px solid rgb(11, 11, 255);
+    outline-color: rgb(11, 11, 255);
 }
