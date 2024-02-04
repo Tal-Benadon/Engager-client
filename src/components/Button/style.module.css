@@ -1,0 +1,53 @@
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --green-color: #0E9D85;
+    --white-color: white;
+    --white-color: white;
+
+
+    --green-hover: #0B7D6A;
+    --white-hover: #E5E5E5;
+
+    --button-font: 'Heebo', sans-serif;
+
+  }
+
+
+
+.save {
+    background-color: var(--green-color);
+    gap: 6px;
+    width: 115px;
+    height: 55px;
+    border-radius: 8px;
+    border: 1px;
+    Padding: 7px, 32px, 7px, 32px;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    font-family: var(--button-font);
+}
+
+.save:hover {
+    background-color: var(--green-hover) ;
+}
+
+.cancel  {
+    background-color:var(--white-color);
+    gap: 6px;
+    Width: 115px;
+    Height: 55px;
+    border-radius: 8px;
+    border: 1px;
+    padding: 7px, 32px, 7px, 32px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6B6B6B;
+    font-family: var(--button-font);
+
+}
+
+.cancel:hover {
+    background-color:var(--white-hover);
+}
