@@ -1,13 +1,18 @@
 import React from 'react'
-import PopUp from '../components/PopUp'
+// import PopUp from '../components/PopUp'
+import Accordion from '../components/Accordion'
 
 export default function Shaked() {
   
   return (
     <div>
-      <PopUp title={'הודעה חדשה'}>
+      <Accordion title={'הודעה חדשה'}>
+       { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
+
+      </Accordion>
+      {/* <PopUp title={'הודעה חדשה'}>
         children
-      </PopUp>
+      </PopUp> */}
     </div>
   )
 }

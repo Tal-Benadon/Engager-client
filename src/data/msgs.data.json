@@ -1,0 +1,75 @@
+[
+    {
+      "subject": "Hello World",
+      "content": "Welcome to the messaging app! This is your first message.",
+      "creationDate": "2024-02-03T12:00:00Z",
+      "leads": [
+        {
+          "lead": "lead_id_1",
+          "receptionDate": "2024-02-04T12:00:00Z",
+          "status": "sent"
+        }
+      ]
+    },
+    {
+      "subject": "Testing 123",
+      "content": "This is a test message for your application.",
+      "creationDate": "2024-02-04T12:05:00Z",
+      "leads": [
+        {
+          "lead": "lead_id_2",
+          "receptionDate": "2024-02-04T12:05:00Z",
+          "status": "received"
+        }
+      ]
+    },
+    {
+      "subject": "Testing 456",
+      "content": "This is a test message for your application.",
+      "creationDate": "2024-02-04T12:05:00Z",
+      "leads": [
+        {
+          "lead": "lead_id_2",
+          "receptionDate": "2024-02-04T12:05:00Z",
+          "status": "received"
+        }
+      ]
+    },
+    {
+      "subject": "Important Announcement",
+      "content": "Please be informed that there will be a scheduled maintenance tomorrow.",
+      "creationDate": "2024-02-05T12:10:00Z",
+      "leads": [
+        {
+          "lead": "lead_id_3",
+          "receptionDate": "2024-02-04T12:10:00Z",
+          "status": "sent"
+        }
+      ]
+    },
+    {
+      "subject": "Happy Birthday!",
+      "content": "Wishing you a fantastic birthday filled with joy and celebration.",
+      "creationDate": "2024-02-06T12:15:00Z",
+      "leads": [
+        {
+          "lead": "lead_id_4",
+          "receptionDate": "2024-02-04T12:15:00Z",
+          "status": "received"
+        }
+      ]
+    },
+    {
+      "subject": "Project Update",
+      "content": "Great news! The project has been successfully completed ahead of schedule.",
+      "creationDate": "2024-02-04T12:20:00Z",
+      "leads": [
+        {
+          "lead": "lead_id_5",
+          "receptionDate": "2024-02-04T12:20:00Z",
+          "status": "sent"
+        }
+      ]
+    }
+  ]
+  
