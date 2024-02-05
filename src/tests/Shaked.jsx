@@ -1,11 +1,12 @@
 import React from 'react'
-import PopUp from '../components/PopUp'
+// import PopUp from '../components/PopUp'
 import { useState } from 'react';
 // import Accordion from '../components/Accordion'
-import NewMassageForm from '../components/NewMessageForm';
+// import NewMassageForm from '../components/NewMessageForm';
+import MessagesTab from '../components/MessagesTab';
 
 export default function Shaked() {
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -13,9 +14,10 @@ export default function Shaked() {
        { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
 
       </Accordion> */}
-      <PopUp title={'הודעה חדשה'} isOpen={isOpen} setIsOpen={setIsOpen}> 
+      {/* <PopUp title={'הודעה חדשה'} isOpen={isOpen} setIsOpen={setIsOpen}> 
         <NewMassageForm/>
-      </PopUp>
+      </PopUp> */}
+      <MessagesTab/>
     </div>
   )
 }
