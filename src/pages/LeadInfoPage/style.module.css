@@ -111,7 +111,7 @@
 
 
  
-  .sentMessages{
+  .sentMessagesContainer{
     width: 715px;
     height: 353px;
     padding: 45px;
@@ -121,6 +121,11 @@
     flex-direction: column;
     align-items: flex-end;
     background-color: #F7F7F7;
+
+  }
+
+  .messages{
+    overflow: auto;
 
   }
 
