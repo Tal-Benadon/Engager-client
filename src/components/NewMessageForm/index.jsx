@@ -17,7 +17,7 @@ import { useState } from 'react';
 // Creator : ________   
 
 
-export default function NewMassageForm() {
+export default function NewMassageForm({setIsOpen}) {
     const [subject, setSubject] = useState('')
     const [content, setContent] = useState('')
 
@@ -31,6 +31,7 @@ export default function NewMassageForm() {
                     "Content-Type": "application/json"
                 }
             });
+            setIsOpen=false;
             console.log(response.data);
             console.log(subject, content);
         } catch (error) {
