@@ -1,65 +1,45 @@
+/* Importing Google Fonts for use in the application */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
-.container {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.262);
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
 
+/* 
+To create a main heading using 'Secular One', simply use the <h1> tag in your HTML.
+This will automatically apply the specified font family, size, weight, and color to the heading.
+*/
+
+
+:root {
+  /* Setting up CSS variables for easy font style management */
+
+
+   /* Default font for body text */
+  --default-font: 'Heebo', sans-serif;
+  --font-size: 18px; /* Default font size for body text */
+  --font-weight: 400; /* Default font weight for body text */
+
+   /* Specific font for main headings */
+  --header-font: 'Secular One', sans-serif;
+  --header-font-size: 24px; /* Font size for main headings (h1) */
+  --header-font-weight: 400; /* Font weight for main headings (h1) */
+  --header-color: #000000; /* Text color for main headings (h1), set to black */
 }
 
-.popup {
-    /* width: 400px; */
-    /* height: 400px; */
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    align-self: center;
-    position: relative;
-    animation: slideIn 0.3s ease-in-out;
+/* Applying global styles to all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--default-font);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
 }
 
-@keyframes slideIn {
-    0% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
+/* Style rule for main headings (h1) */
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-
-    }
-}
-
-.top {
-    align-items: center;
-    border-bottom: 1px solid #E8E8E8;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    padding: 10px 20px 10px 20px;
-}
-
-.close {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-
-.title {
-    margin: 20px;
-    font-family: 'Secular One', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29px;
-    letter-spacing: 0em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+h1 {
+  font-family: var(--header-font); /* Use this CSS variable for the h1 font family */
+  font-size: var(--header-font-size); /* Use this CSS variable for the h1 font size */
+  font-weight: var(--header-font-weight); /* Use this CSS variable for the h1 font weight */
+  color: var(--header-color); /* Use this CSS variable for the h1 text color */
 }
