@@ -78,4 +78,4 @@ api.delete("/user/id",
   headers
 ).then((res) => res.data);
 
-module.exports = { get, post, del, put };
+export default { get, post, del, put };
