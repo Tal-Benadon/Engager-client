@@ -19,7 +19,7 @@ export default function Icon({ nameIcon, nameColor }) {
     return <div className={styles.icon}>
         <svg width={iconsPath[nameIcon].style.width} height={iconsPath[nameIcon].style.height} viewBox={iconsPath[nameIcon].style.viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">
             {iconsPath[nameIcon].path.map((p, i )=> <path key={i} d={p} stroke={nameColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />)}
-            {iconsPath[nameIcon].path.map(p => <path d={p} stroke={nameColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />)}
+            {iconsPath[nameIcon].path.map(p => <path d={p} key={p} stroke={nameColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />)}
         </svg>
     </div>
 }

@@ -60,7 +60,7 @@ border-bottom:1px solid #E8E8E8;
     line-height: 40px;
 }
 
-item {
+.item {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: nowrap;
@@ -71,7 +71,7 @@ item {
     padding-top: 40px;
 }
 
-item svg {
+.item svg {
     height: 24px;
     width: 24px;
     background: #0E9D851A;
