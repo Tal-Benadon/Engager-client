@@ -1,13 +1,21 @@
 import styles from './style.module.css'
-import { RiCheckDoubleFill } from "react-icons/ri";
-import { FaCheck } from "react-icons/fa6";
 
 
-// Description:
+
+// Description: This component serves as a user profile page. It is designed to display user information, including first name, last name, email, phone number, registration date, and active status indicator.
+//Use of this component should pass real user data from the DB as props.
 // Props:
+//   - firstName (string): The first name of the user.
+//   - lastName (string): The last name of the user.
+//   - phoneNumber (string): The phone number of the user.
+//   - email (string): The email address of the user.
+//   - notes (string): Additional notes or comments about the user.
+//   - signUpDate (string): The date of user registration.
+//   - isActive (boolean): A flag indicating whether the user is active.
+//    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ firstName = "יעקב", lastName = "מושל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = true }) {
+export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = false }) {
   return (
     <div>
       <div className={styles.info}>
@@ -16,12 +24,12 @@ export default function LeadInfoPage({ firstName = "יעקב", lastName = "מו�
           <div className={styles.isActive}>
             {isActive ? (
               <>
-                <span>פעיל</span>
+                <span>פעיל/ה</span>
                 <div className={styles.greenDot}></div>
               </>
             ) : (
               <>
-                <span>לא פעיל</span>
+                <span>לא פעיל/ה</span>
                 <div className={styles.redDot}></div>
               </>
             )}
@@ -56,10 +64,14 @@ export default function LeadInfoPage({ firstName = "יעקב", lastName = "מו�
 
           </div>
         </div>
-      </div>
-      <div className={styles.sentMessages}>
+        
+        <div className={styles.sentMessages}>
 
+          <div className={styles.sentTitle}>הודעות שנשלחו</div>
+***sent messages list should be heare***
+        </div>
       </div>
+
     </div>
 
 
