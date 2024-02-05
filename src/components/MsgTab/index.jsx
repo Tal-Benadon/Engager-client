@@ -2,6 +2,7 @@ import React from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
 import TabSwitcher from '../TabSwitcher';
 import HeadLine from '../HeadLine';
+import MsgListHolder from '../MsgListHolder';
 
 export default function  MsgTab() {
   const campaign = useCampaign();

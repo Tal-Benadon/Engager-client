@@ -2,6 +2,10 @@ import React from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
 import HeadLine from '../HeadLine';
 import TabSwitcher from '../TabSwitcher';
+import LeadList from '../LeadList';
+import SearchBar from '../SearchBar';
+import styles from './style.module.css'
+
 
 
 export default function LeadsTab() {
@@ -18,7 +22,10 @@ export default function LeadsTab() {
         {tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})`},
         {tab: `campaign/${campaign._id}/messages`, text: "הודעות"}
         ]} />
-      <LeadListHolder />
+      <div className={styles.LeadListHolder}>
+        <SearchBar />
+        <LeadList />
+      </div>
     </div>
   )
 }

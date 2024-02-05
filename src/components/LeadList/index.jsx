@@ -2,12 +2,13 @@ import styles from './style.module.css';
 import demo from '../../data/lead.data.json';
 import LeadItem from '../LeadItem';
 import formatDate from '../../functions/DateFormat';
+import { useCampaign } from '../../pages/CampaignPage';
 
 // Description : 
 // Props : lead
 // Creator : Yehoshua Preiser
 
-export default function LeadList({ leadArray = demo }) {
+export default function LeadList() {
 
 const campaign  = useCampaign()
 const leadArray = campaign.leads

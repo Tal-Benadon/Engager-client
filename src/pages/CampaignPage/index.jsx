@@ -7,6 +7,8 @@ import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
 import LeadsInfo from '../../components/LeadsInfo/index.jsx';
 import MsgInfo from '../../components/MsgInfo/index.jsx';
+import MessagePage from '../../components/MessagePage/index.jsx';
+import LeadInfoPage from '../LeadInfoPage/index.jsx';
 
 // Description : 
 // Props : ____________ , _________
@@ -51,7 +53,7 @@ export default function CampaignPage() {
             element={
               <>
                 <LeadsTab />
-                <LeadsInfo />
+                <LeadInfoPage />
               </>
             }
           />
@@ -59,7 +61,7 @@ export default function CampaignPage() {
             element={
               <>
                 <MsgTab />
-                <MsgInfo />
+                <MessagePage />
               </>
             }
           />
