@@ -16,8 +16,9 @@ export default function MessagesTab() {
       <MessageList/>
       <Button className='cancel' content='הודעה חדשה' onClick={()=>setIsOpen(true)}/>
       <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
+      {/* <NewMessageForm/> */}
       hello
-       </PopUp>
+      </PopUp>
     </div>
   )
 }
