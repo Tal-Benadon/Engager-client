@@ -1,19 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
 .userNameaAndPssword {
     color: #0E9D85;
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Heebo';
 }
 
 .inputSpace {
-    margin: 0 30px;
-}
-
-.inputText {
-    margin: 60px;
-    display: flex;
+    margin: 10px 30px 30px 30px;
+    /* border: 2px solid darkcyan; */
 }
 
 .centerDiv {
@@ -27,7 +22,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    height: 300px;
+    height: 350px;
     width: fit-content;
     text-align: center;
     border: 1px solid #DEE2E9;
