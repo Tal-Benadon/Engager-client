@@ -6,9 +6,9 @@ import CampaignItem from '../components/CampaignItem'
 export default function Gila() {
   return (
     <div>
-      {/* <TabSwitcher/> */}
+      <TabSwitcher/>
       <Outlet/>
-      <CampaignItem/>
+      {/* <CampaignItem/> */}
 
     </div>
   )
