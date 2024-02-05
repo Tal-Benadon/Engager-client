@@ -3,7 +3,7 @@ import styles from './style.module.css';
 import Icon from '../Icon'
 import campaignHelper from '../../functions/campaignHelper';
 
-export default function Accordion({ title, children }) {
+export default function Accordion({ title , children}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
