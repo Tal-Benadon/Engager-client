@@ -1,5 +1,5 @@
 import React from 'react'
-import PopUp from '../components/PopUp'
+// import PopUp from '../components/PopUp'
 // import Accordion from '../components/Accordion'
 
 export default function Shaked() {
@@ -10,9 +10,10 @@ export default function Shaked() {
        { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
 
       </Accordion> */}
+{/*       
       <PopUp title={'הודעה חדשה'}>
         bvfjdk
-      </PopUp>
+      </PopUp> */}
     </div>
   )
 }
