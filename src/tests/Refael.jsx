@@ -1,16 +1,13 @@
 import React from 'react'
-import MessageItem from '../components/MessageItem'
-import LeadItem from '../components/LeadItem'
 
+import LeadItem from LeadItem
 export default function Refael() {
   return (
 
 
     <div>
+<LeadItem/>
 
-      <LeadItem/>
-      
-      
       Refael
       function
       TO
