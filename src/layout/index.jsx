@@ -4,6 +4,7 @@ import LoginPage from '../pages/LoginPage';
 import { ManageContext } from '../context/ManageContext';
 import Test from '../tests/A_MainTest';
 import SideBar from './SideBar';
+import CampaignPage from '../pages/CampaignPage';
 
 export default function Layout() {
   return (
@@ -18,7 +19,8 @@ export default function Layout() {
 
 
     <SideBar/>
-
+    <CampaignPage/>
+    
       </ManageContext>
     </div>
   )
