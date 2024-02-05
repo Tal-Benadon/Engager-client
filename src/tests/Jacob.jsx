@@ -1,7 +1,7 @@
 import React from 'react'
-
+import NewMassageForm from '../components/NewMessageForm'
 export default function Jacob() {
   return (
-    <div>Jacob</div>
+    <div><NewMassageForm/></div>
   )
 }
