@@ -4,11 +4,11 @@ import Icon from '../Icon'
 
 export default function PopUp({ title , setIsOpen, isOpen, children}) {
 //the function needs to recive title and children and need to recive isOpen and setIsOpen in the props and render them
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Open</button>
+      {/* <button onClick={() => setIsOpen(true)}>Open</button> */}
       {isOpen && (
         <div className={styles.container} onClick={() => setIsOpen(false)}>
           <div dir='rtl' className={styles.popup} onClick={(e) => { e.stopPropagation() }}>

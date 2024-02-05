@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './style.module.css';
 import Icon from '../Icon'
 
-export default function Accordion({ title , children}) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Accordion({ title , children, isOpen, setIsOpen}) {
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={styles.wrapper}>
