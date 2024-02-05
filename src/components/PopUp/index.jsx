@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from './style.module.css';
+// import NewMassageForm from '../NewMessageForm';
 
-export default function PopUp({ title, children }) {
+export default function PopUp({ title, setIsOpen, isOpen , children}) {
 //the function needs to recive title and children in the props and render them
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -19,6 +20,7 @@ export default function PopUp({ title, children }) {
                 </svg>
               </span>
             </div>
+            {/* <NewMassageForm/> */}
             {children}
           </div>
         </div>
