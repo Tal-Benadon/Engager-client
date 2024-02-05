@@ -1,4 +1,5 @@
 import React from 'react'
+import { MdSignLanguage } from 'react-icons/md'
 // import PopUp from '../components/PopUp'
 // import Accordion from '../components/Accordion'
 
@@ -14,7 +15,6 @@ export default function Shaked() {
       <PopUp title={'הודעה חדשה'}>
         bvfjdk
       </PopUp> */}
-      
     </div>
   )
 }
