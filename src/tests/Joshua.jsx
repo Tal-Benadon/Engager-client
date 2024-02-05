@@ -1,11 +1,10 @@
 import React from 'react'
-import LeadList from '../components/LeadList'
-import LeadItem from '../components/LeadItem'
+import LeadListHolder from '../components/LeadListholder'
 
 export default function Joshua() {
   return (
     <>
-<LeadList/>
+      <LeadListHolder />
     </>
   )
 }

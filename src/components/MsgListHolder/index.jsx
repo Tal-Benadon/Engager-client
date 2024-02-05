@@ -8,7 +8,7 @@ import NewMessageForm from '../NewMessageForm'
 // Description : 
 // Props : ____________ , _________
 // Creator : Yehoshua Preiser
-export default function MessagesTab() {
+export default function MsgListHolder() {
   const [isOpen, setIsOpen] = useState(false)
   return (<>
   <div>
@@ -16,7 +16,7 @@ export default function MessagesTab() {
         <NewMessageForm />
       </PopUp>
   </div>
-    <div className={styles.MessagesTab}>
+    <div className={styles.MsgListHolder}>
       <SearchBar/>
       <MessageList/>
       <Button className='cancel' content='הודעה חדשה' onClick={()=>setIsOpen(true)}/>
