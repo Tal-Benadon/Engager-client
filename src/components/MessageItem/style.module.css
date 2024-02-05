@@ -22,11 +22,16 @@
       background-color: white;
   }
 
-  .message:hover {
+
+  .messageActive{
+    background-color: #0E9D85;
+  } */
+
+  /* .message:hover {
       background-color: #F3F3F5;
   }
 
-  .message:active {
+  .messageActive {
       background-color: #F3F3F5;
   }
 

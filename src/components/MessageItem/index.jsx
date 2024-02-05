@@ -29,7 +29,7 @@ export default function MessageItem({ title = "תראו איזו הודעה מג
 
   return (
     <div
-      className={`${styles.message} ${isOnActive ? 'message' : ''}`} // שימו לב לשינוי כאן: הוספת ve messageActive על פי הצורך
+      className={`${styles.message} ${isOnActive ? 'messageActive' : ''}`}
       onClick={toggleActive}>
       <div className={styles.titleAndDetails}>
         <div className={styles.title}>{title}</div>
