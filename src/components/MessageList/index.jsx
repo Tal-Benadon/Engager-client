@@ -15,7 +15,7 @@ export default function MessageList() {
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-    const messages = messagesByDate(campaign.msg); 
+    const messages = messagesByDate(campaign.msg);
     setOrganizedMessages(messages);
   }, [campaign.msg]);
 
@@ -28,6 +28,8 @@ export default function MessageList() {
             {messages.map((message, messageIndex) => (
               < li key={messageIndex} >
                 <MessageItem
+                  campaignId={campaign._id}
+                  msgId={message._Id}
                   title={message.subject}
                   date={message.formattedDate}
                   time={message.formattedTime}

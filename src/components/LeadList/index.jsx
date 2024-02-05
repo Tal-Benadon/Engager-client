@@ -10,16 +10,18 @@ import { useCampaign } from '../../pages/CampaignPage';
 
 export default function LeadList() {
 
-const campaign  = useCampaign()
-const leadArray = campaign.leads
+  const campaign = useCampaign()
+  const leadArray = campaign.leads
 
   return (
     <div className={styles.leadArray}>
       {leadArray.map((lead) => (
         <LeadItem
+          campaignId={campaign._id}
           name={lead.lead.name}
           email={lead.lead.email}
           key={lead.lead._id}
+          id={lead.lead._id}
           date={formatDate(lead.joinDate)}
         />
       ))}
