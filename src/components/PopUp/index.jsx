@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './style.module.css';
 
-export default function PopUp({ title, children }) {
-//the function needs to recive title and children in the props and render them
-  const [isOpen, setIsOpen] = useState(false);
+export default function PopUp({ title, setIsOpen, isOpen }) {
+//the function needs to recive title and children and need to recive isOpen and setIsOpen in the props and render them
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
