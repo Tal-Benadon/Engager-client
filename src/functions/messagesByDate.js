@@ -1,17 +1,24 @@
 import timeDateFormat from './timeDateFormat';
 
-const messagesByDate = data => {
+const messagesByDate = (data) => {
   const messagesByDate = {};
 
   data.forEach(entry => {
-    const creationDate = new Date(entry.msgs[0].creationDate);
-    const formattedDate = timeDateFormat(creationDate);
+    const creationDate = new Date(entry.creationDate); 
+    const [formattedDate, formattedTime] = timeDateFormat(creationDate);
 
     if (!messagesByDate[formattedDate]) {
       messagesByDate[formattedDate] = [];
     }
 
-    messagesByDate[formattedDate].push(entry);
+    const messageDetails = {
+      subject: entry.subject,
+      formattedDate: formattedDate,
+      formattedTime: formattedTime,
+      status: entry.leads[0].status, // Assuming leads array always has at least one element
+    };
+
+    messagesByDate[formattedDate].push(messageDetails);
   });
 
   return messagesByDate;

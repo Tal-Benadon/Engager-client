@@ -1,26 +1,39 @@
 import { useEffect, useState } from 'react';
 import styles from './style.module.css'
-import data from "../../data/lead.data.json"
-import timeDateFormat from "../../functions/timeDateFormat"
-import messageByDate from '../../functions/messagesByDate';
+import demo from "../../data/msgs.data.json"
+import messagesByDate from '../../functions/messagesByDate';
+import MessageItem from '../MessageItem';
 
-// Description : 
-// Props : ____________ , _________
+// Description : gets a message array, maps it to MessageItem component seperated by date.
+// Props : messageAray = array of message objects {subject, content,creationDate, leads:[{lead,receptionDate,status}]}
 // Creator : yehoshua preiser
-export default function MessageList({ data }) {
-
+export default function MessageList({ messageArray = demo }) {
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-    const messages = messageByDate(data);
+    const messages = messagesByDate(messageArray); 
     setOrganizedMessages(messages);
-  }, [data]);
+  }, [messageArray]);
 
   return (
-   <div>
-    test
-   </div>
+    <div className={styles.MessageList}>
+      {Object.entries(organizedMessages).map(([date, messages], index) => (
+        <div key={index}>
+          <div className={styles.date}>{date}</div>
+          <ul className={styles.unorderedList}>
+            {messages.map((message, messageIndex) => (
+              < li key={messageIndex} >
+                <MessageItem
+                  title={message.subject}
+                  date={message.formattedDate}
+                  time={message.formattedTime}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+      }
+    </div >
   );
-};
-
-
+}
