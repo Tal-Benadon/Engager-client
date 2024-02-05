@@ -14,9 +14,10 @@ export default function formatDateTime(date) {
     const year = date.getFullYear();
   
     // Format the date and time
-    const formattedDateTime = `${hours}:${minutes} ${day}/${month}/${year}`;
+    const formattedDate =  `${day}/${month}/${year}`;
+    const formattedTime = `${hours}:${minutes}`;
   
-    return formattedDateTime;
+    return [formattedDate, formattedTime];
   }
   
   // Example usage:

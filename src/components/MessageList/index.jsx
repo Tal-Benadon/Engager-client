@@ -1,37 +1,39 @@
 import { useEffect, useState } from 'react';
 import styles from './style.module.css'
-import data from "../../data/lead.data.json"
-import timeDateFormat from "../../functions/timeDateFormat"
+import demo from "../../data/msgs.data.json"
 import messagesByDate from '../../functions/messagesByDate';
 import MessageItem from '../MessageItem';
 
-// Description : 
-// Props : ____________ , _________
+// Description : gets a message array, maps it to MessageItem component seperated by date.
+// Props : messageAray = array of message objects {subject, content,creationDate, leads:[{lead,receptionDate,status}]}
 // Creator : yehoshua preiser
-export default function MessageList() {
+export default function MessageList({ messageArray = demo }) {
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-    const messages = messagesByDate(data); // Corrected function name
+    const messages = messagesByDate(messageArray); 
     setOrganizedMessages(messages);
-  }, [data]);
-
-  console.log(Object.entries(organizedMessages).map(([date, messages]) => ( messages)));
+  }, [messageArray]);
 
   return (
-    <div>
+    <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index}>
-          <div>{date}</div>
-          <ul>
+          <div className={styles.date}>{date}</div>
+          <ul className={styles.unorderedList}>
             {messages.map((message, messageIndex) => (
-              <li key={messageIndex}>
-                <MessageItem message={message} date={date} title={"faasdf"}  />
+              < li key={messageIndex} >
+                <MessageItem
+                  title={message.subject}
+                  date={message.formattedDate}
+                  time={message.formattedTime}
+                />
               </li>
             ))}
           </ul>
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 }
