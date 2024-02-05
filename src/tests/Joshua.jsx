@@ -1,10 +1,10 @@
 import React from 'react'
-import MessageList from '../components/MessageList'
+import MessagesTab from '../components/MessagesTab'
 
 export default function Joshua() {
   return (
     <>
-<MessageList/>
+<MessagesTab/>
     </>
   )
 }
