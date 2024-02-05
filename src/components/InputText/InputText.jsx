@@ -5,7 +5,7 @@ export default function InputText({ style = {}, name = "", ...props }) {
     return (
 
         <div className={styles.MsgName}>
-            <input type="text"  name={name}  id={name} style={style} className={styles.inputLine} {...props} />
+            <input type="text" name={name} id={name} style={style} className={styles.inputLine} {...props} />
         </div>
     )
 }
