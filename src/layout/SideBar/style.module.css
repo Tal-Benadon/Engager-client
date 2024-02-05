@@ -59,3 +59,21 @@ border-bottom:1px solid #E8E8E8;
     text-align: right;
     line-height: 40px;
 }
+
+item {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: flex-start;
+    line-height: 24px;
+    padding-right: 8px;
+    padding-top: 40px;
+}
+
+item svg {
+    height: 24px;
+    width: 24px;
+    background: #0E9D851A;
+    border-radius: 50%;
+}
