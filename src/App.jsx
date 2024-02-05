@@ -8,7 +8,6 @@ export default function App() {
     <div>
 
       <Layout />
-      <Test />
       {/* <Routes>
         <Route path='/*' element={ } />
         <Route path='/*' element={ } />

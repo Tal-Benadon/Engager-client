@@ -3,7 +3,7 @@ import styles from './style.module.css';
 import Icon from '../Icon'
 
 export default function PopUp({ setIsOpen, isOpen, children}) {
-//the function needs to recive title and children and need to recive isOpen and setIsOpen in the props and render them
+//the function needs to recive children and need to recive isOpen and setIsOpen in the props and render them
   // const [isOpen, setIsOpen] = useState(false);
 
   return (
