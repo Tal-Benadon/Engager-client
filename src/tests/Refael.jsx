@@ -1,6 +1,6 @@
 import React from 'react'
+import LeadItem from '../components/LeadItem'
 
-import LeadItem from LeadItem
 export default function Refael() {
   return (
 
