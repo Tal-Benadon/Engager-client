@@ -10,50 +10,40 @@ export default function Register() {
     return (
         <div className={styles.centerDiv}>
             <div className={styles.register}>
-                <>
-                    <label className={styles.text}> <span className={styles.star}>*</span> שם פרטי</label>
-                    <div className={styles.inputSpace}>
-                        <InputText name={'userName'} required={'required'} />
 
-                    </div>
-                </>
-                <>
-                    <label className={styles.text}> <span className={styles.star}>*</span> שם משפחה</label>
-                    <div className={styles.inputSpace}>
+                <div className={styles.inputSpace}>
+                    <InputWrapper label={"שם"} >
                         <InputText name={'userName'} required={'required'} />
-                    </div>
-                </>
-                <>
-                    <label className={styles.text} > <span className={styles.star}>*</span> טלפון</label>
-                    <div className={styles.inputSpace}>
+                    </InputWrapper>
+                </div>
+
+                <div className={styles.inputSpace}>
+                    <InputWrapper label={"טלפון"} >
                         <InputText name={'userName'} required={'required'} />
-                    </div>
-                </>
-                <>
-                    
-                    <div className={styles.inputSpace}>
+                    </InputWrapper>
+                </div>
+
+                <div className={styles.inputSpace}>
                     <InputWrapper label={"אימייל"} >
                         <InputText type={'email'} name={'userName'} required={'required'} />
                     </InputWrapper>
-                    </div>
-                </>
-              
-                    <div className={styles.inputSpace}>
+                </div>
+
+                <div className={styles.inputSpace}>
                     <InputWrapper label={"סיסמה"} >
                         <InputText type={'password'} name={'password'} required={true} />
                     </InputWrapper>
-                    </div>
-                
-                
-                    <div className={styles.inputSpace}>
-                    <InputWrapper label={"הערות"} >
+                </div>
+
+                <div className={styles.inputSpace}>
+                    <InputWrapper label={"אימות סיסמה"} >
                         <InputText name={'userName'} required={false} />
-                        </InputWrapper>
-                    </div>
-                
+                    </InputWrapper>
+                </div>
+
                 <div className={styles.button} >
-                <Button type='submit' content={'הרשם'}  />
-                <Button type='submit' content={'ביטול'} className = {"cancel"} />
+                    <Button type='submit' content={'הרשם'} />
+                    <Button type='submit' content={'ביטול'} className={"cancel"} />
                 </div>
             </div>
         </div>
