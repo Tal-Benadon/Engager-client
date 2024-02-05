@@ -1,3 +1,4 @@
+import MessageList from '../../components/MessageList'
 import styles from './style.module.css'
 
 
@@ -64,11 +65,12 @@ export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן"
 
           </div>
         </div>
-        
-        <div className={styles.sentMessages}>
 
+        <div className={styles.sentMessagesContainer}>
           <div className={styles.sentTitle}>הודעות שנשלחו</div>
-***sent messages list should be heare***
+          ***TODO: make it only sent messages***
+
+          <div className={styles.messages}><MessageList /></div>
         </div>
       </div>
 
