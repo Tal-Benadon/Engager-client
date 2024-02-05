@@ -4,7 +4,7 @@ import UpdateLead from '../components/UpdateLead'
 
 export default function Miryam() {
   return <div>
-    <UpdateLead userId = {''}/>
+    <UpdateLead />
         {/* <Icon nameIcon={'trash'}  nameColor  = {'active'}/>
     <Icon nameIcon={'msgLeft'}  nameColor  = {'danger'}/>
     <Icon nameIcon={'pause'}/>
