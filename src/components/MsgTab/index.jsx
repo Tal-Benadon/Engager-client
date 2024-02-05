@@ -1,17 +1,13 @@
 import React from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
-import HeadLine from '../HeadLine';
 import TabSwitcher from '../TabSwitcher';
-import LeadList from '../LeadList';
-import SearchBar from '../SearchBar';
-import styles from './style.module.css'
+import HeadLine from '../HeadLine';
+import MsgListHolder from '../MsgListHolder';
 
-
-
-export default function LeadsTab() {
-
+export default function  MsgTab() {
   const campaign = useCampaign();
- if(!Object.keys(campaign).length) return <></>
+  if(!Object.keys(campaign).length) return <></>
+
   return (
     <div>
       <HeadLine
@@ -22,10 +18,7 @@ export default function LeadsTab() {
         {tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})`},
         {tab: `campaign/${campaign._id}/messages`, text: "הודעות"}
         ]} />
-      <div className={styles.LeadListHolder}>
-        <SearchBar />
-        <LeadList />
-      </div>
+      <MsgListHolder />
     </div>
   )
 }
