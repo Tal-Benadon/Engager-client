@@ -8,11 +8,11 @@ import styles from './style.module.css'
 // <InputWrapper label="שם:" to=""  h2=" " children={} type="text" value={name}/>
 
 
-export default function InputWrapper({ label, h2, to, children }) {
+export default function InputWrapper({ label, subLabel, to="", children }) {
     return (
         <div className={styles.InputWrapper}>
-            <h2 className={styles.h2} >{h2}</h2>
-            <label className={styles.label} to={to}>{label}</label>
+            <label className={styles.h2} htmlFor={to} >{label}</label>
+            <label className={styles.label} htmlFor={to}>{subLabel}</label>
             {children}
         </div>
     );

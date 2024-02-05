@@ -1,7 +1,7 @@
 import React from 'react'
-import InputWrapper from '../components/InputWrapper'
+import NewMassageForm from '../components/NewMessageForm'
 export default function Jacob() {
   return (
-    <div><InputWrapper/></div>
+    <div><NewMassageForm/></div>
   )
 }
