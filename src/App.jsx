@@ -6,11 +6,13 @@ import Test from './tests/A_MainTest'
 export default function App() {
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<Layout />} />
-        <Route path='/*' element={<Test />} />
-      </Routes>
 
+      <Layout />
+      <Test />
+      {/* <Routes>
+        <Route path='/*' element={ } />
+        <Route path='/*' element={ } />
+      </Routes> */}
     </div>
   )
 }
