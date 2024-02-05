@@ -2,6 +2,8 @@ import React from 'react'
 import MessagePage from '../components/MessagePage'
 import CampaignItem from '../components/CampaignItem'
 import Accordion from '../components/Accordion'
+import Login from '../components/Login/Login'
+import Register from '../components/Register'
 
 export default function Gila() {
   const message = "בלה בלה בלה"
@@ -14,14 +16,10 @@ export default function Gila() {
   return (
     <div>
       {/* <TabSwitcher/> */}
-<<<<<<< HEAD
       {/* <CampaignItem/> */}
-      <MessagePage title={title} dateCreate={dateCreate} icon={"icon"} message={message} dateSend={dateSend} timeSend={timeSend} />
-=======
-      {/* <Outlet/> */}
-      <CampaignItem/>
-
->>>>>>> b878d96f1bbb120418f1a00bdd6040eceb0a10a2
+      {/* <MessagePage title={title} dateCreate={dateCreate} icon={"icon"} message={message} dateSend={dateSend} timeSend={timeSend} /> */}
+      <Login/>
+      <Register/>
     </div>
   )
 }
