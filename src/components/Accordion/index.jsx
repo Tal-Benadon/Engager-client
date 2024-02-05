@@ -1,121 +1,22 @@
-// import React, { useState } from 'react'
-// import styles from './style.module.css';
-
-// export default function Accordion({title, children}) {
-//     const [isOpen, setIsOpen] = useState(false)
-//     const data = ['hello', 'i' , 'am' , 'shaked' , 'ben' , 'hamo']
-//   return (
-//     <div className={styles.wrraper}>
-//               {/* <button onClick={() => setIsOpen(true)}>Open</button> */}
-             
-     
-//         <div className={styles.container}>
-// <span className={styles.icon} onClick={()=>{setIsOpen(true)}}><svg width="89" height="24" viewBox="0 0 89 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-// <path d="M14 10L21 3M21 3H15M21 3V9M10 14L3 21M3 21H9M3 21L3 15" stroke="#6B6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-// <path d="M40.5547 8.96875L37.3281 17H35.2188L38.4141 9.26562H33.2109V5H35.1953V7.71094H40.5547V8.96875ZM44.3438 17.1406C43.5469 17.1406 42.6536 17.013 41.6641 16.7578L41.9766 15.2969C42.7839 15.4948 43.4974 15.5938 44.1172 15.5938C44.9193 15.5833 45.5182 15.3932 45.9141 15.0234C46.3151 14.6484 46.5156 14.1016 46.5156 13.3828V9.26562H42.0156V7.71094H48.5V13.0078C48.5 14.4036 48.1328 15.4427 47.3984 16.125C46.6693 16.8021 45.651 17.1406 44.3438 17.1406ZM56.4609 11.0781C56.4609 10.4531 56.3099 9.99479 56.0078 9.70312C55.7057 9.41146 55.2344 9.26562 54.5938 9.26562H50.9844V7.71094H54.7266C55.9245 7.71094 56.8411 8.00781 57.4766 8.60156C58.1172 9.1901 58.4375 10.0417 58.4375 11.1562V17H56.4609V11.0781ZM50.9688 13.8203C50.9688 13.3047 51.013 12.9036 51.1016 12.6172C51.1953 12.3307 51.3151 12.0703 51.4609 11.8359H53.0547C52.9401 12.2943 52.8828 12.8958 52.8828 13.6406V17H50.9688V13.8203ZM64.1484 17.0859C63.9505 17.0859 63.7865 17.0729 63.6562 17.0469V15.25C63.8333 15.2812 64.0365 15.2969 64.2656 15.2969C64.9219 15.2812 65.4609 15.1042 65.8828 14.7656C66.3099 14.4219 66.6094 13.9557 66.7812 13.3672V9.26562H64.7109V7.71094H68.7266V12.4531C68.7266 12.9427 68.776 13.4297 68.875 13.9141L69.5156 17H67.6719L67.125 14.5391H67.0781C67.0052 15.0026 66.8307 15.4297 66.5547 15.8203C66.2839 16.2057 65.9375 16.513 65.5156 16.7422C65.099 16.9714 64.6432 17.0859 64.1484 17.0859ZM76.0703 12.8125L78.3203 16.0703V17H71.1953V15.4375H75.7734L70.5234 7.71094H72.7422L74.9062 11.0859L76.6172 7.71094H78.8438L76.0703 12.8125ZM85.9141 11.0781C85.9141 10.4531 85.763 9.99479 85.4609 9.70312C85.1589 9.41146 84.6875 9.26562 84.0469 9.26562H80.4375V7.71094H84.1797C85.3776 7.71094 86.2943 8.00781 86.9297 8.60156C87.5703 9.1901 87.8906 10.0417 87.8906 11.1562V17H85.9141V11.0781ZM80.4219 13.8203C80.4219 13.3047 80.4661 12.9036 80.5547 12.6172C80.6484 12.3307 80.7682 12.0703 80.9141 11.8359H82.5078C82.3932 12.2943 82.3359 12.8958 82.3359 13.6406V17H80.4219V13.8203Z" fill="#6B6B6B"/>
-// </svg>
-// </span>
-// <span>{title}</span> 
-// </div>
-// {isOpen && (
-// data.map(item=> {
-//     <span>{item}</span>
-// })
-// )}
-//     </div>
-//   )
-// }
-
-
-
-// import React, { useState } from 'react';
-// import styles from './style.module.css';
-
-// export default function Accordion({ title }) {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const data = ['hello', 'i', 'am', 'shaked', 'ben', 'hamo'];
-
-//   return (
-//     <div className={styles.wrraper}>
-//       {/* <button onClick={() => setIsOpen(true)}>Open</button> */}
-//       <div className={styles.container}>
-
-//         <span>{title}</span>
-//       {isOpen ? <span onClick={() => setIsOpen(false)}>{"-"}</span> : (
-//           <span
-//           className={styles.icon}
-//           onClick={() => {
-//               setIsOpen(!isOpen);
-//             }}
-//             >
-//           <svg
-//             width="89"
-//             height="24"
-//             viewBox="0 0 89 24"
-//             fill="none"
-//             xmlns="http://www.w3.org/2000/svg"
-//             >
-//             <path
-//               d="M14 10L21 3M21 3H15M21 3V9M10 14L3 21M3 21H9M3 21L3 15"
-//               stroke="#6B6B6B"
-//               strokeWidth="2"
-//               strokeLinecap="round"
-//               strokeLinejoin="round"
-//               />
-//             <path
-//               d="M40.5547 8.96875L37.3281 17H35.2188L38.4141 9.26562H33.2109V5H35.1953V7.71094H40.5547V8.96875ZM44.3438 17.1406C43.5469 17.1406 42.6536 17.013 41.6641 16.7578L41.9766 15.2969C42.7839 15.4948 43.4974 15.5938 44.1172 15.5938C44.9193 15.5833 45.5182 15.3932 45.9141 15.0234C46.3151 14.6484 46.5156 14.1016 46.5156 13.3828V9.26562H42.0156V7.71094H48.5V13.0078C48.5 14.4036 48.1328 15.4427 47.3984 16.125C46.6693 16.8021 45.651 17.1406 44.3438 17.1406ZM56.4609 11.0781C56.4609 10.4531 56.3099 9.99479 56.0078 9.70312C55.7057 9.41146 55.2344 9.26562 54.5938 9.26562H50.9844V7.71094H54.7266C55.9245 7.71094 56.8411 8.00781 57.4766 8.60156C58.1172 9.1901 58.4375 10.0417 58.4375 11.1562V17H56.4609V11.0781ZM50.9688 13.8203C50.9688 13.3047 51.013 12.9036 51.1016 12.6172C51.1953 12.3307 51.3151 12.0703 51.4609 11.8359H53.0547C52.9401 12.2943 52.8828 12.8958 52.8828 13.6406V17H50.9688V13.8203ZM64.1484 17.0859C63.9505 17.0859 63.7865 17.0729 63.6562 17.0469V15.25C63.8333 15.2812 64.0365 15.2969 64.2656 15.2969C64.9219 15.2812 65.4609 15.1042 65.8828 14.7656C66.3099 14.4219 66.6094 13.9557 66.7812 13.3672V9.26562H64.7109V7.71094H68.7266V12.4531C68.7266 12.9427 68.776 13.4297 68.875 13.9141L69.5156 17H67.6719L67.125 14.5391H67.0781C67.0052 15.0026 66.8307 15.4297 66.5547 15.8203C66.2839 16.2057 65.9375 16.513 65.5156 16.7422C65.099 16.9714 64.6432 17.0859 64.1484 17.0859ZM76.0703 12.8125L78.3203 16.0703V17H71.1953V15.4375H75.7734L70.5234 7.71094H72.7422L74.9062 11.0859L76.6172 7.71094H78.8438L76.0703 12.8125ZM85.9141 11.0781C85.9141 10.4531 85.763 9.99479 85.4609 9.70312C85.1589 9.41146 84.6875 9.26562 84.0469 9.26562H80.4375V7.71094H84.1797C85.3776 7.71094 86.2943 8.00781 86.9297 8.60156C87.5703 9.1901 87.8906 10.0417 87.8906 11.1562V17H85.9141V11.0781ZM80.4219 13.8203C80.4219 13.3047 80.4661 12.9036 80.5547 12.6172C80.6484 12.3307 80.7682 12.0703 80.9141 11.8359H82.5078C82.3932 12.2943 82.3359 12.8958 82.3359 13.6406V17H80.4219V13.8203Z"
-//               fill="#6B6B6B"
-//               />
-//           </svg>
-//         </span>
-//             )}
-//             </div>
-//             {isOpen &&(
-//         <div>
-//           {data.map((item, index) => (
-//             <div key={index}>{item}</div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-
 import React, { useState } from 'react';
 import styles from './style.module.css';
+import Icon from '../Icon'
 
-export default function Accordion({ title }) {
+export default function Accordion({ title , children}) {
   const [isOpen, setIsOpen] = useState(false);
-  const data = ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh'];
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
-          <svg
-  className={`${styles.icon} ${isOpen ? styles.iconOpen : styles.iconClosed}`}
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M10 15L17.5 7.5M17.5 7.5H10M17.5 7.5V15"
-    stroke="#6B6B6B"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />
-</svg>
+          <div>{isOpen ? <Icon nameIcon={'x'} nameColor={''}/> : <div className={styles.open}><Icon className={styles.icon} nameIcon={'enlarge'} nameColor={''}/>{'הצג הכל'}</div>}</div>
     <span className={styles.title}>{title}</span>
 
         </div>
         {isOpen && (
           <div className={styles.content}>
-            {data.map((item, index) => (
-              <div className={styles.single}><div key={index}>{item}</div></div>
+            {children.map((item, index) => (
+              <div className={styles.single} key={index}>{item}</div>
             ))}
           </div>
         )}

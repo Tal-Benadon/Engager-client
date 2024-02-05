@@ -7,7 +7,8 @@ export default function Shaked() {
   return (
     <div>
       <Accordion title={'הודעה חדשה'}>
-        children
+       { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
+
       </Accordion>
       {/* <PopUp title={'הודעה חדשה'}>
         children
