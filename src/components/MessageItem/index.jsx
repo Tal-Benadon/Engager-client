@@ -23,39 +23,32 @@ export default function MessageItem({ title = "תראו איזו הודעה מג
   
   //**state for active section. changing the background to gray and the icon to green*** */
  
-  const [isOnActive, setIsOnActive] = useState(false);
-  const toggleActive = () => setIsOnActive(!isOnActive);
+  // const [isOnActive, setIsOnActive] = useState(false);
+  // const toggleActive = () => setIsOnActive(!isOnActive);
 
 //***************************************************************************************** */
 
   return (
-    <div
-      className={`${styles.message} ${isOnActive ? 'message' : ''}`} // שימו לב לשינוי כאן: הוספת ve messageActive על פי הצורך
 
-      onClick={toggleActive}>
-      <div className={styles.titleAndDetails}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.DateAndTime}>
-          <div className={styles.time}>{time}</div>
-          <div className={styles.date}>{date}</div>
-          <div className={styles.checkIcon}>
-            {pending ? (
-              <CiClock2 className={styles.pendingIcon} />
-            ) : read ? (
-              <RiCheckDoubleFill className={styles.readIcon} />
-            ) : (
-              <FaCheck className={styles.unreadIcon} />
-            )}
-          </div>
+    // <div className={`${styles.message} ${isOnActive ? 'messageActive' : ''}`} onClick={toggleActive}>
+    <div>
+    {/*****TODO set the right path instead slash*****/}
+  <NavLink to="/" className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
+    <div className={styles.titleAndDetails}>
+      <div className={styles.title}>{title}</div>
+      <div className={styles.DateAndTime}>
+        <div className={styles.time}>{time}</div>
+        <div className={styles.date}>{date}</div>
+        <div className={styles.checkIcon}>
+          {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
         </div>
       </div>
-      <div className={styles.square}>
-        {isCampaignActive ? (
-          <BiMessageRoundedDetail className={`${styles.activeIcon}`} />
-        ) : (
-          <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />
-        )}
-      </div>
     </div>
+    <div className={styles.square}>
+      {isCampaignActive ? <BiMessageRoundedDetail className={styles.activeIcon} /> : <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
+    </div>
+  </NavLink>
+
+  </div>
   );
 }
