@@ -24,10 +24,10 @@
 
 
   .messageActive{
-    background-color: #0E9D85;
-  } */
+    background-color: #F3F3F5;
+}
 
-  /* .message:hover {
+  .message:hover {
       background-color: #F3F3F5;
   }
 
@@ -38,6 +38,7 @@
   .message:active .activeIcon {
       color: #0E9D85;
   }
+
 
   /* square and icon in the box */
   .square {

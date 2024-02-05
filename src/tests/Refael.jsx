@@ -1,5 +1,6 @@
 import React from 'react'
-import LeadInfoPage from '../pages/LeadInfoPage'
+
+import CampaignItem from '../components/CampaignItem'
 import MessageItem from '../components/MessageItem'
 
 export default function Refael() {
@@ -13,6 +14,7 @@ export default function Refael() {
       function
       TO
       test
+      <h1>זו בדיקה</h1>
       </div>
   )
 }
