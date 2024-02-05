@@ -5,7 +5,7 @@ export default function Liel() {
   let data = [
     {
       user: "65ba97e536d6af41e9beb0d1",
-      title: "קמפיין1"
+      title: " jkvlashflkeahhjkv;rehgewmacj;flsקמפיין1"
     },
     {
       user: "65ba97e536d6af41e9beb0d1",
@@ -15,7 +15,7 @@ export default function Liel() {
     <div>
       {/* <HeadLine title={title} subtitle={subtitle} />  */}
 
-      {/* <CampaignList campaignList={data} /> */}
+      <CampaignList campaignList={data} />
 
     </div>
   )
