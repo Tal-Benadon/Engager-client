@@ -4,6 +4,9 @@ import { Route, Routes, useParams } from 'react-router'
 import api from '../../functions/api.js'
 import { createContext } from 'vm';
 import LeadsTab from '../../components/LeadsTab/index.jsx';
+import MsgTab from '../../components/MsgTab/index.jsx';
+import LeadsInfo from '../../components/LeadsInfo/index.jsx';
+import MsgInfo from '../../components/MsgInfo/index.jsx';
 
 // Description : 
 // Props : ____________ , _________
@@ -48,7 +51,7 @@ export default function CampaignPage() {
             element={
               <>
                 <LeadsTab />
-                <InfoTab />
+                <LeadsInfo />
               </>
             }
           />
@@ -56,7 +59,7 @@ export default function CampaignPage() {
             element={
               <>
                 <MsgTab />
-                <InfoTab />
+                <MsgInfo />
               </>
             }
           />

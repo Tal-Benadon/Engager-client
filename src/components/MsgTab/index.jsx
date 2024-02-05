@@ -1,11 +1,9 @@
 import React from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
-import HeadLine from '../HeadLine';
 import TabSwitcher from '../TabSwitcher';
+import HeadLine from '../HeadLine';
 
-
-export default function LeadsTab() {
-
+export default function  MsgTab() {
   const campaign = useCampaign();
 
   return (
@@ -18,7 +16,7 @@ export default function LeadsTab() {
         {tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})`},
         {tab: `campaign/${campaign._id}/messages`, text: "הודעות"}
         ]} />
-      <LeadListHolder />
+      <MsgListHolder />
     </div>
   )
 }
