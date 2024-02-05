@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styles from './style.module.css';
-// import NewMassageForm from '../NewMessageForm';
 
-export default function PopUp({ title, setIsOpen, isOpen , children}) {
-//the function needs to recive title and children in the props and render them
+export default function PopUp({ title, setIsOpen, isOpen }) {
+//the function needs to recive title and children and need to recive isOpen and setIsOpen in the props and render them
   // const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,7 +19,6 @@ export default function PopUp({ title, setIsOpen, isOpen , children}) {
                 </svg>
               </span>
             </div>
-            {/* <NewMassageForm/> */}
             {children}
           </div>
         </div>
