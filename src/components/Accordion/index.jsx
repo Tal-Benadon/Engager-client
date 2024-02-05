@@ -14,11 +14,8 @@ export default function Accordion({ title , children}) {
 
         </div>
         {isOpen && (
-          <div className={styles.content}>
-            {children.map((item, index) => (
-              <div className={styles.single} key={index}>{item}</div>
-            ))}
-          </div>
+          // <div className={styles.content}>
+            {children}
         )}
       </div>
     </div>

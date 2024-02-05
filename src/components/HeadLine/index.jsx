@@ -9,7 +9,7 @@ export default function HeadLine({ title, subtitle, icon }) {
         <p className={styles.title} >{title}</p>
         <p className={styles.subtitle} >{subtitle}</p>
       </div>
-      {/* <Icon className={styles.button} nameIcon={icon}  nameColor  = {''}/> */}
+      <Icon className={styles.button} nameIcon={"writing"}  nameColor  = {''}/>
     </div>
   )
 }
