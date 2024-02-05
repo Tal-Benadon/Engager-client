@@ -75,10 +75,10 @@ export default function NewMassageForm() {
                 </main>
                 <hr />
 
-                <actions className={styles.actions}  >
+                <div className={styles.actions}  >
                     <Button className={"save"} content={"שמירה"} />
                     <Button className={"cancel"} content={"ביטול"} />
-                </actions>
+                </div>
             </form>
         </div>
     )
