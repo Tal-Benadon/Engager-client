@@ -12,7 +12,7 @@
     border-radius: 5px;
     overflow: hidden;
     margin-top: 20px;
-    
+   margin-bottom: 20px;
   }
   
   .header {
@@ -32,12 +32,12 @@
 
   @keyframes slideIn {
     0% {
-        transform: scale(0.9);
+      height: 0px;
         opacity: 0;
     }
 
     100% {
-        transform: scale(1);
+      height: 400px;
         opacity: 1;
 
     }
@@ -45,11 +45,12 @@
 
 .content {
   padding: 10px;
-  
+  max-height: 400px;
+  overflow-y:auto;
+  animation: slideIn 0.3s ease-in-out;
 }
 
 .single{
-    animation: slideIn 0.3s ease-in-out;
     display: flex;
     justify-content: center;
     margin: 1px;
@@ -65,5 +66,20 @@
     font-size: 13.5px;
     font-weight: 500;
     color: #6b6b6b;
+  }
+
+  .content::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+  }
+  
+  /* Hide scrollbar track */
+  .content::-webkit-scrollbar-track {
+    background: transparent; /* Make the scrollbar track transparent */
+  }
+  
+  /* Style the scrollbar thumb */
+  .content::-webkit-scrollbar-thumb {
+    background: transparent; /* Make the scrollbar thumb transparent */
+    border-radius: 5px; /* Round the scrollbar thumb corners */
   }
    
