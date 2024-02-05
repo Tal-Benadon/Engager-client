@@ -2,6 +2,8 @@ import React from 'react'
 import MessagePage from '../components/MessagePage'
 import CampaignItem from '../components/CampaignItem'
 import Accordion from '../components/Accordion'
+import Login from '../components/Login/Login'
+import Register from '../components/Register'
 
 export default function Gila() {
   const message = "בלה בלה בלה"

@@ -1,11 +1,12 @@
 import React from 'react'
 import InputText from '../components/InputText/InputText'
-import Login from '../components/Login/Login'
+import UserLogoutEdit from '../components/userLogoutEdit'
 export default function Hilel() {
   return (
     <>
-      < Login />
+      {/* < Login /> */}
       {/* < InputText /> */}
+      <UserLogoutEdit />
     </>
   )
 }
