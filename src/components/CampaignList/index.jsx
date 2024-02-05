@@ -9,7 +9,7 @@ export default function CampaignList({ campaignList }) {
             <div className={styles.title} >רשימות</div>
             <div className={styles.list}>
                 {campaignList
-                    .map(c => <CampaignItem id={c.user} title={c.title} />)}
+                     .map(c => <CampaignItem id={c.user} title={c.title} />)}
             </div>
             <div className={styles.line}></div>
         </div>
