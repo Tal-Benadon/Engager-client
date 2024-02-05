@@ -18,23 +18,27 @@ import { useState } from 'react';
 
 
 export default function NewMassageForm() {
-    const [subgect, setSubgect] = useState('')
+    const [subject, setSubject] = useState('')
     const [content, setContent] = useState('')
-    const [isPeding, setIsPeding] = useState(false)
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const submmit = { subgect, content }
-
-          axios.create("",{
-          METHODS:'POST',
-          Headers,
-          body:JSON.stringify()
-            })
-        console.log(subgect, content)
-    }
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const submmit = { subject, content };
+    
+        try {
+            const response = await axios.post('http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg', submmit, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            console.log(response.data);
+            console.log(subject, content);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+        console.log(subject, content);
+    };
+    
     //עדכון הממשק?
 
     return (
@@ -47,10 +51,13 @@ export default function NewMassageForm() {
                         subLabel="שם פנימי שיהיה חשוף רק לך"
                         to={"msgName"}
 
-                        children={<InputText name={"msgName"} onChange={(e) => setSubgect(e.target.value)} />}
+                        children={<InputText name={"msgName"} onChange={(e) => setSubject(e.target.value)} />}
                         type="text"
 
-                    />
+                    >
+
+
+                    </InputWrapper>
 
                     <InputWrapper
                         label="הודעה"
@@ -64,7 +71,7 @@ export default function NewMassageForm() {
                 <hr />
 
                 <div className={styles.actions}  >
-                  {!  <Button className={"save"} content={"שמירה"} />}
+                    <Button className={"save"} content={"שמירה"} />
                     <Button className={"cancel"} content={"ביטול"} />
                 </div>
             </form>
