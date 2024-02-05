@@ -5,7 +5,6 @@ import styles from './style.module.css'
 // Props : ____________ , _________
 // Creator : gila
 export default function TabSwitcher() {
-  const classHeader = ({ isActive }) => isActive ? styles.active : ""
 
   return (
     <div className={styles.allcom}>

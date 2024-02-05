@@ -11,8 +11,7 @@ export default function CampaignItem({id, title }) {
       <div className={styles.item}>
         <NavLink to="/campaign/:id" className={styles.active}>
           <div className={styles.nameitem}>
-            {/* מלל לדוג */}
-            {"מנויי חדר כושר גבעת שמואל- תל אביב"}
+            {title}
           </div>
           <div className={styles.iconitem}>
             {/* אייקון לדוג */}
