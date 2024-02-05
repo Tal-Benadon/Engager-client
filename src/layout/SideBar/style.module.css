@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 .sidebar {
-    background: #F7F7F7;
+    background: #F7F7F7 !important;
     width: 320px;
     display: flex;
     flex-direction: column;
@@ -19,16 +19,25 @@
 }
 .sidebar ul li {
     font-family: Heebo;
-font-size: 18px;
-font-weight: 400;
-line-height: 21px;
-letter-spacing: 0em;
-text-align: right;
-list-style: none;
-margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: right;
+    list-style: none;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 15px 0px;
 }
 .sidebar ul li a {
     text-decoration: none;
+    color: #6B6B6B;
+    margin-right: 15px;
+}
+svg {
     color: #6B6B6B;
 }
 .sidebartop {
@@ -45,7 +54,8 @@ border-bottom:1px solid #E8E8E8;
     font-family: Heebo;
     font-size: 14px;
     font-weight: 400;
-    line-height: 17px;
-    letter-spacing: 0em;  
-    color: #6B6B6B    ;
+    letter-spacing: 0em;
+    color: #6B6B6B;
+    text-align: right;
+    line-height: 40px;
 }
