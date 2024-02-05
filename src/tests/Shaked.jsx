@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 // import Accordion from '../components/Accordion'
 // import NewMassageForm from '../components/NewMessageForm';
-import MessagesTab from '../components/MessagesTab';
+import MsgListHolder from '../components/MsgListHolder';
 
 export default function Shaked() {
     // const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function Shaked() {
       {/* <PopUp title={'הודעה חדשה'} isOpen={isOpen} setIsOpen={setIsOpen}> 
         <NewMassageForm/>
       </PopUp> */}
-      <MessagesTab/>
+      <MsgListHolder/>
     </div>
   )
 }
