@@ -1,7 +1,8 @@
 import React from 'react'
 import InputText from '../InputText/InputText'
 import styles from './style.module.css'
-
+import Button from '../Button'
+import InputWrapper from '../InputWrapper'
 export default function Register() {
 
 
@@ -10,43 +11,50 @@ export default function Register() {
         <div className={styles.centerDiv}>
             <div className={styles.register}>
                 <>
-                    <label className={styles.text}>שם פרטי</label>
+                    <label className={styles.text}> <span className={styles.star}>*</span> שם פרטי</label>
                     <div className={styles.inputSpace}>
                         <InputText name={'userName'} required={'required'} />
 
                     </div>
                 </>
                 <>
-                    <label className={styles.text}> שם משפחה</label>
+                    <label className={styles.text}> <span className={styles.star}>*</span> שם משפחה</label>
                     <div className={styles.inputSpace}>
                         <InputText name={'userName'} required={'required'} />
                     </div>
                 </>
                 <>
-                    <label className={styles.text}>טלפון</label>
+                    <label className={styles.text} > <span className={styles.star}>*</span> טלפון</label>
                     <div className={styles.inputSpace}>
                         <InputText name={'userName'} required={'required'} />
                     </div>
                 </>
                 <>
-                    <label className={styles.text}> אימייל</label>
+                    
                     <div className={styles.inputSpace}>
+                    <InputWrapper label={"אימייל"} >
                         <InputText type={'email'} name={'userName'} required={'required'} />
+                    </InputWrapper>
                     </div>
                 </>
-                <>
-                    <label className={styles.text}>סיסמא</label>
+              
                     <div className={styles.inputSpace}>
-                        <InputText type={'password'} name={'password'} required={'required'} />
+                    <InputWrapper label={"סיסמה"} >
+                        <InputText type={'password'} name={'password'} required={true} />
+                    </InputWrapper>
                     </div>
-                </>
-                <>
-                    <label className={styles.text}>הערות</label>
+                
+                
                     <div className={styles.inputSpace}>
-                        <InputText name={'userName'} required={'required'} />
-                        {/* <input type="text"  /> */}
+                    <InputWrapper label={"הערות"} >
+                        <InputText name={'userName'} required={false} />
+                        </InputWrapper>
                     </div>
-                </>
+                
+                <div className={styles.button} >
+                <Button type='submit' content={'הרשם'}  />
+                <Button type='submit' content={'ביטול'} className = {"cancel"} />
+                </div>
             </div>
         </div>
     )

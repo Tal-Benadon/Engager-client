@@ -19,7 +19,7 @@ export default function Liel() {
       {/* <HeadLine title={"title"} subtitle={"subtitle"} />  */}
       {/* <CampaignList campaignList={data} /> */}
       <Register/>
-
+{/* <Login/> */}
     </div>
   )
 }
