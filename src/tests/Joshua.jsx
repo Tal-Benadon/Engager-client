@@ -1,10 +1,11 @@
 import React from 'react'
-import MessagesTab from '../components/MessagesTab'
+import LeadList from '../components/LeadList'
+import LeadItem from '../components/LeadItem'
 
 export default function Joshua() {
   return (
     <>
-<MessagesTab/>
+<LeadList/>
     </>
   )
 }
