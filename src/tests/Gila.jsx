@@ -7,7 +7,7 @@ export default function Gila() {
   return (
     <div>
       {/* <TabSwitcher/> */}
-      <Outlet/>
+      {/* <Outlet/> */}
       <CampaignItem/>
 
     </div>

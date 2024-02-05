@@ -20,7 +20,6 @@ import Menu from '../components/OpenMenu'
 //   redColor: true
 // }]
 
-
 export default function ThreeDots({list = [{
   text: "עריכה",
   icon: "🖊️",

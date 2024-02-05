@@ -1,14 +1,22 @@
+ @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap');
+
 
 .InputWrapper {
     text-align: right;
     display:flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: center;
 
 }
 
 .h2 {
-    font-family: 'Secular One', sans-serif;
+    color: rgba(0, 0, 0, 1);
+    font-family: 'Heebo', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    
 }
 
 .label{
