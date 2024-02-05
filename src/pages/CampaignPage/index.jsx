@@ -9,6 +9,7 @@ import LeadsInfo from '../../components/LeadsInfo/index.jsx';
 import MsgInfo from '../../components/MsgInfo/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
+import axios from 'axios';
 
 // Description : 
 // Props : ____________ , _________
@@ -34,11 +35,12 @@ export default function CampaignPage() {
 
   useEffect(() => {
     if (campId) {
-      api.get("campaign/" + campId).then((res) => setCampaign(res.data));
+      axios.get("http://localhost:2500/campaign/" + campId)
+      .then((res) => setCampaign(res.data));
     }
-  }, [campId])
+  }, [])
 
-
+console.log("campaign", campaign);
   return (
     <div>
       <CampaignContext.Provider value={campaign}>

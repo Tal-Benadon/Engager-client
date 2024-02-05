@@ -29,7 +29,7 @@ export default function SideBar() {
         <div className={styles.newlist} >
           <CampaignList campaignList={[
             {
-              id: "1",
+              id: "65c0939a5aa397278552a5b5",
               title: "קורס תפירה 2023_3"
             },
             {

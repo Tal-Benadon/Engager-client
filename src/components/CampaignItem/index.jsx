@@ -9,7 +9,7 @@ export default function CampaignItem({ id, title }) {
   return (
     <div className={styles.Campaign}>
       <div className={styles.item}>
-        <NavLink to={"/campaign/" + id} className={styles.active}>
+        <NavLink to={"/campaign/" + id + "/leads"} className={styles.active}>
           <div className={styles.nameitem}>
             {title}
           </div>

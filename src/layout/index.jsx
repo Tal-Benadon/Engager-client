@@ -1,10 +1,11 @@
 import React from 'react'
+import SideBar from './SideBar/index'
+import Content from './Content/index'
+import styles from './style.module.css'
 import { Route, Routes } from 'react-router';
 import LoginPage from '../pages/LoginPage';
 import { ManageContext } from '../context/ManageContext';
 import Test from '../tests/A_MainTest';
-import SideBar from './SideBar';
-import CampaignPage from '../pages/CampaignPage';
 
 export default function Layout() {
   return (
@@ -19,9 +20,11 @@ export default function Layout() {
 
 
     <SideBar/>
-    <CampaignPage/>
+    <Content/>
     
       </ManageContext>
     </div>
+
+
   )
 }

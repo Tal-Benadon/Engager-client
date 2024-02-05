@@ -6,6 +6,7 @@ import MsgListHolder from '../MsgListHolder';
 
 export default function  MsgTab() {
   const campaign = useCampaign();
+  if(!Object.keys(campaign).length) return <></>
 
   return (
     <div>

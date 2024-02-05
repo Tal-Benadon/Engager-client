@@ -12,7 +12,7 @@ const mainApi = async (method, path, data, headers) => {
 
     const url = `http://localhost:2500/${fainlPath}`;
 
-    const response = await axios({
+    const response = axios({
       method,
       url,
       data,
