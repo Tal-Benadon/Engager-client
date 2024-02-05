@@ -11,7 +11,7 @@ export default function index() {
       <h1>אנגייג׳ר</h1>
       <ul>
         <li>
-        <Icon nameIcon={'search'} nameColor  = {''}/>
+        <Icon nameIcon={'search'} nameColor  = {''} />
         <NavLink to="/search">חיפוש</NavLink>
         </li>
         <li>
@@ -40,7 +40,10 @@ export default function index() {
           title: "מנויי חדר כושר גבעת שמואל הנביר"}
       ]
 }/>
-<Button content="רשימה חדשה" />
+        <item>
+        <Icon nameIcon={'pluscircle'} nameColor  = {'create'}/>
+        <Button className="create" content="רשימה חדשה" />
+        </item>
   </div>
   
 

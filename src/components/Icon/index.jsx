@@ -9,6 +9,9 @@ export default function Icon({ nameIcon, nameColor }) {
     else if (nameColor == 'active') {
         nameColor = "#0E9D85"
     }
+    else if (nameColor == 'create') {
+        nameColor = "#0E9D85"
+    }    
     else {
         nameColor = "#6B6B6B"
     }
