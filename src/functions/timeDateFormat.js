@@ -1,6 +1,7 @@
-// Formats a date object or string into the format hh:mm dd/mm/yyyy.
+// Description : Formats a date object or string into the format hh:mm dd/mm/yyyy.
+// Creator : yehoshua preiser
 
-function formatDateTime(date) {
+export default function formatDateTime(date) {
     if (!(date instanceof Date)) {
       date = new Date(date);
     }
@@ -13,9 +14,10 @@ function formatDateTime(date) {
     const year = date.getFullYear();
   
     // Format the date and time
-    const formattedDateTime = `${hours}:${minutes} ${day}/${month}/${year}`;
+    const formattedDate =  `${day}/${month}/${year}`;
+    const formattedTime = `${hours}:${minutes}`;
   
-    return formattedDateTime;
+    return [formattedDate, formattedTime];
   }
   
   // Example usage:
