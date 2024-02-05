@@ -11,6 +11,7 @@ export default function Shaked() {
 
       </Accordion> */}
       <PopUp title={'הודעה חדשה'}>
+        bvfjdk
       </PopUp>
     </div>
   )
