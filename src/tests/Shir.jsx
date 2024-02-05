@@ -1,11 +1,15 @@
 import React from 'react'
-import Loading from '../components/Loading'
+import LoginPage from '../pages/LoginPage'
+
+
+
+
 
 export default function Shir() {
   return (
     <div>
      
-      <Loading/>
+      <LoginPage/>
      
     </div>
   )
