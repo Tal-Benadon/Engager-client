@@ -17,7 +17,8 @@ import { CiClock2 } from "react-icons/ci";
 // - pending: Indicates if the message is in the process of being written.
 // Creator: Refael
 
-export default function MessageItem({ title = "תראו איזו הודעה מגניבה", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=true, pending=false }) {
+
+export default function MessageItem({ title = "תראו איזו הודעה מגניבה", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
   
   
   //**state for active section. changing the background to gray and the icon to green*** */
@@ -30,6 +31,7 @@ export default function MessageItem({ title = "תראו איזו הודעה מג
   return (
     <div
       className={`${styles.message} ${isOnActive ? 'message' : ''}`} // שימו לב לשינוי כאן: הוספת ve messageActive על פי הצורך
+
       onClick={toggleActive}>
       <div className={styles.titleAndDetails}>
         <div className={styles.title}>{title}</div>
