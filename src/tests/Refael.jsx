@@ -12,6 +12,7 @@ export default function Refael() {
       function
       TO
       test
+      <h1>זו בדיקה</h1>
       </div>
   )
 }
