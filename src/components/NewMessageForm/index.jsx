@@ -11,47 +11,34 @@ import { FaTimes } from "react-icons/fa";
 import { useState } from 'react';
 
 
+
 // Description : 
 // Props : ____________ , _________
 // Creator : ________   
 
 
 export default function NewMassageForm() {
-    const [title, setTitle] = useState('')
-    const [TextArea, setTextArea] = useState('')
-
-    const handelDeletion = () => {
-
-    }
+    const [subgect, setSubgect] = useState('')
+    const [content, setContent] = useState('')
+    const [isPeding, setIsPeding] = useState(false)
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const submmit = { subgect, content }
 
-        console.log(title, TextArea)
+          axios.create("",{
+          METHODS:'POST',
+          Headers,
+          body:JSON.stringify()
+            })
+        console.log(subgect, content)
     }
-
-    //post axios
-    // const body = { title };
-    //   axios.post('/api/yourEndpoint', body.title)
-    //     .then((res) => {
-    //       console.log(res.data); //  התשובה מהשרת
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error:', error);
-    //     });
-    // };
 
     //עדכון הממשק?
 
     return (
         <div className={styles.InputWrapper}  >
-            {/* <header className={styles.header}>
-       <exsit className={styles.exsit} onClick={() => handelDeletion()}><FaTimes /></exsit>
-       <h2>
-          הודעה חדשה
-        </h2>
-      </header> */}
             <hr />
             <form onSubmit={handleSubmit} >
                 <main className={styles.main}>
@@ -59,26 +46,27 @@ export default function NewMassageForm() {
                         label="שם הודעה"
                         subLabel="שם פנימי שיהיה חשוף רק לך"
                         to={"msgName"}
-                        children={<InputText name={"msgName"} onChange={(e) => setTitle(e.target.value)}/>}
+
+                        children={<InputText name={"msgName"} onChange={(e) => setSubgect(e.target.value)} />}
                         type="text"
-                       
+
                     />
 
                     <InputWrapper
                         label="הודעה"
-                        subLabel="זוהי ה הודעה שתשלח בתזמון הנבחר"
+                        subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
                         to={"msgContent"}
-                 children={<InputTextArea name={"msgContent"} onChange={(e) => setTextArea(e.target.value)}/>}
+                        children={<InputTextArea name={"msgContent"} onChange={(e) => setContent(e.target.value)} />}
                         type="text"
-                       
+
                     />
                 </main>
                 <hr />
 
-                <actions className={styles.actions}  >
-                    <Button className={"save"} content={"שמירה"} />
+                <div className={styles.actions}  >
+                  {!  <Button className={"save"} content={"שמירה"} />}
                     <Button className={"cancel"} content={"ביטול"} />
-                </actions>
+                </div>
             </form>
         </div>
     )
