@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './style.module.css'
 
-// Description : 
+// Description : ניתוב של 2 הקטגוריות ע"י
 // Props : ____________ , _________
 // Creator : ________
 export default function TabSwitcher({ rout = [] }) {
+
 
   return (
     <div className={styles.allcom}>

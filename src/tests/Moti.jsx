@@ -1,7 +1,10 @@
 import React from 'react'
+import Sidebar from '../layout/SideBar'
 
 export default function Moti() {
   return (
-    <div>Moti</div>
+    <div>
+      <Sidebar />
+    </div>
   )
 }

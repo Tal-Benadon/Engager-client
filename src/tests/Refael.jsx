@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../components/Button'
+import LeadInfoPage from '../pages/LeadInfoPage'
 
 export default function Refael() {
   return (
@@ -7,7 +7,7 @@ export default function Refael() {
 
     <div>
 
-      <Button/>
+      <LeadInfoPage/>
       Refael
       function
       TO
