@@ -1,5 +1,5 @@
 import React from 'react'
-import LeadInfoPage from '../components/LeadInfoPage'
+import LeadInfoPage from '../pages/LeadInfoPage'
 
 export default function Refael() {
   return (

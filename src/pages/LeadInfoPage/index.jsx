@@ -1,13 +1,12 @@
 import styles from './style.module.css'
-import { RiCheckDoubleFill } from "react-icons/ri";
-import { FaCheck } from "react-icons/fa6";
+
 
 
 // Description:
 // Props:
 // Creator: Refael
 
-export default function LeadInfoPage({ firstName = "יעקב", lastName = "מושל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = true }) {
+export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = false }) {
   return (
     <div>
       <div className={styles.info}>
@@ -16,12 +15,12 @@ export default function LeadInfoPage({ firstName = "יעקב", lastName = "מו�
           <div className={styles.isActive}>
             {isActive ? (
               <>
-                <span>פעיל</span>
+                <span>פעיל/ה</span>
                 <div className={styles.greenDot}></div>
               </>
             ) : (
               <>
-                <span>לא פעיל</span>
+                <span>לא פעיל/ה</span>
                 <div className={styles.redDot}></div>
               </>
             )}
@@ -56,10 +55,14 @@ export default function LeadInfoPage({ firstName = "יעקב", lastName = "מו�
 
           </div>
         </div>
-      </div>
-      <div className={styles.sentMessages}>
+        
+        <div className={styles.sentMessages}>
 
+          <div className={styles.sentTitle}>הודעות שנשלחו</div>
+***sent messages list should be heare***
+        </div>
       </div>
+
     </div>
 
 
