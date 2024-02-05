@@ -4,20 +4,20 @@ import Button from '../Button'
 import SearchBar from '../SearchBar'
 import PopUp from '../PopUp'
 import { useState } from 'react'
-const [isOpen, setIsOpen] = useState(false)
-
+import NewMessageForm from '../NewMessageForm'
 // Description : 
 // Props : ____________ , _________
 // Creator : Yehoshua Preiser
 export default function MessagesTab() {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className={styles.MessagesTab}>
       <SearchBar/>
       <MessageList/>
-      <Button className='cancel' content='הודעה חדשה' />
+      <Button className='cancel' content='הודעה חדשה' onClick={()=>setIsOpen(true)}/>
       <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-      
-      </PopUp>
+      hello
+       </PopUp>
     </div>
   )
 }
