@@ -1,0 +1,18 @@
+
+.InputWrapper {
+    text-align: right;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.h2 {
+    font-family: 'Secular One', sans-serif;
+}
+
+.label{
+    color: cadetblue;
+    margin: 5px;
+}
+

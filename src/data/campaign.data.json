@@ -5,11 +5,13 @@
         "msg": [
             {
                 "subject": "we want u with us",
-                "content": " we love kork"
+                "content": " we love kork",
+                "creationDate": "2024-02-01T12:00:00Z"
             },
             {
                 "subject": "we want u with us",
-                "content": " i love bammba"
+                "content": " i love bammba",
+                "creationDate": "2024-02-01T12:00:00Z"
             }
         ],
         "leads": [
