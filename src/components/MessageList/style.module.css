@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.date {
+    font-family: 'Heebo';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #6B6B6B;
+}
+
+.MessageList {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 454px;
+    min-height: 552px;
+    gap: 32px
+}
+
+.unorderedList {
+    list-style: none;
+}

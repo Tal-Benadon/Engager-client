@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.userNameaAndPssword {
+    color: #0E9D85;
+    font-size: 30px;
+    font-family: 'Heebo';
+}
+
+.inputSpace {
+    margin: 0 30px;
+}
+
+.inputText {
+    margin: 60px;
+    display: flex;
+}
+
+.centerDiv {
+    margin: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.loginDiv {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    height: 300px;
+    width: fit-content;
+    text-align: center;
+    border: 1px solid #DEE2E9;
+    border-radius: 8px;
+    align-items: center;
+    flex-direction: column;
+    /* margin: 0 60px; */
+}

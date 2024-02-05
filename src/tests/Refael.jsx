@@ -1,5 +1,5 @@
 import React from 'react'
-import MessageItem from '../components/MessageItem'
+import LeadInfoPage from '../pages/LeadInfoPage'
 
 export default function Refael() {
   return (
@@ -7,11 +7,12 @@ export default function Refael() {
 
     <div>
 
-      <MessageItem/>
+      <LeadInfoPage/>
       Refael
       function
       TO
       test
+      <h1>זו בדיקה</h1>
       </div>
   )
 }
