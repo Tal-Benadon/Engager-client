@@ -1,10 +1,10 @@
 import React from 'react'
-import MessagesTab from '../components/MessagesTab'
+import LeadListHolder from '../components/LeadListholder'
 
 export default function Joshua() {
   return (
     <>
-<MessagesTab/>
+      <LeadListHolder />
     </>
   )
 }
