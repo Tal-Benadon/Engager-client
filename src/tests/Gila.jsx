@@ -1,15 +1,20 @@
 import React from 'react'
-import TabSwitcher from '../components/TabSwitcher'
-import { Outlet } from 'react-router-dom'
+import MessagePage from '../components/MessagePage'
 import CampaignItem from '../components/CampaignItem'
 
 export default function Gila() {
+  const message = "בלה בלה בלה"
+  const title = "הודעת ראשונה - ההרשמה נפתחה"
+  const subtitle = "נשלח לפני 12 שעות, ל 24 נרשמים"
+  const icon = "ooo"
+  const dateSend= "14.10.2024"
+  const timeSend = "12:34"
+
   return (
     <div>
       {/* <TabSwitcher/> */}
-      <Outlet/>
-      <CampaignItem/>
-
+      {/* <CampaignItem/> */}
+      <MessagePage title={title} subtitle={subtitle} icon={"icon"} message={message} dateSend={dateSend} timeSend={timeSend}/>
     </div>
   )
 }
