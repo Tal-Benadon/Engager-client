@@ -21,7 +21,8 @@
 }
 
 .inputSpace {
-    margin: 0 30px;
+    /* margin: 0 30px; */
+    margin: 10px 30px 30px 30px;
 }
 
 .inputText {
@@ -51,6 +52,6 @@
     /* margin: 0 60px; */
 }
 
-.star{
-color: red;
+.star {
+    color: red;
 }
