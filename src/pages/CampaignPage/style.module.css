@@ -3,9 +3,17 @@
     height: 100%;
 }
 
-.leadsTabs {
+.tabs {
     display: flex;
     height: 100%;
     width: 100%;
-    border: var(--test-border);
+    /* border: var(--test-border); */
+}
+
+.infoTab {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

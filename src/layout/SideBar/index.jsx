@@ -4,11 +4,14 @@ import Icon from '../../components/Icon'
 import CampaignList from '../../components/CampaignList'
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import DataContext from '../../context/DataContext'
+import NewCampaigenForm from '../../components/NewCampaignForm'
 
 export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
+  const { isOpen, setIsOpen } = useContext(DataContext);
 
   return (
     <div className={styles.sidebar}>
@@ -17,8 +20,8 @@ export default function SideBar() {
         <ul>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <span>
-              <Icon nameIcon={'search'} nameColor={''} />
               חיפוש
+              <Icon nameIcon={'search'} nameColor={''} />
             </span>
           </li>
           {displaySearchBar &&
@@ -28,14 +31,14 @@ export default function SideBar() {
           }
           <li>
             <NavLink to="/settings">
-              <Icon nameIcon={'setting'} nameColor={''} />
               הגדרות
+              <Icon nameIcon={'setting'} nameColor={''} />
             </NavLink>
           </li>
           <li>
             <NavLink to="/fidback">
-              <Icon nameIcon={'thumbsup'} nameColor={''} />
               שליחת פידבק
+              <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
         </ul>
@@ -62,9 +65,11 @@ export default function SideBar() {
             }
           ]
           } />
-          <div className={styles.item}>
-            <Icon nameIcon={'pluscircle'} nameColor={'create'} />
-            <Button className="create" content="רשימה חדשה" />
+          <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen}/>)}>
+            <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
+            <Button className="create"
+             content="רשימה חדשה" 
+             />
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-.leadsTab{
+.msgTab{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -7,9 +7,4 @@
     max-width: 350px;
     padding: 15px;
     gap: 10px;
-}
-
-.LeadListHolder{
-    display: flex;
-    flex-direction: column;
 }

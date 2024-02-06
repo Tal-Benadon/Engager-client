@@ -8,6 +8,7 @@ import InputTextArea from "../InputTextArea/index";
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 // Description :
 // Props : ____________ , _________
@@ -36,14 +37,15 @@ export default function NewMassageForm({ setIsOpen }) {
       console.log(subject, content);
     } catch (error) {
       console.error("Error:", error);
+      toast.error(error?.response?.data?.msg || "somthing want worng");
     }
     console.log(subject, content);
   };
 
   return (
     <div className={styles.InputWrapper}>
-      <hr />
       <form onSubmit={handleSubmit}>
+     <div><h1>הודעה חדשה</h1></div> 
         <main className={styles.main}>
           <InputWrapper
             label="שם הודעה"
@@ -71,8 +73,8 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
-        <hr />
-        {/* onClick={ setIsOpen(false)} */}
+        {/* onClick={setIsOpen(false)} */}
+
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
           <Button className={"cancel"} content={"ביטול"}  />

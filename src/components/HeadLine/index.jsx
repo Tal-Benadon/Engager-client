@@ -13,7 +13,7 @@ export default function HeadLine({ title, icon, dateCreate, children }) {
   const { isOpen, setIsOpen } = useContext(DataContext)
 
   const handleEditClick = () => {
-    setIsOpen(true);
+    setIsOpen( <MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />);
   };
 
   const handleClosePopUp = () => {
@@ -27,11 +27,7 @@ export default function HeadLine({ title, icon, dateCreate, children }) {
         <p className={styles.subtitle} >נוצר ב {dateCreate}</p>
       </div>
       <div onClick={handleEditClick}><Icon className={styles.button} nameIcon={"writing"} nameColor={''} /></div>
-      {setIsOpen && (
-        <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-          <MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />
-        </PopUp>
-      )}
+      
     </div>
   )
 }

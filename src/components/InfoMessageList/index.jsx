@@ -13,22 +13,24 @@ import formatDate from '../../functions/DateFormat';
 export default function MessageList({ searchTerm }) {
 
   const campaign = useCampaign();
+  // console.log(campaign);
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-      const messages = messagesByDate(campaign.msg);
-      setOrganizedMessages(messages);
+    const messages = messagesByDate(campaign.msg);
+    setOrganizedMessages(messages);
+    // console.log(messages);
   }, [campaign.msg]);
 
+  // console.log({ organizedMessages });
+
   return (
-    <div className={styles.messageList}>
+    <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
-        <div key={index} className={styles.messages}>
+        <div key={index} className={styles.messageListDiv}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
-            {messages.filter(message =>
-              message.subject.toLowerCase().includes(searchTerm.toLowerCase())
-            ).map((message, messageIndex) => (
+            {messages.map((message, messageIndex) => (
               < li key={messageIndex} >
                 <MessageItem
                   campaignId={campaign._id}
@@ -39,6 +41,7 @@ export default function MessageList({ searchTerm }) {
                 />
               </li>
             ))}
+
           </ul>
         </div>
       ))

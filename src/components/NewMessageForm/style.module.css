@@ -1,15 +1,14 @@
 
 .InputWrapper {
     justify-content: center;
+    direction: rtl;
     display: flex;
-    /* border: 0px solid white; */
-
+    padding:20px;
 }
-
 
 .input1 {
     margin: 30px;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -23,11 +22,11 @@
 
 .actions {
     height: 40px;
-
+    
     justify-content: space-between;
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
 
     margin: 30px;
 }

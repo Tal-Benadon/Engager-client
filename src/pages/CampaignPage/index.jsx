@@ -6,9 +6,9 @@ import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
+import api from '../../functions/api.js'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import api from '../../functions/api.js';
 
 // Description : 
 // Props : ____________ , _________
@@ -35,9 +35,9 @@ export default function CampaignPage() {
 
   useEffect(() => {
     if (campId) {
-        api.get("/campaign/" + campId).then(setCampaign)
+      api.get("/campaign/" + campId).then(setCampaign)
         .catch((error) => {
-          toast.error(error?.response?.data?.msg|| "somthing want worng");
+          toast.error(error?.response?.data?.msg || "somthing want worng");
         });
 
     }
@@ -57,18 +57,22 @@ export default function CampaignPage() {
           />
           <Route path="/leads/:leadId"
             element={
-              <div className={styles.leadsTabs}>
+              <div className={styles.tabs}>
                 <LeadsTab />
-                <LeadInfoPage />
+                <span className={styles.infoTab}>
+                  <LeadInfoPage />
+                </span>
               </div>
             }
           />
           <Route path="/messages/:messageId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <MsgTab />
-                <MessagePage />
-              </>
+                <span className={styles.infoTab}>
+                  <MessagePage />
+                </span>
+              </div>
             }
           />
         </Routes>

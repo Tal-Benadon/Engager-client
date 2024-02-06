@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Icon from '../../components/Icon'
-import MessageList from '../../components/MessageList'
+import InfoMessageList from '../../components/InfoMessageList'
 import styles from './style.module.css'
 
 
@@ -18,65 +18,66 @@ import styles from './style.module.css'
 // Creator: Refael
 
 export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = true }) {
-  
+
 
   //****************************************************************************
-  
+
   //TODO: replace the default props values with this object:
   // const {name, phoneNumber, email, notes, signUpDate, isActive = true} = userDetils
-  
+
   //*************************************************************************************************************
 
-  const [isEdit, setIsEdite]=useState(false)
+  const [isEdit, setIsEdite] = useState(false)
 
-  const handleEditClick=() =>{
+  const handleEditClick = () => {
     setIsEdite(true)
 
   }
-  
+
   return (
-
-    <div>
-
+    <>
       {isEdit ? (
-        <> ***TODO: Add edit component***
+        <> 
+        {/* ***TODO: Add edit component*** */}
           <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite} />
           <div className={styles.editPage}></div></>)
         : (<><div className={styles.info}>
           <div className={styles.container}>
-            <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
-              nameColor={''} />  </div>
             <div className={styles.details}>
               {name}
               <div className={styles.isActive}>
                 {isActive ? (
                   <>
-                    <span>פעיל/ה</span>
                     <div className={styles.greenDot}></div>
+                    <span>פעיל/ה</span>
                   </>
                 ) : (
                   <>
-                    <span>לא פעיל/ה</span>
                     <div className={styles.redDot}></div>
+                    <span>לא פעיל/ה</span>
                   </>
                 )}
               </div>
             </div>
+            <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
+              nameColor={''} />  </div>
           </div>
           <div className={styles.detailsFrame}>
             <table>
               <tbody>
                 <tr>
-                  <th></th><th>שם</th>
+                  <th>שם</th>
                 </tr>
                 <tr>
-                  <td>{ }</td><td>{name}</td>
+                  <td>{name}</td>
                 </tr>
                 <tr>
-                  <th>אימייל</th><th>טלפון</th>
+                  <th>טלפון</th>
+                  <th>אימייל</th>
                 </tr>
                 <tr>
-                  <td>{email}</td><td>{phoneNumber}</td>
+                  <td>{phoneNumber}</td>
+                  <td>{email}</td>
                 </tr>
                 <tr>
                   <th colSpan="2">הערות</th>
@@ -97,13 +98,11 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             ***TODO: make it only sent messages***
 
-            <div className={styles.messages}><MessageList /></div>
+            <div className={styles.messages}><InfoMessageList /></div>
           </div>
         </div>
         </>
         )}
-
-
-    </div>
+    </>
   )
 }
