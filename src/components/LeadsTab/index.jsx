@@ -9,11 +9,11 @@ import styles from './style.module.css'
 
 
 export default function LeadsTab() {
-  const [searchTerm, setSearchTerm]= useState('')
+  const [searchTerm, setSearchTerm] = useState('')
 
 
   const campaign = useCampaign();
- if(!Object.keys(campaign).length) return <></>
+  if (!Object.keys(campaign).length) return <></>
   return (
     <div className={styles.leadsTab}>
       <HeadLine
@@ -21,11 +21,11 @@ export default function LeadsTab() {
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות נשלחו`}
         icon={"menu"} />
       <TabSwitcher rout={[
-        {tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})`},
-        {tab: `campaign/${campaign._id}/messages`, text: "הודעות"}
-        ]} />
+        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
+      ]} />
       <div className={styles.LeadListHolder}>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <LeadList searchTerm={searchTerm} />
       </div>
     </div>
