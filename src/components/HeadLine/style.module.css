@@ -2,15 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
 .headLine {
-    direction: rtl;
     display: flex;
     align-items: center;
-    /* min-width: 100px; */
     min-height: 100px;
     justify-content: space-between;
-    /* border: 1px solid #000000;  */
-
-
 }
 
 .title {
