@@ -12,7 +12,7 @@ const mainApi = async (method, path, data, headers) => {
 
     const url = `http://localhost:2500/${fainlPath}`;
 
-    const response = axios({
+    const response = await axios({
       method,
       url,
       data,
@@ -27,19 +27,15 @@ const mainApi = async (method, path, data, headers) => {
   }
 };
 
-const get = async (path, data = {}, headers) => {
-  mainApi("GET", path, data, headers);
-};
-const post = async (path, data = {}, headers) => {
-  mainApi("POST", path, data, headers);
-};
-const put = async (path, data = {}, headers) => {
-  mainApi("PUT", path, data, headers);
-};
+const get = async (path, data = {}, headers) => await mainApi("GET", path, data, headers);
 
-const del = async (path, data = {}, headers) => {
-  mainApi("DELETE", path, data, headers);
-};
+const post = async (path, data = {}, headers) => await mainApi("POST", path, data, headers);
+
+const put = async (path, data = {}, headers) => await mainApi("PUT", path, data, headers);
+
+
+const del = async (path, data = {}, headers) => await mainApi("DELETE", path, data, headers);
+
 
 // import the file in ur componnt
 

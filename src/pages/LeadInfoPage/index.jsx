@@ -1,6 +1,7 @@
+import { useState } from 'react'
+import Icon from '../../components/Icon'
 import MessageList from '../../components/MessageList'
 import styles from './style.module.css'
-
 
 
 // Description: This component serves as a user profile page. It is designed to display user information, including first name, last name, email, phone number, registration date, and active status indicator.
@@ -16,23 +17,58 @@ import styles from './style.module.css'
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = false }) {
+export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = true }) {
+  
+
+  //****************************************************************************
+  
+  //TODO: replace the default props values with this object:
+  // const {firstName, lastName, phoneNumber, email, notes, signUpDate, isActive = true} = userDetils
+  
+  //*************************************************************************************************************
+
+  const [isEdit, setIsEdite]=useState(false)
+
+  const handleEditClick=() =>{
+    setIsEdite(true)
+
+  }
+  
   return (
-    <div className={styles.leadInfoPage}>
-        <div className={styles.details}>
-          {firstName} {" "}{lastName}
-          <div className={styles.isActive}>
-            {isActive ? (
-              <>
-                <span>פעיל/ה</span>
-                <div className={styles.greenDot}></div>
-              </>
-            ) : (
-              <>
-                <span>לא פעיל/ה</span>
-                <div className={styles.redDot}></div>
-              </>
-            )}
+
+    <div>
+      
+      {isEdit ? (
+                <>
+          ***TODO: Add edit component***
+          <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite}/>
+                  <div className={styles.editPage}></div>
+                </>
+              ) : (
+                <>
+                
+
+
+      
+      <div className={styles.info}>
+        <div className={styles.container}>
+          <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
+            nameColor={''} />  </div>
+          <div className={styles.details}>
+            {firstName}{" "}{lastName}
+            <div className={styles.isActive}>
+              {isActive ? (
+                <>
+                  <span>פעיל/ה</span>
+                  <div className={styles.greenDot}></div>
+                </>
+              ) : (
+                <>
+                  <span>לא פעיל/ה</span>
+                  <div className={styles.redDot}></div>
+                </>
+              )}
+            </div>
           </div>
         </div>
         <div className={styles.detailsFrame}>
@@ -72,5 +108,10 @@ export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן"
           <div className={styles.messages}><MessageList /></div>
         </div>
       </div>
-  )
+
+                </>
+              )}
+
+    </div>
+    )
 }

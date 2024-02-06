@@ -7,8 +7,8 @@ export default function Content() {
   return (
     <div className={styles.content}>
       <Routes>
-      <Route path='/campaign/:campId/*' element={<CampaignPage/>} />
-      <Route path='/settings' element={<Setting/>} />
+        <Route path='/campaign/:campId/*' element={<CampaignPage />} />
+        <Route path='/settings' element={<Setting />} />
       </Routes>
     </div>
   )
