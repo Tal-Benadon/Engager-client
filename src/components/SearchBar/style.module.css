@@ -23,5 +23,6 @@
     outline: none;
     padding-right: 30px;
     direction: rtl;
+    background-color: inherit;
   }
   
