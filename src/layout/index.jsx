@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router';
 import LoginPage from '../pages/LoginPage';
 import { ManageContext } from '../context/ManageContext';
 import Test from '../tests/A_MainTest';
+import PopUp from '../components/PopUp';
 
 export default function Layout() {
   return (
@@ -21,6 +22,8 @@ export default function Layout() {
 
         <SideBar />
         <Content />
+
+        <PopUp />
 
       </ManageContext>
     </div>
