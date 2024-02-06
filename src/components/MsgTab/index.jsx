@@ -3,13 +3,14 @@ import { useCampaign } from '../../pages/CampaignPage';
 import TabSwitcher from '../TabSwitcher';
 import HeadLine from '../HeadLine';
 import MsgListHolder from '../MsgListHolder';
+import styles from './style.module.css'
 
 export default function  MsgTab() {
   const campaign = useCampaign();
   if(!Object.keys(campaign).length) return <></>
 
   return (
-    <div>
+    <div className={styles.msgTab}>
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות נשלחו`}

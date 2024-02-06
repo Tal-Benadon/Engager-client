@@ -6,9 +6,11 @@ import PopUp from '../PopUp'
 import { useContext } from 'react'
 import NewMessageForm from '../NewMessageForm'
 import DataContext from '../../context/DataContext'
+
 // Description : 
 // Props : ____________ , _________
 // Creator : Yehoshua Preiser
+
 export default function MsgListHolder() {
 
   const { isOpen, setIsOpen } = useContext(DataContext);
@@ -19,7 +21,7 @@ export default function MsgListHolder() {
         <NewMessageForm />
       </PopUp>
     </div>
-    <div className={styles.MessagesTab}>
+    <div className={styles.messagesTab}>
       <SearchBar />
       <MessageList />
       <Button className='cancel' content='הודעה חדשה' onClick={() => setIsOpen(true)} />
