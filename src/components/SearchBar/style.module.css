@@ -7,7 +7,7 @@
     border: 1px solid; 
   }
   
-  .FaSearch {
+  .SearchIcon {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -23,5 +23,6 @@
     outline: none;
     padding-right: 30px;
     direction: rtl;
+    background-color: inherit;
   }
   

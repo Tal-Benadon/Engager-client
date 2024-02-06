@@ -3,31 +3,47 @@ import { NavLink } from 'react-router-dom'
 import Icon from '../../components/Icon'
 import CampaignList from '../../components/CampaignList'
 import Button from '../../components/Button'
+import SearchBar from '../../components/SearchBar'
+import { useState } from 'react'
 
 export default function SideBar() {
+  const [displaySearchBar, setDisplaySearchBar] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
         <h1>אנגייג׳ר</h1>
         <ul>
+          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+            <span>
+              <Icon nameIcon={'search'} nameColor={''} />
+              חיפוש
+            </span>
+          </li>
+          {displaySearchBar &&
+            <li>
+              <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            </li>
+          }
           <li>
-            <Icon nameIcon={'search'} nameColor={''} />
-            <NavLink to="/search">חיפוש</NavLink>
+            <NavLink to="/settings">
+              <Icon nameIcon={'setting'} nameColor={''} />
+              הגדרות
+            </NavLink>
           </li>
           <li>
-            <Icon nameIcon={'setting'} nameColor={''} />
-            <NavLink to="/settings">הגדרות</NavLink>
-          </li>
-          <li>
-            <Icon nameIcon={'thumbsup'} nameColor={''} />
-            <NavLink to="/fidback">שליחת פידבק</NavLink>
+            <NavLink to="/fidback">
+              <Icon nameIcon={'thumbsup'} nameColor={''} />
+              שליחת פידבק
+            </NavLink>
           </li>
         </ul>
       </div>
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
-          <CampaignList campaignList={[
+          <CampaignList searchTerm={searchTerm} campaignList={[
             {
               id: "65c0939a5aa397278552a5b5",
               title: "קורס תפירה 2023_3"

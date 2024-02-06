@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
 import HeadLine from '../HeadLine';
 import TabSwitcher from '../TabSwitcher';
@@ -9,6 +9,8 @@ import styles from './style.module.css'
 
 
 export default function LeadsTab() {
+  const [searchTerm, setSearchTerm]= useState('')
+
 
   const campaign = useCampaign();
  if(!Object.keys(campaign).length) return <></>
@@ -23,8 +25,8 @@ export default function LeadsTab() {
         {tab: `campaign/${campaign._id}/messages`, text: "הודעות"}
         ]} />
       <div className={styles.LeadListHolder}>
-        <SearchBar />
-        <LeadList />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <LeadList searchTerm={searchTerm} />
       </div>
     </div>
   )
