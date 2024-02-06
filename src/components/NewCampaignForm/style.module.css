@@ -2,7 +2,7 @@
 .InputWrapper {
     justify-content: center;
     display: flex;
-
+    padding:20px;
 
 }
 .asterisk{
@@ -29,7 +29,6 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
-    flex-direction: row;
-
+    flex-direction: row-reverse;
     margin: 30px;
 }
