@@ -24,7 +24,9 @@ export default function LeadList() {
           id={lead.lead._id}
           date={formatDate(lead.joinDate)}
         />
-      ))}
+      )
+      )}
+      {/* {console.log({name})} */}
     </div>
   );
 }

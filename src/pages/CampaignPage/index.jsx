@@ -6,7 +6,9 @@ import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
-import api from '../../functions/api.js'
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import api from '../../functions/api.js';
 
 // Description : 
 // Props : ____________ , _________
@@ -30,12 +32,17 @@ export default function CampaignPage() {
 
   const [campaign, setCampaign] = useState({});
 
+
   useEffect(() => {
     if (campId) {
-      api.get("campaign/" + campId).then(setCampaign)
+        api.get("campaign/" + campId).then(setCampaign)
+        .catch((error) => {
+          toast.error(error?.response?.data?.msg|| "somthing want worng");
+        });
 
     }
-  }, [])
+  }, [campId]);
+
 
   console.log("campaign", campaign);
   return (
@@ -69,5 +76,4 @@ export default function CampaignPage() {
     </div>
   )
 }
-
 
