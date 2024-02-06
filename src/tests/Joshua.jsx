@@ -1,10 +1,11 @@
 import React from 'react'
-import MessagesTab from '../components/MessagesTab'
+import LeadListHolder from '../components/LeadListholder'
+import SearchBar from '../components/SearchBar'
 
 export default function Joshua() {
   return (
     <>
-<MessagesTab/>
+      <SearchBar />
     </>
   )
 }

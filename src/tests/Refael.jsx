@@ -1,14 +1,14 @@
 import React from 'react'
 import LeadInfoPage from '../pages/LeadInfoPage'
-import MessageItem from '../components/MessageItem'
 
 export default function Refael() {
   return (
 
 
     <div>
+<LeadItem/>
 
-      <MessageItem/>
+      <LeadInfoPage/>
       Refael
       function
       TO

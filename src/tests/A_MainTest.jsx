@@ -50,6 +50,7 @@ export default function Test() {
                 <Route path='/shir' element={<Shir />} />
                 <Route path='/tal' element={<Tal />} />
                 <Route path='/teliha' element={<Teliha />} />
+        
 
 
             </Routes>
