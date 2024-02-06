@@ -6,6 +6,7 @@ import styles from './style.module.css';
 
 // Description : searchBar
 // Props : [searchTerm, setSearchTerm]= useState('')
+//         const [searchTerm, setSearchTerm]= useState('')
 // Creator : Yehoshua Preiser
 export default function SearchBar({ searchTerm, setSearchTerm }) {
   const handleSearch = (e) => {

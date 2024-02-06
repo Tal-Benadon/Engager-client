@@ -16,12 +16,12 @@ export default function Layout() {
 
         </Routes>
 
-      <Test />
+        <Test />
 
 
-    <SideBar/>
-    <Content/>
-    
+        <SideBar />
+        <Content />
+
       </ManageContext>
     </div>
 

@@ -8,7 +8,7 @@ import { useCampaign } from '../../pages/CampaignPage';
 // Description : gets a message array, maps it to MessageItem component seperated by date.
 // Props : messageAray = array of message objects {subject, content,creationDate, leads:[{lead,receptionDate,status}]}
 // Creator : yehoshua preiser
-export default function MessageList() {
+export default function MessageList({searchTerm}) {
 
   const campaign = useCampaign();
 
@@ -25,7 +25,9 @@ export default function MessageList() {
         <div key={index}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
-            {messages.map((message, messageIndex) => (
+            {messages .filter(message =>
+                message.subject.toLowerCase().includes(searchTerm.toLowerCase())
+              ).map((message, messageIndex) => (
               < li key={messageIndex} >
                 <MessageItem
                   campaignId={campaign._id}
