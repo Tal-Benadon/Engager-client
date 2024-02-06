@@ -45,40 +45,42 @@ export default function CampaignPage() {
         .catch((error) => {
           toast.error('Error making request');
         });
+      api.get("campaign/" + campId).then(setCampaign)
+
     }
   }, [campId]);
 
 
-console.log("campaign", campaign);
-return (
-  <div>
-    <CampaignContext.Provider value={campaign}>
-      <Routes>
-        <Route path="/leads"
-          element={<LeadsTab />}
-        />
-        <Route path="/messages"
-          element={<MsgTab />}
-        />
-        <Route path="/leads/:leadId"
-          element={
-            <>
-              <LeadsTab />
-              <LeadInfoPage />
-            </>
-          }
-        />
-        <Route path="/messages/:messageId"
-          element={
-            <>
-              <MsgTab />
-              <MessagePage />
-            </>
-          }
-        />
-      </Routes>
-    </CampaignContext.Provider>
-  </div>
-)
+  console.log("campaign", campaign);
+  return (
+    <div>
+      <CampaignContext.Provider value={campaign}>
+        <Routes>
+          <Route path="/leads"
+            element={<LeadsTab />}
+          />
+          <Route path="/messages"
+            element={<MsgTab />}
+          />
+          <Route path="/leads/:leadId"
+            element={
+              <>
+                <LeadsTab />
+                <LeadInfoPage />
+              </>
+            }
+          />
+          <Route path="/messages/:messageId"
+            element={
+              <>
+                <MsgTab />
+                <MessagePage />
+              </>
+            }
+          />
+        </Routes>
+      </CampaignContext.Provider>
+    </div>
+  )
 }
 
