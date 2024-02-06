@@ -35,9 +35,9 @@ export default function CampaignPage() {
 
   useEffect(() => {
     if (campId) {
-        api.get("/campaign/" + campId).then(setCampaign)
+      api.get("/campaign/" + campId).then(setCampaign)
         .catch((error) => {
-          toast.error(error?.response?.data?.msg|| "somthing want worng");
+          toast.error(error?.response?.data?.msg || "somthing want worng");
         });
 
     }
@@ -57,18 +57,18 @@ export default function CampaignPage() {
           />
           <Route path="/leads/:leadId"
             element={
-              <div className={styles.leadsTabs}>
+              <div className={styles.tabs}>
                 <LeadsTab />
-                <LeadInfoPage />
+               <LeadInfoPage />
               </div>
             }
           />
           <Route path="/messages/:messageId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <MsgTab />
                 <MessagePage />
-              </>
+              </div>
             }
           />
         </Routes>

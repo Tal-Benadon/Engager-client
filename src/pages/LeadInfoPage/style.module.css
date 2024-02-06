@@ -33,16 +33,15 @@
   font-family: "Secular One", sans-serif;
   font-size: 24px;
   font-weight: 400;
-  text-align: right;
-  display: flex;
+   text-align: right;
+  /*display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .isActive {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
   gap: 5px;
   color: #6B6B6B;
@@ -87,7 +86,6 @@
     align-items: flex-end;
     background-color: #ffffff;
     gap: 20px;
-
 }
 
 table {
