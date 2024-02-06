@@ -35,11 +35,10 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
   }
 
   return (
-
     <>
-
       {isEdit ? (
-        <> ***TODO: Add edit component***
+        <> 
+        {/* ***TODO: Add edit component*** */}
           <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite} />
           <div className={styles.editPage}></div></>)
         : (<><div className={styles.info}>
@@ -104,8 +103,6 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
         </div>
         </>
         )}
-
-
     </>
   )
 }
