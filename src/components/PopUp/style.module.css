@@ -3,17 +3,20 @@
 
 .container {
     position: fixed;
+    top: 0;
+    right: 0;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.262);
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    
+    z-index: 100;
+
 }
 .allpopup{
     display: flex;
     justify-content: center;
     /* border: 2px solid firebrick; */
-    
+        z-index: 100;
 }
 @keyframes slideIn {
     0% {

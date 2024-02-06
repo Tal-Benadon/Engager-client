@@ -9,6 +9,7 @@ import DataContext from '../context/DataContext'
 import { toast } from 'react-toastify';
 import MsgListHolder from '../components/MsgListHolder';
 import CampaignPage from '../pages/CampaignPage';
+import TabSwitcher from '../components/TabSwitcher';
 
 export default function Shaked() {
   const { isOpen, setIsOpen } = useContext(DataContext);
@@ -20,7 +21,9 @@ export default function Shaked() {
 {/* <Accordion title={'הודעה חדשה'}>
        { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
       </Accordion>  */}
-<CampaignPage/>
+{/* <CampaignPage/> */}
+<TabSwitcher/>
+
 {/* <MsgTab/>  */}
       {/* <PopUp isOpen={isOpen} setIsOpen={setIsOpen}> 
       vnjzks
