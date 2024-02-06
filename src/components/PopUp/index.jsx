@@ -8,7 +8,7 @@ export default function PopUp({ setIsOpen, isOpen, children}) {
 
   return (
     <div>
-      {/* <button onClick={() => setIsOpen(true)}>Open</button> */}
+      <button onClick={() => setIsOpen(true)}>Open</button>
       {isOpen && (
         <div className={styles.container} onClick={() => setIsOpen(false)}>
           <div dir='rtl' className={styles.popup} onClick={(e) => { e.stopPropagation() }}>

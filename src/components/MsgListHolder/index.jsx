@@ -9,7 +9,7 @@ import DataContext from '../../context/DataContext'
 // Description : 
 // Props : ____________ , _________
 // Creator : Yehoshua Preiser
-export default function MsgListHolder() {
+export default function () {
 
   const { isOpen, setIsOpen } = useContext(DataContext);
   console.log(isOpen);

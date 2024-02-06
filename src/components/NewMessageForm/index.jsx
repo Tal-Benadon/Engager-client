@@ -35,6 +35,8 @@ export default function NewMassageForm() {
             console.log(subject, content);
         } catch (error) {
             console.error("Error:", error);
+            toast.error('No response from server');
+
         }
         console.log(subject, content);
     };
