@@ -7,7 +7,6 @@ export default function Button({ content = "תוכן ", className = "save", onCl
   return (
     <div>
       <button  className={`${styles[className]} ${className}`} onClick={onClick} >{content}</button>
-
     </div>
   )
 }

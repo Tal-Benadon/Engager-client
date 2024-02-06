@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaSortAlphaDown } from 'react-icons/fa';
 import styles from './style.module.css';
 // import Icon from '../../components/Icon'
 
 
 
-// Props :const [searchTerm, setSearchTerm]= useState('')
-// Description : parent uses useState   , and 
 // Creator : Yehoshua Preiser
-export default function SearchBar({ searchTerm, setSearchTerm }) {
+
+
+// Description: This component is a search bar interface with optional sorting.
+// The search functionality updates dynamically,
+// sorting button switches between sorting options based on user interaction.
+
+// Props:
+// searchTerm and setSearchTerm for managing search queries,
+// setSortType for toggling between sorting by name and date,
+// sortButton to display or hide the sorting button.
+export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sortButton = false }) {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+  };
+  const handleSort = () => {
+    setSortType(prevSortType => prevSortType === 'name' ? 'date' : 'name');
   };
 
   return (
@@ -23,6 +33,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
       />
       {/* <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/> */}
       <FaSearch className={styles.SearchIcon} />
+      {sortButton && <FaSortAlphaDown className={styles.SortIcon} onClick={handleSort} />}
     </div>
   );
 };

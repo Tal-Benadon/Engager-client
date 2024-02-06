@@ -43,7 +43,6 @@ export default function MessageList({ searchTerm }) {
                 />
               </li>
             ))}
-
           </ul>
         </div>
       ))

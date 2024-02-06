@@ -11,23 +11,22 @@ import DataContext from '../../context/DataContext'
 // Props : ____________ , _________
 // Creator : Yehoshua Preiser
 export default function MsgListHolder() {
-  const [searchTerm, setSearchTerm]= useState('')
 
+  const [searchTerm, setSearchTerm] = useState('')
 
-  
   const { isOpen, setIsOpen } = useContext(DataContext);
-  console.log(isOpen);
-  return (<>
-    <div>
-      <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-        <NewMessageForm isOpen={isOpen} setIsOpen={setIsOpen}/>
-      </PopUp>
-    </div>
-    <div className={styles.MessagesTab}>
+
+  return (
+    <div className={styles.innerList}>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <MessageList searchTerm={searchTerm}/>
-      <Button className='cancel' content='הודעה חדשה' onClick={() => setIsOpen(true)} />
+      <MessageList searchTerm={searchTerm} />
+      <span>
+        <Button
+          className='cancel'
+          content='הודעה חדשה'
+          onClick={() => setIsOpen(<NewMessageForm />)}
+        />
+      </span>
     </div>
-  </>
   )
 }
