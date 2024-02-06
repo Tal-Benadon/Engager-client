@@ -2,25 +2,25 @@
 
 .container {
     position: fixed;
-    display: flex;
+    top: 0;
+    right: 0;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.262);
     width: 100vw;
     height: 100vh;
-    justify-content: center;
-
-}
-
-.popup {
-    /* width: 400px; */
-    /* height: 400px; */
+    z-index: 100;
     display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    align-self: center;
-    position: relative;
-    animation: slideIn 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
 }
+
+/* 
+.allpopup{
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid firebrick;  
+     z-index: 100; 
+}  */
 
 @keyframes slideIn {
     0% {
@@ -35,12 +35,29 @@
     }
 }
 
+.popup {
+    /* max-width: 700px; */
+    /* width: 800px;
+    height: 400px; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    align-self: center;
+    position: relative;
+    animation: slideIn 0.3s ease-in-out;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    /* margin: 10px; */
+}
+
 .top {
     align-items: center;
-    border-bottom: 1px solid #E8E8E8;
+    /* border-bottom: 1px solid #E8E8E8; */
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 10px 20px 10px 20px;
 }
 
@@ -48,18 +65,6 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-}
-
-
-.title {
-    margin: 20px;
-    font-family: 'Secular One', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29px;
-    letter-spacing: 0em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    position: absolute;
+    left: 20px;
 }
