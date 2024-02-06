@@ -7,7 +7,7 @@ export default function PopUp({ setIsOpen, isOpen, children}) {
   // const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <div className={styles.allpopup}>
       {isOpen && (
         <div className={styles.container} onClick={() => setIsOpen(false)}>
           <div dir='rtl' className={styles.popup} onClick={(e) => { e.stopPropagation() }}>
@@ -20,6 +20,6 @@ export default function PopUp({ setIsOpen, isOpen, children}) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
