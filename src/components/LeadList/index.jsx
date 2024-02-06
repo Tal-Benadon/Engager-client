@@ -27,6 +27,7 @@ export default function LeadList({ searchTerm }) {
             date={formatDate(lead.joinDate)}
           />
         ))}
+
     </div>
   );
 }

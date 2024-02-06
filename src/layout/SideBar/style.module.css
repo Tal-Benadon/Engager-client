@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
 .sidebar {
-    background: #F7F7F7 !important;
+    background: #F7F7F7;
     width: 320px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: flex-end;
-    height: 100vh;
+    height: 100%;
 }
 
 .sidebar h1 {
@@ -30,9 +29,7 @@
     list-style: none;
     margin-bottom: 15px;
     display: flex;
-    flex-direction: row-reverse;
     flex-wrap: nowrap;
-    justify-content: flex-start;
     margin: 15px 0px;
 }
 
@@ -68,16 +65,13 @@ svg {
     font-weight: 400;
     letter-spacing: 0em;
     color: #6B6B6B;
-    text-align: right;
     line-height: 40px;
 }
 
 .item {
     display: flex;
-    flex-direction: row-reverse;
     flex-wrap: nowrap;
     align-content: space-between;
-    justify-content: flex-start;
     line-height: 24px;
     padding-right: 8px;
     padding-top: 40px;
