@@ -40,10 +40,10 @@ export default function CampaignPage() {
       axios.get("http://localhost:2500/campaign/" + campId)
         .then((res) => {
           setCampaign(res.data)
-          toast.success('wowwwww')
+          // toast.success('wowwwww')
         })
         .catch((error) => {
-          toast.error('Error making request');
+          toast.error(error?.response?.data?.msg|| "somthing want worng");
         });
       api.get("campaign/" + campId).then(setCampaign)
 
