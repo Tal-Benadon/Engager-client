@@ -42,7 +42,6 @@ export default function NewMassageForm({ setIsOpen }) {
 
   return (
     <div className={styles.InputWrapper}>
-      <hr />
       <form onSubmit={handleSubmit}>
         <main className={styles.main}>
           <InputWrapper
@@ -71,7 +70,7 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
-        <hr />
+
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />

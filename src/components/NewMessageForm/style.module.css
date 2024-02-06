@@ -1,34 +1,9 @@
 
-
 .InputWrapper {
     justify-content: center;
-    /* display: flex; */
-        /* border: 0px solid white; */
-}
-
-.header {
-    height: 40px;
-    
-    justify-content: space-between;
-    align-items: center;
+    direction: rtl;
     display: flex;
-    flex-direction: row;
-    
-    margin: 20px;
-}
-
-h2 {
-    font-family: 'Secular One', sans-serif;
-}
-
-.exsit {
-    display: flex;
-    justify-content: center;
-    
-}
-
-.exsit:hover {
-    background-color: rgb(200, 201, 202);
+    padding:20px;
 }
 
 .input1 {
@@ -51,7 +26,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
 
     margin: 30px;
 }

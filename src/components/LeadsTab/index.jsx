@@ -10,9 +10,11 @@ import styles from './style.module.css'
 
 export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [sortType, setSortType] = useState('date');
 
 
   const campaign = useCampaign();
+  if (!Object.keys(campaign).length) return <></>
   if (!Object.keys(campaign).length) return <></>
   return (
     <div className={styles.leadsTab}>
@@ -24,9 +26,11 @@ export default function LeadsTab() {
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
       ]} />
+       
       <div className={styles.LeadListHolder}>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <LeadList searchTerm={searchTerm} />
+        <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
+
+        <LeadList sortType={sortType} searchTerm={searchTerm} />
       </div>
     </div>
   )
