@@ -57,7 +57,7 @@ export default function CampaignPage() {
           />
           <Route path="/leads/:leadId"
             element={
-              <div className={styles.leadsTabs}>
+              <div className={styles.tabs}>
                 <LeadsTab />
                 <LeadInfoPage />
               </div>
@@ -65,10 +65,10 @@ export default function CampaignPage() {
           />
           <Route path="/messages/:messageId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <MsgTab />
                 <MessagePage />
-              </>
+              </div>
             }
           />
         </Routes>
