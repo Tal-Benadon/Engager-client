@@ -16,21 +16,27 @@ export default function SideBar() {
         <h1>אנגייג׳ר</h1>
         <ul>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
-            <Icon nameIcon={'search'} nameColor={''} />
-            <NavLink>חיפוש</NavLink>
+            <span>
+              <Icon nameIcon={'search'} nameColor={''} />
+              חיפוש
+            </span>
           </li>
-          {!displaySearchBar &&
+          {displaySearchBar &&
             <li>
               <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             </li>
           }
           <li>
-            <Icon nameIcon={'setting'} nameColor={''} />
-            <NavLink to="/settings">הגדרות</NavLink>
+            <NavLink to="/settings">
+              <Icon nameIcon={'setting'} nameColor={''} />
+              הגדרות
+            </NavLink>
           </li>
           <li>
-            <Icon nameIcon={'thumbsup'} nameColor={''} />
-            <NavLink to="/fidback">שליחת פידבק</NavLink>
+            <NavLink to="/fidback">
+              <Icon nameIcon={'thumbsup'} nameColor={''} />
+              שליחת פידבק
+            </NavLink>
           </li>
         </ul>
       </div>
