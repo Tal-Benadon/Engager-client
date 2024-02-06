@@ -4,6 +4,8 @@ import demo from "../../data/msgs.data.json"
 import messagesByDate from '../../functions/messagesByDate';
 import MessageItem from '../MessageItem';
 import { useCampaign } from '../../pages/CampaignPage';
+import formatTime from '../../functions/timeFormat';
+import formatDate from '../../functions/DateFormat';
 
 // Description : gets a message array from context, maps it to MessageItem component seperated by date, with filter by seach
 // Props : searchTerm from usestate of seachbar
@@ -36,10 +38,9 @@ export default function MessageList({ searchTerm }) {
                   campaignId={campaign._id}
                   msgId={message._id}
                   title={message.subject}
-                  date={message.creationDate}
-                // time={message.formattedTime}
+                  date={formatDate(message.creationDate)}
+                  time={formatTime(message.creationDate)}
                 />
-                {/* {console.log(message._Id)} */}
               </li>
             ))}
 
