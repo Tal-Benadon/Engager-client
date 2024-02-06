@@ -11,13 +11,12 @@
 
 
 .info {
-    width: 1105px;
-    height: 1200px;
+    width: 800px;
+    min-width: 715px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 37px;
-    padding: 195px;
 }
 
 .container {
@@ -25,7 +24,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 715px;
+  width: 100%;
 }
 
 .details {
@@ -75,7 +74,8 @@
 
 
 .detailsFrame {
-    width: 715px;
+    width: 100%;
+    min-width: 500px;
     height: 353px;
     padding: 45px;
     border-radius: 8px;
@@ -122,21 +122,23 @@ td {
 }
 
 
-.sentMessagesContainer{
-  width: 715px;
-  height: 353px;
-  padding: 45px;
-  border-radius: 8px;
-  border: 1px solid var(--border-box-color);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  background-color: #F7F7F7;
+.sentMessagesContainer {
+    width: 100%;
+    min-width: 500px;
+    height: 353px;
+    padding: 45px;
+    border-radius: 8px;
+    border: 1px solid var(--border-box-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #F7F7F7;
 
 }
 
 .messages{
   overflow: auto;
+  width: 100%;
 
 }
 
