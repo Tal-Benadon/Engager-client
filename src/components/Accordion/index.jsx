@@ -20,16 +20,17 @@ export default function Accordion({ title, children, campaignId }) {
               <div className={styles.single} key={index}>
                 <LeadItem
                   campaignId={campaignId}
-                  name={lead.name}
+                  name={"lead.name"}
                   email={lead.email}
                   date={formatDate(lead.receptionDate)}
                   id={lead._id} />
+                {console.log(lead.name)}
               </div>
             )
             )}
           </div>
         )}
       </div>
-    // </div>
+    </div>
   );
 }

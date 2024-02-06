@@ -21,14 +21,14 @@
       padding: 20px, 16px, 20px, 16px;
   }
 
-  .leadActive{
-    background-color: #F3F3F5;
+  .leadActive {
+      background-color: #F3F3F5;
 
   }
 
   .leadActive .activeIcon {
-    color: #0E9D85;
-}
+      color: #0E9D85;
+  }
 
   .lead:hover {
       background-color: #F3F3F5;
@@ -55,7 +55,7 @@
       margin: 16px;
   }
 
- 
+
   /* name, and details */
   .name {
       font-size: 18px;

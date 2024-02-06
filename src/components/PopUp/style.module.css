@@ -3,15 +3,18 @@
 
 .container {
     position: fixed;
-    display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.262);
     width: 100vw;
     height: 100vh;
-    justify-content: center;
-
+    
 }
-
+.allpopup{
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid firebrick; */
+    
+}
 @keyframes slideIn {
     0% {
         transform: scale(0.9);

@@ -8,11 +8,13 @@
     /* min-width: 100px; */
     min-height: 100px;
     justify-content: space-between;
-    /* border: 1px solid #000000;  */
-
-
+    
+    
 }
-
+.rr{
+    border: 1px solid #000000; 
+width: 100px;
+}
 .title {
     color: #000000;
     font-family: 'Secular One', sans-serif;

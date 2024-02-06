@@ -12,6 +12,7 @@ const messagesByDate = (data) => {
     }
 
     const messageDetails = {
+      ...entry,
       subject: entry.subject,
       formattedDate: formattedDate,
       formattedTime: formattedTime,

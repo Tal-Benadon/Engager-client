@@ -11,13 +11,16 @@ import { useCampaign } from '../../pages/CampaignPage';
 export default function MessageList() {
 
   const campaign = useCampaign();
-
+  // console.log(campaign);
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
     const messages = messagesByDate(campaign.msg);
     setOrganizedMessages(messages);
+    // console.log(messages);
   }, [campaign.msg]);
+
+  // console.log({ organizedMessages });
 
   return (
     <div className={styles.MessageList}>
@@ -29,13 +32,15 @@ export default function MessageList() {
               < li key={messageIndex} >
                 <MessageItem
                   campaignId={campaign._id}
-                  msgId={message._Id}
+                  msgId={message._id}
                   title={message.subject}
-                  date={message.formattedDate}
-                  time={message.formattedTime}
+                  date={message.creationDate}
+                // time={message.formattedTime}
                 />
+                {/* {console.log(message._Id)} */}
               </li>
             ))}
+
           </ul>
         </div>
       ))
