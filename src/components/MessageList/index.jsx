@@ -5,10 +5,10 @@ import messagesByDate from '../../functions/messagesByDate';
 import MessageItem from '../MessageItem';
 import { useCampaign } from '../../pages/CampaignPage';
 
-// Description : gets a message array, maps it to MessageItem component seperated by date.
-// Props : messageAray = array of message objects {subject, content,creationDate, leads:[{lead,receptionDate,status}]}
+// Description : gets a message array from context, maps it to MessageItem component seperated by date, with filter by seach
+// Props : searchTerm from usestate of seachbar
 // Creator : yehoshua preiser
-export default function MessageList() {
+export default function MessageList({ searchTerm }) {
 
   const campaign = useCampaign();
   // console.log(campaign);
@@ -28,7 +28,9 @@ export default function MessageList() {
         <div key={index}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
-            {messages.map((message, messageIndex) => (
+            {messages.filter(message =>
+              message.subject.toLowerCase().includes(searchTerm.toLowerCase())
+            ).map((message, messageIndex) => (
               < li key={messageIndex} >
                 <MessageItem
                   campaignId={campaign._id}
