@@ -8,7 +8,6 @@ import MessageEdit from '../MessageEdit'
 //קומפוננטה שצריכה לקבל כותרת וכותרת משנה כ פרופס וכן אייקון
 
 export default function HeadLine({ title, icon, dateCreate, children }) {
-  const [isOpen, setIsOpen] = useState(false)
   // const editMessage = () => <MessagesTab/> 
   const { isOpen, setIsOpen } = useContext(DataContext)
 
