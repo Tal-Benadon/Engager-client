@@ -29,7 +29,7 @@ export default function NewCampaigenForm({ setIsOpen,_id="65ba97e536d6af41e9beb0
           },
         }
       );
-    //   setIsOpen(false);
+      setIsOpen(false);
       console.log(response.data);
       console.log(user, campName);
     } catch (Error) {
@@ -68,10 +68,10 @@ export default function NewCampaigenForm({ setIsOpen,_id="65ba97e536d6af41e9beb0
           }
           type="text"
         />
-
+{/* onClick={ setIsOpen(false)} */}
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} onClick={ setIsOpen(false)} />
+          <Button className={"cancel"} content={"ביטול"}  />
         </div>
       </main>
     </form>
