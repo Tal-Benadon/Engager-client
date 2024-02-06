@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Icon from '../../components/Icon'
-import MessageList from '../../components/MessageList'
+import InfoMessageList from '../../components/InfoMessageList'
 import styles from './style.module.css'
 
 
@@ -99,7 +99,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             ***TODO: make it only sent messages***
 
-            <div className={styles.messages}><MessageList /></div>
+            <div className={styles.messages}><InfoMessageList /></div>
           </div>
         </div>
         </>

@@ -17,14 +17,14 @@ import { useState } from 'react';
 // Creator : ________   
 
 
-export default function NewMassageForm() {
+export default function NewMassageForm({ isOpen, setIsOpen }) {
     const [subject, setSubject] = useState('')
     const [content, setContent] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const submmit = { subject, content };
-    
+
         try {
             const response = await axios.post('http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg', submmit, {
                 headers: {
@@ -40,14 +40,15 @@ export default function NewMassageForm() {
         }
         console.log(subject, content);
     };
-    
+
     //עדכון הממשק?
 
     return (
         <div className={styles.InputWrapper}  >
-            <hr />
+            <h2>הודעה חדשה</h2>
             <form onSubmit={handleSubmit} >
                 <main className={styles.main}>
+
                     <InputWrapper
                         label="שם הודעה"
                         subLabel="שם פנימי שיהיה חשוף רק לך"
@@ -70,7 +71,6 @@ export default function NewMassageForm() {
 
                     />
                 </main>
-                <hr />
 
                 <div className={styles.actions}  >
                     <Button className={"save"} content={"שמירה"} />

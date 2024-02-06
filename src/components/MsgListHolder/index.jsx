@@ -20,7 +20,7 @@ export default function MsgListHolder() {
   return (<>
     <div>
       <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-        <NewMessageForm />
+        <NewMessageForm isOpen={isOpen} setIsOpen={setIsOpen}/>
       </PopUp>
     </div>
     <div className={styles.MessagesTab}>
