@@ -2,6 +2,7 @@
 .InputWrapper {
     justify-content: center;
     display: flex;
+    padding:20px;
 
 
 }
@@ -29,7 +30,7 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
 
     margin: 30px;
 }
