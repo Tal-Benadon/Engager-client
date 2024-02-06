@@ -5,6 +5,7 @@ import { RiCheckDoubleFill } from "react-icons/ri";
 import { MdOutlineMotionPhotosPaused } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
 import { CiClock2 } from "react-icons/ci";
+import { NavLink } from 'react-router-dom';
 
 
 // Description: This component displays a message item based on the provided properties.
@@ -18,7 +19,7 @@ import { CiClock2 } from "react-icons/ci";
 // Creator: Refael
 
 
-export default function MessageItem({ title = "תראו איזו הודעה מגניבה", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
+export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
   
   
   //**state for active section. changing the background to gray and the icon to green*** */
