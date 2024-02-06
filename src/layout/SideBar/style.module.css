@@ -75,6 +75,7 @@ svg {
     line-height: 24px;
     padding-right: 8px;
     padding-top: 40px;
+    
 }
 
 .item svg {
@@ -82,4 +83,10 @@ svg {
     width: 24px;
     background: #0E9D851A;
     border-radius: 50%;
+}
+
+.item:hover{
+cursor: pointer;
+background-color:var(--white-hover);
+
 }

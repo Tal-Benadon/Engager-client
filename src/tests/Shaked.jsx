@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import MsgListHolder from '../components/MsgListHolder';
 import CampaignPage from '../pages/CampaignPage';
 import TabSwitcher from '../components/TabSwitcher';
+import NewCampaigenForm from '../components/NewCampaignForm';
 
 export default function Shaked() {
   const { isOpen, setIsOpen } = useContext(DataContext);
@@ -30,6 +31,7 @@ export default function Shaked() {
       vnjzks
       </PopUp> */}
       {/* <MsgListHolder/> */}
+      {/* <div><NewCampaigenForm/></div> */}
 
     </div>
   )
