@@ -1,14 +1,20 @@
+import { NavLink } from 'react-router-dom';
 import styles from './style.module.css'
 
 import { LuUserCircle2 } from "react-icons/lu";
 
 // Description: This component displays a Lead item based on the provided properties.
-// Props: name, email, date, and the message ID
+// Props: name, email, date
 // Creator: Refael
 
-export default function LeadItem({ name = "אלירז נבו", email = "eliraz@gmail.com", date = "04/12/2024", id}) {
+export default function LeadItem({ campaignId, name, email, date, id }) {
+
   return (
-    <div className={styles.lead}>
+    <NavLink to={`/campaign/${campaignId}/leads/${id}`}
+      className={({ isActive }) => isActive ? styles.leadActive : styles.lead}>
+      <div className={styles.square}>
+        <LuUserCircle2 className={styles.activeIcon} />
+      </div>
       <div className={styles.nameAndDetails}>
         <div className={styles.name}>{name}</div>
         <div className={styles.DateAndEmail}>
@@ -16,10 +22,6 @@ export default function LeadItem({ name = "אלירז נבו", email = "eliraz@g
           <div className={styles.date}>{date}</div>
         </div>
       </div>
-      <div className={styles.square}>
-      <LuUserCircle2 className={styles.activeIcon} />
-      </div>
-
-    </div>
+    </NavLink>
   )
 }

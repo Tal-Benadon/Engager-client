@@ -12,10 +12,11 @@ const messagesByDate = (data) => {
     }
 
     const messageDetails = {
+      ...entry,
       subject: entry.subject,
       formattedDate: formattedDate,
       formattedTime: formattedTime,
-      status: entry.leads[0].status, // Assuming leads array always has at least one element
+      status: entry.leads[0]?.status, // Assuming leads array always has at least one element
     };
 
     messagesByDate[formattedDate].push(messageDetails);

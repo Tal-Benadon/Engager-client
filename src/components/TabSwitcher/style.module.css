@@ -16,15 +16,15 @@ a {
     /* background-color: aliceblue; */
 }
 
-.active {
+.link {
     color: #818181;
     padding: 20px 10px 20px 10px;
     /* background-color: aquamarine; */
     margin: 10px 10px 0 0;
-    width: 55px;
+    width: auto;
 }
 
-.active:hover {
+.link:hover, .active {
     border-bottom: 2px solid #0E9D85;
     color: #0E9D85;
     font-weight: 700;

@@ -1,15 +1,14 @@
 import React from 'react'
-
-import CampaignItem from '../components/CampaignItem'
-import MessageItem from '../components/MessageItem'
+import LeadInfoPage from '../pages/LeadInfoPage'
 
 export default function Refael() {
   return (
 
 
     <div>
+<LeadItem/>
 
-      <MessageItem/>
+      <LeadInfoPage/>
       Refael
       function
       TO

@@ -19,7 +19,11 @@ import { NavLink } from 'react-router-dom';
 // Creator: Refael
 
 
-export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
+
+// export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
+
+export default function MessageItem({campaignId, msgId, title, time, date, isCampaignActive = true, read=false, pending=false }) {
+
   
   
   //**state for active section. changing the background to gray and the icon to green*** */
@@ -34,12 +38,12 @@ export default function MessageItem({ title = "תראו איזו ", time = "12:4
     // <div className={`${styles.message} ${isOnActive ? 'messageActive' : ''}`} onClick={toggleActive}>
     <div>
     {/*****TODO set the right path instead slash*****/}
-  <NavLink to="/" className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
+  <NavLink to={`/campaign/${campaignId}/messages/${msgId}`} className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
     <div className={styles.titleAndDetails}>
       <div className={styles.title}>{title}</div>
       <div className={styles.DateAndTime}>
         <div className={styles.time}>{time}</div>
-        <div className={styles.date}>{date}</div>
+        <div className={styles.creationDate}>{date}</div>
         <div className={styles.checkIcon}>
           {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
         </div>

@@ -1,5 +1,5 @@
 import styles from './style.module.css'
-
+import axios, { Axios } from 'axios';
 
 
 import InputWrapper from '../InputWrapper';
@@ -35,6 +35,8 @@ export default function NewMassageForm() {
             console.log(subject, content);
         } catch (error) {
             console.error("Error:", error);
+            toast.error('No response from server');
+
         }
         console.log(subject, content);
     };
