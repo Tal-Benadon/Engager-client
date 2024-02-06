@@ -9,6 +9,7 @@ import InputTextArea from "../InputTextArea/index";
 import React, { useState } from "react";
 
 export default function NewCampaigenForm({ setIsOpen,_id="65ba97e536d6af41e9beb0d1" }) {
+
   const [user, setUser] = useState("");
   const [campName, setCampName] = useState("");
 
@@ -22,6 +23,7 @@ export default function NewCampaigenForm({ setIsOpen,_id="65ba97e536d6af41e9beb0
     try {
       const response = await axios.post(
         "http://localhost:2500/campaign",
+
         SubmmitNewCampaigen,
         {
           headers: {

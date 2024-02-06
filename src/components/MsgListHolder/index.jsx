@@ -6,27 +6,27 @@ import PopUp from '../PopUp'
 import { useContext, useState } from 'react'
 import NewMessageForm from '../NewMessageForm'
 import DataContext from '../../context/DataContext'
+
 // Description : 
 // Props : ____________ , _________
 // Creator : Yehoshua Preiser
 export default function MsgListHolder() {
-  const [searchTerm, setSearchTerm]= useState('')
 
+  const [searchTerm, setSearchTerm] = useState('')
 
-  
   const { isOpen, setIsOpen } = useContext(DataContext);
-  console.log(isOpen);
-  return (<>
-    <div>
-      <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-        <NewMessageForm />
-      </PopUp>
-    </div>
-    <div className={styles.MessagesTab}>
+
+  return (
+    <div className={styles.innerList}>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <MessageList searchTerm={searchTerm}/>
-      <Button className='cancel' content='הודעה חדשה' onClick={() => setIsOpen(true)} />
+      <MessageList searchTerm={searchTerm} />
+      <span>
+        <Button
+          className='cancel'
+          content='הודעה חדשה'
+          onClick={() => setIsOpen(<NewMessageForm />)}
+        />
+      </span>
     </div>
-  </>
   )
 }

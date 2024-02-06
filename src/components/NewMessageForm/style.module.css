@@ -4,13 +4,11 @@
     direction: rtl;
     display: flex;
     padding:20px;
-
 }
-
 
 .input1 {
     margin: 30px;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -24,7 +22,7 @@
 
 .actions {
     height: 40px;
-
+    
     justify-content: space-between;
     align-items: center;
     display: flex;

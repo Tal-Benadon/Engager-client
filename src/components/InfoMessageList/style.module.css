@@ -14,9 +14,14 @@
 .MessageList {
     display: flex;
     flex-direction: column;
+    align-items: end;
     width: 100%;
-    height: 50%;
-    gap: 32px;
+    min-height: 552px;
+    gap: 32px
+}
+
+.messageListDiv{
+    width: 100%;
 }
 
 .messages {
@@ -26,6 +31,9 @@
 .unorderedList {
     list-style: none;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .unorderedList li {

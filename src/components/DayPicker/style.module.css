@@ -1,0 +1,17 @@
+.newdaypicker {
+    width: 152px;
+    height: 34px;
+    border: 1px solid #DEE2E9;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: right;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.react-datepicker__day, .react-datepicker__month-text, .react-datepicker__quarter-text, .react-datepicker__year-text {
+    cursor: pointer;
+    font-size: 14px;
+}
