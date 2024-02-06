@@ -22,7 +22,7 @@ import { NavLink } from 'react-router-dom';
 
 // export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
 
-export default function MessageItem({ campaignId, msgId, title, time, date, isCampaignActive = true, read = false, pending = false }) {
+export default function MessageItem({ campaignId, msgId, title, time, date, isCampaignActive = true, read = true, pending = false }) {
 
 
 
@@ -44,13 +44,15 @@ export default function MessageItem({ campaignId, msgId, title, time, date, isCa
       <div className={styles.titleAndDetails}>
         <div className={styles.title}>{title}</div>
         <div className={styles.DateAndTime}>
+        {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
+
           <div className={styles.time}>{time}</div>
           <div className={styles.creationDate}>{date}</div>
           <div className={styles.checkIcon}>
-            {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
           </div>
         </div>
       </div>
     </NavLink>
+
   );
 }
