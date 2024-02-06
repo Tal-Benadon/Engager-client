@@ -8,9 +8,9 @@ export default function App() {
 
   return (
     <div>
-      <Layout />
-      <button onClick={notify}>Notify!</button>
-        <ToastContainer />
+
+      <Test />
+
     </div>
   )
 }
