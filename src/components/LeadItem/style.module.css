@@ -11,7 +11,7 @@
   /* lead box */
 
   .lead {
-      width: 454px;
+      width: 100%;
       height: 90px;
       display: flex;
       flex-direction: row;
@@ -19,6 +19,23 @@
       justify-content: right;
       border-radius: 8px;
       padding: 20px, 16px, 20px, 16px;
+  }
+
+  .leadActive {
+      background-color: #F3F3F5;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: right;
+      border-radius: 8px;
+      padding: 20px, 16px, 20px, 16px;
+
+  }
+
+  .leadActive .activeIcon {
+      color: #0E9D85;
   }
 
   .lead:hover {
@@ -46,7 +63,7 @@
       margin: 16px;
   }
 
- 
+
   /* name, and details */
   .name {
       font-size: 18px;
