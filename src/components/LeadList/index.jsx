@@ -15,18 +15,18 @@ export default function LeadList({ searchTerm }) {
 
   return (
     <div className={styles.leadArray}>
-      {leadArray.filter(l =>
-        l.name.toLowerCase().includes(searchTerm.toLowerCase())
-      ).map((lead) => (
-        <LeadItem
-          campaignId={campaign._id}
-          name={lead.lead.name}
-          email={lead.lead.email}
-          key={lead.lead._id}
-          id={lead.lead._id}
-          date={formatDate(lead.joinDate)}
-        />
-      ))}
+      {leadArray
+        .filter(l => l.lead.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        .map((lead) => (
+          <LeadItem
+            campaignId={campaign._id}
+            name={lead.lead.name}
+            email={lead.lead.email}
+            key={lead.lead._id}
+            id={lead.lead._id}
+            date={formatDate(lead.joinDate)}
+          />
+        ))}
     </div>
   );
 }
