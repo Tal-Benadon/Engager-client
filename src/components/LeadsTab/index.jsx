@@ -15,6 +15,7 @@ export default function LeadsTab() {
 
   const campaign = useCampaign();
   if (!Object.keys(campaign).length) return <></>
+  if (!Object.keys(campaign).length) return <></>
   return (
     <div className={styles.leadsTab}>
       <HeadLine
@@ -25,6 +26,7 @@ export default function LeadsTab() {
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
       ]} />
+       
       <div className={styles.LeadListHolder}>
         <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
 

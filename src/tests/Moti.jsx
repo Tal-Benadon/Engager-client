@@ -1,10 +1,11 @@
 import React from 'react'
-import Sidebar from '../layout/SideBar'
+import DayPicker from '../components/DayPicker'
+
 
 export default function Moti() {
   return (
     <div>
-      <Sidebar />
+         <DayPicker />
     </div>
   )
 }

@@ -8,18 +8,9 @@ a {
     text-decoration: none;
 }
 
-
-.TabSwitcher {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    /* background-color: aliceblue; */
-}
-
 .link {
     color: #818181;
     padding: 20px 10px 20px 10px;
-    /* background-color: aquamarine; */
     margin: 10px 10px 0 0;
     width: auto;
 }
@@ -42,4 +33,5 @@ a {
     min-width: 300px;
     height: 100px;
     float: right;
+    margin-bottom: 10px;
 }

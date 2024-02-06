@@ -27,7 +27,7 @@ export default function MessageList({ searchTerm }) {
   return (
     <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
-        <div key={index}>
+        <div key={index} className={styles.messages}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
             {messages.filter(message =>
@@ -43,7 +43,6 @@ export default function MessageList({ searchTerm }) {
                 />
               </li>
             ))}
-
           </ul>
         </div>
       ))
