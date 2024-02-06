@@ -5,38 +5,21 @@
     padding: 0;
 }
 
-.Campaign {
-    background-color: #E8E8E8;
-    min-width: 300px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    float: right;
-}
-
 .item {
     display: flex;
     min-width: 230px;
     height: 37px;
-    text-align: center;
-    align-items: center;
-    margin: 7px;
-    justify-content: end;
+    padding: 7px;
     font-size: 18px;
     font-family: 'Heebo', sans-serif;
-    padding: 0 10px 0 0;
-    background-color: transparent;
 }
 
 .item:hover {
     border-radius: 5px;
-    padding: 0 10px 0 0;
     background-color: #FFFFFF;
 }
 
 .nameitem {
-    min-width: 230px;
     justify-content: start;
     white-space: nowrap;
     overflow: hidden;
@@ -47,9 +30,6 @@
 }
 
 .active {
-    min-width: 230px;
-    padding: 0 0 0 10px;
-    /* background-color: #FFFFFF; */
     align-items: center;
     display: flex;
     background-color: transparent;
@@ -58,6 +38,6 @@
 .iconitem {
     align-items: center;
     width: 20px;
-    padding: 7px 0 0 7px;
+    margin: 7px 0 0 7px;
     background-color: transparent;
 }

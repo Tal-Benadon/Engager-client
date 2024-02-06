@@ -1,15 +1,16 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
 import Layout from './layout'
-import Test from './tests/A_MainTest'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
+  const notify = () => toast("Wow so easy!");
+
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<Layout />} />
-        <Route path='/*' element={<Test />} />
-      </Routes>
+      <Layout />
+      <button onClick={notify}>Notify!</button>
+        <ToastContainer />
     </div>
   )
 }

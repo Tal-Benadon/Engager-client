@@ -6,12 +6,14 @@ export default function Refael() {
 
 
     <div>
+<LeadItem/>
 
       <LeadInfoPage/>
       Refael
       function
       TO
       test
+      <h1>זו בדיקה</h1>
       </div>
   )
 }
