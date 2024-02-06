@@ -11,6 +11,7 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
 
   const [user, setUser] = useState("");
   const [campName, setCampName] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
@@ -18,6 +19,7 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
       user: _id,
       campName
     };
+    setIsOpen(false);
 
     try {
       const response = await axios.post(
@@ -30,8 +32,6 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
           },
         }
       );
-      setIsOpen(false);
-      setIsOpen(false);
       console.log(response.data);
       console.log(user, campName);
     } catch (Error) {
@@ -49,9 +49,10 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
     <div><h1>רשימה חדשה</h1></div> 
       <main>
         <InputWrapper
-          label={(<span className={styles.asterisk}>'*'</span>, "שם רשימה")}
+          label={ "שם רשימה"}
           subLabel={"שם פנימי שלא יהיה חשוף למצטרפים לרשימה"}
           to={"campaignMsg"}
+          setIsVisible={true}
           children={
             <InputText
               name="campaignMsg"
