@@ -8,20 +8,20 @@ import InputTextArea from "../InputTextArea/index";
 
 import React, { useState } from "react";
 
-export default function NewCampaigenForm({ setIsOpen }) {
+export default function NewCampaigenForm({ setIsOpen,_id="65ba97e536d6af41e9beb0d1" }) {
   const [user, setUser] = useState("");
   const [campName, setCampName] = useState("");
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
     const SubmmitNewCampaigen = {
-      user: { _id: "65ba97e536d6af41e9beb0d1" },
-      campName,
+      user: _id,
+      campName
     };
 
     try {
-      const response = await axios(
-        "http://localhost:2000/campaign/",
+      const response = await axios.post(
+        "http://localhost:2500/campaign",
         SubmmitNewCampaigen,
         {
           headers: {
