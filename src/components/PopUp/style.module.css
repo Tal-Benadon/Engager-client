@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
 .container {
@@ -9,17 +10,6 @@
     height: 100vh;
     justify-content: center;
 
-}
-
-.popup {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    align-self: center;
-    position: relative;
-    animation: slideIn 0.3s ease-in-out;
 }
 
 @keyframes slideIn {
@@ -35,12 +25,26 @@
     }
 }
 
+.popup {
+    /* width: 400px; */
+    /* height: 400px; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    align-self: center;
+    position: relative;
+    animation: slideIn 0.3s ease-in-out;
+    padding: 15px;
+    /* margin: 10px; */
+}
+
 .top {
     align-items: center;
-    border-bottom: 1px solid #E8E8E8;
+    /* border-bottom: 1px solid #E8E8E8; */
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 10px 20px 10px 20px;
 }
 
@@ -50,7 +54,7 @@
     cursor: pointer;
 }
 
-
+/* 
 .title {
     margin: 20px;
     font-family: 'Secular One', sans-serif;
@@ -62,4 +66,4 @@
     justify-content: center;
     align-items: center;
 
-}
+} */

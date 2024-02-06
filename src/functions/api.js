@@ -10,9 +10,9 @@ const mainApi = async (method, path, data, headers) => {
     let fainlPath = path.startsWith("/") ? path.slice(1) : path;
     let auth = localStorage.token ? { Authorization: `Bearer ${localStorage.token}` } : {};
 
-    const url = `https://localhost:2500/${fainlPath}`;
+    const url = `http://localhost:2500/${fainlPath}`;
 
-    const response = await axios({
+    const response = axios({
       method,
       url,
       data,
@@ -43,39 +43,39 @@ const del = async (path, data = {}, headers) => {
 
 // import the file in ur componnt
 
-import { api } from "./api";
+// import { api } from "./api";
 
 //to get all users u need to send path(for exsple:"/user")
 // and u get the users in the res (for exsple:console.log(res))
-api.get("/user", headers).then((res) => res);
+// api.get("/user", headers).then((res) => res);
 // ----------------------------------------------------------------
 // to post a new user u need to send path(for exsple:"/user")and send user data on (look in exsmple down)
-api.post("/user",
-  (data = {
-    name: "test",
-    email: "<EMAIL>",
-    password: "<PASSWORD>",
-  }),
-  headers
-).then((res) => res.data);
+// api.post("/user",
+//   (data = {
+//     name: "test",
+//     email: "<EMAIL>",
+//     password: "<PASSWORD>",
+//   }),
+//   headers
+// ).then((res) => res.data);
 // ----------------------------------------------------------------
 // to update a user u need to send path(for exsple:"/user/id")
 // and to send details that u want to update (look in exsmple down)
-api.put("/user/id",
-  (data = {
-    name: "test",
-    email: "<EMAIL>",
-    password: "<PASSWORD>",
-  }),
-  headers
-).then((res) => res.data);
+// api.put("/user/id",
+//   (data = {
+//     name: "test",
+//     email: "<EMAIL>",
+//     password: "<PASSWORD>",
+//   }),
+//   headers
+// ).then((res) => res.data);
 // ----------------------------------------------------------------
 //to delete a user u need to send path and data(for exsple:_id)
-api.delete("/user/id",
-  (data = {
-    _id: "uigheiuty489958y45hj",
-  }),
-  headers
-).then((res) => res.data);
+// api.delete("/user/id",
+//   (data = {
+//     _id: "uigheiuty489958y45hj",
+//   }),
+//   headers
+// ).then((res) => res.data);
 
 export default { get, post, del, put };
