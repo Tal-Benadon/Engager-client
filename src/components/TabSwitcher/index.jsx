@@ -7,13 +7,13 @@ import styles from './style.module.css'
 export default function TabSwitcher({ rout = [] }) {
   const className = ({ isActive }) => `${isActive ? styles.active : ""} ${styles.link}`
   return (
-  <div className={styles.allcom}>
-    {rout.map(r =>
-      <div key={r.tab} className={styles.TabSwitcher}>
-        <NavLink to={`/${r.tab}`} className={className}>{r.text}</NavLink>
-      </div>
-    )}
-    <div className={styles.line}></div>
-  </div>
-)
+    <div className={styles.allcom}>
+      {rout.map(r =>
+        <div key={r.tab} className={styles.TabSwitcher}>
+          <NavLink to={`/${r.tab}`} className={className}>{r.text}</NavLink>
+        </div>
+      )}
+      <div className={styles.line}></div>
+    </div>
+  )
 }
