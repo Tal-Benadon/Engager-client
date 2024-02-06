@@ -6,7 +6,7 @@ import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
-import axios from 'axios';
+import api from '../../functions/api.js'
 
 // Description : 
 // Props : ____________ , _________
