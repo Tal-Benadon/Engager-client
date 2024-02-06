@@ -54,3 +54,19 @@
 .star{
 color: red;
 }
+
+.error {
+    min-width:  30%;
+    font-size: .8rem;
+    background-color: #e3dcdc;
+    border-radius: 10px;
+    color: #000;
+    transform: scale(1);
+    height: 1.3rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.6rem;
+    overflow-x: auto;
+    text-align: start;
+}
+
