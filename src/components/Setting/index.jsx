@@ -5,7 +5,7 @@ export default function index() {
   // <InputWrapper label="שם:" to=""  h2=" " children={} type="text" value={name}/>
 
   return (
-   <InputWrapper label={"קוד QR לסריקה"} subLabel={"סרקו אותי לשליחת הודעת וואצפ"} />
-   
+    <InputWrapper label={"קוד QR לסריקה"} subLabel={"סרקו אותי לשליחת הודעת וואצפ"} />
+
   )
 }

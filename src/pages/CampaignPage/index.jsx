@@ -35,12 +35,12 @@ export default function CampaignPage() {
 
   useEffect(() => {
     if (campId) {
-      axios.get("http://localhost:2500/campaign/" + campId)
-      .then((res) => setCampaign(res.data));
+      api.get("campaign/" + campId).then(setCampaign)
+
     }
   }, [])
 
-console.log("campaign", campaign);
+  console.log("campaign", campaign);
   return (
     <div>
       <CampaignContext.Provider value={campaign}>
