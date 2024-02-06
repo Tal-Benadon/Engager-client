@@ -39,7 +39,7 @@ export default function MessageItem({campaignId, msgId, title, time, date, isCam
       <div className={styles.title}>{title}</div>
       <div className={styles.DateAndTime}>
         <div className={styles.time}>{time}</div>
-        <div className={styles.date}>{date}</div>
+        <div className={styles.creationDate}>{date}</div>
         <div className={styles.checkIcon}>
           {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
         </div>

@@ -5,12 +5,12 @@ import PopUp from '../PopUp'
 import MessagesTab from '../MsgTab'
 import NewMassageForm from '../NewMessageForm'
 import MessageEdit from '../MessageEdit'
-  import DataContext from '../../context/DataContext'
+import DataContext from '../../context/DataContext'
 //קומפוננטה שצריכה לקבל כותרת וכותרת משנה כ פרופס וכן אייקון
 
 export default function HeadLine({ title, icon, dateCreate, children }) {
-  const {isOpen, setIsOpen} = useContext(DataContext)
   // const editMessage = () => <MessagesTab/> 
+  const { isOpen, setIsOpen } = useContext(DataContext)
 
   const handleEditClick = () => {
     setIsOpen(true);
@@ -29,7 +29,7 @@ export default function HeadLine({ title, icon, dateCreate, children }) {
       <div onClick={handleEditClick}><Icon className={styles.button} nameIcon={"writing"} nameColor={''} /></div>
       {setIsOpen && (
         <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-          <MessageEdit isOpen={isOpen} setIsOpen={setIsOpen}/>
+          <MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />
         </PopUp>
       )}
     </div>

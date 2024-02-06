@@ -65,10 +65,11 @@
 .single {
   animation: slideIn 0.3s ease-in-out;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   margin: 1px;
   background-color: white;
-  height: 55px;
+  /* border: 2px solid hotpink; */
+  height: 90px;
   align-items: center;
 }
 
