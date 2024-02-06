@@ -3,9 +3,13 @@ import styles from './style.module.css';
 import Icon from '../Icon'
 import LeadItem from '../LeadItem';
 import formatDate from '../../functions/DateFormat';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Accordion({ title, children, campaignId }) {
   const [isOpenAcord, setIsOpenAcord] = useState(false);
+  // const notify = () => toast("Wow so easy!");
 
   return (
     <div className={styles.wrapper}>
@@ -30,6 +34,8 @@ export default function Accordion({ title, children, campaignId }) {
           </div>
         )}
       </div>
-    // </div>
+      {/* <button onClick={notify}>Notify!</button>
+        <ToastContainer /> */}
+     </div>
   );
 }

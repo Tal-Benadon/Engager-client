@@ -10,6 +10,7 @@ import MsgInfo from '../../components/MsgInfo/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // Description : 
 // Props : ____________ , _________
@@ -33,44 +34,51 @@ export default function CampaignPage() {
 
   const [campaign, setCampaign] = useState({});
 
+
   useEffect(() => {
     if (campId) {
       axios.get("http://localhost:2500/campaign/" + campId)
-      .then((res) => setCampaign(res.data));
+        .then((res) => {
+          setCampaign(res.data)
+          toast.success('wowwwww')
+        })
+        .catch((error) => {
+          toast.error('Error making request');
+        });
     }
-  }, [])
+  }, [campId]);
+
 
 console.log("campaign", campaign);
-  return (
-    <div>
-      <CampaignContext.Provider value={campaign}>
-        <Routes>
-          <Route path="/leads"
-            element={<LeadsTab />}
-          />
-          <Route path="/messages"
-            element={<MsgTab />}
-          />
-          <Route path="/leads/:leadId"
-            element={
-              <>
-                <LeadsTab />
-                <LeadInfoPage />
-              </>
-            }
-          />
-          <Route path="/messages/:messageId"
-            element={
-              <>
-                <MsgTab />
-                <MessagePage />
-              </>
-            }
-          />
-        </Routes>
-      </CampaignContext.Provider>
-    </div>
-  )
+return (
+  <div>
+    <CampaignContext.Provider value={campaign}>
+      <Routes>
+        <Route path="/leads"
+          element={<LeadsTab />}
+        />
+        <Route path="/messages"
+          element={<MsgTab />}
+        />
+        <Route path="/leads/:leadId"
+          element={
+            <>
+              <LeadsTab />
+              <LeadInfoPage />
+            </>
+          }
+        />
+        <Route path="/messages/:messageId"
+          element={
+            <>
+              <MsgTab />
+              <MessagePage />
+            </>
+          }
+        />
+      </Routes>
+    </CampaignContext.Provider>
+  </div>
+)
 }
-
 
