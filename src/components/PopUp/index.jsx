@@ -7,13 +7,11 @@ export default function PopUp({ setIsOpen, isOpen, children}) {
   // const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      {/* <button onClick={() => setIsOpen(true)}>Open</button> */}
+    <div className={styles.allpopup}>
       {isOpen && (
         <div className={styles.container} onClick={() => setIsOpen(false)}>
           <div dir='rtl' className={styles.popup} onClick={(e) => { e.stopPropagation() }}>
             <div className={styles.top}>
-              {/* <span className={styles.title}>{title}</span> */}
               <span className={styles.close} onClick={() => setIsOpen(false)}>
                 <Icon nameIcon={'x'} nameColor={''}/>
               </span>

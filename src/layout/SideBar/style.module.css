@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
 .sidebar {
-    background: #F7F7F7 !important;
+    background: #F7F7F7;
     width: 320px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: flex-end;
-    height: 100vh;
+    height: 100%;
 }
+
 .sidebar h1 {
     font-family: 'Secular One', sans-serif;
     font-size: 44px;
@@ -17,6 +18,7 @@
     text-align: right;
     margin: 0;
 }
+
 .sidebar ul li {
     font-family: Heebo;
     font-size: 18px;
@@ -27,45 +29,49 @@
     list-style: none;
     margin-bottom: 15px;
     display: flex;
-    flex-direction: row-reverse;
     flex-wrap: nowrap;
-    justify-content: flex-start;
     margin: 15px 0px;
 }
-.sidebar ul li a {
+
+.sidebar ul li a,
+.sidebar ul li span {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
     text-decoration: none;
     color: #6B6B6B;
     margin-right: 15px;
+    cursor: pointer;
 }
+
 svg {
     color: #6B6B6B;
 }
+
 .sidebartop {
-    border-bottom:1px solid #E8E8E8;
+    border-bottom: 1px solid #E8E8E8;
     padding: 32px 20px;
     width: 100%;
 }
 
 .lists {
-padding: 32px 20px;
-border-bottom:1px solid #E8E8E8;
+    padding: 32px 20px;
+    border-bottom: 1px solid #E8E8E8;
 }
+
 .liststitle {
     font-family: Heebo;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0em;
     color: #6B6B6B;
-    text-align: right;
     line-height: 40px;
 }
 
 .item {
     display: flex;
-    flex-direction: row-reverse;
     flex-wrap: nowrap;
     align-content: space-between;
-    justify-content: flex-start;
     line-height: 24px;
     padding-right: 8px;
     padding-top: 40px;

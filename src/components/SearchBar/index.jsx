@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './style.module.css';
+// import Icon from '../../components/Icon'
 
 
 
-// Description : searchBar
-// Props : [searchTerm, setSearchTerm]= useState('')
+// Props :const [searchTerm, setSearchTerm]= useState('')
+// Description : parent uses useState   , and 
 // Creator : Yehoshua Preiser
 export default function SearchBar({ searchTerm, setSearchTerm }) {
   const handleSearch = (e) => {
@@ -20,7 +21,8 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
         onChange={handleSearch}
         className={styles.Input}
       />
-      <FaSearch className={styles.FaSearch} />
+      {/* <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/> */}
+      <FaSearch className={styles.SearchIcon} />
     </div>
   );
 };

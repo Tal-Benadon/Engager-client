@@ -9,19 +9,19 @@ import Test from '../tests/A_MainTest';
 
 export default function Layout() {
   return (
-    <div>
+    <div className={styles.layout}>
       <ManageContext>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
 
         </Routes>
 
-      <Test />
+        <Test />
 
 
-    <SideBar/>
-    <Content/>
-    
+        <SideBar />
+        <Content />
+
       </ManageContext>
     </div>
 

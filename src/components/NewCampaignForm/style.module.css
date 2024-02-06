@@ -1,39 +1,17 @@
 
-
 .InputWrapper {
     justify-content: center;
-    /* display: flex; */
-        /* border: 0px solid white; */
-}
-
-.header {
-    height: 40px;
-    
-    justify-content: space-between;
-    align-items: center;
     display: flex;
-    flex-direction: row;
-    
-    margin: 20px;
-}
 
-h2 {
-    font-family: 'Secular One', sans-serif;
-}
 
-.exsit {
-    display: flex;
-    justify-content: center;
-    
 }
-
-.exsit:hover {
-    background-color: rgb(200, 201, 202);
+.asterisk{
+    color: red;
 }
 
 .input1 {
     margin: 30px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -47,7 +25,7 @@ h2 {
 
 .actions {
     height: 40px;
-    
+
     justify-content: space-between;
     align-items: center;
     display: flex;
