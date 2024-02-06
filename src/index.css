@@ -14,17 +14,23 @@ This will automatically apply the specified font family, size, weight, and color
 
   /* Setting up CSS variables for easy font management */
 
-  --default-font: 'Heebo', sans-serif; /* Default font for body text */
-  --font-size: 18px; /* Default font size for body text */
-  --font-weight: 400; /* Default font weight for body text */
+  --default-font: 'Heebo', sans-serif;
+  /* Default font for body text */
+  --font-size: 18px;
+  /* Default font size for body text */
+  --font-weight: 400;
+  /* Default font weight for body text */
 
 
- /* Specific font for main headings */
+  /* Specific font for main headings */
 
   --header-font: 'Secular One', sans-serif;
-  --header-font-size: 24px; /* Font size for main headings (h1) */
-  --header-font-weight: 400; /* Font weight for main headings (h1) */
-  --header-color: #000000; /* Text color for main headings (h1), set to black */
+  --header-font-size: 24px;
+  /* Font size for main headings (h1) */
+  --header-font-weight: 400;
+  /* Font weight for main headings (h1) */
+  --header-color: #000000;
+  /* Text color for main headings (h1), set to black */
 }
 
 * {
@@ -34,17 +40,31 @@ This will automatically apply the specified font family, size, weight, and color
 
   /* Applying global fonts styles to all elements */
 
-  font-family: var(--default-font); /* Applying the default font */
-  font-size: var(--font-size); /* Applying the default font size */
-  font-weight: var(--font-weight); /* Applying the default font weight */
+  font-family: var(--default-font);
+  /* Applying the default font */
+  font-size: var(--font-size);
+  /* Applying the default font size */
+  font-weight: var(--font-weight);
+  /* Applying the default font weight */
 }
 
 /* Style rule for main headings (h1) */
 
 h1 {
-  font-family: var(--header-font); /* Use this CSS variable for the h1 font family */
-  font-size: var(--header-font-size); /* Use this CSS variable for the h1 font size */
-  font-weight: var(--header-font-weight); /* Use this CSS variable for the h1 font weight */
-  color: var(--header-color); /* Use this CSS variable for the h1 text color */
+  font-family: var(--header-font);
+  /* Use this CSS variable for the h1 font family */
+  font-size: var(--header-font-size);
+  /* Use this CSS variable for the h1 font size */
+  font-weight: var(--header-font-weight);
+  /* Use this CSS variable for the h1 font weight */
+  color: var(--header-color);
+  /* Use this CSS variable for the h1 text color */
 }
 
+.mayanMain {
+  display: flex;
+  flex-direction: column;
+  background-color: violet;
+  margin-bottom: 70vh;
+  margin-right: 90vw;
+}
