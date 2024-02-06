@@ -35,9 +35,9 @@ export default function CampaignPage() {
 
   useEffect(() => {
     if (campId) {
-        api.get("/campaign/" + campId).then(setCampaign)
+      api.get("/campaign/" + campId).then(setCampaign)
         .catch((error) => {
-          toast.error(error?.response?.data?.msg|| "somthing want worng");
+          toast.error(error?.response?.data?.msg || "somthing want worng");
         });
 
     }
@@ -59,7 +59,7 @@ export default function CampaignPage() {
             element={
               <div className={styles.tabs}>
                 <LeadsTab />
-                <LeadInfoPage />
+               <LeadInfoPage />
               </div>
             }
           />
