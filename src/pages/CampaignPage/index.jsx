@@ -8,6 +8,7 @@ import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../../functions/api.js';
 
 // Description : 
 // Props : ____________ , _________
@@ -34,15 +35,10 @@ export default function CampaignPage() {
 
   useEffect(() => {
     if (campId) {
-      axios.get("http://localhost:2500/campaign/" + campId)
-        .then((res) => {
-          setCampaign(res.data)
-          // toast.success('wowwwww')
-        })
+        api.get("campaign/" + campId).then(setCampaign)
         .catch((error) => {
           toast.error(error?.response?.data?.msg|| "somthing want worng");
         });
-      api.get("campaign/" + campId).then(setCampaign)
 
     }
   }, [campId]);
