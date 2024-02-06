@@ -25,11 +25,11 @@ export default function MessageList() {
   return (
     <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
-        <div key={index}>
+        <div key={index} className={styles.messages}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
             {messages.map((message, messageIndex) => (
-              < li key={messageIndex} >
+              < li key={messageIndex}>
                 <MessageItem
                   campaignId={campaign._id}
                   msgId={message._id}
