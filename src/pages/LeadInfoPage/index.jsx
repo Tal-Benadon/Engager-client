@@ -18,8 +18,7 @@ import styles from './style.module.css'
 
 export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = false }) {
   return (
-    <div>
-      <div className={styles.info}>
+    <div className={styles.leadInfoPage}>
         <div className={styles.details}>
           {firstName} {" "}{lastName}
           <div className={styles.isActive}>
@@ -73,9 +72,5 @@ export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן"
           <div className={styles.messages}><MessageList /></div>
         </div>
       </div>
-
-    </div>
-
-
   )
 }

@@ -11,14 +11,14 @@
 
 
 
-  .info {
-      width: 1105px;
-      height: 1200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 37px;
-      padding: 195px;
+  .leadInfoPage {
+    width: 100%;
+    height: 100%;
+    border: var(--test-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 37px;
   }
 
   .details {
