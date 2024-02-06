@@ -1,5 +1,26 @@
+.listAndNew{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
 .MsgListHolder{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.innerList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.newMsg{
+    height: 60px;
+    border-top: 2px solid var(--grayElement);
+    padding: 5px;
 }

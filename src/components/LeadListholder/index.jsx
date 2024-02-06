@@ -10,7 +10,7 @@ export default function LeadListHolder() {
   
       <div className={styles.LeadListHolder}>
         <SearchBar />
-        <LeadList />
+        {/* <LeadList /> */}
       </div>
       )
 }

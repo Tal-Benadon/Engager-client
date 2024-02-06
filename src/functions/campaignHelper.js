@@ -169,9 +169,9 @@
 // let leadId = '65c09f8d18d7ccaa7d56a557'
 
 function msgSentLeads(campaignObj, msgId) {
-    const msgObject = campaignObj.msg.find(msgObj => msgObj._id === msgId)
-    const arrayOfLeadsInMsg = msgObject.leads
-    const NumberOfMsgReciever = arrayOfLeadsInMsg.length
+    const msgObject = campaignObj?.msg?.find?.(msgObj => msgObj._id === msgId)
+    const arrayOfLeadsInMsg = msgObject?.leads || []
+    const NumberOfMsgReciever = arrayOfLeadsInMsg?.length || 0
 
     return (
         [arrayOfLeadsInMsg, NumberOfMsgReciever]

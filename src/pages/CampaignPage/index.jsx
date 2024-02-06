@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { Route, Routes, useParams } from 'react-router'
-import api from '../../functions/api.js'
 import { createContext } from 'react';
 import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
-import LeadsInfo from '../../components/LeadsInfo/index.jsx';
-import MsgInfo from '../../components/MsgInfo/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
+import api from '../../functions/api.js'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // Description : 
 // Props : ____________ , _________
@@ -33,16 +32,21 @@ export default function CampaignPage() {
 
   const [campaign, setCampaign] = useState({});
 
+
   useEffect(() => {
     if (campId) {
-      axios.get("http://localhost:2500/campaign/" + campId)
-      .then((res) => setCampaign(res.data));
-    }
-  }, [])
+      api.get("/campaign/" + campId).then(setCampaign)
+        .catch((error) => {
+          toast.error(error?.response?.data?.msg || "somthing want worng");
+        });
 
-console.log("campaign", campaign);
+    }
+  }, [campId]);
+
+
+  console.log("campaign", campaign);
   return (
-    <div>
+    <div className={styles.campaignPage}>
       <CampaignContext.Provider value={campaign}>
         <Routes>
           <Route path="/leads"
@@ -53,18 +57,22 @@ console.log("campaign", campaign);
           />
           <Route path="/leads/:leadId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <LeadsTab />
-                <LeadInfoPage />
-              </>
+                <span className={styles.infoTab}>
+                  <LeadInfoPage />
+                </span>
+              </div>
             }
           />
           <Route path="/messages/:messageId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <MsgTab />
-                <MessagePage />
-              </>
+                <span className={styles.infoTab}>
+                  <MessagePage />
+                </span>
+              </div>
             }
           />
         </Routes>
@@ -72,5 +80,4 @@ console.log("campaign", campaign);
     </div>
   )
 }
-
 

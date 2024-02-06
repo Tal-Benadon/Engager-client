@@ -1,0 +1,10 @@
+.msgTab{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-left: 2px solid var(--grayElement);
+    max-width: 350px;
+    padding: 15px;
+    gap: 10px;
+}

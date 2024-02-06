@@ -3,31 +3,50 @@ import { NavLink } from 'react-router-dom'
 import Icon from '../../components/Icon'
 import CampaignList from '../../components/CampaignList'
 import Button from '../../components/Button'
+import SearchBar from '../../components/SearchBar'
+import { useContext, useState } from 'react'
+import DataContext from '../../context/DataContext'
+import NewCampaigenForm from '../../components/NewCampaignForm'
 
 export default function SideBar() {
+  const [displaySearchBar, setDisplaySearchBar] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const { isOpen, setIsOpen } = useContext(DataContext);
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
         <h1>אנגייג׳ר</h1>
         <ul>
+          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+            <span>
+              חיפוש
+              <Icon nameIcon={'search'} nameColor={''} />
+            </span>
+          </li>
+          {displaySearchBar &&
+            <li>
+              <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            </li>
+          }
           <li>
-            <Icon nameIcon={'search'} nameColor={''} />
-            <NavLink to="/search">חיפוש</NavLink>
+            <NavLink to="/settings">
+              הגדרות
+              <Icon nameIcon={'setting'} nameColor={''} />
+            </NavLink>
           </li>
           <li>
-            <Icon nameIcon={'setting'} nameColor={''} />
-            <NavLink to="/settings">הגדרות</NavLink>
-          </li>
-          <li>
-            <Icon nameIcon={'thumbsup'} nameColor={''} />
-            <NavLink to="/fidback">שליחת פידבק</NavLink>
+            <NavLink to="/fidback">
+              שליחת פידבק
+              <Icon nameIcon={'thumbsup'} nameColor={''} />
+            </NavLink>
           </li>
         </ul>
       </div>
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
-          <CampaignList campaignList={[
+          <CampaignList searchTerm={searchTerm} campaignList={[
             {
               id: "65c0939a5aa397278552a5b5",
               title: "קורס תפירה 2023_3"
@@ -46,9 +65,11 @@ export default function SideBar() {
             }
           ]
           } />
-          <div className={styles.item}>
-            <Icon nameIcon={'pluscircle'} nameColor={'create'} />
-            <Button className="create" content="רשימה חדשה" />
+          <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen}/>)}>
+            <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
+            <Button className="create"
+             content="רשימה חדשה" 
+             />
           </div>
         </div>
 

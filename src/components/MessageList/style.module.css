@@ -11,15 +11,23 @@
     color: #6B6B6B;
 }
 
-.MessageList {
+.messageList {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    width: 454px;
-    min-height: 552px;
-    gap: 32px
+    width: 100%;
+    height: 10%;
+    gap: 32px;
+}
+
+.messages {
+    width: 100%;
 }
 
 .unorderedList {
     list-style: none;
+    width: 100%;
+}
+
+.unorderedList li {
+    width: 100%;
 }
