@@ -18,13 +18,14 @@ export default function MsgListHolder() {
 
   return (
     <div className={styles.innerList}>
-      <PopUp isOpen={isOpen} setIsOpen={setIsOpen}>
-        <NewMessageForm isOpen={isOpen} setIsOpen={setIsOpen} />
-      </PopUp>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <MessageList searchTerm={searchTerm} />
       <span>
-        <Button className='cancel' content='הודעה חדשה' onClick={() => setIsOpen(true)} />
+        <Button
+          className='cancel'
+          content='הודעה חדשה'
+          onClick={() => setIsOpen(<NewMessageForm />)}
+        />
       </span>
     </div>
   )
