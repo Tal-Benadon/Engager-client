@@ -10,10 +10,11 @@ import campaignHelper from '../../functions/campaignHelper'
 export default function MessagePage() {
 
     const { messageId } = useParams();
-    const campaign = useCampaign();
-    const msgs = campaign.msg;
-    const message = msgs.find(msg => msg._id == messageId);
-    console.log(campaign);
+    const campaign = useCampaign() || {};
+    console.log({ campaign });
+    const msgs = campaign.msg || [];
+    const message = msgs.find(msg => msg._id == messageId) || {}
+    console.log(msgs);
 
     const { creationDate, subject, content } = message;
 
@@ -30,9 +31,9 @@ export default function MessagePage() {
             </div>
             <Accordion
                 title={`נשלח ל${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
-                campaignId={campaign._id}
-            >
+                campaignId={campaign._id}>
                 {campaignHelper.msgSentLeads(campaign, message._id)[0]}
+                {/* {console.log(campaign)} */}
             </Accordion>
         </div>
     )
