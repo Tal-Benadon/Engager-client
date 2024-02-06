@@ -5,14 +5,12 @@ import styles from './style.module.css'
 // Props : ____________ , _________
 // Creator : ________
 export default function TabSwitcher({ rout = [] }) {
-
-
+  const className = ({ isActive }) => `${isActive ? styles.active : ""} ${styles.link}`
   return (
     <div className={styles.allcom}>
-     
       {rout.map(r =>
         <div key={r.tab} className={styles.TabSwitcher}>
-          <NavLink to={`/${r.tab}`} className={styles.active}>{r.text}</NavLink>
+          <NavLink to={`/${r.tab}`} className={className}>{r.text}</NavLink>
         </div>
       )}
       <div className={styles.line}></div>

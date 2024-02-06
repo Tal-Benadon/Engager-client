@@ -1,7 +1,5 @@
 import styles from './style.module.css'
-import axios, { Axios } from 'axios';
-
-
+// import axios, { Axios } from 'axios';
 import InputWrapper from '../InputWrapper';
 import Button from '../Button';
 import InputTextArea from '../InputTextArea/index';
