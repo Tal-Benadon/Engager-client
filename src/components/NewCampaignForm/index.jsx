@@ -75,7 +75,7 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} />
+          <Button className={"cancel"} content={"ביטול"} onClick={ setIsOpen(false)} />
         </div>
       </main>
     </form>

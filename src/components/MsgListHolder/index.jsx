@@ -17,16 +17,18 @@ export default function MsgListHolder() {
   const { isOpen, setIsOpen } = useContext(DataContext);
 
   return (
-    <div className={styles.innerList}>
+    <>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <MessageList searchTerm={searchTerm} />
-      <span>
+      <div className={styles.innerList}>
+        <MessageList searchTerm={searchTerm} />
+      </div>
+      <span className={styles.newMsg}>
         <Button
           className='cancel'
           content='הודעה חדשה'
           onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen}/>)}
         />
       </span>
-    </div>
+    </>
   )
 }

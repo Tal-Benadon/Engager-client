@@ -1,7 +1,7 @@
 import React from 'react'
-import NewCampaigenForm from '../components/NewCampaignForm'
+import NewMassageForm from '../components/NewMessageForm'
 export default function Jacob() {
   return (
-    <div><NewCampaigenForm/></div>
+    <div><NewMassageForm/></div>
   )
 }

@@ -49,14 +49,14 @@ svg {
 }
 
 .sidebartop {
-    border-bottom: 1px solid #E8E8E8;
     padding: 32px 20px;
     width: 100%;
 }
 
 .lists {
     padding: 32px 20px;
-    border-bottom: 1px solid #E8E8E8;
+    border-bottom: 2px solid var(--grayElement);
+    border-top: 2px solid var(--grayElement);
 }
 
 .liststitle {

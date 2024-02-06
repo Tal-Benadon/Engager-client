@@ -20,8 +20,8 @@ export default function SideBar() {
         <ul>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <span>
-              <Icon nameIcon={'search'} nameColor={''} />
               חיפוש
+              <Icon nameIcon={'search'} nameColor={''} />
             </span>
           </li>
           {displaySearchBar &&
@@ -31,14 +31,14 @@ export default function SideBar() {
           }
           <li>
             <NavLink to="/settings">
-              <Icon nameIcon={'setting'} nameColor={''} />
               הגדרות
+              <Icon nameIcon={'setting'} nameColor={''} />
             </NavLink>
           </li>
           <li>
             <NavLink to="/fidback">
-              <Icon nameIcon={'thumbsup'} nameColor={''} />
               שליחת פידבק
+              <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
         </ul>
