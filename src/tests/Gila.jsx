@@ -14,8 +14,14 @@ export default function Gila() {
   return (
     <div>
       {/* <TabSwitcher/> */}
+<<<<<<< Updated upstream
       {/* <CampaignItem/> */}
       <MessagePage title={title} dateCreate={dateCreate} icon={"icon"} message={message} dateSend={dateSend} timeSend={timeSend} />
+=======
+      {/* <Outlet/> */}
+      <CampaignItem/>
+
+>>>>>>> Stashed changes
     </div>
   )
 }
