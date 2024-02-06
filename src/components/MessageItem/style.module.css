@@ -25,6 +25,14 @@
 
   .messageActive{
     background-color: #F3F3F5;
+    width: 454px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    border-radius: 8px;
+    padding: 20px, 16px, 20px, 16px;
 }
 
   .message:hover {
@@ -70,7 +78,8 @@
       font-size: 18px;
       font-weight: 400;
       font-family: var(--font);
-      color: var(--title-color)
+      color: var(--title-color);
+      text-align: right;
   }
 
   .titleAndDetails {
@@ -114,3 +123,9 @@
     color: var(--details);
 
   }
+
+.date .checkIcon .time{
+    font-size: 12px;
+}
+
+ 

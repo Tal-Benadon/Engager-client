@@ -19,7 +19,11 @@ import { NavLink } from 'react-router-dom';
 // Creator: Refael
 
 
+
+// export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
+
 export default function MessageItem({campaignId, msgId, title, time, date, isCampaignActive = true, read=false, pending=false }) {
+
   
   
   //**state for active section. changing the background to gray and the icon to green*** */
