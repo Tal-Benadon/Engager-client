@@ -40,6 +40,7 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
     }
     console.log(user, campName);
   };
+  
 
   return (
     <div className={styles.InputWrapper}>
@@ -72,10 +73,10 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
           }
           type="text"
         />
-
+{/* onClick={ setIsOpen(false)}  */}
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} onClick={ setIsOpen(false)} />
+          <Button className={"cancel"} content={"ביטול"} />
         </div>
       </main>
     </form>
