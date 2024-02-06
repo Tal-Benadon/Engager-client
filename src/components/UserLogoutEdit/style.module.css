@@ -1,0 +1,24 @@
+.userInfo {
+    width: 320px;
+    height: 70px;
+    padding: 17px, 20px, 17px, 20px;
+    border: 1px, 0px, 0px, 0px;
+    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.pictuare {
+    /* position: absolute; */
+    width: 36px;
+    height: 36px;
+    left: 108px;
+    top: 0px;
+    border-radius: 300px;
+    /* padding-right: 10px; */
+    margin-right: 10px;
+}

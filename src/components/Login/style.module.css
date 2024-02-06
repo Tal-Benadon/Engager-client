@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
 .userNameaAndPssword {
     color: #0E9D85;
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Heebo';
 }
 
 .inputSpace {
-    margin: 0 30px;
+    margin: 10px 30px 30px 30px;
+    /* border: 2px solid darkcyan; */
 }
 
-.inputText {
-    margin: 60px;
+.button {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 .centerDiv {
@@ -27,12 +29,14 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    height: 300px;
+    height: 350px;
     width: fit-content;
-    text-align: center;
-    border: 1px solid #DEE2E9;
-    border-radius: 8px;
-    align-items: center;
+    /* text-align: center; */
+    text-align: end;
+    /* border: 1px solid #DEE2E9; */
+    /* border-radius: 8px; */
+    padding: 1rem;
+    /* align-items: center; */
     flex-direction: column;
     /* margin: 0 60px; */
 }

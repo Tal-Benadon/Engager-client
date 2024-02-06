@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { Route, Routes, useParams } from 'react-router'
-import api from '../../functions/api.js'
-import { createContext } from 'vm';
+import { createContext } from 'react';
 import LeadsTab from '../../components/LeadsTab/index.jsx';
+import MsgTab from '../../components/MsgTab/index.jsx';
+import MessagePage from '../../components/MessagePage/index.jsx';
+import LeadInfoPage from '../LeadInfoPage/index.jsx';
+import api from '../../functions/api.js'
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // Description : 
 // Props : ____________ , _________
@@ -27,15 +32,21 @@ export default function CampaignPage() {
 
   const [campaign, setCampaign] = useState({});
 
+
   useEffect(() => {
     if (campId) {
-      api.get("campaign/" + campId).then((res) => setCampaign(res.data));
+      api.get("/campaign/" + campId).then(setCampaign)
+        .catch((error) => {
+          toast.error(error?.response?.data?.msg || "somthing want worng");
+        });
+
     }
-  }, [campId])
+  }, [campId]);
 
 
+  console.log("campaign", campaign);
   return (
-    <div>
+    <div className={styles.campaignPage}>
       <CampaignContext.Provider value={campaign}>
         <Routes>
           <Route path="/leads"
@@ -46,18 +57,18 @@ export default function CampaignPage() {
           />
           <Route path="/leads/:leadId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <LeadsTab />
-                <InfoTab />
-              </>
+               <LeadInfoPage />
+              </div>
             }
           />
           <Route path="/messages/:messageId"
             element={
-              <>
+              <div className={styles.tabs}>
                 <MsgTab />
-                <InfoTab />
-              </>
+                <MessagePage />
+              </div>
             }
           />
         </Routes>
@@ -65,5 +76,4 @@ export default function CampaignPage() {
     </div>
   )
 }
-
 

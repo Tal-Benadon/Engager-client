@@ -1,22 +1,31 @@
 import styles from './style.module.css'
-import { Route, Routes } from 'react-router'
-import TabSwitcher from '../../components/TabSwitcher'
 import Login from '../../components/Login/Login'
-import Loading from '../../components/Loading'
+import Register from '../../components/Register'
+import { useState } from 'react'
+
+
+// Details : the componneta render Login/Regisrer by state thet change onClick
+// Creator: shir
 
 export default function LoginPage() {
-    // TODO: state >> choose
-    // render by condition (state)
-  return (
-    <div className={styles.container}  >
-       
-      <TabSwitcher  rout ={ [{tab:"login",text:"התחברות"},{tab:"signin",text:"הרשמה"}]} />
-      {true ? <Login/> : <Loading />}
-     {/* <Routes>
-      <Route path='/' element={<Login/>}/>
-      <Route path='/signIn' element={<Loading />} />
-     </Routes> */}
 
+    const [choose,setChoose] =useState('login')
+   
+    const handleChoose = (value) => {
+        setChoose(value);
+      };
+   
+  return (
+    < div className ={styles.container}>
+     <div className={styles.allcom}>
+       <div className={styles.TabSwitcher}>
+          <div onClick={() => handleChoose('signin')}  className={styles.active}>הרשמה</div>
+          <div onClick={() => handleChoose('login')} className={styles.active}>התחברות</div>
+        </div>
+        {choose === 'login' ? <Login /> : <Register />}
+     </div>
     </div>
-  )
+    )
+      
+    
 }
