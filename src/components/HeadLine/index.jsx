@@ -5,11 +5,10 @@ import PopUp from '../PopUp'
 import MessagesTab from '../MsgTab'
 import NewMassageForm from '../NewMessageForm'
 import MessageEdit from '../MessageEdit'
-import DataContext from '../../context/DataContext'
 //קומפוננטה שצריכה לקבל כותרת וכותרת משנה כ פרופס וכן אייקון
 
 export default function HeadLine({ title, icon, dateCreate, children }) {
-  // const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   // const editMessage = () => <MessagesTab/> 
   const { isOpen, setIsOpen } = useContext(DataContext)
 

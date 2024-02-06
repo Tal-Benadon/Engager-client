@@ -13,7 +13,7 @@ export default function LeadsTab() {
   const campaign = useCampaign();
  if(!Object.keys(campaign).length) return <></>
   return (
-    <div>
+    <div className={styles.leadsTab}>
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות נשלחו`}

@@ -1,23 +1,32 @@
-import React from 'react'
-// import PopUp from '../components/PopUp'
+import React, { useContext } from 'react'
 import { useState } from 'react';
-// import Accordion from '../components/Accordion'
-// import NewMassageForm from '../components/NewMessageForm';
+// import PopUp from '../components/PopUp'
+import Accordion from '../components/Accordion'
+import MsgTab from '../components/MsgTab';
+// import Accordion from '../components/Accordion';
+import DataContext from '../context/DataContext'
+// import MsgListHolder from '../components/MsgListHolder';
+import { toast } from 'react-toastify';
 import MsgListHolder from '../components/MsgListHolder';
+import CampaignPage from '../pages/CampaignPage';
 
 export default function Shaked() {
+  const { isOpen, setIsOpen } = useContext(DataContext);
+
     // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      {/* <Accordion title={'הודעה חדשה'}>
+{/* <Accordion title={'הודעה חדשה'}>
        { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
-
-      </Accordion> */}
-      {/* <PopUp title={'הודעה חדשה'} isOpen={isOpen} setIsOpen={setIsOpen}> 
-        <NewMassageForm/>
+      </Accordion>  */}
+<CampaignPage/>
+{/* <MsgTab/>  */}
+      {/* <PopUp isOpen={isOpen} setIsOpen={setIsOpen}> 
+      vnjzks
       </PopUp> */}
-      <MsgListHolder/>
+      {/* <MsgListHolder/> */}
+
     </div>
   )
 }

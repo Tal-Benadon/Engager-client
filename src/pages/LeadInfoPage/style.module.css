@@ -11,107 +11,74 @@
 
 
 
-  .info {
-      width: 1105px;
-      height: 1200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 37px;
-      padding: 195px;
-  }
+  .leadInfoPage {
+    width: 100%;
+    height: 100%;
+    border: var(--test-border);
 
-  .details {
-      font-family: "Secular One", sans-serif;
-      font-size: 24px;
-      font-weight: 400;
-      width: 800px;
-      text-align: right;
-      padding-top: 34px;
-      display: flex;
-      flex-direction: column;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 37px;
 
-  .detailsFrame {
-      width: 715px;
-      height: 353px;
-      padding: 45px;
-      border-radius: 8px;
-      border: 1px solid var(--border-box-color);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      background-color: #ffffff;
-      gap: 20px;
+    padding: 195px;
+}
 
-  }
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 715px;
+}
 
+.details {
+  font-family: "Secular One", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-  }
+.isActive {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  color: #6B6B6B;
+  font-size: 18px;
+  font-weight: 400;
+}
 
-  th {
-      font-family: var(--font);
-      font-size: 16px;
-      font-weight: 500;
-      text-align: right;
-      color: #000000;
-      padding: 2px;
+.edit {
+  font-size: 18px;
+}
 
+.edit:hover {
+  cursor: pointer;
+}
 
-  }
+.greenDot {
+  width: 8px;
+  height: 8px;
+  background-color: #0DDEBB;
+  border-radius: 50%;
+  margin-left: 5px;
+}
 
-  td {
-      text-align: right;
-      font-size: 24px;
-      font-family: var(--font);
-
-  }
-
-
-  .isActive {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 5px;
-      color: #6B6B6B;
-      font-size: 18px;
-      font-weight: 400;
-      font-family: var(--font);
-  }
-
-  .greenDot {
-      width: 8px;
-      height: 8px;
-      background-color: #0DDEBB;
-      border-radius: 50%;
-      margin-left: 5px;
-  }
-
-  .redDot {
-      width: 8px;
-      height: 8px;
-      background-color: #de0d30;
-      border-radius: 50%;
-      margin-left: 5px;
-  }
-
-  .signUpDate {
-      font-family: var(--font);
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 14px;
-      letter-spacing: 0em;
-      text-align: right;
-  }
+.redDot {
+  width: 8px;
+  height: 8px;
+  background-color: #de0d30;
+  border-radius: 50%;
+  margin-left: 5px;
+}
 
 
- 
-  .sentMessagesContainer{
+.detailsFrame {
     width: 715px;
     height: 353px;
     padding: 45px;
@@ -120,19 +87,68 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    background-color: #F7F7F7;
+    background-color: #ffffff;
+    gap: 20px;
 
-  }
+}
 
-  .messages{
-    overflow: auto;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
-  }
-
-  .sentTitle{
+th {
     font-family: var(--font);
     font-size: 16px;
     font-weight: 500;
     text-align: right;
     color: #000000;
-  }
+    padding: 2px;
+
+}
+
+td {
+    text-align: right;
+    font-size: 24px;
+    font-family: var(--font);
+
+}
+
+
+.signUpDate {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+}
+
+
+.sentMessagesContainer{
+  width: 715px;
+  height: 353px;
+  padding: 45px;
+  border-radius: 8px;
+  border: 1px solid var(--border-box-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #F7F7F7;
+
+}
+
+.messages{
+  overflow: auto;
+
+}
+
+.sentTitle{
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: right;
+  color: #000000;
+}
+
