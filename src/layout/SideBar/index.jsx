@@ -3,17 +3,27 @@ import { NavLink } from 'react-router-dom'
 import Icon from '../../components/Icon'
 import CampaignList from '../../components/CampaignList'
 import Button from '../../components/Button'
+import SearchBar from '../../components/SearchBar'
+import { useState } from 'react'
 
 export default function SideBar() {
+  const [displaySearchBar, setDisplaySearchBar] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
         <h1>אנגייג׳ר</h1>
         <ul>
-          <li>
+          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <Icon nameIcon={'search'} nameColor={''} />
-            <NavLink to="/search">חיפוש</NavLink>
+            <NavLink>חיפוש</NavLink>
           </li>
+          {!displaySearchBar &&
+            <li>
+              <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            </li>
+          }
           <li>
             <Icon nameIcon={'setting'} nameColor={''} />
             <NavLink to="/settings">הגדרות</NavLink>
@@ -27,7 +37,7 @@ export default function SideBar() {
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
-          <CampaignList campaignList={[
+          <CampaignList searchTerm={searchTerm} campaignList={[
             {
               id: "65c0939a5aa397278552a5b5",
               title: "קורס תפירה 2023_3"

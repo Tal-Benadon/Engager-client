@@ -15,8 +15,8 @@ export default function LeadList({ searchTerm }) {
 
   return (
     <div className={styles.leadArray}>
-      {leadArray.filter(message =>
-        message.subject.toLowerCase().includes(searchTerm.toLowerCase())
+      {leadArray.filter(l =>
+        l.name.toLowerCase().includes(searchTerm.toLowerCase())
       ).map((lead) => (
         <LeadItem
           campaignId={campaign._id}

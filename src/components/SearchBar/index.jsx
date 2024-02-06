@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './style.module.css';
+import Icon from '../../components/Icon'
 
 
 
@@ -21,7 +22,8 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
         onChange={handleSearch}
         className={styles.Input}
       />
-      <FaSearch className={styles.FaSearch} />
+      <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/>
+      {/* <FaSearch className={styles.FaSearch} /> */}
     </div>
   );
 };
