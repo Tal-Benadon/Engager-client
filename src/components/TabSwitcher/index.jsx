@@ -11,7 +11,7 @@ export default function TabSwitcher({ rout = [] }) {
     <div className={styles.allcom}>
      
       {rout.map(r =>
-        <div className={styles.TabSwitcher}>
+        <div key={r.tab} className={styles.TabSwitcher}>
           <NavLink to={`/${r.tab}`} className={styles.active}>{r.text}</NavLink>
         </div>
       )}

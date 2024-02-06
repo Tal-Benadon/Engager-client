@@ -5,6 +5,7 @@ import { RiCheckDoubleFill } from "react-icons/ri";
 import { MdOutlineMotionPhotosPaused } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
 import { CiClock2 } from "react-icons/ci";
+import { NavLink } from 'react-router-dom';
 
 
 // Description: This component displays a message item based on the provided properties.
@@ -18,44 +19,37 @@ import { CiClock2 } from "react-icons/ci";
 // Creator: Refael
 
 
-export default function MessageItem({ title = "תראו איזו הודעה מגניבה", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
+export default function MessageItem({campaignId, msgId, title, time, date, isCampaignActive = true, read=false, pending=false }) {
   
   
   //**state for active section. changing the background to gray and the icon to green*** */
  
-  const [isOnActive, setIsOnActive] = useState(false);
-  const toggleActive = () => setIsOnActive(!isOnActive);
+  // const [isOnActive, setIsOnActive] = useState(false);
+  // const toggleActive = () => setIsOnActive(!isOnActive);
 
 //***************************************************************************************** */
 
   return (
-    <div
-      className={`${styles.message} ${isOnActive ? 'message' : ''}`} // שימו לב לשינוי כאן: הוספת ve messageActive על פי הצורך
 
-      onClick={toggleActive}>
-      <div className={styles.titleAndDetails}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.DateAndTime}>
-          <div className={styles.time}>{time}</div>
-          <div className={styles.date}>{date}</div>
-          <div className={styles.checkIcon}>
-            {pending ? (
-              <CiClock2 className={styles.pendingIcon} />
-            ) : read ? (
-              <RiCheckDoubleFill className={styles.readIcon} />
-            ) : (
-              <FaCheck className={styles.unreadIcon} />
-            )}
-          </div>
+    // <div className={`${styles.message} ${isOnActive ? 'messageActive' : ''}`} onClick={toggleActive}>
+    <div>
+    {/*****TODO set the right path instead slash*****/}
+  <NavLink to={`/campaign/${campaignId}/messages/${msgId}`} className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
+    <div className={styles.titleAndDetails}>
+      <div className={styles.title}>{title}</div>
+      <div className={styles.DateAndTime}>
+        <div className={styles.time}>{time}</div>
+        <div className={styles.date}>{date}</div>
+        <div className={styles.checkIcon}>
+          {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
         </div>
       </div>
-      <div className={styles.square}>
-        {isCampaignActive ? (
-          <BiMessageRoundedDetail className={`${styles.activeIcon}`} />
-        ) : (
-          <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />
-        )}
-      </div>
     </div>
+    <div className={styles.square}>
+      {isCampaignActive ? <BiMessageRoundedDetail className={styles.activeIcon} /> : <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
+    </div>
+  </NavLink>
+
+  </div>
   );
 }
