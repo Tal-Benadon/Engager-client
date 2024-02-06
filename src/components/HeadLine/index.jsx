@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styles from './style.module.css'
 import Icon from '../Icon'
 import PopUp from '../PopUp'
+import MessagesTab from '../MsgTab'
+import NewMassageForm from '../NewMessageForm'
 import MessageEdit from '../MessageEdit'
 //קומפוננטה שצריכה לקבל כותרת וכותרת משנה כ פרופס וכן אייקון
 

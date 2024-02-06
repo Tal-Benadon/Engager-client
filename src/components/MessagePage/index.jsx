@@ -5,6 +5,7 @@ import Accordion from '../Accordion'
 import { useCampaign } from '../../pages/CampaignPage';
 import { useParams } from 'react-router';
 import formatDate from '../../functions/DateFormat';
+import campaignHelper from '../../functions/campaignHelper'
 
 export default function MessagePage() {
 
@@ -12,6 +13,7 @@ export default function MessagePage() {
     const campaign = useCampaign();
     const msgs = campaign.msg;
     const message = msgs.find(msg => msg._id == messageId);
+    console.log(campaign);
 
     const { creationDate, subject, content } = message;
 
@@ -26,8 +28,11 @@ export default function MessagePage() {
                     ישלח ב {"dateSend"} | {"timeSend"}
                 </div>
             </div>
-            <Accordion title={'הודעה חדשה'}>
-                {['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
+            <Accordion
+                title={`נשלח ל${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
+                campaignId={campaign._id}
+            >
+                {campaignHelper.msgSentLeads(campaign, message._id)[0]}
             </Accordion>
         </div>
     )

@@ -19,17 +19,17 @@ export default function Login() {
             <div className={styles.loginDiv}>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor='userName' className={styles.userNameaAndPssword}>
-                        user name
+                        userName
                     </label>
                     <div className={styles.inputSpace}>
                         <InputText name={'userName'} />
                     </div>
+
                     <label htmlFor='password' className={styles.userNameaAndPssword}>
                         password
                     </label>
-                    <div className={styles.inputSpace}>
-                        <InputText type={'password'} name={'password'} />
-                    </div>
+                    <InputText type={'password'} name={'password'} />
+                    <br />
                     <Button type='submit' content={'התחבר'} />
                 </form>
             </div>
