@@ -6,9 +6,9 @@ import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
 import MessagePage from '../../components/MessagePage/index.jsx';
 import LeadInfoPage from '../LeadInfoPage/index.jsx';
+import api from '../../functions/api.js'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import api from '../../functions/api.js';
 
 // Description : 
 // Props : ____________ , _________

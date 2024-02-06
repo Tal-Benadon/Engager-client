@@ -74,4 +74,4 @@ const del = async (path, data = {}, headers) => await mainApi("DELETE", path, da
 //   headers
 // ).then((res) => res.data);
 
-// export default { get, post, del, put };
+export default { get, post, del, put };
