@@ -23,7 +23,7 @@ export default function Shaked() {
        { ['hello', 'i', 'am', 'shaked', 'ben', 'hamo', 'guikh', 'gyhjbvh']}
       </Accordion>  */}
       {/* <CampaignPage/> */}
-      <TabSwitcher />
+      {/* <TabSwitcher /> */}
 
       {/* <MsgTab/>  */}
       {/* <PopUp isOpen={isOpen} setIsOpen={setIsOpen}> 
