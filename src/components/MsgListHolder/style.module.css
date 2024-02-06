@@ -20,8 +20,7 @@
 }
 
 .newMsg{
-    /* position: absolute; */
     height: 60px;
-    width: 100%;
-    border: var(--test-border);
+    border-top: 2px solid var(--grayElement);
+    padding: 5px;
 }

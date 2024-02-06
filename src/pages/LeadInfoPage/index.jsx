@@ -36,7 +36,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
 
   return (
 
-    <div>
+    <>
 
       {isEdit ? (
         <> ***TODO: Add edit component***
@@ -106,6 +106,6 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
         )}
 
 
-    </div>
+    </>
   )
 }
