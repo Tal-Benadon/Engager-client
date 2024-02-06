@@ -31,7 +31,7 @@ export default function NewMassageForm({setIsOpen}) {
                     "Content-Type": "application/json"
                 }
             });
-            setIsOpen=false;
+            setIsOpen(false)
             console.log(response.data);
             console.log(subject, content);
         } catch (error) {
@@ -40,7 +40,7 @@ export default function NewMassageForm({setIsOpen}) {
         console.log(subject, content);
     };
     
-    //עדכון הממשק?
+
 
     return (
         <div className={styles.InputWrapper}  >
@@ -54,7 +54,6 @@ export default function NewMassageForm({setIsOpen}) {
 
                         children={<InputText name={"msgName"} onChange={(e) => setSubject(e.target.value)} />}
                         type="text"
-
                     >
 
 
@@ -66,7 +65,6 @@ export default function NewMassageForm({setIsOpen}) {
                         to={"msgContent"}
                         children={<InputTextArea name={"msgContent"} onChange={(e) => setContent(e.target.value)} />}
                         type="text"
-
                     />
                 </main>
                 <hr />

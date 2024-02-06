@@ -39,7 +39,7 @@
     border: 1px solid #DEE2E9;
     border-radius: 8px;
     resize: none;
-    font-family: "Heboo";
+    font-family: var(--default-font);
     width: 666px;
     height: 166px;
     direction: rtl;
