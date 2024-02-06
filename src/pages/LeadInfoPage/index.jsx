@@ -35,6 +35,7 @@ export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן"
   }
   
   return (
+
     <div>
       
       {isEdit ? (
@@ -107,6 +108,7 @@ export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן"
           <div className={styles.messages}><MessageList /></div>
         </div>
       </div>
+
                 </>
               )}
 
