@@ -59,7 +59,7 @@ export default function CampaignPage() {
             element={
               <div className={styles.tabs}>
                 <LeadsTab />
-               <LeadInfoPage />
+                <LeadInfoPage />
               </div>
             }
           />
