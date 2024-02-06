@@ -36,24 +36,21 @@ export default function MessageItem({ campaignId, msgId, title, time, date, isCa
   return (
 
     // <div className={`${styles.message} ${isOnActive ? 'messageActive' : ''}`} onClick={toggleActive}>
-    <>
-      {/*****TODO set the right path instead slash*****/}
-      <NavLink to={`/campaign/${campaignId}/messages/${msgId}`}
-        className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
-        <div className={styles.titleAndDetails}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.DateAndTime}>
-            <div className={styles.time}>{time}</div>
-            <div className={styles.creationDate}>{date}</div>
-            <div className={styles.checkIcon}>
-              {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
-            </div>
+    <NavLink to={`/campaign/${campaignId}/messages/${msgId}`}
+      className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
+      <div className={styles.square}>
+        {isCampaignActive ? <BiMessageRoundedDetail className={styles.activeIcon} /> : <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
+      </div>
+      <div className={styles.titleAndDetails}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.DateAndTime}>
+          <div className={styles.time}>{time}</div>
+          <div className={styles.creationDate}>{date}</div>
+          <div className={styles.checkIcon}>
+            {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
           </div>
         </div>
-        <div className={styles.square}>
-          {isCampaignActive ? <BiMessageRoundedDetail className={styles.activeIcon} /> : <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
-        </div>
-      </NavLink>
-    </>
+      </div>
+    </NavLink>
   );
 }
