@@ -6,7 +6,7 @@ import MsgListHolder from '../MsgListHolder';
 import styles from './style.module.css'
 
 export default function  MsgTab() {
-  const campaign = useCampaign();
+  const { campaign } =useCampaign();
   if(!Object.keys(campaign).length) return <></>
 
   return (

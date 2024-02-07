@@ -10,7 +10,7 @@ import campaignHelper from '../../functions/campaignHelper'
 export default function MessagePage() {
 
     const { messageId } = useParams();
-    const campaign = useCampaign() || {};
+    const { campaign } =useCampaign() || {};
     console.log({ campaign });
     const msgs = campaign.msg || [];
     const message = msgs.find(msg => msg._id == messageId) || {}

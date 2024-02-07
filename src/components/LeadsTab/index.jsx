@@ -13,7 +13,7 @@ export default function LeadsTab() {
   const [sortType, setSortType] = useState('date');
 
 
-  const campaign = useCampaign();
+  const { campaign } =useCampaign();
   if (!Object.keys(campaign).length) return <></>
   if (!Object.keys(campaign).length) return <></>
   return (
