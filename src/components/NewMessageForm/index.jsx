@@ -20,7 +20,8 @@ export default function NewMassageForm({ setIsOpen }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
-
+    
+    setIsOpen(false);
     try {
       const response = await axios.post(
         "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
@@ -31,7 +32,6 @@ export default function NewMassageForm({ setIsOpen }) {
           },
         }
       );
-      setIsOpen(false);
       console.log(response.data);
       console.log(subject, content);
     } catch (error) {

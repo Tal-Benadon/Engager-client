@@ -52,7 +52,7 @@ export default function NewCampaigenForm({ setIsOpen, _id="65ba97e536d6af41e9beb
           label={ "שם רשימה"}
           subLabel={"שם פנימי שלא יהיה חשוף למצטרפים לרשימה"}
           to={"campaignMsg"}
-          setIsVisible={true}
+          setIsVisible={false}
           children={
             <InputText
               name="campaignMsg"
