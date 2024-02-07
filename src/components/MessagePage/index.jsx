@@ -28,7 +28,7 @@ export default function MessagePage() {
         <div className={styles.MessagePage}>
             <HeadLine
                 title={subject}
-                subtitle={`נוצר ב - ${formatDate(creationDate)}`} 
+                subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
                 iconOnClick={() => setIsOpen(<MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />)}
             />
@@ -41,20 +41,21 @@ export default function MessagePage() {
                 </div>
             </div>
             <div className={styles.send}>
-               <Button
-               content='שלח'
-               onClick={async ()=>{
-            try {
-                const res = await api.get(`/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
-                 console.log(res, 'accepted');
+                <Button
+                    content='שלח'
+                    onClick={async () => {
+                        try {
+                            const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
+                            console.log(res, 'accepted');
 
-            } catch (error) {
-                console.error("Error:", error);
-            }
-            }}
-               />
-             
+                        } catch (error) {
+                            console.error("Error:", error);
+                        }
+                    }}
+                />
+
             </div>
+
             <Accordion
                 title={`נשלח ל-${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
                 campaignId={campaign._id}>
