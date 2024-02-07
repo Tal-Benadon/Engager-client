@@ -30,11 +30,7 @@ export default function MsgListHolder() {
           content='הודעה חדשה'
           />
         </div>
-        <Button
-          className='cancel'
-          content='הודעה חדשה'
-          onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} />)}
-        />
+        
       </span>
     </>
   )
