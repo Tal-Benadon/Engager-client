@@ -30,6 +30,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
 
   //*************************************************************************************************************
 
+  
   const [isEdit, setIsEdite] = useState(false)
 
   const handleEditClick = () => {
