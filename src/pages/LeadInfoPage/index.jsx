@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from '../../components/Icon'
 import InfoMessageList from '../../components/InfoMessageList'
 import styles from './style.module.css'
 import UpdateAndAddLead from '../../components/UpdateAndAddLead'
+import { useCampaign } from '../CampaignPage'
+import { useParams } from 'react-router'
+import formatDate from '../../functions/DateFormat'
 
 
 // Description: This component serves as a user profile page. It is designed to display user information, including first name, last name, email, phone number, registration date, and active status indicator.
@@ -13,36 +16,39 @@ import UpdateAndAddLead from '../../components/UpdateAndAddLead'
 //   - phoneNumber (string): The phone number of the user.
 //   - email (string): The email address of the user.
 //   - notes (string): Additional notes or comments about the user.
-//   - signUpDate (string): The date of user registration.
+//   - joinDate (string): The date of user registration.
 //   - isActive (boolean): A flag indicating whether the user is active.
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true, campaignId, id }) {
+export default function LeadInfoPage() {
 
+  const { leadId } = useParams();
+  const campaign = useCampaign();
 
+  const [lead, setLead] = useState({ lead: {} })
 
-  
-  //****************************************************************************
+  useEffect(() => {
+    if (Object.keys(campaign).length) {
+      setLead(campaign.leads.find(obj => obj.lead._id == leadId));
+    }
+  }, [campaign])
 
-  //TODO: replace the default props values with this object:
-  // const {name, phoneNumber, email, notes, signUpDate, isActive = true} = userDetils
+  const { name, phone, email, notes, _id } = lead.lead;
+  const { joinDate, isActive } = lead
 
-  //*************************************************************************************************************
-
+  const signUpDate = formatDate(joinDate)
   const [isEdit, setIsEdite] = useState(false)
 
   const handleEditClick = () => {
     setIsEdite(true)
-
   }
 
   return (
     <>
       {isEdit ? (
         <>
-          {/* ***TODO: Add edit component*** */}
-          <UpdateAndAddLead details={{ name: name, email: email, phone: phoneNumber, notes: notes, leadId: id }} setIsEdite={setIsEdite} />
+          <UpdateAndAddLead details={{ name, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} />
           <div className={styles.editPage}></div></>)
         : (<>
           <div className={styles.info}>
@@ -76,7 +82,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
                     </div>
                     <div className={styles.infoBlock}>
                       <div className={styles.miniTitle}>טלפון</div>
-                      <div className={styles.content}>{phoneNumber}</div>
+                      <div className={styles.content}>{phone}</div>
                     </div>
                   </div>
                   <div className={styles.infoCol}>
