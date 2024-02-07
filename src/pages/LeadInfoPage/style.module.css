@@ -85,6 +85,13 @@
     gap: 20px;
 }
 
+.telAndEmail{
+  display: flex;
+  flex-direction: row;
+
+
+}
+
 table {
     width: 100%;
     border-collapse: separate;
