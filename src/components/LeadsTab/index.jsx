@@ -38,7 +38,8 @@ export default function LeadsTab() {
           },
           {
             text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"trash"} />
+            icon: <Icon nameIcon={"trash"} />,
+            color: "red"
           },
         ]} >
           <Icon nameIcon={"menu"} />
