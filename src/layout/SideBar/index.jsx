@@ -45,7 +45,7 @@ export default function SideBar() {
       </div>
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
-        <div className={styles.newlist} >
+        <div className={styles.camplist} >
           <CampaignList searchTerm={searchTerm} campaignList={[
             {
               id: "65c0939a5aa397278552a5b5",
