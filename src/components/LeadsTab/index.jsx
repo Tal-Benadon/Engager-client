@@ -29,7 +29,8 @@ export default function LeadsTab() {
         icon={<Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"writing"} />,
+            onClick: () => { }
           },
           {
             text: "הוספת ידנית",
