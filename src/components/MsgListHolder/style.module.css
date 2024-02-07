@@ -20,8 +20,29 @@
 }
 
 .newMsg{
-    /* position: absolute; */
     height: 60px;
-    width: 100%;
-    border: var(--test-border);
+    border-top: 2px solid var(--grayElement);
+    padding: 5px;
+}
+
+.item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    line-height: 24px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.item svg {
+    height: 24px;
+    width: 24px;
+    background: #0E9D851A;
+    border-radius: 50%;
+}
+
+.item:hover{
+cursor: pointer;
+background-color:var(--white-hover);
+
 }

@@ -1,8 +1,13 @@
+
 .InputWrapper {
     justify-content: center;
-    direction: rtl;
     display: flex;
-    padding: 20px;
+    padding:20px;
+
+
+}
+.asterisk{
+    color: red;
 }
 
 .input1 {
@@ -26,5 +31,6 @@
     align-items: center;
     display: flex;
     flex-direction: row-reverse;
+
     margin: 30px;
 }

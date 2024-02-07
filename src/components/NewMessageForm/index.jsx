@@ -21,6 +21,7 @@ export default function NewMassageForm({ setIsOpen }) {
     e.preventDefault();
     const submmit = { subject, content };
 
+    setIsOpen(false);
     try {
       const response = await axios.post(
         "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
@@ -31,8 +32,8 @@ export default function NewMassageForm({ setIsOpen }) {
           },
         }
       );
-      setIsOpen(false);
       console.log(response.data);
+      toast.success(response && "נשלח בהצלחה!");
       console.log(subject, content);
     } catch (error) {
       console.error("Error:", error);
@@ -42,6 +43,7 @@ export default function NewMassageForm({ setIsOpen }) {
 
   return (
     <div className={styles.InputWrapper}>
+      
       <form onSubmit={handleSubmit}>
         <main className={styles.main}>
           <InputWrapper
@@ -56,7 +58,8 @@ export default function NewMassageForm({ setIsOpen }) {
             }
             type="text"
           ></InputWrapper>
-
+  <br />
+  <br />
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
@@ -70,7 +73,7 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
-
+        
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />

@@ -4,61 +4,63 @@ import InputWrapper from "../InputWrapper";
 import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 import React, { useState } from "react";
-import api from '../../functions/api'
 
-export default function NewCampaigenForm({
-  setIsOpen,
-  userid = { "_id": "65ba97e536d6af41e9beb0d1" }
-}) {
-  const [user, setUser] = useState(userid);
+export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }) {
+
+  const [user, setUser] = useState("");
   const [campName, setCampName] = useState("");
-  const [starterMsg, setStarterMsg] = useState("");
-  //***TODO: Starter Message*******/
-  //***TODO: Get User Id*******/
 
-  const handelSubmitNewCampaigen = async (e) => {
+  const handelSubmitNewFeedBack = async (e) => {
     e.preventDefault();
-    const SubmmitNewCampaigen = {
-      "user": user,
-      "campName": campName
+    const SubmmitNewFeedBack = {
+      user: _id,
+      campName
     };
 
     setIsOpen(false);
     try {
-      const response = await api.post("/campaign",
-      SubmmitNewCampaigen,
-        { headers: { "Content-Type": "application/json", }}
+      const response = await axios.post(
+        // "http://localhost:2500/campaign",
+
+        SubmmitNewFeedBack,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
+      console.log(response.data);
       toast.success(response && "נשלח בהצלחה!");
       console.log(user, campName);
     } catch (Error) {
       console.error("Error:", Error);
-      toast.error(Error?.response?.data?.msg || "something went wrong");
+      toast.error(Error?.response?.data?.msg || "somthing want worng");
+
     }
+    console.log(user, campName);
   };
+
 
   return (
     <div className={styles.InputWrapper}>
-      <form onSubmit={handelSubmitNewCampaigen}>
-        <div>
-          <h1>רשימה חדשה</h1>
-        </div>
+      <form onSubmit={handelSubmitNewFeedBack}>
+        <div><h1>שלח משוב</h1></div>
         <main>
           <InputWrapper
-            label={"שם רשימה"}
+            label={(<span className={styles.asterisk}>'*'</span>, "שם רשימה")}
             subLabel={"שם פנימי שלא יהיה חשוף למצטרפים לרשימה"}
             to={"campaignMsg"}
-            setIsVisible={true}
             children={
               <InputText
                 name="campaignMsg"
-                onChange={(e) => setCampName(e.target.value)}
+                onChange={(e) => setUser(e.target.value)}
               />
             }
             type="text"
           />
+
 
           <InputWrapper
             label={"הודעת אפס"}
@@ -67,7 +69,7 @@ export default function NewCampaigenForm({
             children={
               <InputTextArea
                 name={"campaignTextArea"}
-                onChange={(e) => setStarterMsg(e.target.value)}
+                onChange={(e) => setCampName(e.target.value)}
               />
             }
             type="text"
