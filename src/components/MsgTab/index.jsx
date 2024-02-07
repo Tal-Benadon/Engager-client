@@ -7,10 +7,9 @@ import styles from './style.module.css'
 import MessageEdit from '../MessageEdit';
 import DataContext from '../../context/DataContext';
 
-export default function MsgTab() {
-  // const { isOpen, setIsOpen } = useContext(DataContext)
-  const campaign = useCampaign();
-  if (!Object.keys(campaign).length) return <></>
+export default function  MsgTab() {
+  const { campaign } =useCampaign();
+  if(!Object.keys(campaign).length) return <></>
 
   return (
     <div className={styles.msgTab}>

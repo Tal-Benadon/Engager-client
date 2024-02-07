@@ -13,7 +13,7 @@ export default function MessagePage() {
     const { isOpen, setIsOpen } = useContext(DataContext)
 
     const { messageId } = useParams();
-    const campaign = useCampaign() || {};
+    const { campaign } =useCampaign() || {};
     console.log({ campaign });
     const msgs = campaign.msg || [];
     const message = msgs.find(msg => msg._id == messageId) || {}
