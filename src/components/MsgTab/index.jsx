@@ -33,7 +33,8 @@ export default function  MsgTab() {
           },
           {
             text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"trash"} />
+            icon: <Icon nameIcon={"trash"} />,
+            color: "red"
           },
         ]} >
           <Icon nameIcon={"menu"} />
