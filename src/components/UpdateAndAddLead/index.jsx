@@ -8,6 +8,12 @@ import axios from 'axios'
 import api from '../../functions/api'
 
 export default function UpdateAndAddLead({ details, campaign }) {
+
+// להעביר כזה אובייקט.. בקשה...
+    // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
+
+
+
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
