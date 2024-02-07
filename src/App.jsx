@@ -6,9 +6,9 @@ import Popover from './components/Popover'
 export default function App() {
   return (
     <div>
-      <Maayan />
-      {/* <Layout /> */}
-      {/* <Popover /> */}
+
+      <Layout />
+
     </div>
   )
 }

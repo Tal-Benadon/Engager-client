@@ -1,8 +1,7 @@
 .Popover {
-    background-color: aqua;
+    background-color: #FFFFFF;
     width: 209px;
     padding: 10px;
-    /* height: 225px; */
     display: flex;
     position: absolute;
     display: none;
@@ -12,13 +11,25 @@
 }
 
 .Popover ul {
+    display: flex;
+    flex-direction: column;
     list-style: none;
+    gap: 5px;
+    padding: 5px;
+    justify-content: space-around
 }
 
-li {
+.Popover li {
     height: 50px;
     padding: 12px;
-    gap: 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
-
+.Popover li .icon {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

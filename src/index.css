@@ -60,11 +60,3 @@ h1 {
   color: var(--header-color);
   /* Use this CSS variable for the h1 text color */
 }
-
-.mayanMain {
-  display: flex;
-  flex-direction: column;
-  background-color: violet;
-  margin-right: 70vh;
-  margin-left: 90vw;
-}
