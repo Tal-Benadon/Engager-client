@@ -93,9 +93,6 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
               </div>
             </div>
           </div>
-          <div className={styles.signUpDate}>
-            תאריך ההצטרפות: {signUpDate}
-          </div>
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}
