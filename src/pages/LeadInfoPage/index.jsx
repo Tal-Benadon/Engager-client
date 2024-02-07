@@ -17,8 +17,7 @@ import styles from './style.module.css'
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = true }) {
-
+export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true }) {
 
   //****************************************************************************
 
@@ -63,28 +62,37 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
               <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
                 nameColor={''} />  </div>
             </div>
-            <div className={styles.detailsFrame}>
-              <div>
-                <div>שם</div>
-                <div>{name}</div>
+            <div className={styles.allFields}>
+              <div className={styles.detailsFrame}>
+                <div className={styles.infoCol}>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>שם</div>
+                    <div className={styles.content}>{name}</div>
+                  </div>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>טלפון</div>
+                    <div className={styles.content}>{phoneNumber}</div>
+                  </div>
+                </div>
+                <div className={styles.infoCol}>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>אימייל</div>
+                    <div className={styles.content}>{email}</div>
+                  </div>
+                </div>
+                <div className={styles.infoFullCol}>
+                  <div>
+                    <div colSpan="2" className={styles.miniTitle}>הערות</div>
+                    <div colSpan="2" >{notes}</div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <div>טלפון</div>
-                <div>{phoneNumber}</div>
-              </div>
-              <div>
-                <div>אימייל</div>
-                <div>{email}</div>
-              </div>
-              <div>
-                <div colSpan="2">הערות</div>
-                <div colSpan="2" >{notes}</div>
+              <div className={styles.signUpDate}>
+                תאריך ההצטרפות: {signUpDate}
               </div>
             </div>
           </div>
-          <div className={styles.signUpDate}>
-            תאריך ההצטרפות: {signUpDate}
-          </div>
+
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}
