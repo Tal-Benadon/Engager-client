@@ -6,43 +6,40 @@ import InputWrapper from '../InputWrapper'
 import axios from 'axios'
 import api from '../../functions/api'
 
-// קומפוננטת הרשמת משתמש חדש לא ליד!! כל העיצוב מוכן
-//2 פונקציית הנדלסבמיט
-//וכן הכפתור הרשמה בסוף לא עושה כרגע כלוםםם
-//וצריך להתחבר לשרת ולעשות פוסט
+// קומפוננטת הרשמת משתמש חדש לא ליד!! 
+
 
 export default function Register() {
-    const [formState, setFormState] = useState({})
-    const [errorForm, setErrorForm] = useState({ passwordConfirm: '', password: '', userEmail: '', userPhone: '' })
+    const fromtemplet={name:'',phone:'',email:'',password:'',passwordConfirm:''}
+    const [formState, setFormState] = useState(fromtemplet)
+    const [errorForm, setErrorForm] = useState(fromtemplet)
 
     async function handleSubmit(e) {
         e.preventDefault();
         const data =formState
         api.post("/user", data).
-            then((res) => console.log("response from server", res.data))
+            catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
 
     }
 
     const checkInput = (newData = '', name) => {
         const pas = newData.password
-        const email = newData.userEmail
-        const phone = newData.userPhone
+        const email = newData.email
+        const phone = newData.phone
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
         const phoneRegex = /^(?:0[5][2-9]\d(?:-?\d){6})$/;
 
         if ([name] == 'passwordConfirm' && (newData.passwordConfirm) != (pas)) {//עובד נפלא
             setErrorForm(old => ({ ...old, [name]: 'סיסמה לא תואמת' }))
-            console.log(phone);
         }
         else if ([name] == 'password' && (!passwordRegex.test(pas))) {//עובד נפלא
-            console.log(passwordRegex.test(pas));
             setErrorForm(old => ({ ...old, [name]: ' סיסמה כוללת אות ומספר ו8 תווים לפחות' }))
         }
-        else if ([name] == 'userEmail' && (!email.includes("@") || !email.includes("."))) {//עובד נפלא
+        else if ([name] == 'email' && (!email.includes("@") || !email.includes("."))) {//עובד נפלא
             setErrorForm(old => ({ ...old, [name]: 'אמייל לא תקין' }))
         }
-        else if ([name] == 'userPhone' && (!phoneRegex.test(phone))) {//עובד נפלא
-            setErrorForm(old => ({ ...old, [name]: '10 ספרות' }))
+        else if ([name] == 'phone' && (!phoneRegex.test(phone))) {//עובד נפלא
+            setErrorForm(old => ({ ...old, [name]: 'המספר אינו תואם ווצאפ' }))
         }
         else {
             setErrorForm(0)
@@ -55,7 +52,6 @@ export default function Register() {
             const newData = { ...old, [name]: value }
             localStorage.user = JSON.stringify({ ...newData, password: '' })
             checkInput(newData, [name])
-            console.log(newData);
             setFormState(newData)
             return newData
         })
@@ -68,29 +64,29 @@ export default function Register() {
 
                 <div className={styles.inputSpace}>
                     <InputWrapper label={"שם"} >
-                        <InputText name={'userName'} required={true} onChange={handleChange} value={formState.name} />
+                        <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} />
                     </InputWrapper>
                 </div>
 
                 <div className={styles.inputSpace}>
                     <InputWrapper label={"טלפון"} >
-                        <InputText name={'userPhone'} required={true} onChange={handleChange} value={formState.name} />
-                        {errorForm.userPhone &&
-                            <div className={styles.error}>{errorForm.userPhone}</div>}
+                        <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} />
+                        {errorForm.phone &&
+                            <div className={styles.error}>{errorForm.phone}</div>}
                     </InputWrapper>
                 </div>
 
                 <div className={styles.inputSpace}>
                     <InputWrapper label={"אמייל"} >
-                        <InputText type={'email'} name={'userEmail'} required={true} onChange={handleChange} value={formState.name} />
-                        {errorForm.userEmail &&
-                            <div className={styles.error}>{errorForm.userEmail}</div>}
+                        <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} />
+                        {errorForm.email &&
+                            <div className={styles.error}>{errorForm.email}</div>}
                     </InputWrapper>
                 </div>
 
                 <div className={styles.inputSpace}>
                     <InputWrapper label={"סיסמה"} >
-                        <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.name} />
+                        <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} />
                         {errorForm.password &&
                             <div className={styles.error}>{errorForm.password}</div>}
                     </InputWrapper>
@@ -98,7 +94,7 @@ export default function Register() {
 
                 <div className={styles.inputSpace}>
                     <InputWrapper label={"אימות סיסמה"} >
-                        <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.name} />
+                        <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} />
                     </InputWrapper>
                     {errorForm.passwordConfirm &&
                         <div className={styles.error}>{errorForm.passwordConfirm}</div>}
