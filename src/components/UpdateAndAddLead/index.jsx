@@ -31,6 +31,10 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
 
     }
 
+    function handleCancel() {
+        // setשהגיע בפרופס 
+    }
+
     function isValidIsraeliPhoneNumber(phoneNumber) {
         // Israeli phone number regex pattern
         const regexPattern = /^(0(5[^67]|[23489]))([\d]{7})$/;
@@ -91,6 +95,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                 <div className={styles.buttons}>
                     <Button content='שמירה' />
                     <Button content='ביטול' className='cancel' onClick={()=>{setIsEdite(false)}} />
+
                 </div>
             </form>
             :
