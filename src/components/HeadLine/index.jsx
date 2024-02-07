@@ -6,9 +6,11 @@ import MessagesTab from '../MsgTab'
 import NewMassageForm from '../NewMessageForm'
 import MessageEdit from '../MessageEdit'
 import DataContext from '../../context/DataContext'
+
 //קומפוננטה שצריכה לקבל כותרת וכותרת משנה כ פרופס וכן אייקון
 
 export default function HeadLine({ title, iconName, subtitle, iconOnClick }) {
+
 
   return (
     <div className={styles.headLine} >
