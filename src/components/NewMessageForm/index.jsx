@@ -8,6 +8,7 @@ import InputTextArea from "../InputTextArea/index";
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 // Description :
 // Props : ____________ , _________
@@ -21,6 +22,7 @@ export default function NewMassageForm({ setIsOpen }) {
     e.preventDefault();
     const submmit = { subject, content };
 
+    setIsOpen(false);
     try {
       const response = await axios.post(
         "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
@@ -30,12 +32,13 @@ export default function NewMassageForm({ setIsOpen }) {
             "Content-Type": "application/json",
           },
         }
-      );
-      setIsOpen(false);
+        );
       console.log(response.data);
+      toast.success(response && "נשלח בהצלחה!");
       console.log(subject, content);
     } catch (error) {
       console.error("Error:", error);
+      toast.error(error?.response?.data?.msg || "somthing want worng");
     }
     console.log(subject, content);
   };
@@ -43,6 +46,7 @@ export default function NewMassageForm({ setIsOpen }) {
   return (
     <div className={styles.InputWrapper}>
       <form onSubmit={handleSubmit}>
+     <div><h1>הודעה חדשה</h1></div> 
         <main className={styles.main}>
           <InputWrapper
             label="שם הודעה"
@@ -70,7 +74,7 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
-
+        {/* onClick={setIsOpen(false)} */}
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
