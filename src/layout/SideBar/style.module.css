@@ -3,6 +3,7 @@
 .sidebar {
     background: #F7F7F7;
     width: 320px;
+    min-width: 320px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
