@@ -5,14 +5,15 @@ import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import { toast } from "react-toastify";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import api from '../../functions/api'
+import DataContext from "../../context/DataContext";
+import CampaignItem from "../CampaignItem";
 
-export default function NewCampaigenForm({
-  setIsOpen,
-  userid = { "_id": "65ba97e536d6af41e9beb0d1" }
-}) {
-  const [user, setUser] = useState(userid);
+export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
+  // const [user, setUser] = useState(userid);
+  const { user, setUser } = useContext(DataContext)
+  console.log("user", user)
   const [campName, setCampName] = useState("");
   const [starterMsg, setStarterMsg] = useState("");
   //***TODO: Starter Message*******/
@@ -21,18 +22,19 @@ export default function NewCampaigenForm({
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
     const SubmmitNewCampaigen = {
-      "user": user,
-      "campName": campName
+      // "user": user,
+      "campName": campName,
+      "campaignTextArea": starterMsg
     };
 
     setIsOpen(false);
     try {
       const response = await api.post("/campaign",
-      SubmmitNewCampaigen,
-        { headers: { "Content-Type": "application/json", }}
+        SubmmitNewCampaigen
       );
       toast.success(response && "נשלח בהצלחה!");
       console.log(user, campName);
+      getCamp()
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "something went wrong");
