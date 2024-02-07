@@ -20,7 +20,7 @@ export default function NewMassageForm({ setIsOpen }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
-    
+
     setIsOpen(false);
     try {
       const response = await axios.post(
@@ -33,6 +33,7 @@ export default function NewMassageForm({ setIsOpen }) {
         }
       );
       console.log(response.data);
+      toast.success(response && "נשלח בהצלחה!");
       console.log(subject, content);
     } catch (error) {
       console.error("Error:", error);
@@ -75,7 +76,7 @@ export default function NewMassageForm({ setIsOpen }) {
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} onClick={ setIsOpen(false)}/>
+          <Button className={"cancel"} content={"ביטול"} />
         </div>
       </form>
     </div>

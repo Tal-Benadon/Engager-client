@@ -8,7 +8,7 @@ import React, { useState } from "react";
 // דוגמא לקריאה לפונקציה 
 // <InputWrapper label="שם:" to=""  h2=" " children={} type="text" setIsVisible={true/false}/>
 
-export default function InputWrapper({label,  subLabel, to = "",children ,setIsVisible }){ 
+export default function InputWrapper({label,  subLabel, to = "",children ,setIsVisible=false }){ 
 
 
   return (
