@@ -20,16 +20,15 @@ export default function LeadsTab() {
     <div className={styles.leadsTab}>
       <HeadLine
         title={campaign.title}
-        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות נשלחו`}
+        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
         icon={"menu"} />
       <TabSwitcher rout={[
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
       ]} />
-       
-      <div className={styles.LeadListHolder}>
-        <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
 
+      <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
+      <div className={styles.LeadListHolder}>
         <LeadList sortType={sortType} searchTerm={searchTerm} />
       </div>
     </div>

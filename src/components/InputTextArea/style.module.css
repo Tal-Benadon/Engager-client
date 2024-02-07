@@ -12,13 +12,13 @@
 }
 
 .textarea:hover {
-    border: 1px solid rgb(81, 81, 232);
+    border: 2px solid #E8E8E8;
 }
 
 .textarea:focus,
 .textarea:focus-visible,
 .textarea:focus-within,
 .textarea:active {
-    border: 1px solid rgb(11, 11, 255);
-    outline-color: rgb(11, 11, 255);
+    border: 1px solid #E8E8E8;
+    outline-color:#E8E8E8;
 }
