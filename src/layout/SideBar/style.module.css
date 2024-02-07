@@ -94,4 +94,9 @@ svg {
 
 }
 
-.camplist {}
+.camplist {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 30px;
+}
