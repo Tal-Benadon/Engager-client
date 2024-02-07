@@ -8,9 +8,10 @@ import axios from "axios";
 const mainApi = async (method, path, data, headers) => {
   try {
     let fainlPath = path.startsWith("/") ? path.slice(1) : path;
-    let auth = localStorage.token ? { Authorization: `Bearer ${localStorage.token}` } : {};
+    let auth = localStorage.token ? { Authorization: localStorage.token } : {};
 
-    const url = `https://engager-g262.onrender.com/${fainlPath}`;
+    // const url = `https://engager-g262.onrender.com/${fainlPath}`;
+    const url = `http://localhost:2500/${fainlPath}`;
 
     const response = await axios({
       method,
