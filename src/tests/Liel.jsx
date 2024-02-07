@@ -19,7 +19,7 @@ export default function Liel() {
       {/* <Register/> */}
       {/* <Login/> */}
       {/* <MessageEdit/> */}
-      <UserLogoutEdit user={user} />
+      {/* <UserLogoutEdit user={user} /> */}
     </div>
   )
 }

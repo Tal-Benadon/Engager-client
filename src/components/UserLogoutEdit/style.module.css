@@ -27,4 +27,5 @@
 .icon{
     transform: rotate(180deg);
     cursor: pointer;
+    background-color: transparent;
 }
