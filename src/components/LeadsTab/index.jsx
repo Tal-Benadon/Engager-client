@@ -34,11 +34,11 @@ export default function LeadsTab() {
           },
           {
             text: "ייבוא רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"importList"} />
           },
           {
             text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"trash"} />
           },
         ]} >
           <Icon nameIcon={"menu"} />
