@@ -61,7 +61,8 @@ export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
             }
             type="text"
           />
-
+<br />
+<br />
           <InputWrapper
             label={"הודעת אפס"}
             subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}
