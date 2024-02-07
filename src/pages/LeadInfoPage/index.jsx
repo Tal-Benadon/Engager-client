@@ -37,70 +37,59 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
   return (
     <>
       {isEdit ? (
-        <> 
-        {/* ***TODO: Add edit component*** */}
+        <>
+          {/* ***TODO: Add edit component*** */}
           <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite} />
           <div className={styles.editPage}></div></>)
-        : (<><div className={styles.info}>
-          <div className={styles.container}>
-            <div className={styles.details}>
-              {name}
-              <div className={styles.isActive}>
-                {isActive ? (
-                  <>
-                    <div className={styles.greenDot}></div>
-                    <span>פעיל/ה</span>
-                  </>
-                ) : (
-                  <>
-                    <div className={styles.redDot}></div>
-                    <span>לא פעיל/ה</span>
-                  </>
-                )}
+        : (<>
+          <div className={styles.info}>
+            <div className={styles.container}>
+              <div className={styles.details}>
+                {name}
+                <div className={styles.isActive}>
+                  {isActive ? (
+                    <>
+                      <div className={styles.greenDot}></div>
+                      <span>פעיל/ה</span>
+                    </>
+                  ) : (
+                    <>
+                      <div className={styles.redDot}></div>
+                      <span>לא פעיל/ה</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
+                nameColor={''} />  </div>
+            </div>
+            <div className={styles.detailsFrame}>
+              <div>
+                <div>שם</div>
+                <div>{name}</div>
+              </div>
+              <div>
+                <div>טלפון</div>
+                <div>{phoneNumber}</div>
+              </div>
+              <div>
+                <div>אימייל</div>
+                <div>{email}</div>
+              </div>
+              <div>
+                <div colSpan="2">הערות</div>
+                <div colSpan="2" >{notes}</div>
               </div>
             </div>
-            <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
-              nameColor={''} />  </div>
           </div>
-          <div className={styles.detailsFrame}>
-            <table>
-              <tbody>
-                <tr>
-                  <th>שם</th>
-                </tr>
-                <tr>
-                  <td>{name}</td>
-                </tr>
-                <tr>
-                  <th>טלפון</th>
-                  <th>אימייל</th>
-                </tr>
-                <tr>
-                  <td>{phoneNumber}</td>
-                  <td>{email}</td>
-                </tr>
-                <tr>
-                  <th colSpan="2">הערות</th>
-                </tr>
-                <tr>
-                  <td colSpan="2" >{notes}</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div className={styles.signUpDate}>
-              תאריך ההצטרפות: {signUpDate}
-
-            </div>
+          <div className={styles.signUpDate}>
+            תאריך ההצטרפות: {signUpDate}
           </div>
-
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
-            ***TODO: make it only sent messages***
-
+            {/* ***TODO: make it only sent messages*** */}
             <div className={styles.messages}><InfoMessageList /></div>
           </div>
-        </div>
         </>
         )}
     </>
