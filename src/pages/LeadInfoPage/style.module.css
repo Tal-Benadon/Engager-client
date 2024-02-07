@@ -94,6 +94,13 @@
     gap: 20px;
   }
 
+.telAndEmail{
+  display: flex;
+  flex-direction: row;
+
+
+}
+
   .infoCol{
     width: fit-content;
     display: flex;
