@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-:root {
+  :root {
 
-    --font: 'Heebo', sans-serif;
-    --title-color: #000000;
-    --details-color: #6B6B6B;
-    --border-box-color: #F3F3F5;
-}
+      --font: 'Heebo', sans-serif;
+      --title-color: #000000;
+      --details-color: #6B6B6B;
+      --border-box-color: #F3F3F5;
+  }
 
-/* lead box */
+  /* lead box */
 
-<<<<<<< HEAD
   .lead {
       width: 100%;
       height: 90px;
@@ -63,78 +62,21 @@
       border-radius: 8px;
       margin: 16px;
   }
-=======
-.lead {
-    width: 100%;
-    height: 90px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: right;
-    border-radius: 8px;
-    padding: 20px, 16px, 20px, 16px;
-}
->>>>>>> 39a1e85c50a20348f3d16b599bf00982ae4cacd1
 
 
-.lead:hover {
-    background-color: #fafafa;
-}
+  /* name, and details */
+  .name {
+      font-size: 18px;
+      font-weight: 400;
+      text-align: right;
+      font-family: var(--font);
+      color: var(--title-color)
+  }
 
-.leadActive {
-    background-color: #F3F3F5;
-    width: 100%;
-    height: 90px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: right;
-    border-radius: 8px;
-    padding: 20px, 16px, 20px, 16px;
-
-}
-
-.leadActive .activeIcon {
-    color: #0E9D85;
-}
-
-
-
-.lead:active {
-    background-color: #F3F3F5;
-}
-
-.lead:active .activeIcon {
-    color: #0E9D85;
-}
-
-/* square and icon in the box */
-.square {
-    width: 44px;
-    height: 44px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--border-box-color);
-    border-radius: 8px;
-    margin: 16px;
-}
-
-
-/* name, and details */
-.name {
-    font-size: 18px;
-    font-weight: 400;
-    text-align: right;
-    font-family: var(--font);
-    color: var(--title-color)
-}
-
-.nameAndDetails {
-    display: flex;
-    flex-direction: column;
-}
+  .nameAndDetails {
+      display: flex;
+      flex-direction: column;
+  }
 
 .DateAndEmail {
     display: flex;
@@ -157,3 +99,4 @@
   font-size: 12px;
   color: #6B6B6B;
 }
+
