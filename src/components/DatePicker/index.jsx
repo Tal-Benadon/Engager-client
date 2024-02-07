@@ -2,11 +2,13 @@ import {useState } from 'react';
 import styles from "./style.module.css"
 import Icon from '../Icon';
 
+// Details : the componneta is input type date.
+// Creator: shir
+
 
 export default function DatePicker({style, ...props}) {
    const [mode,setMode] = useState("placeholder")
-  // console.log("mode", mode)
-  // console.log("condition", mode === "placeholder")
+
   return (
     <div className={styles.datePicker}>
               
