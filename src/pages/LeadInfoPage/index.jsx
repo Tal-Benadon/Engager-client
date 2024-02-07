@@ -66,6 +66,26 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
               <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
                 nameColor={''} />  </div>
             </div>
+            <div className={styles.detailsFrame}>
+              
+              
+              <div className={styles.name}>
+                <div>שם</div>
+                <div>{name}</div>
+              </div>
+
+
+              <div className={styles.telAndEmail}>
+                <div>
+                  <div>טלפון</div>
+                  <div>{phoneNumber}</div>
+                </div>
+
+
+                <div>
+                  <div>אימייל</div>
+                  <div>{email}</div>
+                </div>
             <div className={styles.allFields}>
               <div className={styles.detailsFrame}>
                 <div className={styles.infoCol}>
@@ -91,6 +111,13 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
                   </div>
                 </div>
               </div>
+                <div>
+                  <div colSpan="2">הערות</div>
+                  <div colSpan="2" >{notes}</div>
+                </div>
+
+
+
               <div className={styles.signUpDate}>
                 תאריך ההצטרפות: {signUpDate}
 
@@ -99,6 +126,8 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
           </div>
           <div className={styles.signUpDate}>
             תאריך ההצטרפות: {signUpDate}
+          </div>
+            </div>
           </div>
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
