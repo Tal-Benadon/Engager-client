@@ -25,15 +25,12 @@
     padding: 5px;
 }
 
-
 .item {
     display: flex;
     flex-wrap: nowrap;
-    align-content: space-between;
+    align-items: center;
     line-height: 24px;
-    padding-right: 8px;
-    padding-top: 40px;
-    
+    padding: 8px;
 }
 
 .item svg {

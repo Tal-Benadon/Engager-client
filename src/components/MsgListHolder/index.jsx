@@ -24,12 +24,17 @@ export default function MsgListHolder() {
         <MessageList searchTerm={searchTerm} />
       </div>
       <span className={styles.newMsg}>
-      <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen}/>)}>
-            <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
-            <Button className="create"
-             content="הודעה חדשה" 
-             />
-          </div>
+        <div className={styles.item} onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} />)}>
+          <Icon nameIcon={'pluscircle'} nameColor={'create'} />
+          <Button className="create"
+          content='הודעה חדשה'
+          />
+        </div>
+        <Button
+          className='cancel'
+          content='הודעה חדשה'
+          onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} />)}
+        />
       </span>
     </>
   )
