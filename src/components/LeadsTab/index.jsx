@@ -21,7 +21,8 @@ export default function LeadsTab() {
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות נשלחו`}
-        icon={"menu"} />
+        iconName={"menu"}
+      />
       <TabSwitcher rout={[
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
