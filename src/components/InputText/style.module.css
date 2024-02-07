@@ -28,17 +28,18 @@
     border-radius: 8px;
     direction: rtl;
     text-align: right;
+    padding: 5px;
 }
 
 .inputLine:hover {
-    border: 3px solid rgb(81, 81, 232);
+    border: 1px solid rgb(81, 81, 232);
 }
 
 .inputLine:focus,
 .inputLine:focus-visible,
 .inputLine:focus-within,
 .inputLine:active {
-    border: 3px solid rgb(11, 11, 255);
+    border: 1px solid rgb(11, 11, 255);
     outline-color: rgb(11, 11, 255);
 }
 
