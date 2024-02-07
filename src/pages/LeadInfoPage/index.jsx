@@ -23,6 +23,7 @@ import formatDate from '../../functions/DateFormat'
 
 export default function LeadInfoPage() {
 
+
   const { leadId } = useParams();
   const campaign = useCampaign();
 
