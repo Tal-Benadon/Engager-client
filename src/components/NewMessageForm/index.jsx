@@ -78,7 +78,7 @@ export default function NewMassageForm({ setIsOpen }) {
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} onClick={ setIsOpen(false)}/>
+          <Button className={"cancel"} content={"ביטול"} />
         </div>
       </form>
     </div>
