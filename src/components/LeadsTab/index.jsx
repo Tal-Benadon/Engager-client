@@ -15,7 +15,7 @@ export default function LeadsTab() {
   const [sortType, setSortType] = useState('date');
 
 
-  const campaign = useCampaign();
+  const { campaign } = useCampaign();
   if (!Object.keys(campaign).length) return <></>
   if (!Object.keys(campaign).length) return <></>
   return (
@@ -37,13 +37,12 @@ export default function LeadsTab() {
           },
           {
             text: "ייבוא רשימה",
-            icon: <Icon nameIcon={"writing"} />,
-            onClick: () => { }
+            icon: <Icon nameIcon={"importList"} />
           },
           {
             text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"writing"} />,
-            onClick: () => { }
+            icon: <Icon nameIcon={"trash"} />,
+            color: "red"
           },
         ]} >
           <Icon nameIcon={"menu"} />

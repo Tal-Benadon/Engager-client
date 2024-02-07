@@ -1,3 +1,14 @@
+.mainIcon {
+    position: relative;
+    width: fit-content;
+    z-index: 100;
+}
+
+.children{
+    background-color: transparent;
+    border: none;
+}
+
 .Popover {
     background-color: #FFFFFF;
     width: 209px;

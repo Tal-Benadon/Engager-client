@@ -12,7 +12,7 @@ export default function HeadLine({ title, subtitle, icon = "" }) {
         <p className={styles.title} >{title}</p>
         {subtitle ? <p className={styles.subtitle} >{subtitle}</p> : ""}
       </div >
-      <div>{icon}</div>
+      <div >{icon}</div>
     </div>
   )
 }
