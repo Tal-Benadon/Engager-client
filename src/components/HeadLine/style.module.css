@@ -17,7 +17,10 @@
     /* line-height: 10px; */
     letter-spacing: 0em;
     text-align: right;
-
+    width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 
 .subtitle {
