@@ -22,7 +22,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
 
 
 
-
+  
   //****************************************************************************
 
   //TODO: replace the default props values with this object:
