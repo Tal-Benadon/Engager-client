@@ -52,8 +52,8 @@ export default function Popover({ list, children, fnName }) {
     }
 
     return (
-        <div style={{ position: "relative", width: 'fit-content' }} {...finalFunction} >
-            <button >
+        <div className={style.mainIcon} {...finalFunction} >
+            <button className={style.children} >
                 {children}
             </button>
             {!isClicked ? ""
