@@ -20,6 +20,7 @@ import UpdateAndAddLead from '../../components/UpdateAndAddLead'
 
 export default function LeadInfoPage({ name, phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true, id, campaignId }) {
 
+
   
   //****************************************************************************
 
@@ -97,6 +98,7 @@ export default function LeadInfoPage({ name, phoneNumber = "054-8104093", email 
           <div className={styles.signUpDate}>
             תאריך ההצטרפות: {signUpDate}
           </div>
+
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}
