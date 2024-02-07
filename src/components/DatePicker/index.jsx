@@ -2,7 +2,7 @@ import {useState } from 'react';
 import styles from "./style.module.css"
 import Icon from '../Icon';
 
-// Details : the componneta is input type date.
+// Details : the componneta is input type date.!need to limit the year!
 // Creator: shir
 
 
