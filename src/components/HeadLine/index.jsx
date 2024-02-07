@@ -6,9 +6,10 @@ import MessagesTab from '../MsgTab'
 import NewMassageForm from '../NewMessageForm'
 import MessageEdit from '../MessageEdit'
 import DataContext from '../../context/DataContext'
+
 //קומפוננטה שצריכה לקבל כותרת וכותרת משנה כ פרופס וכן אייקון
 
-export default function HeadLine({ title, icon, dateCreate, children }) {
+export default function HeadLine({ title, icon, dateCreate, children , subtitle}) {
   // const editMessage = () => <MessagesTab/> 
   const { isOpen, setIsOpen } = useContext(DataContext)
 
@@ -24,7 +25,7 @@ export default function HeadLine({ title, icon, dateCreate, children }) {
     <div className={styles.headLine} >
       <div >
         <p className={styles.title} >{title}</p>
-        <p className={styles.subtitle} >נוצר ב {dateCreate}</p>
+        <p className={styles.subtitle} >{subtitle}</p>
       </div >
       <div onClick={handleEditClick}><Icon className={styles.button} nameIcon={"writing"} nameColor={''} /></div>
       
