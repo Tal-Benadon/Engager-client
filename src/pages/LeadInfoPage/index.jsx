@@ -18,7 +18,7 @@ import UpdateAndAddLead from '../../components/UpdateAndAddLead'
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true, campaignId, id  }) {
+export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true, campaignId, id }) {
 
 
 
@@ -42,7 +42,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
       {isEdit ? (
         <>
           {/* ***TODO: Add edit component*** */}
-          <UpdateAndAddLead details = {{name:name, email:email, phone:phoneNumber, notes:notes, leadId:id}} setIsEdite={setIsEdite} />
+          <UpdateAndAddLead details={{ name: name, email: email, phone: phoneNumber, notes: notes, leadId: id }} setIsEdite={setIsEdite} />
           <div className={styles.editPage}></div></>)
         : (<>
           <div className={styles.info}>
@@ -67,66 +67,35 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
                 nameColor={''} />  </div>
             </div>
             <div className={styles.detailsFrame}>
-              
-              
-              <div className={styles.name}>
-                <div>שם</div>
-                <div>{name}</div>
-              </div>
-
-
-              <div className={styles.telAndEmail}>
-                <div>
-                  <div>טלפון</div>
-                  <div>{phoneNumber}</div>
-                </div>
-
-
-                <div>
-                  <div>אימייל</div>
-                  <div>{email}</div>
-                </div>
-            <div className={styles.allFields}>
-              <div className={styles.detailsFrame}>
-                <div className={styles.infoCol}>
-                  <div className={styles.infoBlock}>
-                    <div className={styles.miniTitle}>שם</div>
-                    <div className={styles.content}>{name}</div>
+              <div className={styles.allFields}>
+                <div className={styles.detailsFrame}>
+                  <div className={styles.infoCol}>
+                    <div className={styles.infoBlock}>
+                      <div className={styles.miniTitle}>שם</div>
+                      <div className={styles.content}>{name}</div>
+                    </div>
+                    <div className={styles.infoBlock}>
+                      <div className={styles.miniTitle}>טלפון</div>
+                      <div className={styles.content}>{phoneNumber}</div>
+                    </div>
                   </div>
-                  <div className={styles.infoBlock}>
-                    <div className={styles.miniTitle}>טלפון</div>
-                    <div className={styles.content}>{phoneNumber}</div>
+                  <div className={styles.infoCol}>
+                    <div className={styles.infoBlock}>
+                      <div className={styles.miniTitle}>אימייל</div>
+                      <div className={styles.content}>{email}</div>
+                    </div>
+                  </div>
+                  <div className={styles.infoFullCol}>
+                    <div>
+                      <div colSpan="2" className={styles.miniTitle}>הערות</div>
+                      <div colSpan="2" >{notes}</div>
+                    </div>
                   </div>
                 </div>
-                <div className={styles.infoCol}>
-                  <div className={styles.infoBlock}>
-                    <div className={styles.miniTitle}>אימייל</div>
-                    <div className={styles.content}>{email}</div>
-                  </div>
-                </div>
-                <div className={styles.infoFullCol}>
-                  <div>
-                    <div colSpan="2" className={styles.miniTitle}>הערות</div>
-                    <div colSpan="2" >{notes}</div>
-                  </div>
+                <div className={styles.signUpDate}>
+                  תאריך ההצטרפות: {signUpDate}
                 </div>
               </div>
-                <div>
-                  <div colSpan="2">הערות</div>
-                  <div colSpan="2" >{notes}</div>
-                </div>
-
-
-
-              <div className={styles.signUpDate}>
-                תאריך ההצטרפות: {signUpDate}
-
-              </div>
-            </div>
-          </div>
-          <div className={styles.signUpDate}>
-            תאריך ההצטרפות: {signUpDate}
-          </div>
             </div>
           </div>
 
