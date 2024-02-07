@@ -21,7 +21,7 @@ export default function Liel() {
       {/* <CampaignList campaignList={data} /> */}
       {/* <Register/> */}
       {/* <Login/> */}
-      <MessageEdit/>
+      {/* <MessageEdit/> */}
     </div>
   )
 }
