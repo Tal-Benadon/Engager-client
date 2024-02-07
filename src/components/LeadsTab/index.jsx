@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
 import HeadLine from '../HeadLine';
 import TabSwitcher from '../TabSwitcher';
@@ -9,22 +9,27 @@ import styles from './style.module.css'
 
 
 export default function LeadsTab() {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [sortType, setSortType] = useState('date');
+
 
   const campaign = useCampaign();
- if(!Object.keys(campaign).length) return <></>
+  if (!Object.keys(campaign).length) return <></>
+  if (!Object.keys(campaign).length) return <></>
   return (
-    <div>
+    <div className={styles.leadsTab}>
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות נשלחו`}
         icon={"menu"} />
       <TabSwitcher rout={[
-        {tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})`},
-        {tab: `campaign/${campaign._id}/messages`, text: "הודעות"}
-        ]} />
+        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
+      ]} />
+
+      <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
       <div className={styles.LeadListHolder}>
-        <SearchBar />
-        <LeadList />
+        <LeadList sortType={sortType} searchTerm={searchTerm} />
       </div>
     </div>
   )

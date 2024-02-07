@@ -1,6 +1,8 @@
 import timeDateFormat from './timeDateFormat';
 
-const messagesByDate = (data) => {
+// 2024-02-05T15:37:19.097Z
+
+const messagesByDate = (data = []) => {
   const messagesByDate = {};
 
   data.forEach(entry => {
@@ -12,6 +14,7 @@ const messagesByDate = (data) => {
     }
 
     const messageDetails = {
+      ...entry,
       subject: entry.subject,
       formattedDate: formattedDate,
       formattedTime: formattedTime,

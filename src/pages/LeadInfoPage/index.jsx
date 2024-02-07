@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Icon from '../../components/Icon'
-import MessageList from '../../components/MessageList'
+import InfoMessageList from '../../components/InfoMessageList'
 import styles from './style.module.css'
 
 
@@ -17,99 +17,89 @@ import styles from './style.module.css'
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ firstName = "נוי", lastName = "כהן", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "-", signUpDate = "12/03/22", isActive = true }) {
-  
+export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true }) {
 
   //****************************************************************************
-  
+
   //TODO: replace the default props values with this object:
-  // const {firstName, lastName, phoneNumber, email, notes, signUpDate, isActive = true} = userDetils
-  
+  // const {name, phoneNumber, email, notes, signUpDate, isActive = true} = userDetils
+
   //*************************************************************************************************************
 
-  const [isEdit, setIsEdite]=useState(false)
+  const [isEdit, setIsEdite] = useState(false)
 
-  const handleEditClick=() =>{
+  const handleEditClick = () => {
     setIsEdite(true)
 
   }
-  
+
   return (
-    <div>
-      
+    <>
       {isEdit ? (
-                <>
-          ***TODO: Add edit component***
-          <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite}/>
-                  <div className={styles.editPage}></div>
-                </>
-              ) : (
-                <>
-                
+        <>
+          {/* ***TODO: Add edit component*** */}
+          <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite} />
+          <div className={styles.editPage}></div></>)
+        : (<>
+          <div className={styles.info}>
+            <div className={styles.container}>
+              <div className={styles.details}>
+                {name}
+                <div className={styles.isActive}>
+                  {isActive ? (
+                    <>
+                      <div className={styles.greenDot}></div>
+                      <span>פעיל/ה</span>
+                    </>
+                  ) : (
+                    <>
+                      <div className={styles.redDot}></div>
+                      <span>לא פעיל/ה</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
+                nameColor={''} />  </div>
+            </div>
+            <div className={styles.allFields}>
+              <div className={styles.detailsFrame}>
+                <div className={styles.infoCol}>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>שם</div>
+                    <div className={styles.content}>{name}</div>
+                  </div>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>טלפון</div>
+                    <div className={styles.content}>{phoneNumber}</div>
+                  </div>
+                </div>
+                <div className={styles.infoCol}>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>אימייל</div>
+                    <div className={styles.content}>{email}</div>
+                  </div>
+                </div>
+                <div className={styles.infoFullCol}>
+                  <div>
+                    <div colSpan="2" className={styles.miniTitle}>הערות</div>
+                    <div colSpan="2" >{notes}</div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.signUpDate}>
+                תאריך ההצטרפות: {signUpDate}
 
-
-      
-      <div className={styles.info}>
-        <div className={styles.container}>
-          <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
-            nameColor={''} />  </div>
-          <div className={styles.details}>
-            {firstName}{" "}{lastName}
-            <div className={styles.isActive}>
-              {isActive ? (
-                <>
-                  <span>פעיל/ה</span>
-                  <div className={styles.greenDot}></div>
-                </>
-              ) : (
-                <>
-                  <span>לא פעיל/ה</span>
-                  <div className={styles.redDot}></div>
-                </>
-              )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.detailsFrame}>
-          <table>
-            <tbody>
-              <tr>
-                <th>שם משפחה</th><th>שם פרטי</th>
-              </tr>
-              <tr>
-                <td>{lastName}</td><td>{firstName}</td>
-              </tr>
-              <tr>
-                <th>אימייל</th><th>טלפון</th>
-              </tr>
-              <tr>
-                <td>{email}</td><td>{phoneNumber}</td>
-              </tr>
-              <tr>
-                <th colSpan="2">הערות</th>
-              </tr>
-              <tr>
-                <td colSpan="2" >{notes}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div className={styles.signUpDate}>
-            תאריך ההצטרפות: {signUpDate}
-
+          <div className={styles.sentMessagesContainer}>
+            <div className={styles.sentTitle}>הודעות שנשלחו</div>
+            {/* ***TODO: make it only sent messages*** */}
+            <div className={styles.messages}><InfoMessageList /></div>
           </div>
-        </div>
-
-        <div className={styles.sentMessagesContainer}>
-          <div className={styles.sentTitle}>הודעות שנשלחו</div>
-          ***TODO: make it only sent messages***
-
-          <div className={styles.messages}><MessageList /></div>
-        </div>
-      </div>
-                </>
-              )}
-
-    </div>
-    )
+        </>
+        )}
+    </>
+  )
 }

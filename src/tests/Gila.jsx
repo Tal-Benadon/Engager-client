@@ -5,6 +5,8 @@ import Accordion from '../components/Accordion'
 import Login from '../components/Login/Login'
 import Register from '../components/Register'
 import TabSwitcher from '../components/TabSwitcher'
+import HeadLine from '../components/HeadLine'
+import formatDate from '../functions/DateFormat'
 
 export default function Gila() {
   const message = "בלה בלה בלה"
@@ -16,10 +18,10 @@ export default function Gila() {
 
   return (
     <div>
+      {/* <TabSwitcher/> */}
+      {/* <Outlet/> */}
       {/* <CampaignItem/> */}
-      {/* <MessagePage title={title} dateCreate={dateCreate} icon={"icon"} message={message} dateSend={dateSend} timeSend={timeSend} /> */}
-      {/* <Accordion/> */}
-      <TabSwitcher/>
+<Login/>
     </div>
   )
 }
