@@ -6,7 +6,7 @@ import ThreeDots from '../ThreeDotsMenu'
 
 
 
-export default function UserLogoutEdit({ props }) {
+export default function UserLogoutEdit({user={name:"user",avatar:undefined}}) {
     let list = [{
         text: "עריכה",
         icon: "🖊️",
@@ -19,12 +19,11 @@ export default function UserLogoutEdit({ props }) {
         redColor: false
     }]
     return (
-
         <>
             <button className={styles.userInfo}  >
-                <Icon nameIcon={'chevronDown'} nameColor={''} />
-                <div className={styles.user}>רפאל בן זקרי</div>
-                <div> <img src='.//public/user.jfif' className={styles.pictuare} /> </div>
+                <div> <img src={user.avatar} className={styles.pictuare} /> </div>
+                <div className={styles.user}> {user.name} </div>
+              <div className={styles.icon} > <Icon nameIcon={'chevronDown'} nameColor={''} /></div> 
             </button>
         </>
     )
