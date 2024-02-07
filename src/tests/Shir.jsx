@@ -1,7 +1,8 @@
 import React from 'react'
-import LoginPage from '../pages/LoginPage'
-import Register from '../components/Register'
 
+import DayPicker from '../components/DayPicker';
+import TimePicker from '../components/TimePicker';
+import DatePicker from '../components/DatePicker';
 
 
 
@@ -9,9 +10,9 @@ import Register from '../components/Register'
 export default function Shir() {
   return (
     <div>
-     
-     <LoginPage/>
-     
+     <DayPicker/>
+     <TimePicker />
+     <DatePicker/>
     </div>
   )
 }
