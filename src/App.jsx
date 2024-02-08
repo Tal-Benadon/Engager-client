@@ -38,7 +38,6 @@ export default function App() {
         theme="light"
       // transition: 'Bounce'
       />
-      {/* <button onClick={notify}>Notify!</button> */}
     </div>
   )
 }
