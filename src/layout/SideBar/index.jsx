@@ -103,7 +103,6 @@ const deleteLS=()=>{
               content="רשימה חדשה"
             />
           </div>
-          <button onClick={getCamp}>getCamp</button>
         </div>
 
 
