@@ -4,11 +4,25 @@ import Icon from '../../components/Icon'
 import CampaignList from '../../components/CampaignList'
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import DataContext from '../../context/DataContext'
+import NewCampaigenForm from '../../components/NewCampaignForm'
+import api from '../../functions/api'
+import FeedBack from '../../components/FeedBack'
 
 export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
+  const [campaign, setCampaign] = useState([])
+  const { isOpen, setIsOpen } = useContext(DataContext);
+
+  const getCamp = ()=>{
+    api.get("/campaign")
+    .then(res => {setCampaign(res); console.log(campaign.user)})
+  }
+  useEffect(() => {
+    getCamp()
+  }, [])
 
   return (
     <div className={styles.sidebar}>
@@ -17,8 +31,8 @@ export default function SideBar() {
         <ul>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <span>
-              <Icon nameIcon={'search'} nameColor={''} />
               חיפוש
+              <Icon nameIcon={'search'} nameColor={''} />
             </span>
           </li>
           {displaySearchBar &&
@@ -28,43 +42,27 @@ export default function SideBar() {
           }
           <li>
             <NavLink to="/settings">
-              <Icon nameIcon={'setting'} nameColor={''} />
               הגדרות
+              <Icon nameIcon={'setting'} nameColor={''} />
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/fidback">
-              <Icon nameIcon={'thumbsup'} nameColor={''} />
+          {/* <li>
+            <NavLink to="/feedback">
               שליחת פידבק
+              <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
-          <CampaignList searchTerm={searchTerm} campaignList={[
-            {
-              id: "65c0939a5aa397278552a5b5",
-              title: "קורס תפירה 2023_3"
-            },
-            {
-              id: "2",
-              title: "כפר נוער - גיוס תלמידים"
-            },
-            {
-              id: "3",
-              title: "מנויי חדר כושר גבעת שמואל הנביר"
-            },
-            {
-              id: "4",
-              title: "מנויי חדר כושר גבעת שמואל הנביר"
-            }
-          ]
-          } />
-          <div className={styles.item}>
-            <Icon nameIcon={'pluscircle'} nameColor={'create'} />
-            <Button className="create" content="רשימה חדשה" />
+          <CampaignList searchTerm={searchTerm} campaignList={campaign}/>
+          <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
+            <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
+            <Button className="create"
+              content="רשימה חדשה"
+            />
           </div>
         </div>
 
@@ -76,3 +74,21 @@ export default function SideBar() {
     </div>
   )
 }
+
+//   {
+//     id: "65c0939a5aa397278552a5b5",
+//     title: "קורס תפירה 2023_3"
+//   },
+//   {
+//     id: "2",
+//     title: "כפר נוער - גיוס תלמידים"
+//   },
+//   {
+//     id: "3",
+//     title: "מנויי חדר כושר גבעת שמואל הנביר"
+//   },
+//   {
+//     id: "4",
+//     title: "מנויי חדר כושר גבעת שמואל הנביר"
+//   }
+// ]

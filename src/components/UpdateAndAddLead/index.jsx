@@ -48,7 +48,7 @@ export default function UpdateAndAddLead({ details, campaign }) {
         return regexPattern.test(phoneNumber);
     }
 
-    const handleOnSubmit = async (e) => {
+ const handleOnSubmit = async (e) => {
         e.preventDefault()
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
@@ -84,6 +84,7 @@ export default function UpdateAndAddLead({ details, campaign }) {
     }
 
 
+
     return <div className={styles.contanier} >
         {(workOrFinally == 'work')
             ?
@@ -99,7 +100,8 @@ export default function UpdateAndAddLead({ details, campaign }) {
                 <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
                 <div className={styles.buttons}>
                     <Button content='שמירה' />
-                    <Button content='ביטול' className='cancel' onClick={handleCancel} />
+                    <Button content='ביטול' className='cancel' onClick={()=>{setIsEdite(false)}} />
+
                 </div>
             </form>
             :

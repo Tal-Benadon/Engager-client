@@ -2,11 +2,7 @@
 
 .button {
     display: flex;
-    /* כדי לאפשר שבר לשורות חדשות */
-    /* flex-wrap: wrap; */
-    /* כדי ליישר את האלמנטים אנכית */
     align-items: center;
-    /* כדי ליישר את האלמנטים אופקית */
     justify-content: space-between;
     padding: 1rem;
 
@@ -20,38 +16,31 @@
     padding: 1rem;
 }
 
-.inputSpace {
-    /* margin: 0 30px; */
-    margin: 10px 30px 30px 30px;
-}
+
 
 .inputText {
     margin: 60px;
     display: flex;
 }
 
-.centerDiv {
-    margin: 0;
-    display: grid;
-    place-items: center;
-    height: 100vh;
-}
+
 
 .register {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    min-height: 300px;
-    width: fit-content;
-    text-align: end;
-    padding: 1rem;
-    border: 1px solid #DEE2E9;
-    border-radius: 8px;
-    /* align-items: center; */
-    flex-direction: column;
-    /* margin: 0 60px; */
+    padding: 2rem;
 }
 
-.star {
-    color: red;
+.error {
+    min-width:  30%;
+    font-size: .8rem;
+    background-color: #e3dcdc;
+    border-radius: 10px;
+    color: #000;
+    transform: scale(1);
+    height: 1.3rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.6rem;
+    overflow-x: auto;
+    text-align: start;
 }
+

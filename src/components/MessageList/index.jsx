@@ -12,20 +12,16 @@ import formatDate from '../../functions/DateFormat';
 // Creator : yehoshua preiser
 export default function MessageList({ searchTerm }) {
 
-  const campaign = useCampaign();
-  // console.log(campaign);
+  const { campaign } =useCampaign();
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-    const messages = messagesByDate(campaign.msg);
-    setOrganizedMessages(messages);
-    // console.log(messages);
+      const messages = messagesByDate(campaign.msg);
+      setOrganizedMessages(messages);
   }, [campaign.msg]);
 
-  // console.log({ organizedMessages });
-
   return (
-    <div className={styles.MessageList}>
+    <div className={styles.messageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index} className={styles.messages}>
           <div className={styles.date}>{date}</div>

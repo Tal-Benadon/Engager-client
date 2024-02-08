@@ -1,82 +1,87 @@
 import styles from "./style.module.css";
 import axios, { Axios } from "axios";
-
 import InputWrapper from "../InputWrapper";
 import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
+import { toast } from "react-toastify";
+import React, { useContext, useEffect, useState } from "react";
+import api from '../../functions/api'
+import DataContext from "../../context/DataContext";
+import CampaignItem from "../CampaignItem";
 
-import React, { useState } from "react";
-
-export default function NewCampaigenForm({ setIsOpen,_id="65ba97e536d6af41e9beb0d1" }) {
-
-  const [user, setUser] = useState("");
+export default function NewCampaigenForm({ setIsOpen, getCamp }) {
+  // const [user, setUser] = useState(userid);
+  const { user, setUser } = useContext(DataContext)
+  console.log("user", user)
   const [campName, setCampName] = useState("");
+  const [starterMsg, setStarterMsg] = useState("");
+  //***TODO: Starter Message*******/
+  //***TODO: Get User Id*******/
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
-    const SubmmitNewCampaigen = {
-      user: _id,
-      campName
+    const body = {
+      // "user": user,
+      "campName": campName,
+      "starterMsg": starterMsg      
     };
 
+    setIsOpen(false);
     try {
-      const response = await axios.post(
-        "http://localhost:2500/campaign",
-
-        SubmmitNewCampaigen,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+      const response = await api.post("/campaign",
+        body
       );
-    //   setIsOpen(false);
-      console.log(response.data);
-      console.log(user, campName);
+      toast.success(response && "נשלח בהצלחה!");
+      console.log(user, campName , starterMsg);
+      getCamp()
     } catch (Error) {
       console.error("Error:", Error);
+      toast.error(Error?.response?.data?.msg || "something went wrong");
     }
-    console.log(user, campName);
   };
 
   return (
     <div className={styles.InputWrapper}>
-    <form onSubmit={handelSubmitNewCampaigen}>
-      <main>
-        <InputWrapper
-          label={(<span className={styles.asterisk}>'*'</span>, "שם רשימה")}
-          subLabel={"שם פנימי שלא יהיה חשוף למצטרפים לרשימה"}
-          to={"campaignMsg"}
-          children={
-            <InputText
-              name="campaignMsg"
-              onChange={(e) => setUser(e.target.value)}
-            />
-          }
-          type="text"
-        />
-        
-
-        <InputWrapper
-          label={"הודעת אפס"}
-          subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}
-          to={"campaignTextArea"}
-          children={
-            <InputTextArea
-              name={"campaignTextArea"}
-              onChange={(e) => setCampName(e.target.value)}
-            />
-          }
-          type="text"
-        />
-
-        <div className={styles.actions}>
-          <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} />
+      <form onSubmit={handelSubmitNewCampaigen}>
+        <div>
+          <h1>רשימה חדשה</h1>
         </div>
-      </main>
-    </form>
+        <main>
+          <InputWrapper
+            label={"שם רשימה"}
+            subLabel={"שם פנימי שלא יהיה חשוף למצטרפים לרשימה"}
+            to={"campaignMsg"}
+            setIsVisible={true}
+            children={
+              <InputText
+                name="campaignMsg"
+                onChange={(e) => setCampName(e.target.value)}
+              />
+            }
+            type="text"
+          />
+<br />
+<br />
+          <InputWrapper
+            label={"הודעת אפס"}
+            subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}
+            to={"campaignTextArea"}
+            children={
+              <InputTextArea
+                name={"campaignTextArea"}
+                onChange={(e) => setStarterMsg(e.target.value)}
+              />
+            }
+            type="text"
+          />
+          {/* onClick={ setIsOpen(false)}  */}
+          <div className={styles.actions}>
+            <Button className={"cancel"} content={"ביטול"} />
+            <Button className={"save"} content={"שמירה"} />
+          </div>
+        </main>
+      </form>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export const useCampaign = () => {
 };
 
 // ככה אמורים להשתמש בזה
-// const campaign = useCampaign();
+// const { campaign } =useCampaign();
 
 // ---------------------------------------------
 export default function CampaignPage() {
@@ -32,22 +32,24 @@ export default function CampaignPage() {
 
   const [campaign, setCampaign] = useState({});
 
-
-  useEffect(() => {
-    if (campId) {
-      api.get("/campaign/" + campId).then(setCampaign)
+  const getCamp=()=>{
+    api.get("/campaign/" + campId).then(setCampaign)
         .catch((error) => {
           toast.error(error?.response?.data?.msg || "somthing want worng");
         });
+  }
 
+  useEffect(() => {
+    if (campId) {
+      
+      getCamp()
     }
   }, [campId]);
 
 
-  console.log("campaign", campaign);
   return (
     <div className={styles.campaignPage}>
-      <CampaignContext.Provider value={campaign}>
+      <CampaignContext.Provider value={{campaign , getCamp} }>
         <Routes>
           <Route path="/leads"
             element={<LeadsTab />}
@@ -59,7 +61,9 @@ export default function CampaignPage() {
             element={
               <div className={styles.tabs}>
                 <LeadsTab />
-               <LeadInfoPage />
+                <span className={styles.infoTab}>
+                  <LeadInfoPage />
+                </span>
               </div>
             }
           />
@@ -67,7 +71,9 @@ export default function CampaignPage() {
             element={
               <div className={styles.tabs}>
                 <MsgTab />
-                <MessagePage />
+                <span className={styles.infoTab}>
+                  <MessagePage />
+                </span>
               </div>
             }
           />

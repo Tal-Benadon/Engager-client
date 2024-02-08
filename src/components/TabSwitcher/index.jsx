@@ -13,7 +13,7 @@ export default function TabSwitcher({ rout = [] }) {
             <NavLink key={r.tab} to={`/${r.tab}`} className={className}>{r.text}</NavLink>
         )}
       </div>
-      <div className={styles.line}></div>
+      {/* <div className={styles.line}></div> */}
     </>
   )
 }

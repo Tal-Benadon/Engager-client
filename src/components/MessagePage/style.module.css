@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .MessagePage {
-    width: 700px;
-    height: 100vh;
-    border-right: 2px solid #E8E8E8;
-    padding: 0 130px 0 130px;
+    min-width: 700px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .message {
@@ -19,7 +20,7 @@
     font-size: 18px;
     padding: 30px 30px 20px 30px;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     font-family: 'Heebo', sans-serif;
 }
 
@@ -28,6 +29,10 @@
     font-size: 12px;
     padding: 0 30px 30px 30px;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     color: #6B6B6B;
+}
+.send{
+    margin-top: 20px;
+    margin-right: auto;
 }

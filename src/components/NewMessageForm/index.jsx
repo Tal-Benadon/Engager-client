@@ -8,40 +8,38 @@ import InputTextArea from "../InputTextArea/index";
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import api from "../../functions/api";
+import { useParams } from "react-router";
+import { toast } from "react-toastify";
 
 // Description :
 // Props : ____________ , _________
 // Creator : ________
 
-export default function NewMassageForm({ setIsOpen }) {
+export default function NewMassageForm({ setIsOpen,  campId , getCamp}) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
-
+console.log({getCamp});
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
 
+    setIsOpen(false);
     try {
-      const response = await axios.post(
-        "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
-        submmit,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+      const response = await api.post(
+        `/campaign/${campId}/messages`,
+        submmit
       );
-      setIsOpen(false);
-      console.log(response.data);
-      console.log(subject, content);
+      toast.success(response && "נשלח בהצלחה!");
+      getCamp()
     } catch (error) {
       console.error("Error:", error);
     }
-    console.log(subject, content);
   };
 
   return (
     <div className={styles.InputWrapper}>
+      
       <form onSubmit={handleSubmit}>
         <main className={styles.main}>
           <InputWrapper
@@ -56,7 +54,8 @@ export default function NewMassageForm({ setIsOpen }) {
             }
             type="text"
           ></InputWrapper>
-
+  <br />
+  <br />
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
@@ -70,7 +69,7 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
-
+        
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
