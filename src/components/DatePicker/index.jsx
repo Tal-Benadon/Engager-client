@@ -6,13 +6,14 @@ import Icon from '../Icon';
 // Creator: shir
 
 
-export default function DatePicker({style, ...props}) {
+export default function DatePicker({style={}, name,date,setDate}) {
    const [mode,setMode] = useState("placeholder")
-   const today = new Date()
+  //  console.log(date,"🌻🌻🌻")
+    // const today = new Date()
   //  .toISOString()
   //  .split('T')[O];
   // const today = new Date().toISOString().split('T')[0];
-console.log(today);
+//console.log(today);
    
   return (
     <div className={styles.datePicker}>
@@ -36,12 +37,14 @@ console.log(today);
           }
           // console.log(e.currentTarget.value)
         }}
-        min={today} 
-        max={'2025-01-01'}
-        name='time'
-        required={true}
-        {...props}
+       min={'2024-01-01'} 
+        max={'2035-01-01'}
+        name={name}
+        
+         onChange={(e) => setDate(e.target.value)}
+       
         />          
+        
         
         <span className={styles.icon} style={{display:mode==="placeholder"?"block":"block"}} 
         onClick={()=>{

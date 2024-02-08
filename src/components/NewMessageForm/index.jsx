@@ -5,6 +5,9 @@ import InputWrapper from "../InputWrapper";
 import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
+import DatePicker from "../DatePicker";
+import TimePicker from "../TimePicker";
+
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
@@ -16,6 +19,10 @@ import { useState } from "react";
 export default function NewMassageForm({ setIsOpen }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
+  const [time, setTime] = useState();
+   const [date, setDate] = useState();
+
+  console.log("setTime",setTime)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,6 +80,29 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
+        <br />
+
+
+        <div className={styles.timing}>
+      <InputWrapper label="תזמון"  
+      subLabel='הזמן הנכון לשלוח את ההודעה זו...' 
+      to = "pickers">
+        <div className={styles.pickers}>
+         <DatePicker
+         name={'date'}
+         date={date}
+         setDate={setDate}
+
+            /> 
+         <TimePicker 
+          name={'time'}
+          time={time}
+          setTime={setTime}
+           />
+         </div>
+      </InputWrapper>
+         </div>
+       
         
 
         <div className={styles.actions}>
