@@ -7,15 +7,18 @@ import SearchBar from '../SearchBar';
 import styles from './style.module.css'
 import Popover from '../Popover';
 import Icon from '../Icon';
-
+import PopUp from '../PopUp';
+import UpdateAndAddLead from '../UpdateAndAddLead';
+import DataContext from '../../context/DataContext'
 
 
 export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortType, setSortType] = useState('date');
+  const { isOpen, setIsOpen } = useContext(DataContext);
 
 
-  const { campaign } =useCampaign();
+  const { campaign } = useCampaign();
   if (!Object.keys(campaign).length) return <></>
   if (!Object.keys(campaign).length) return <></>
   return (
@@ -26,11 +29,13 @@ export default function LeadsTab() {
         icon={<Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"writing"} />,
+            onClick: () => { }
           },
           {
             text: "הוספת ידנית",
-            icon: <Icon nameIcon={"userWithPlus"} />
+            icon: <Icon nameIcon={"userWithPlus"} />,
+            onClick: () => setIsOpen(<UpdateAndAddLead setIsOpen={setIsOpen} campaign={campaign._id} />)
           },
           {
             text: "ייבוא רשימה",
