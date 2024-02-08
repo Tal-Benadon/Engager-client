@@ -10,7 +10,7 @@ import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
 
-export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
+export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   // const [user, setUser] = useState(userid);
   const { user, setUser } = useContext(DataContext)
   console.log("user", user)
@@ -21,19 +21,19 @@ export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
-    const SubmmitNewCampaigen = {
+    const body = {
       // "user": user,
-      "campName": campName,
-      "campaignTextArea": starterMsg
+      "title": campName,
+      "starterMsg": starterMsg
     };
 
     setIsOpen(false);
     try {
       const response = await api.post("/campaign",
-        SubmmitNewCampaigen
+        body
       );
+      console.log(user, campName, starterMsg);
       toast.success(response && "נשלח בהצלחה!");
-      console.log(user, campName);
       getCamp()
     } catch (Error) {
       console.error("Error:", Error);
@@ -61,7 +61,8 @@ export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
             }
             type="text"
           />
-
+          <br />
+          <br />
           <InputWrapper
             label={"הודעת אפס"}
             subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}
@@ -74,10 +75,9 @@ export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
             }
             type="text"
           />
-          {/* onClick={ setIsOpen(false)}  */}
           <div className={styles.actions}>
-            <Button className={"cancel"} content={"ביטול"} />
-            <Button className={"save"} content={"שמירה"} />
+            <Button type={"submit"} className={"save"} content={"שמירה"} />
+            <Button className={"cancel"} content={"ביטול"} onClick={()=>setIsOpen(false)}/>
           </div>
         </main>
       </form>

@@ -11,12 +11,15 @@ import TimePicker from "../TimePicker";
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import api from "../../functions/api";
+import { useParams } from "react-router";
+import { toast } from "react-toastify";
 
 // Description :
 // Props : ____________ , _________
 // Creator : ________
 
-export default function NewMassageForm({ setIsOpen }) {
+export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [time, setTime] = useState();
@@ -30,27 +33,22 @@ export default function NewMassageForm({ setIsOpen }) {
 
     setIsOpen(false);
     try {
-      const response = await axios.post(
-        "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
-        submmit,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+      const response = await api.post(
+        `/campaign/${campId}/messages`,
+        submmit
       );
-      console.log(response.data);
       toast.success(response && "נשלח בהצלחה!");
-      console.log(subject, content);
+      getCamp()
     } catch (error) {
       console.error("Error:", error);
+      toast.error(Error?.response?.data?.msg || "something went wrong");
+
     }
-    console.log(subject, content);
   };
 
   return (
     <div className={styles.InputWrapper}>
-      
+
       <form onSubmit={handleSubmit}>
         <main className={styles.main}>
           <InputWrapper
@@ -65,8 +63,8 @@ export default function NewMassageForm({ setIsOpen }) {
             }
             type="text"
           ></InputWrapper>
-  <br />
-  <br />
+          <br />
+          <br />
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
@@ -80,6 +78,7 @@ export default function NewMassageForm({ setIsOpen }) {
             type="text"
           />
         </main>
+<<<<<<< HEAD
         <br />
 
 
@@ -104,10 +103,13 @@ export default function NewMassageForm({ setIsOpen }) {
          </div>
        
         
+=======
+
+>>>>>>> 2b03e59ec72eb9d51571f94fa0f08a3b605ed94f
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} />
+          <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
         </div>
       </form>
     </div>

@@ -2,13 +2,9 @@
 
 .button {
     display: flex;
-    /* כדי לאפשר שבר לשורות חדשות */
-    /* flex-wrap: wrap; */
-    /* כדי ליישר את האלמנטים אנכית */
     align-items: center;
-    /* כדי ליישר את האלמנטים אופקית */
-    justify-content: space-between;
-    padding: 1rem;
+    justify-content: left;
+    padding-top: 1rem;
 
 }
 
@@ -17,41 +13,10 @@
     color: #000000;
     font-size: 16px;
     font-family: 'Heebo';
-    padding: 1rem;
+    
 }
 
 
-
-.inputText {
-    margin: 60px;
-    display: flex;
-}
-
-.centerDiv {
-    margin: 0;
-    display: grid;
-    place-items: center;
-    height: 100vh;
-}
-
-.register {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    min-height: 300px;
-    width: fit-content;
-    text-align: end;
-    padding: 1rem;
-    border: 1px solid #DEE2E9;
-    border-radius: 8px;
-    /* align-items: center; */
-    flex-direction: column;
-    /* margin: 0 60px; */
-}
-
-.star{
-color: red;
-}
 
 .error {
     min-width:  30%;
@@ -68,3 +33,33 @@ color: red;
     text-align: start;
 }
 
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color:  #F7F7F7;
+   
+}
+
+.allin{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.tabSwitcher{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;  
+}
