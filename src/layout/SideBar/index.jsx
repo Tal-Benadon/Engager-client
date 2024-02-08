@@ -24,6 +24,10 @@ export default function SideBar() {
     getCamp()
   }, [])
 
+const deleteLS=()=>{
+ delete localStorage.token
+}
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
@@ -52,6 +56,12 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li> */}
+          <li onClick={deleteLS}>
+            <NavLink to="/login">
+              התנתקות    
+              <Icon nameIcon={'logout'} nameColor={''} />
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className={styles.lists} >
