@@ -63,9 +63,9 @@ export default function MessagePage() {
                 {/* {console.log(campaign)} */}
             </Accordion>
             <Accordion
-                title={`נשלח ל-${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
+                title={`לא נשלח ל-${campaignHelper.msgNotSentLeads(campaign, message._id)[1]} אנשים`}
                 campaignId={campaign._id}>
-                {campaignHelper.msgSentLeads(campaign, message._id)[0]}
+                {campaignHelper.msgNotSentLeads(campaign, message._id)[0]}
                 {/* {console.log(campaign)} */}
             </Accordion>
         </div>
