@@ -17,6 +17,12 @@ export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortType, setSortType] = useState('date');
   const { isOpen, setIsOpen } = useContext(DataContext);
+  const [isEdit, setIsEdite] = useState(false)
+
+  const handleEditClick = () => {
+    setIsEdite(true)
+  }
+
 
 
   const { campaign } = useCampaign();
@@ -27,7 +33,7 @@ export default function LeadsTab() {
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-         />
+      />
       <TabSwitcher rout={[
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
@@ -45,7 +51,8 @@ export default function LeadsTab() {
           },
           {
             text: "הוספת ידנית",
-            icon: <Icon nameIcon={"userWithPlus"} />
+            icon: <Icon nameIcon={"userWithPlus"} />,
+            onClick: () => setIsOpen(<UpdateAndAddLead setIsOpen={setIsOpen} campaign={campaign._id} />)
           },
           {
             text: "ייבוא רשימה",
