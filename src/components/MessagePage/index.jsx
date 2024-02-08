@@ -16,7 +16,12 @@ export default function MessagePage() {
     const { isOpen, setIsOpen } = useContext(DataContext)
 
     const { messageId } = useParams();
+<<<<<<< HEAD
     const { campaign } =useCampaign() || {};
+=======
+    const { campaign } = useCampaign() || {};
+    console.log({ campaign });
+>>>>>>> dc7dc811df2f5a0d2504d5c9847a5d37e77ec089
     const msgs = campaign.msg || [];
     const message = msgs.find(msg => msg._id == messageId) || {}
 
@@ -24,6 +29,10 @@ export default function MessagePage() {
 
     let msgSent = campaignHelper.msgSentDetails(campaign, message._id)
     console.log(msgSent);
+    
+    let dateSend = '04/05/2025'
+    let timeSend = '12:24'
+    
     return (
         <div className={styles.MessagePage}>
             <HeadLine
@@ -36,9 +45,13 @@ export default function MessagePage() {
                 <div className={styles.messageitem}>
                     {content}
                 </div>
+                    {dateSend && timeSend ?
                 <div className={styles.messageDate}>
-                    יישלח ב-{"dateSend"} | {"timeSend"}
-                </div>
+                    יישלח ב- {dateSend} | {timeSend}
+                </div>: 
+                //ToDo: רינדור מותנה לתזמן הודעה, צריך לחבר לאון קליק את הפןנקציה של תזמון הודעה
+                <div className={styles.messageitem}><button onClick={()=>alert('תזמן')}>תזמן הודעה</button></div>
+                }
             </div>
             <div className={styles.send}>
                 <Button
