@@ -3,8 +3,8 @@
 .button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
+    justify-content: left;
+    padding-top: 1rem;
 
 }
 
@@ -13,21 +13,21 @@
     color: #000000;
     font-size: 16px;
     font-family: 'Heebo';
-    padding: 1rem;
+    
 }
 
 
 
 .inputText {
-    margin: 60px;
-    display: flex;
+    /* margin: 60px; */
+    /* display: flex; */
 }
 
 
 
-.register {
+/* .register {
     padding: 2rem;
-}
+} */
 
 .error {
     min-width:  30%;
@@ -53,7 +53,7 @@
     align-items: center;
     text-align: center;
     background-color:  #F7F7F7;
-    ;
+   
 }
 
 .allin{
@@ -64,6 +64,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 30px;
 }
 
 .tabSwitcher{
