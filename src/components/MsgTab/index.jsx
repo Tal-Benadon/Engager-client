@@ -18,7 +18,14 @@ export default function  MsgTab() {
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-        icon={<Popover fnName={"onClick"} list={[
+       />
+      <TabSwitcher rout={[
+        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
+      ]} />
+      <MsgListHolder />
+      <div className={styles.menu}>
+      <Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
             icon: <Icon nameIcon={"writing"} />
@@ -38,12 +45,8 @@ export default function  MsgTab() {
           },
         ]} >
           <Icon nameIcon={"menu"} />
-        </Popover>} />
-      <TabSwitcher rout={[
-        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
-      ]} />
-      <MsgListHolder />
+        </Popover>
+      </div>
     </div>
   )
 }
