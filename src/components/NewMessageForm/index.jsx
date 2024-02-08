@@ -78,7 +78,6 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
             type="text"
           />
         </main>
-<<<<<<< HEAD
         <br />
 
 
@@ -103,9 +102,7 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
          </div>
        
         
-=======
 
->>>>>>> 2b03e59ec72eb9d51571f94fa0f08a3b605ed94f
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
