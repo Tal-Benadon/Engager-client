@@ -5,7 +5,7 @@ import InputWrapper from '../InputWrapper/index';
 import styles from './style.module.css';
 import Loading from '../Loading'
 
-// const socket5 = io('http://localhost:3000');
+const socket5 = io('http://localhost:3000');
 
 export default function QRCodeComponent() {
   const [code, setCode] = useState('');
