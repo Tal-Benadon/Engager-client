@@ -14,6 +14,7 @@ export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [campaign, setCampaign] = useState([])
+  const [campaignByDate, setCampaignByDate] = useState([])
   const { isOpen, setIsOpen } = useContext(DataContext);
   const nav = useNavigate()
 
@@ -30,9 +31,29 @@ export default function SideBar() {
     getCamp()
   }, [])
 
+  const sortCamps = (camps) => {
+    return camps.slice().sort((a, b) => {
+      const latestMsgA = getLatestMessageDate(a);
+      const latestMsgB = getLatestMessageDate(b);
+      return latestMsgB - latestMsgA;
+    });
+  };
+  
+  const getLatestMessageDate = (campaign) => {
+    if (!campaign.msg || campaign.msg.length === 0) {
+      return new Date(0); // Return a default date if no messages are present
+    }
+    
+    return campaign.msg.reduce((latest, msg) => {
+      const msgDate = new Date(msg.creationDate);
+      return msgDate > latest ? msgDate : latest;
+    }, new Date(0));
+  };
+  
 const deleteLS=()=>{
  delete localStorage.token
 }
+
 
   return (
     <div className={styles.sidebar}>
@@ -80,7 +101,6 @@ const deleteLS=()=>{
               content="רשימה חדשה"
             />
           </div>
-          <button onClick={getCamp}>getCamp</button>
         </div>
 
 
@@ -92,20 +112,3 @@ const deleteLS=()=>{
   )
 }
 
-//   {
-//     id: "65c0939a5aa397278552a5b5",
-//     title: "קורס תפירה 2023_3"
-//   },
-//   {
-//     id: "2",
-//     title: "כפר נוער - גיוס תלמידים"
-//   },
-//   {
-//     id: "3",
-//     title: "מנויי חדר כושר גבעת שמואל הנביר"
-//   },
-//   {
-//     id: "4",
-//     title: "מנויי חדר כושר גבעת שמואל הנביר"
-//   }
-// ]
