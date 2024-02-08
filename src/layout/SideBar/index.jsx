@@ -52,6 +52,10 @@ export default function SideBar() {
     }, new Date(0));
   };
   
+const deleteLS=()=>{
+ delete localStorage.token
+}
+
 
   return (
     <div className={styles.sidebar}>
@@ -81,6 +85,12 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li> */}
+          <li onClick={deleteLS}>
+            <NavLink to="/login">
+              התנתקות    
+              <Icon nameIcon={'logout'} nameColor={''} />
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className={styles.lists} >
