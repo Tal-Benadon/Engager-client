@@ -1,4 +1,4 @@
-import { NavLink, useParams , useNavigate} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import styles from './style.module.css'
 import { useEffect } from 'react'
 
@@ -7,14 +7,8 @@ import { useEffect } from 'react'
 // Creator : gila
 
 export default function CampaignItem({ id, title }) {
-  console.log(location.pathname.split('/')[2]);
   const campId = location.pathname.split('/')[2]
-  // const { campId } = useParams();
   const active = (campId == id);
-const nav = useNavigate()
-  // useEffect(() => {
-  //   console.log("campid:", campId, "id:", id);
-  // }, [nav])
 
   return (
     <div className={styles.item}>
