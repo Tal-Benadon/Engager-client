@@ -23,7 +23,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
     e.preventDefault();
     const body = {
       // "user": user,
-      "campName": campName,
+      "title": campName,
       "starterMsg": starterMsg      
     };
 
