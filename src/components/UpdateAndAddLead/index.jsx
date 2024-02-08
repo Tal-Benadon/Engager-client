@@ -8,15 +8,16 @@ import axios from 'axios'
 import api from '../../functions/api'
 import LeadInfoPage from '../../pages/LeadInfoPage/index'
 import DataContext from '../../context/DataContext'
+import { useCampaign } from '../../pages/CampaignPage';
 
 
 export default function UpdateAndAddLead({ details, campaign, }) {
+    const {  getCamp } = useCampaign();
     console.log({ campaign });
     // להעביר כזה אובייקט.. בקשה...
     // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
 
 
-    const [fetchedCampaigns, setFetchedCampaigns] = useState(null);
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
@@ -73,6 +74,7 @@ export default function UpdateAndAddLead({ details, campaign, }) {
                     .then(res => {
                         console.log('🧸' + res.data)
                         setWorkOrFinally('finally')
+                        getCamp()
                     })
                     .catch(e => {
                         console.log("🚛luliau", e.response.data);
@@ -84,20 +86,6 @@ export default function UpdateAndAddLead({ details, campaign, }) {
         }
     }
 
-    useEffect(() => {
-        if (workOrFinally === 'finally') {
-            // Fetch campaign data upon form submission
-            const fetchCampaign = async () => {
-                try {
-                    const response = await api.get(`/campaign/`);
-                    setFetchedCampaigns(response.data);
-                } catch (error) {
-                    console.error('Error fetching campaign data:', error);
-                }
-            };
-            fetchCampaign();
-        }
-    }, [workOrFinally, campaign]);
 
 
     return <div className={styles.contanier} >
