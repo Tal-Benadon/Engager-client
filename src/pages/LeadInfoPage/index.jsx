@@ -32,8 +32,9 @@ export default function LeadInfoPage() {
   useEffect(() => {
     if (Object.keys(campaign.campaign).length) {
       setLead(campaign.campaign.leads.find(obj => obj.lead._id == leadId));
+      console.log(campaign.campaign.leads)
     }
-  }, [campaign.campaign.leads])
+  }, [campaign.campaign.leads, leadId])
 
   const { name, phone, email, notes, _id } = lead.lead;
   const { joinDate, isActive } = lead
