@@ -22,10 +22,8 @@ export default function SideBar() {
     api.get("/campaign")
       .then(res => {
         console.log("campaign:", res)
-        const sortedCampaigns = sortCamps(res); // Sort the campaigns
-        console.log("sorted campaign:", sortedCampaigns)
-        nav(`campaign/${sortedCampaigns[0]._id}`)
-        setCampaign(sortedCampaigns); // Update the state variable with the sorted array
+        // nav(`campaign/${res[0]._id}`)
+        setCampaign(res)
       })
       .then()
   }
