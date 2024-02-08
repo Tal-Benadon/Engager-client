@@ -54,6 +54,7 @@ const deleteLS=()=>{
             <NavLink to="/feedback">
               שליחת פידבק
               <Icon nameIcon={'thumbsup'} nameColor={''} />
+              
             </NavLink>
           </li> */}
           <li onClick={deleteLS}>

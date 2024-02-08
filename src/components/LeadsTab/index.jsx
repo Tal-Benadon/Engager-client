@@ -10,6 +10,7 @@ import Icon from '../Icon';
 import PopUp from '../PopUp';
 import UpdateAndAddLead from '../UpdateAndAddLead';
 import DataContext from '../../context/DataContext'
+import DelCamp from '../DelCamp';
 
 
 export default function LeadsTab() {
@@ -44,7 +45,8 @@ export default function LeadsTab() {
           {
             text: "מחיקת רשימה",
             icon: <Icon nameIcon={"trash"} />,
-            color: "red"
+            color: "red",
+            onClick: () => setIsOpen(()=><DelCamp setIsOpen={setIsOpen} campaign={campaign._id} />)
           },
         ]} >
           <Icon nameIcon={"menu"} />

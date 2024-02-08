@@ -1,0 +1,10 @@
+.actions {
+    height: 40px;
+
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+
+    margin: 30px;
+}
