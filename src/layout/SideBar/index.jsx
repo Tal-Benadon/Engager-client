@@ -21,7 +21,7 @@ export default function SideBar() {
     api.get("/campaign")
       .then(res => {
         console.log("campaign:", res)
-        nav(`campaign/${res[0]._id}`)
+        // nav(`campaign/${res[0]._id}`)
         setCampaign(res)
       })
       .then()

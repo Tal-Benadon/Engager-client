@@ -19,7 +19,7 @@ export default function LeadsTab() {
 
 
   const { campaign } = useCampaign();
-  if (!Object.keys(campaign).length) return <></>
+  // console.log("campaign: ",campaign)
   if (!Object.keys(campaign).length) return <></>
   return (
     <div className={styles.leadsTab}>
