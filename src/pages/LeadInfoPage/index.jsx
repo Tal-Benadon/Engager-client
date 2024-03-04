@@ -42,7 +42,7 @@ export default function LeadInfoPage() {
     }
   }, [])
 
-  const { name, phone, email, notes, _id } = lead.lead;
+  const { name, phone, email, notes, _id } = lead?.lead || {};
   const { joinDate, isActive } = lead
 
   const signUpDate = formatDate(joinDate)
@@ -53,11 +53,9 @@ export default function LeadInfoPage() {
   }
 
   return (
-    <>
-      {isEdit ? (
-        <>
+    <div className={styles.layout}>
+      {isEdit ? 
           <UpdateAndAddLead details={{ name, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} />
-          <div className={styles.editPage}></div></>)
         : (<>
           <div className={styles.info}>
             <div className={styles.container}>
@@ -120,6 +118,6 @@ export default function LeadInfoPage() {
           </div>
         </>
         )}
-    </>
+    </div>
   )
 }
