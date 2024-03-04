@@ -5,25 +5,25 @@ import InputWrapper from '../InputWrapper/index';
 import styles from './style.module.css';
 import Loading from '../Loading'
 
-const socket5 = io('http://localhost:3000');
+// const socket5 = io('http://localhost:3000');
 
 export default function QRCodeComponent() {
   const [code, setCode] = useState('');
 
-  useEffect(() => {
-    socket5.on('connect', () => {
-      console.log('Connected to server');
-    });
+  // useEffect(() => {
+  //   socket5.on('connect', () => {
+  //     console.log('Connected to server');
+  //   });
 
-    socket5.on('qr', (qr) => {
-      console.log(qr)
-      setCode(qr);
-    });
+  //   socket5.on('qr', (qr) => {
+  //     console.log(qr)
+  //     setCode(qr);
+  //   });
 
-    socket5.on('ready', () => {
-      setCode(":-)");
-    })
-  }, []);
+  //   socket5.on('ready', () => {
+  //     setCode(":-)");
+  //   })
+  // }, []);
 const text = `כיצד להשתמש ב-WhatsApp באינגג'ר
 
 1. פותחים את WhatsApp בטלפון.

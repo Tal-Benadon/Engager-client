@@ -57,7 +57,6 @@ export default function Accordion({ title,  leadList, campaignId }) {
     setIsOpenAcord(prevState => !prevState); // Toggle the state
   };
 console.log("leadList",leadList);
-debugger;
   return (
     <div className={isOpenAcord ? styles.wrapper : styles.closeWrapper}>
       <div className={styles.container}>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './style.module.css'
-import { Route, Routes, useParams } from 'react-router'
+import { Outlet, Route, Routes, useParams } from 'react-router'
 import { createContext } from 'react';
 import LeadsTab from '../../components/LeadsTab/index.jsx';
 import MsgTab from '../../components/MsgTab/index.jsx';
@@ -32,54 +32,27 @@ export default function CampaignPage() {
 
   const [campaign, setCampaign] = useState({});
 
-  const getCamp=()=>{
+  const getCamp = () => {
     api.get("/campaign/" + campId).then(setCampaign)
-        .catch((error) => {
-          toast.error(error?.response?.data?.msg || "somthing want worng");
-        });
+      .catch((error) => {
+        toast.error(error?.response?.data?.msg || "somthing want worng");
+      });
   }
 
   useEffect(() => {
     if (campId) {
-      
+
       getCamp()
     }
   }, [campId]);
 
 
   return (
-    <div className={styles.campaignPage}>
-      <CampaignContext.Provider value={{campaign , getCamp} }>
-        <Routes>
-          <Route path="/leads"
-            element={<LeadsTab />}
-          />
-          <Route path="/messages"
-            element={<MsgTab />}
-          />
-          <Route path="/leads/:leadId"
-            element={
-              <div className={styles.tabs}>
-                <LeadsTab />
-                <span className={styles.infoTab}>
-                  <LeadInfoPage />
-                </span>
-              </div>
-            }
-          />
-          <Route path="/messages/:messageId"
-            element={
-              <div className={styles.tabs}>
-                <MsgTab />
-                <span className={styles.infoTab}>
-                  <MessagePage />
-                </span>
-              </div>
-            }
-          />
-        </Routes>
+    <>
+      <CampaignContext.Provider value={{ campaign, getCamp, setCampaign }}>
+        <Outlet />
       </CampaignContext.Provider>
-    </div>
+    </>
   )
 }
 

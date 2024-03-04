@@ -1,8 +1,6 @@
 .leadsTab{
     display: flex;
     flex-direction: column;
-    width: 400px;
-    min-width: 400px;
     height: 100%;
     border-left: 2px solid var(--grayElement);
     padding: 15px;

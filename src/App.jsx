@@ -9,11 +9,11 @@ export default function App() {
   const notify = () => toast("Wow so easy!");
   let nav = useNavigate()
   useEffect(() => {
-      if (!localStorage.getItem('token')) {
+      if (!localStorage.token) {
           nav('/login');
           return;
       }
-      if (!JSON.parse(localStorage.getItem('user'))) {
+      if (!localStorage.user) {
           nav('/login');
           return;
       }
