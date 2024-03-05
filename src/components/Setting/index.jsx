@@ -8,6 +8,9 @@ import Loading from '../Loading'
 // const socket5 = io('http://localhost:3000');
 
 export default function QRCodeComponent() {
+
+  // TODO: לשפץ את דף ההגדרות ולדאוג שיופיע הקוד QR
+
   const [code, setCode] = useState('');
 
   // useEffect(() => {

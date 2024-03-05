@@ -13,6 +13,10 @@ import axios from 'axios';
 import api from '../../functions/api';
 
 export default function MessagePage() {
+
+    // TODO: לחבר את שליחת ההודעה לווטסאפ
+    // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
+    
     const { isOpen, setIsOpen } = useContext(DataContext)
 
     const { messageId } = useParams();

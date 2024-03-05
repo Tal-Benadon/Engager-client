@@ -33,8 +33,7 @@ const { getCamp} = useCampaign()
           <Button className="create"
           content='הודעה חדשה'
           />
-        </div>
-        
+        </div>  
       </span>
     </>
   )

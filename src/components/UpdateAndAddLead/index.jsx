@@ -11,6 +11,8 @@ import DataContext from '../../context/DataContext'
 
 
 export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
+    // TODO: לטפל בכפתורים של הפופאפ שלא יהיו צמודים להערות
+
     // להעביר כזה אובייקט.. בקשה...
     // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
 

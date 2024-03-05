@@ -23,7 +23,6 @@ export default function App() {
 
   return (
     <div>
-
       <Layout />
       <ToastContainer
         position="bottom-right"

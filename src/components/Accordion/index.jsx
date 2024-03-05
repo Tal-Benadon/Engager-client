@@ -52,6 +52,9 @@ import LeadItem from '../LeadItem';
 import formatDate from '../../functions/DateFormat';
 
 export default function Accordion({ title,  leadList, campaignId }) {
+
+  // TODO: לדאוג לכך שאם יש באקורדיון פחות מ3 אנשים/הודעות שיתפתח לרוחב הנדרש ולא יותר ממה שיש
+
   const [isOpenAcord, setIsOpenAcord] = useState(false);
   const toggleAccordion = () => {
     setIsOpenAcord(prevState => !prevState); // Toggle the state
