@@ -1,10 +1,7 @@
 import React from 'react'
-import SideBar from './SideBar/index'
-import Content from './Content/index'
 import styles from './style.module.css'
 import { Outlet, Route, Routes } from 'react-router';
 import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
 import { ManageContext } from '../context/ManageContext';
 import Test from '../tests/A_MainTest';
 import PopUp from '../components/PopUp';
@@ -34,33 +31,16 @@ export default function Layout() {
               </Route>
               <Route path="messages" element={<><MsgTab /><Outlet /></>}>
                 <Route index element={<></>} />
-                <Route path=":messageId"
-                  element={<MessagePage />}
-                />
+                <Route path=":messageId" element={<MessagePage />} />
               </Route>
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
-
-          {/* <Route path='*' element={
-            <>
-              <SideBar />
-              <Content />
-            
-            </>} /> */}
         </Routes>
-
         <Test />
-
-
-
-
         <PopUp />
-
       </ManageContext>
     </div>
-
-
   )
 }

@@ -30,7 +30,6 @@ export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sort
   ])
 
   const handleSort = (type) => {
-    console.log(type);
     setSortType(type);
   };
 
@@ -61,7 +60,7 @@ export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sort
         className={styles.Input}
       />
       {/* <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/> */}
-      <FaSearch className={styles.SearchIcon} onClick={() => console.log(list)} />
+      <FaSearch className={styles.SearchIcon} onClick={() => {}} />
 
       {sortButton &&
         <span className={styles.SortIcon} >

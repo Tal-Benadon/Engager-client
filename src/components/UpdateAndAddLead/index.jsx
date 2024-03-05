@@ -11,7 +11,6 @@ import DataContext from '../../context/DataContext'
 
 
 export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
-    console.log({ campaign });
     // להעביר כזה אובייקט.. בקשה...
     // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
 
@@ -65,17 +64,14 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                         let result = newData
                         delete result.phone
                         setNewData(result)
-                        console.log('😓😓😓😓');
                     }
                 }
                 // axios.put(`http://localhost:2500/lead/${details.leadId}`, newData)
                 api.put('/lead/' + details.leadId, newData)
                     .then(res => {
-                        console.log('🧸' + res.data)
                         setWorkOrFinally('finally')
                     })
                     .catch(e => {
-                        console.log("🚛luliau", e.response.data);
                         if (e.response.data == "phoneExist") {
                             setErorrState('מספר הטלפון כבר קיים במערכת')
                         }
