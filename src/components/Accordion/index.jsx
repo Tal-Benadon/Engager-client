@@ -56,7 +56,7 @@ export default function Accordion({ title,  leadList, campaignId }) {
   const toggleAccordion = () => {
     setIsOpenAcord(prevState => !prevState); // Toggle the state
   };
-console.log("leadList",leadList);
+
   return (
     <div className={isOpenAcord ? styles.wrapper : styles.closeWrapper}>
       <div className={styles.container}>

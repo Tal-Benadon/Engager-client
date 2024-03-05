@@ -32,13 +32,11 @@ export default function LeadInfoPage() {
   useEffect(() => {
     if (Object.keys(campaign.campaign).length) {
       setLead(campaign.campaign.leads.find(obj => obj.lead._id == leadId));
-      console.log(campaign.campaign.leads)
     }
   }, [campaign.campaign.leads, leadId])
   useEffect(() => {
     if (Object.keys(campaign.campaign).length) {
       setLead(campaign.campaign.leads.find(obj => obj.lead._id == leadId));
-      console.log(campaign.campaign.leads)
     }
   }, [])
 

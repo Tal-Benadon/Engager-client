@@ -19,7 +19,6 @@ import { toast } from "react-toastify";
 export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
-  console.log({ getCamp });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
