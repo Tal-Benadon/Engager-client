@@ -22,7 +22,9 @@ import formatDate from '../../functions/DateFormat'
 // Creator: Refael
 
 export default function LeadInfoPage() {
-
+  // TODO: לרווח בין פרטי הליד להודעות שלנשלחו אליו
+  // TODO: לדאוג שהחלון עריכה יהיה במרכז הקומפוננטה
+  // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
   const campaign = useCampaign();

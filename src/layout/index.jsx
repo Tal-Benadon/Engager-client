@@ -26,11 +26,11 @@ export default function Layout() {
             <Route index element={<>DashboardLayout</>} />
             <Route path='campaign/:campId' element={<CampaignPage />}>
               <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
-                <Route index element={<></>} />
+                <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}</>} />
                 <Route path=":leadId" element={<LeadInfoPage />} />
               </Route>
               <Route path="messages" element={<><MsgTab /><Outlet /></>}>
-                <Route index element={<></>} />
+                <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה להודעות כשאין ראוט להודעה ספציפית */}</>} />
                 <Route path=":messageId" element={<MessagePage />} />
               </Route>
             </Route>
