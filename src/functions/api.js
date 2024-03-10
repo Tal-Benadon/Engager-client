@@ -1,8 +1,6 @@
 import axios from "axios";
 const isProduction = import.meta.env.VITE_PRODUCTION;
 
-console.log(isProduction);
-
 // headers: {
 //     'Content-Type': 'application/json', // Example header, you can add more as needed
 //     'Authorization': 'Bearer yourAccessToken' // Example authorization header

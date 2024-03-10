@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 // Creator: shir
 
 export default function LoginPage() {
-
+  // TODO: למרכז את דף ההתחברות
 
   const navigate = useNavigate()
   const arr = [{ tab: "register", text: "הרשמה" }, { tab: "login", text: "התחברות" }]

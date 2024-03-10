@@ -23,12 +23,11 @@ const nav =useNavigate()
             e.preventDefault();
             const { token, user } = await api.post("/login", formState);
             setUser(user)
-            console.log(user)
             localStorage.token = token
             nav("/")
             // console.log("localStorage", localStorage)
         } catch (err) {
-            console.log({ err })
+            console.error({ err })
         }
     }
     // console.log(formState)
