@@ -28,7 +28,7 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
-          <Route path='activate' element={<ActivateAccount />} />
+          <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
             <Route path='myLeads' element={<MyLeads />} >
