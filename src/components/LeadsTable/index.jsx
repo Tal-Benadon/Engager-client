@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import styles from "./style.module.css"
+import Translet from '../../functions/translate';
 
 export default function LeadsTable({ filterdLeads = [] }) {
 
@@ -17,7 +18,7 @@ export default function LeadsTable({ filterdLeads = [] }) {
                 {filterdLeads.map(lead => <tr>{heads.map(h => {
                     return (
                         h == 'isOnline' ? <td className={lead[h] ? styles.online : styles.offline}>
-                            {lead[h] ? "פעיל" : "לא פעיל"}</td> : <td>{lead[h]}</td>
+                            {lead[h] ? "פעיל" : "לא פעיל"}</td> : <td>{Translet(lead[h])}</td>
                     )
                 })}</tr>)}
             </tbody>
