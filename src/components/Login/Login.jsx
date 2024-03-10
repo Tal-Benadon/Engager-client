@@ -9,6 +9,8 @@ import api from '../../functions/api'
 import DataContext from '../../context/DataContext'
 import { useNavigate } from 'react-router'
 
+import CheckBox from '../CheckBox'
+
 
 // login page.
 // <button /> gets props of content. needs to get ruot to DB to check that user fits password
@@ -64,7 +66,7 @@ const nav =useNavigate()
                     <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} />
                 </InputWrapper>
             </div>
-
+<CheckBox/>
             <div className={styles.button} >
 
                 <Button type='submit' content={'התחבר'} />
