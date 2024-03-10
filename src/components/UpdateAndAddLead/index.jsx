@@ -23,7 +23,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
     const [erorrState, setErorrState] = useState()
     const { isOpen, setIsOpen } = useContext(DataContext);
     const [newData, setNewData] = useState({
-        name: details ? details.name : '',
+        name: details ? details.fullName : '',
         phone: details ? details.phone : '',
         email: details ? details.email : '',
         notes: details ? details.notes : ''
@@ -58,7 +58,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
             setErorrState()
             if (editOrAdd == 'add') {
                 // axios.post('http://localhost:2500/lead/', { data: { ...newData, campaign: campaign } })
-                api.post('/lead/', { data: { ...newData, campaign: campaign } })
+                api.post(`/lead/${campId}`, { data: { ...newData, campaign: campaign } })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -69,7 +69,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                     }
                 }
                 // axios.put(`http://localhost:2500/lead/${details.leadId}`, newData)
-                api.put('/lead/' + details.leadId, newData)
+                api.put(`/lead/${campId}/lead/${leadId}` + details.leadId, newData)
                     .then(res => {
                         setWorkOrFinally('finally')
                     })
