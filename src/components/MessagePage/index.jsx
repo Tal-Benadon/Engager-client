@@ -56,7 +56,7 @@ export default function MessagePage() {
                     content='שלח'
                     onClick={async () => {
                         try {
-                            const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
+                            const res = await api.get(`/campaign/${campaign._id}/msg/${messageId}`)
 
                         } catch (error) {
                             console.error("Error:", error);

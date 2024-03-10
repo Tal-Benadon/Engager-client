@@ -29,11 +29,11 @@ export const useCampaign = () => {
 export default function CampaignPage() {
 
   const { campId } = useParams();
-
+console.log(campId);
   const [campaign, setCampaign] = useState({});
 
   const getCamp = () => {
-    api.get("/campaign/" + campId).then(setCampaign)
+    api.get(`/campaign/${campId}` + campId).then(setCampaign)
       .catch((error) => {
         toast.error(error?.response?.data?.msg || "somthing want worng");
       });
