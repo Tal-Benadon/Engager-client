@@ -31,7 +31,7 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
     setIsOpen(false);
     try {
       const response = await api.post(
-        `/campaign/${campId}/messages`,
+        `/campaign/${campId}/msg`,
         submmit
       );
       toast.success(response && "נשלח בהצלחה!");

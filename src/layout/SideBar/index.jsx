@@ -24,7 +24,7 @@ export default function SideBar() {
   const nav = useNavigate()
 
   const getCamp = () => {
-    api.get("/campaign")
+    api.get(`/campaign`)
       .then(res => {
         // nav(`campaign/${res[0]._id}`)
         setCampaign(res)
