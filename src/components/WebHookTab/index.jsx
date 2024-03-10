@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useCampaign } from '../../pages/CampaignPage';
 import TabSwitcher from '../TabSwitcher';
 import HeadLine from '../HeadLine';
@@ -8,10 +8,14 @@ import MessageEdit from '../MessageEdit';
 import DataContext from '../../context/DataContext';
 import Popover from '../Popover';
 import Icon from '../Icon';
+import WebHook from '../WebHook';
+import { useNavigate } from 'react-router-dom';
 
-export default function MsgTab() {
+export default function WebHookTab() {
   const { campaign } = useCampaign();
   if (!Object.keys(campaign).length) return <></>
+  const nav = useNavigate()
+
 
   return (
     <div className={styles.msgTab}>
@@ -23,29 +27,8 @@ export default function MsgTab() {
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
         { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
-
       ]} />
-      <MsgListHolder />
-      <div className={styles.menu}>
-        {/* TODO: ליישם את האופציות של התפריט הנפתח */}
-        <Popover fnName={"onClick"} list={[
-          {
-            text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
-          },
-          {
-            text: "ייבוא רשימה",
-            icon: <Icon nameIcon={"importList"} />
-          },
-          {
-            text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"trash"} />,
-            color: "red"
-          },
-        ]} >
-          <Icon nameIcon={"menu"} />
-        </Popover>
-      </div>
+      <WebHook />
     </div>
   )
 }
