@@ -17,9 +17,13 @@ import { toast } from "react-toastify";
 // Creator : ________
 
 export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
+
+  // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
+  // TODO: להגביל את אורך שם ההודעה עם מספר תווים מקסימלי
+  // TODO: לעשות שהשימרה תתן התראה שההודעה נשמרה בהצלחה ולא נשלחה בהצלחה
+
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
-  console.log({ getCamp });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };

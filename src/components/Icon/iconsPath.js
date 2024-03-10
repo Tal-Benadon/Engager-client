@@ -141,5 +141,4 @@ let iconsPath = {
    "M15.0001 12H3.62012","M5.85 8.64999L2.5 12L5.85 15.35"], style: { width: "24", height: "24", viewBox: "0 0 24 24" }}
 };
 
-
 export default iconsPath;
