@@ -115,22 +115,31 @@ export default function MyLeads({ leads = 0, activeLeads = 0 }) {
         name: user.name,
         email: user.email,
         phone: user.phone,
-        joinDate: "23/04/2022  23:43",
+        joinDate: "2024-01-27T00:00:00.000Z",
         campaign: "קורס תפירה",
         isOnline: true
     }))
 
+    const heads = [
+        { title: 'name', input: 'text' },
+        { title: 'email', input: 'text' },
+        { title: 'phone', input: 'text' },
+        { title: 'joinDate', input: 'date' },
+        { title: 'campaign', input: 'select', inputValues: ["קורס תפירה", "חדר כושר", "בריכה עירונית"] },
+        { title: 'isOnline', input: '' },
+    ]
+
     return (
-        <DataContext.Provider value={formatedUsers}>
+        <DataContext.Provider value={{ formatedUsers, heads }}>
             <div className={styles.myLeads}>
                 <h2 className={styles.title}>הלידים שלי</h2>
                 <p className={styles.info}>{leads} לידים, {activeLeads} פעילים</p>
                 <div className={styles.tabSwitcher}>
-                <TabSwitcher rout={[
-                    { tab: `myLeads/active`, text: `פעילים` },
-                    { tab: `myLeads/inactive`, text: "לא פעילים" },
-                    { tab: `myLeads/all`, text: "כל הלידים" }
-                ]} />
+                    <TabSwitcher rout={[
+                        { tab: `myLeads/active`, text: `פעילים` },
+                        { tab: `myLeads/inactive`, text: "לא פעילים" },
+                        { tab: `myLeads/all`, text: "כל הלידים" }
+                    ]} />
                 </div>
                 <Outlet />
             </div>

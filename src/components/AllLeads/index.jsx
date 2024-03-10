@@ -3,8 +3,8 @@ import DataContext from '../../context/DataContext'
 import LeadsTable from '../LeadsTable';
 
 export default function AllLeads() {
-    const formatedUsers = useContext(DataContext);
+  const { formatedUsers, heads } = useContext(DataContext);
   return (
-    <LeadsTable filterdLeads={formatedUsers}/>
+    <LeadsTable filterdLeads={formatedUsers} heads={heads} />
   )
 }
