@@ -17,7 +17,7 @@ export default function Login() {
 
     const [formState, setFormState] = useState({})
     const { user, setUser } = useContext(DataContext)
-const nav =useNavigate()
+    const nav = useNavigate()
     async function handleSubmit(e) {
         try {
             e.preventDefault();
@@ -46,30 +46,32 @@ const nav =useNavigate()
         })
     }
 
-
+const toregister=()=>{
+    nav('/register')
+}
 
     return (
-        <form onSubmit={handleSubmit} className={styles.loginDiv}>
-
-            <div >
+        <form onSubmit={handleSubmit} className={styles.inputSpace}>
+            <div className={styles.title}>אנגייג'ר</div>
+            <div className={styles.title2}>התחברות</div>
+            <div>
                 <InputWrapper label={"טלפון"} >
-                    <div className={styles.inputSpace}>
-                    <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} />
-                    </div>
+                    <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                 </InputWrapper>
             </div>
 
             <div >
-                <InputWrapper label={"סיסמה"}>
-                    <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} />
+                <InputWrapper label={"סיסמה"} className={styles.nameinput}>
+                    <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                 </InputWrapper>
             </div>
-
-            <div className={styles.button} >
-
-                <Button type='submit' content={'התחבר'} />
+            <div className={styles.forget}>שכחתי סיסמא</div>
+            <button className={styles.button} type='submit' >התחברות</button>
+            <button className={styles.buttongoogle} type='submit' > <img src="google.png" alt="" /> התחברות באמצעות גוגל</button>
+            <div className={styles.notlogin}>
+                <div className={styles.notlogin1}>עדיין לא רשומים?</div>
+                <div onClick={toregister} className={styles.notlogin2}>הרשמה זה ממש כאן</div>
             </div>
-
         </form>
     )
 }
