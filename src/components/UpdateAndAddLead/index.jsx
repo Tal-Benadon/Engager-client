@@ -23,7 +23,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
     const [erorrState, setErorrState] = useState()
     const { isOpen, setIsOpen } = useContext(DataContext);
     const [newData, setNewData] = useState({
-        name: details ? details.name : '',
+        name: details ? details.fullName : '',
         phone: details ? details.phone : '',
         email: details ? details.email : '',
         notes: details ? details.notes : ''
