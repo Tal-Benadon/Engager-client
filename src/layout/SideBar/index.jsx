@@ -64,6 +64,12 @@ export default function SideBar() {
       <div className={styles.sidebartop}>
         <h1>אנגייג׳ר</h1>
         <ul>
+          <li>
+          <NavLink to="/myLeads">
+              כל הלידים שלי
+              <Icon nameIcon={'importList'} nameColor={''} />
+            </NavLink>
+          </li>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <span>
               חיפוש
