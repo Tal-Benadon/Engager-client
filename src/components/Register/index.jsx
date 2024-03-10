@@ -73,18 +73,39 @@ export default function Register() {
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.title}>אנגייג'ר</div>
                     <div className={styles.title2}>הרשמה</div>
-                    <div className={styles.inputSpace}>
+                        <InputWrapper label={"שם"} setIsVisible={true} >
+                            <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                        </InputWrapper>
+
+                        {/* <InputWrapper label={"טלפון"} setIsVisible={true} >
+                            <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
+                            {errorForm.phone &&
+                                <div className={styles.error}>{errorForm.phone}</div>}
+                        </InputWrapper> */}
+
                         <InputWrapper label={"אמייל"} setIsVisible={true} >
                             <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} className={styles.input} />
                             {errorForm.email &&
                                 <div className={styles.error}>{errorForm.email}</div>}
                         </InputWrapper>
-                    </div>
+
+                        {/* <InputWrapper label={"סיסמה"} setIsVisible={true} >
+                            <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} className={styles.input} />
+                            {errorForm.password &&
+                                <div className={styles.error}>{errorForm.password}</div>}
+                        </InputWrapper>
+
+                        <InputWrapper label={"אימות סיסמה"} setIsVisible={true} >
+                            <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} className={styles.input} />
+                        </InputWrapper>
+                        {errorForm.passwordConfirm &&
+                            <div className={styles.error}>{errorForm.passwordConfirm}</div>} */}
+
                     <button className={styles.button} type='submit' >הרשמה</button>
-                        <button className={styles.buttongoogle} type='submit' >
-                            <img src="google.png" alt="" />
-                            הרשמה באמצעות גוגל
-                        </button>
+                    <button className={styles.buttongoogle} type='submit' >
+                        <img src="google.png" alt="" />
+                        הרשמה באמצעות גוגל
+                    </button>
                     <div className={styles.notlogin}>
                         <div className={styles.notlogin1}>כבר רשומים?</div>
                         <div onClick={tologin} className={styles.notlogin2}>התחברות זה ממש כאן</div>
@@ -93,10 +114,5 @@ export default function Register() {
             </div>
         </div>
     )
+
 }
-
-
-
-
-
-
