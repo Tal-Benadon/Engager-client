@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styles from './style.module.css'
-import demo from "../../data/msgs.data.json"
 import messagesByDate from '../../functions/messagesByDate';
 import MessageItem from '../MessageItem';
 import { useCampaign } from '../../pages/CampaignPage';
@@ -16,7 +15,7 @@ export default function MessageList({ searchTerm }) {
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-      const messages = messagesByDate(campaign.msg);
+      const messages = messagesByDate(campaign.msg,"creationDate");
       setOrganizedMessages(messages);
   }, [campaign.msg]);
 

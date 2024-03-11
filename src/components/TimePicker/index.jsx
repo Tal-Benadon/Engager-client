@@ -7,11 +7,7 @@ import Icon from '../Icon';
 
 export default function TimePicker({style = {},name ,time,setTime  }) {
 
-  // const [time, setTime] = useState("00:00"); 
    const [mode,setMode] = useState("placeholder")
-   //  setTime('12:00')
-   // console.log(time,"🌻🌻🌻")
-   // console.log("setTime",setTime)
   return (
     <div className={styles.timePicker}>
               

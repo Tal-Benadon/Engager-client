@@ -40,7 +40,6 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");
     }
-    console.log(user, campName);
   };
 
   return (

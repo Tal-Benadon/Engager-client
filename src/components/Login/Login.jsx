@@ -27,14 +27,10 @@ export default function Login() {
             setUser(user)
             localStorage.token = token
             nav("/")
-            // console.log("localStorage", localStorage)
         } catch (err) {
             console.error({ err })
         }
     }
-    // console.log(formState)
-    // console.log(localStorage.token)
-
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -42,7 +38,6 @@ export default function Login() {
             const newData = { ...old, [name]: value }
             // localStorage.user = JSON.stringify({ ...newData, password: '' })
             if ((newData.passwordConfirm) != (newData.password)) {
-                // console.log(newData);
             }
             return newData
         })

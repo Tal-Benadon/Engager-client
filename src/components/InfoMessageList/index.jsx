@@ -23,7 +23,7 @@ export default function MessageList({ searchTerm , leadId}) {
       const fullMsg =  {...sentMsg, subject:originalMsg.subject, content:originalMsg.content};
       return fullMsg
     })
-    setOrganizedMessages(messagesByDate(fullArr));
+    setOrganizedMessages(messagesByDate(fullArr,"sentDate"));
   }, [leadId]);
 
   return (

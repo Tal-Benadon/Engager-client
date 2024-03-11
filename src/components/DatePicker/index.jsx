@@ -29,7 +29,6 @@ export default function DatePicker({style={}, name,date,setDate}) {
           if (!e.currentTarget.value){
             setMode("placeholder")
           }
-          // console.log(e.currentTarget.value)
         }}
        min={'2024-01-01'} 
         max={'2035-01-01'}
