@@ -24,6 +24,7 @@
     "react-iframe": "^1.8.5",
     "react-qr-code": "^2.0.12",
     "react-router-dom": "^6.22.0",
+    "react-select": "^5.8.0",
     "react-toastify": "^10.0.4",
     "socket.io": "^4.7.4",
     "socket.io-client": "^4.7.4"
