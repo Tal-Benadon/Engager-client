@@ -113,7 +113,7 @@ export default function LeadInfoPage() {
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}
-            <div className={styles.messages}><InfoMessageList /></div>
+            <div className={styles.messages}><InfoMessageList leadId={leadId} campaign={campaign}/></div>
           </div>
         </>
         )}

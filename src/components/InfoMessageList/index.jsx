@@ -3,30 +3,35 @@ import styles from './style.module.css'
 import demo from "../../data/msgs.data.json"
 import messagesByDate from '../../functions/messagesByDate';
 import MessageItem from '../MessageItem';
-import { useCampaign } from '../../pages/CampaignPage';
 import formatTime from '../../functions/timeFormat';
 import formatDate from '../../functions/DateFormat';
+import { useCampaign } from '../../pages/CampaignPage';
 
 // Description : gets a message array from context, maps it to MessageItem component seperated by date, with filter by seach
 // Props : searchTerm from usestate of seachbar
 // Creator : yehoshua preiser
-export default function MessageList({ searchTerm }) {
 
-  const { campaign } =useCampaign();
-  // console.log(campaign);
+export default function MessageList({ searchTerm , leadId, campaign}) {
+  // לא עובד אז לקחנו בפרופס
+  // const {campaign} = useCampaign();
+  // console.log('camp',campaign);
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-    const messages = messagesByDate(campaign.msg);
-    setOrganizedMessages(messages);
-    // console.log(messages);
-  }, [campaign.msg]);
+    const messages = campaign.receivedMsgs?.filter(msg=> msg.leadId == leadId);
+    console.log('!!!',campaign.receivedMsgs);
+    console.log('msg',messages);
+    setOrganizedMessages(messagesByDate(messages));
+  }, [campaign.receivedMsg]);
 
-  // console.log({ organizedMessages });
+  console.log({ organizedMessages });
+  console.log('@@',Object.entries(organizedMessages));
 
   return (
     <div className={styles.MessageList}>
-      {Object.entries(organizedMessages).map(([date, messages], index) => (
+      {
+      (organizedMessages.length>0)?
+      Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index} className={styles.messageListDiv}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
@@ -36,8 +41,8 @@ export default function MessageList({ searchTerm }) {
                   campaignId={campaign._id}
                   msgId={message._id}
                   title={message.subject}
-                  date={formatDate(message.creationDate)}
-                  time={formatTime(message.creationDate)}
+                  date={formatDate(message.sentDate)}
+                  time={formatTime(message.sentDate)}
                 />
               </li>
             ))}
@@ -45,6 +50,7 @@ export default function MessageList({ searchTerm }) {
           </ul>
         </div>
       ))
+      :<div>no msg</div>
       }
     </div >
   );
