@@ -7,12 +7,15 @@ import axios from 'axios'
 import api from '../../functions/api'
 import TabSwitcher from '../../components/TabSwitcher'
 import { useNavigate } from 'react-router-dom'
+import CheckBox from '../CheckBox'
 
 
 // קומפוננטת הרשמת משתמש חדש לא ליד!! 
 
 
 export default function Register() {
+    const [isChecked, setIsChecked] = useState(false);
+
     const fromtemplet = { name: '', phone: '', email: '', password: '', passwordConfirm: '' }
     const [formState, setFormState] = useState(fromtemplet)
     const [errorForm, setErrorForm] = useState(fromtemplet)
@@ -20,9 +23,10 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = formState
-        api.post("/user", data).
-            catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
-
+        api.post("/user", data)
+            .then(res => {console.log(res) ; nav('/login')})
+            .catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
+        
     }
 
     const checkInput = (newData = '', name) => {
@@ -73,39 +77,51 @@ export default function Register() {
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.title}>אנגייג'ר</div>
                     <div className={styles.title2}>הרשמה</div>
-                        <InputWrapper label={"שם"} setIsVisible={true} >
-                            <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                        </InputWrapper>
+                    <InputWrapper label={"שם"} setIsVisible={true} >
+                        <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                    </InputWrapper>
 
-                        {/* <InputWrapper label={"טלפון"} setIsVisible={true} >
-                            <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
-                            {errorForm.phone &&
-                                <div className={styles.error}>{errorForm.phone}</div>}
-                        </InputWrapper> */}
+                    {/* <InputWrapper label={"טלפון"} setIsVisible={true} >
+                        <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
+                        {errorForm.phone &&
+                            <div className={styles.error}>{errorForm.phone}</div>}
+                    </InputWrapper> */}
 
-                        <InputWrapper label={"אמייל"} setIsVisible={true} >
-                            <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} className={styles.input} />
-                            {errorForm.email &&
-                                <div className={styles.error}>{errorForm.email}</div>}
-                        </InputWrapper>
+                    <InputWrapper label={"אמייל"} setIsVisible={true} >
+                        <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} className={styles.input} />
+                        {errorForm.email &&
+                            <div className={styles.error}>{errorForm.email}</div>}
+                    </InputWrapper>
+{/* 
+                    <InputWrapper label={"סיסמה"} setIsVisible={true} >
+                        <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} className={styles.input} />
+                        {errorForm.password &&
+                            <div className={styles.error}>{errorForm.password}</div>}
+                    </InputWrapper>
 
-                        {/* <InputWrapper label={"סיסמה"} setIsVisible={true} >
-                            <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} className={styles.input} />
-                            {errorForm.password &&
-                                <div className={styles.error}>{errorForm.password}</div>}
-                        </InputWrapper>
-
-                        <InputWrapper label={"אימות סיסמה"} setIsVisible={true} >
-                            <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} className={styles.input} />
-                        </InputWrapper>
-                        {errorForm.passwordConfirm &&
-                            <div className={styles.error}>{errorForm.passwordConfirm}</div>} */}
-
-                    <button className={styles.button} type='submit' >הרשמה</button>
-                    <button className={styles.buttongoogle} type='submit' >
-                        <img src="google.png" alt="" />
-                        הרשמה באמצעות גוגל
-                    </button>
+                    <InputWrapper label={"אימות סיסמה"} setIsVisible={true} >
+                        <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} className={styles.input} />
+                    </InputWrapper>
+                    {errorForm.passwordConfirm &&
+                        <div className={styles.error}>{errorForm.passwordConfirm}</div>}*/}
+                    <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} /> 
+                    {isChecked ?
+                        <div>
+                            <button className={styles.button} type='submit' >הרשמה</button>
+                            <button className={styles.buttongoogle} type='submit' >
+                                <img src="google.png" alt="" />
+                                הרשמה באמצעות גוגל
+                            </button>
+                        </div>
+                        :
+                        <div>
+                            <div className={styles.button1}>הרשמה</div>
+                            <div className={styles.buttongoogle1}>
+                                <img src="google.png" alt="" />
+                                הרשמה באמצעות גוגל
+                            </div>
+                        </div>
+                    }
                     <div className={styles.notlogin}>
                         <div className={styles.notlogin1}>כבר רשומים?</div>
                         <div onClick={tologin} className={styles.notlogin2}>התחברות זה ממש כאן</div>
