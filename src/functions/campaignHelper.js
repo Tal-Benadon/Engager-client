@@ -179,10 +179,7 @@ function msgSentLeads(campaignObj, msgId) {
 function msgNotSentLeads(campaignObj, msgId) {
     const sentLeads = msgSentLeads(campaignObj, msgId);
     const leadIds = sentLeads?.map(s => s._id);
-    if (leadIds?.length > 0)
-    return campaignObj.leads
-        .filter(cl => !leadIds.find(l => l._id == cl._id));
-    return [];
+    return campaignObj.leads.filter(cl => !leadIds.includes(cl._id));
 }
 
 function msgSentDetails(campaign, msgId) {
