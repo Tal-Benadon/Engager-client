@@ -39,7 +39,7 @@ export default function MessageList({ searchTerm , leadId}) {
               < li key={messageIndex} >
                 <MessageItem
                   campaignId={campaign._id}
-                  msgId={message._id}
+                  msgId={message.msgId}
                   title={message.subject}
                   date={formatDate(message.sentDate)}
                   time={formatTime(message.sentDate)}
