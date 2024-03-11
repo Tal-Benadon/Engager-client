@@ -169,20 +169,20 @@
 // let leadId = '65c09f8d18d7ccaa7d56a557'
 
 function msgSentLeads(campaignObj, msgId) {
-    const msgObject = campaignObj?.msg?.find?.(msgObj => msgObj._id === msgId)
-    return msgObject?.leads?.map(l => {
-        let fullLead = campaignObj.leads.find(ll => ll.lead._id == l.lead)
-        return { ...fullLead.lead, receptionDate: l.receptionDate }
-    })
+    const recivedMsg = campaignObj?.receivedMsgs?.filter(msg => msg.msgId === msgId);
+    return recivedMsg?.map(rm => {
+        let fullLead = campaignObj.leads.find(l => l._id == rm.leadId);
+        return { ...fullLead, receptionDate: rm.sentDate }
+    }) 
 }
 
 function msgNotSentLeads(campaignObj, msgId) {
-    const sentLeads = msgSentLeads(campaignObj, msgId)
-    const leadIds = sentLeads.map(s => s._id)
-
+    const sentLeads = msgSentLeads(campaignObj, msgId);
+    const leadIds = sentLeads?.map(s => s._id);
+    if (leadIds?.length > 0)
     return campaignObj.leads
-        .filter(cl => !leadIds.includes(cl.lead._id))
-        .map(lead => lead.lead)
+        .filter(cl => !leadIds.find(l => l._id == cl._id));
+    return [];
 }
 
 function msgSentDetails(campaign, msgId) {

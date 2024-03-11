@@ -11,26 +11,28 @@ import { useCampaign } from '../../pages/CampaignPage';
 // Props : searchTerm from usestate of seachbar
 // Creator : yehoshua preiser
 
-export default function MessageList({ searchTerm , leadId, campaign}) {
-  // לא עובד אז לקחנו בפרופס
-  // const {campaign} = useCampaign();
-  // console.log('camp',campaign);
+export default function MessageList({ searchTerm , leadId}) {
+  const {campaign} = useCampaign();
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
     const messages = campaign.receivedMsgs?.filter(msg=> msg.leadId == leadId);
-    console.log('!!!',campaign.receivedMsgs);
-    console.log('msg',messages);
-    setOrganizedMessages(messagesByDate(messages));
-  }, [campaign.receivedMsg]);
+    const msgArr = campaign.msg;
+    const fullArr = messages?.map(sentMsg=> {
+      const originalMsg = msgArr.find(v=> v._id == sentMsg.msgId);
+      const fullMsg =  {...sentMsg, subject:originalMsg.subject, content:originalMsg.content};
+      return fullMsg
+    })
+    setOrganizedMessages(messagesByDate(fullArr));
+  }, [leadId]);
 
-  console.log({ organizedMessages });
-  console.log('@@',Object.entries(organizedMessages));
+  // console.log({ organizedMessages });
+  // console.log('@@',Object.entries(organizedMessages));
 
   return (
     <div className={styles.MessageList}>
       {
-      (organizedMessages.length>0)?
+      (Object.keys(organizedMessages).length>0)?
       Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index} className={styles.messageListDiv}>
           <div className={styles.date}>{date}</div>
