@@ -11,12 +11,15 @@ import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
 
 export default function NewCampaigenForm({ setIsOpen, getCamp }) {
+
+  // TODO: לתקן את השגיאה שקמפיין חדש לא נוצר  
+  // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
+  // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
+
   // const [user, setUser] = useState(userid);
   const { user, setUser } = useContext(DataContext)
   const [campName, setCampName] = useState("");
-  const [starterMsg, setStarterMsg] = useState("");
-  //***TODO: Starter Message*******/
-  //***TODO: Get User Id*******/
+  const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
@@ -35,8 +38,9 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       getCamp()
     } catch (Error) {
       console.error("Error:", Error);
-      toast.error(Error?.response?.data?.msg || "something went wrong");
+      toast.error(Error?.response?.data?.msg || "somthing want worng");
     }
+    console.log(user, campName);
   };
 
   return (
@@ -54,7 +58,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             children={
               <InputText
                 name="campaignMsg"
-                onChange={(e) => setCampName(e.target.value)}
+                onChange={(e) => setUser(e.target.value)}
               />
             }
             type="text"
@@ -68,7 +72,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             children={
               <InputTextArea
                 name={"campaignTextArea"}
-                onChange={(e) => setStarterMsg(e.target.value)}
+                onChange={(e) => setCampName(e.target.value)}
               />
             }
             type="text"
