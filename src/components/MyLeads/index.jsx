@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import TabSwitcher from '../TabSwitcher'
 import { Outlet, useNavigate } from 'react-router-dom'
 import DataContext from '../../context/DataContext';
 import styles from "./style.module.css"
 import api from '../../functions/api';
+import {  toast } from 'react-toastify';
+
 
 
 export default function MyLeads() {
@@ -11,9 +13,10 @@ export default function MyLeads() {
     const nav = useNavigate();
     const [leadsObj, setLeadsObj] = useState({});
     const [activeNum, setActiveNum] = useState(0);
-
+   
+    const {user} = useContext(DataContext);
     useEffect(() => {
-        api.get('/lead/****addUserId****/allLeads')
+        api.get(`/user/${user._id}/leads`)
             .then(setLeadsObj)
             .catch((error) => {
                 toast.error(error?.response?.data?.msg || "somthing want worng");
