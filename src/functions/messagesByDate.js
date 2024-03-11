@@ -6,7 +6,7 @@ const messagesByDate = (data = []) => {
   const messagesByDate = {};
 
   data.forEach(entry => {
-    const creationDate = new Date(entry.creationDate); 
+    const creationDate = new Date(entry.sentDate); 
     const [formattedDate, formattedTime] = timeDateFormat(creationDate);
 
     if (!messagesByDate[formattedDate]) {

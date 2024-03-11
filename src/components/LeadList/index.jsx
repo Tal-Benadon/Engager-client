@@ -24,7 +24,6 @@ export default function LeadList({ searchTerm, sortType }) {
       });
     } else if (sortType === 'date') {
       sortedArray.sort((a, b) => {
-        console.log('a',a, b);
         if (a.joinDate && b.joinDate) {
           return a.joinDate.localeCompare(b.joinDate);
         }
