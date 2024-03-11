@@ -21,10 +21,15 @@ export default function MessagePage() {
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
-    // const msgs = campaign.msg || [];
     const message = campaign?.msg?.find(msg => msg._id == messageId) || {};
 
     const { creationDate, subject, content } = message;
+    console.log('messageId', messageId);
+    console.log('message', message);
+    console.log('subject', subject);
+
+    console.log('campaign', campaign);
+
 
     let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
     console.log('msgSent', msgSent);

@@ -26,9 +26,6 @@ export default function MessageList({ searchTerm , leadId}) {
     setOrganizedMessages(messagesByDate(fullArr));
   }, [leadId]);
 
-  // console.log({ organizedMessages });
-  // console.log('@@',Object.entries(organizedMessages));
-
   return (
     <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
@@ -39,7 +36,7 @@ export default function MessageList({ searchTerm , leadId}) {
               < li key={messageIndex} >
                 <MessageItem
                   campaignId={campaign._id}
-                  msgId={message._id}
+                  msgId={message.msgId}
                   title={message.subject}
                   date={formatDate(message.sentDate)}
                   time={formatTime(message.sentDate)}
