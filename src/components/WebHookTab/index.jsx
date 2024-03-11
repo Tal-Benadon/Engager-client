@@ -28,7 +28,7 @@ export default function WebHookTab() {
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
         { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
       ]} />
-      <WebHook />
+      <WebHook campaign_id={campaign._id} />
     </div>
   )
 }

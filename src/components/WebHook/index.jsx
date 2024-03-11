@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 export default function WebHook({ campaign_id }) {
     const [link, setLink] = useState('65c9d1ae431dbc73b311ee14')
 
-    
+
     const createWebHook = async () => {
         try {
             const res = await api.post('/webhook', { campaign_id })
@@ -20,9 +20,9 @@ export default function WebHook({ campaign_id }) {
     }
 
 
-    useEffect(() => {
-        createWebHook()
-    }, [campaign_id])
+    // useEffect(() => {
+    //     createWebHook()
+    // }, [campaign_id])
 
 
     function copy() {
