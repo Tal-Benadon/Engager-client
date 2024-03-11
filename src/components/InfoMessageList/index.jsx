@@ -31,9 +31,7 @@ export default function MessageList({ searchTerm , leadId}) {
 
   return (
     <div className={styles.MessageList}>
-      {
-      (Object.keys(organizedMessages).length>0)?
-      Object.entries(organizedMessages).map(([date, messages], index) => (
+      {Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index} className={styles.messageListDiv}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
@@ -51,9 +49,7 @@ export default function MessageList({ searchTerm , leadId}) {
 
           </ul>
         </div>
-      ))
-      :<div>no msg</div>
-      }
+      ))}
     </div >
   );
 }
