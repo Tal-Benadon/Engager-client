@@ -11,12 +11,10 @@ import DataContext from '../../context/DataContext'
 import { useCampaign } from '../../pages/CampaignPage';
 
 
-export default function UpdateAndAddLead({ details, campaign, }) {
-    const {  getCamp } = useCampaign();
-    console.log({ campaign });
-    // להעביר כזה אובייקט.. בקשה...
-    // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
-
+export default function UpdateAndAddLead({ details, campaign }) {
+    const { getCamp } = useCampaign();
+    console.log(campaign)
+    const { fullName, email, phone, notes, leadId } = details
 
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
@@ -57,8 +55,7 @@ export default function UpdateAndAddLead({ details, campaign, }) {
         } else {
             setErorrState()
             if (editOrAdd == 'add') {
-                // axios.post('http://localhost:2500/lead/', { data: { ...newData, campaign: campaign } })
-                api.post(`/lead/${campId}`, { data: { ...newData, campaign: campaign } })
+                api.post(`/campaign/${campaign._id}/lead`, { data: { ...newData, campaign: campaign } })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -68,8 +65,7 @@ export default function UpdateAndAddLead({ details, campaign, }) {
                         setNewData(result)
                     }
                 }
-                // axios.put(`http://localhost:2500/lead/${details.leadId}`, newData)
-                api.put(`/lead/${campId}/lead/${leadId}` + details.leadId, newData)
+                api.put(`/campaign/${campaign._id}/lead/${leadId}`, newData)
                     .then(res => {
                         setWorkOrFinally('finally')
                         getCamp()
