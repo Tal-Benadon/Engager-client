@@ -1,6 +1,6 @@
-
-export default function Translet(word) {
+export default function translet(word) {
     let TransletWords = {
+      name: 'שם',
       phone: 'טלפון',
       email: 'אימייל',
       campaign: 'קמפיין',
