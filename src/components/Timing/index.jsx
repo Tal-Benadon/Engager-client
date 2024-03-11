@@ -4,12 +4,13 @@ import DatePicker from '../DatePicker'
 import TimePicker from '../TimePicker'
 
 export default function Timing({style, ...props}) {
+  console.log(props);
   return (
     <div className={styles.timing}>
-      <InputWrapper label="תזמון"  subLabel='הזמן הנכון לשלוח את ההודעה זו...' to = "">
+      <InputWrapper label="תזמון"  subLabel='הזמן הנכון לשלוח את ההודעה זו...' to = "picers">
         <div className={styles.pickers}>
-         <DatePicker {...props}/>
-         <TimePicker {...props} />
+         <DatePicker {...props}  />
+         <TimePicker {...props}  />
         </div>
       </InputWrapper>
         
