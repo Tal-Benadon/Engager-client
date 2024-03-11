@@ -6,6 +6,7 @@ import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 
+
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import api from "../../functions/api";
@@ -29,6 +30,7 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
     const submmit = { subject, content };
 
     setIsOpen(false);
+    
     try {
       const response = await api.post(
         `/campaign/${campId}/msg`,

@@ -10,6 +10,9 @@ import Icon from '../Icon';
 import PopUp from '../PopUp';
 import UpdateAndAddLead from '../UpdateAndAddLead';
 import DataContext from '../../context/DataContext'
+import CampaignInfo from '../CampInfo';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function LeadsTab() {
@@ -23,6 +26,7 @@ export default function LeadsTab() {
   }
 
 
+  const nav = useNavigate()
 
   const { campaign } = useCampaign();
   // console.log("campaign: ",campaign)
@@ -46,7 +50,8 @@ export default function LeadsTab() {
         <Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"writing"}/>,         
+             onClick: () =>  setIsOpen(<CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campId={campaign._id}/>) 
           },
           {
             text: "הוספת ידנית",
@@ -63,6 +68,7 @@ export default function LeadsTab() {
             color: "red"
           },
         ]} >
+      
           <Icon nameIcon={"menu"} />
         </Popover>
       </div>
