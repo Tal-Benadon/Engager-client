@@ -33,7 +33,7 @@ export default function LeadList({ searchTerm, sortType }) {
     }
     setSortedLeadArray(sortedArray);
   }, [sortType, campaign.leads]);
-  console.log(sortedLeadArray);
+  // console.log("sortedLeadArray: ", sortedLeadArray);
   
 
   return (
