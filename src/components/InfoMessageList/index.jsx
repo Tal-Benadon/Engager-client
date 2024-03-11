@@ -26,9 +26,6 @@ export default function MessageList({ searchTerm , leadId}) {
     setOrganizedMessages(messagesByDate(fullArr));
   }, [leadId]);
 
-  // console.log({ organizedMessages });
-  // console.log('@@',Object.entries(organizedMessages));
-
   return (
     <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
