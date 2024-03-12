@@ -1,0 +1,85 @@
+.leadsTable {
+        width: 100%;
+        text-align: center;
+}
+
+.leadsTable th {
+        font-weight: bold;
+        border-bottom: 2px solid var(--main-color);
+        /* margin: 0 10px 0 10px; */
+}
+
+.leadsTable tr {
+        height: 45px;
+}
+
+.leadsTable tr:hover {
+        background-color: rgba(0, 0, 0, 0.076);
+}
+
+#heads:hover {
+        background-color: transparent;
+}
+
+.online {
+        color: var(--main-color);
+        text-decoration: underline;
+        cursor: pointer;
+}
+
+.offline {
+        text-decoration: underline;
+        cursor: pointer;
+}
+
+#filters {
+        height: 70px;
+        position: relative;
+}
+
+#filters:hover {
+        background-color: transparent;
+}
+
+#filters input,
+select {
+        border: 1px solid rgba(222, 226, 233, 1);
+        padding: 5px 12px 5px 12px;
+        border-radius: 4px;
+}
+
+#filters input:focus {
+        outline: 1px solid var(--main-color);
+}
+
+#filters select:focus {
+        outline: 1px solid var(--main-color);
+        box-shadow: 0 0 0 0;
+}
+
+.clear {
+        position: absolute;
+        right: -10px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        /* border: 1px solid black; */
+}
+
+.clear button {
+        background-color: transparent;
+        border: none;
+        height: 100%;
+        width: 23px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+}
+
+.clear button>svg {
+        width: 100%;
+}
+
+.clear button>svg:hover {
+        fill: var(--main-color);
+}

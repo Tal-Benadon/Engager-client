@@ -3,22 +3,12 @@ import Layout from './layout'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router';
-// import Test from './tests/A_MainTest';
+import api from './functions/api';
 
 export default function App() {
   const notify = () => toast("Wow so easy!");
   let nav = useNavigate()
-  useEffect(() => {
-      if (!localStorage.token) {
-          nav('/login');
-          return;
-      }
-      if (!localStorage.user) {
-          nav('/login');
-          return;
-      }
-      // setUser(JSON.parse(localStorage.getItem("user")))
-  }, [localStorage.token , localStorage.user])
+
 
 
   return (

@@ -16,6 +16,12 @@ import MsgTab from '../components/MsgTab';
 import MessagePage from '../components/MessagePage';
 import CompleteDetails from '../pages/CompleteDetails/CompleteDetails';
 import RedirectGoogle from '../pages/RedirectGoogle/RedirectGoogle';
+import ActivateAccount from '../pages/ActivateAccount';
+import MyLeads from '../components/MyLeads';
+import AllLeads from '../components/AllLeads';
+import AllActiveLeads from '../components/AllActiveLeads';
+import AllInactiveLeads from '../components/AllInactiveLeads';
+
 
 export default function Layout() {
   return (
@@ -26,8 +32,14 @@ export default function Layout() {
           <Route path='register' element={<Register />} />
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
           <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
+          <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
+            <Route path='myLeads' element={<MyLeads />} >
+              <Route path="all" element={<AllLeads />} />
+              <Route path="active" element={<AllActiveLeads />} />
+              <Route path="inactive" element={<AllInactiveLeads />} />
+            </Route>
             <Route path='campaign/:campId' element={<CampaignPage />}>
               <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
                 <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}</>} />

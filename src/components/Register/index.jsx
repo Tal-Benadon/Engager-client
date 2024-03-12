@@ -53,7 +53,7 @@ export default function Register() {
         const { name, value } = event.target
         setFormState(old => {
             const newData = { ...old, [name]: value }
-            localStorage.user = JSON.stringify({ ...newData, password: '' })
+            // localStorage.user = JSON.stringify({ ...newData, password: '' })
             checkInput(newData, [name])
             setFormState(newData)
             return newData
