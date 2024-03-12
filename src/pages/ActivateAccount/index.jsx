@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../functions/api';
 import DataContext from '../../context/DataContext';
+import styles from './style.module.css'
 
 //This component is rendered when a user presses a link that he gets on what'sapp after he first registers his account. 
 //logic in the server will make the user {isActive:True} if the token is not expired and information is correct.
@@ -35,7 +36,7 @@ export default function ActivateAccount() {
 
     //TODO - ADD LOADING ANIMATION? DECIDE ON THE 2.5 SECONDS OF WHAT THE USER SEES AFTER CONFIRMATION
     return (
-        <div>
+        <div >
             Activating Account
         </div>
     )
