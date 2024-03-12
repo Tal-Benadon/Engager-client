@@ -24,7 +24,7 @@ export default function SideBar() {
   const nav = useNavigate()
 
   const getCamp = () => {
-    api.get("/campaign")
+    api.get(`/campaign`)
       .then(res => {
         // nav(`campaign/${res[0]._id}`)
         setCampaign(res)
@@ -64,6 +64,12 @@ export default function SideBar() {
       <div className={styles.sidebartop}>
         <h1>אנגייג׳ר</h1>
         <ul>
+          <li>
+          <NavLink to="/myLeads">
+              כל הלידים שלי
+              <Icon nameIcon={'leads'} nameColor={''} />
+            </NavLink>
+          </li>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <span>
               חיפוש

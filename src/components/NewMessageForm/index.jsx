@@ -5,6 +5,10 @@ import InputWrapper from "../InputWrapper";
 import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
+import DatePicker from "../DatePicker";
+import TimePicker from "../TimePicker";
+
+
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
@@ -24,14 +28,19 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
 
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
+
+  const [time, setTime] = useState();
+   const [date, setDate] = useState();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
 
     setIsOpen(false);
+    
     try {
       const response = await api.post(
-        `/campaign/${campId}/messages`,
+        `/campaign/${campId}/msg`,
         submmit
       );
       toast.success(response && "נשלח בהצלחה!");
@@ -75,6 +84,30 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
             type="text"
           />
         </main>
+        <br />
+
+
+        <div className={styles.timing}>
+      <InputWrapper label="תזמון"  
+      subLabel='הזמן הנכון לשלוח את ההודעה זו...' 
+      to = "pickers">
+        <div className={styles.pickers}>
+         <DatePicker
+         name={'date'}
+         date={date}
+         setDate={setDate}
+
+            /> 
+         <TimePicker 
+          name={'time'}
+          time={time}
+          setTime={setTime}
+           />
+         </div>
+      </InputWrapper>
+         </div>
+       
+        
 
 
         <div className={styles.actions}>

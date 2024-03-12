@@ -14,6 +14,12 @@ import LeadsTab from '../components/LeadsTab';
 import LeadInfoPage from '../pages/LeadInfoPage';
 import MsgTab from '../components/MsgTab';
 import MessagePage from '../components/MessagePage';
+import ActivateAccount from '../pages/ActivateAccount';
+import MyLeads from '../components/MyLeads';
+import AllLeads from '../components/AllLeads';
+import AllActiveLeads from '../components/AllActiveLeads';
+import AllInactiveLeads from '../components/AllInactiveLeads';
+
 
 export default function Layout() {
   return (
@@ -22,8 +28,14 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
+          <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
+            <Route path='myLeads' element={<MyLeads />} >
+              <Route path="all" element={<AllLeads />} />
+              <Route path="active" element={<AllActiveLeads />} />
+              <Route path="inactive" element={<AllInactiveLeads />} />
+            </Route>
             <Route path='campaign/:campId' element={<CampaignPage />}>
               <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
                 <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}</>} />

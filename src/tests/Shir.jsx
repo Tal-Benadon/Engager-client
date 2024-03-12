@@ -12,7 +12,8 @@ export default function Shir() {
   return (
     <div>
        <NewMassageForm/> 
-     <Timing/>
+        
+        {/* <TimePicker/> */}
       </div>
   )
 }
