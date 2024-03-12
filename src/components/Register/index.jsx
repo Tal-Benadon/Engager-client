@@ -7,7 +7,7 @@ import axios from 'axios'
 import api from '../../functions/api'
 import TabSwitcher from '../../components/TabSwitcher'
 import { useNavigate } from 'react-router-dom'
-
+import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 
 // קומפוננטת הרשמת משתמש חדש לא ליד!! 
 
@@ -63,6 +63,9 @@ export default function Register() {
     const tologin = () => {
         nav('/login')
     }
+
+    let root = 'accout/signUpGoogle'
+
     return (
         <div className={styles.container}>
             <div className={styles.circle}></div>
@@ -80,16 +83,16 @@ export default function Register() {
                                 <div className={styles.error}>{errorForm.email}</div>}
                         </InputWrapper>
                     </div>
+                </form>
                     <button className={styles.button} type='submit' >הרשמה</button>
-                        <button className={styles.buttongoogle} type='submit' >
+                    <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
                             <img src="google.png" alt="" />
                             הרשמה באמצעות גוגל
-                        </button>
+                        </a>
                     <div className={styles.notlogin}>
                         <div className={styles.notlogin1}>כבר רשומים?</div>
                         <div onClick={tologin} className={styles.notlogin2}>התחברות זה ממש כאן</div>
                     </div>
-                </form>
             </div>
         </div>
     )
