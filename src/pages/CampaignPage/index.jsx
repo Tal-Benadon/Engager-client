@@ -21,7 +21,6 @@ export const useCampaign = () => {
 // ---------------------------------------------
 export default function CampaignPage() {
   const { campId } = useParams();
-console.log(campId);
   const [campaign, setCampaign] = useState({});
 
   const getCamp = () => {

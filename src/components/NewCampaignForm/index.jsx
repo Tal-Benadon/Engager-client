@@ -16,31 +16,30 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
 
-  // const [user, setUser] = useState(userid);
-  const { user, setUser } = useContext(DataContext)
+  const { user, setUser } = useContext(DataContext);
   const [campName, setCampName] = useState("");
+  const [starterMsg, setStarterMsg] = useState("");
+
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
     const body = {
-      // "user": user,
+      "user": user,
       "title": campName,
       "starterMsg": starterMsg
     };
-
     setIsOpen(false);
     try {
       const response = await api.post("/campaign",
         body
       );
       toast.success(response && "נשלח בהצלחה!");
-      getCamp()
+      getCamp();
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");
     }
-    console.log(user, campName);
   };
 
   return (
@@ -58,7 +57,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             children={
               <InputText
                 name="campaignMsg"
-                onChange={(e) => setUser(e.target.value)}
+                onChange={(e) => setCampName(e.target.value)}
               />
             }
             type="text"
@@ -72,7 +71,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             children={
               <InputTextArea
                 name={"campaignTextArea"}
-                onChange={(e) => setCampName(e.target.value)}
+                onChange={(e) => setStarterMsg(e.target.value)}
               />
             }
             type="text"
