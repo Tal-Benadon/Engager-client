@@ -74,7 +74,7 @@ export default function Accordion({ title,  leadList, campaignId }) {
             <div className={styles.single} key={index}>
               <LeadItem
                 campaignId={campaignId}
-                name={lead.name}
+                name={lead.fullName}
                 email={lead.email}
                 date={formatDate(lead.receptionDate)}
                 id={lead._id} />

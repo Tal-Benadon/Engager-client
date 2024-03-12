@@ -21,12 +21,10 @@ export default function MessagePage() {
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
-    const msgs = campaign.msg || [];
-    const message = msgs.find(msg => msg._id == messageId) || {}
+    const message = campaign?.msg?.find(msg => msg._id == messageId) || {};
 
     const { creationDate, subject, content } = message;
-
-    let msgSent = campaignHelper.msgSentDetails(campaign, message._id)
+    let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
 
     let dateSend = '04/05/2025'
     let timeSend = '12:24'
@@ -67,11 +65,11 @@ export default function MessagePage() {
             </div>
 
             <Accordion
-                title={`נשלח ל-${msgSent.sent?.length} אנשים`}
+                title={`נשלח ל-${msgSent.sent?.length || 0} אנשים`}
                 campaignId={campaign._id}
                 leadList={msgSent.sent} />
             <Accordion
-                title={`לא נשלח ל-${campaign.leads?.length - msgSent.sent?.length} אנשים`}
+                title={`לא נשלח ל-${msgSent.notSent?.length || 0} אנשים`}
                 campaignId={campaign._id}
                 leadList={msgSent.notSent} />
         </div>
