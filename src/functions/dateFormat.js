@@ -18,8 +18,3 @@ export default function formatDate(date) {
 
   return formattedDate;
 }
-
-// Example usage:
-const currentDate = new Date(); // You can replace this with your specific date
-const formattedDate = formatDate(currentDate);
-// console.log(formattedDate);

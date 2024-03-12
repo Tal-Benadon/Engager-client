@@ -2,11 +2,10 @@ import timeDateFormat from './timeDateFormat';
 
 // 2024-02-05T15:37:19.097Z
 
-const messagesByDate = (data = []) => {
+const messagesByDate = (data = [],key) => {
   const messagesByDate = {};
-
   data.forEach(entry => {
-    const creationDate = new Date(entry.creationDate); 
+    const creationDate = new Date(entry[key]); 
     const [formattedDate, formattedTime] = timeDateFormat(creationDate);
 
     if (!messagesByDate[formattedDate]) {

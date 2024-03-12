@@ -9,15 +9,11 @@ import styles from './style.module.css'
 export default function ActivateAccount() {
     nav = useNavigate()
     const { user } = useContext(DataContext)
-    console.log(user);
     const { userToken } = useParams()
-    console.log(userToken);
     useEffect(() => {
         const activateUserApiCall = async () => {
             const response = await api.post(`/user/activate/${userToken}`)
-            console.log(response.success);
             if (response.success === true) {
-                console.log(response.msg);
                 // - activate when all checks are complete, for now we
                 // setTimeout(() => {
                 //     nav('/')

@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
 import styles from "./style.module.css"
 import Icon from '../Icon';
-// Details : the componneta is input type time.
+
+// Details : the componneta is input type time between div of text and div of icon.
 // Creator: shir
 
-export default function TimePicker({style, ...props}) {
+export default function TimePicker({style = {},name ,time,setTime  }) {
+
    const [mode,setMode] = useState("placeholder")
-  // console.log("mode", mode)
-  // console.log("condition", mode === "placeholder")
   return (
     <div className={styles.timePicker}>
               
@@ -28,11 +28,15 @@ export default function TimePicker({style, ...props}) {
             setMode("placeholder")
           }
         }}
-        name='time'  required={true}
-        {...props}
+        name={name}  
+         //value={ time}
+         onChange={(e) => setTime(e.target.value)}
+         
+        // {...props}
         />
                     
-        <span className={styles.icon} style={{display:mode==="placeholder"?"block":"block"}} 
+        <span className={styles.icon} 
+        style={{display:mode==="placeholder"?"block":"block"}} 
         onClick={()=>{
           setMode("edit")
         }}

@@ -20,8 +20,3 @@ export default function formatDateTime(date) {
     return [formattedDate, formattedTime];
   }
   
-  // Example usage:
-  const currentDate = new Date(); // You can replace this with your specific date
-  const formattedDate = formatDateTime(currentDate);
-  // console.log(formattedDate);
-  
