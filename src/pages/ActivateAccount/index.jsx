@@ -6,7 +6,7 @@ import DataContext from '../../context/DataContext';
 //This component is rendered when a user presses a link that he gets on what'sapp after he first registers his account. 
 //logic in the server will make the user {isActive:True} if the token is not expired and information is correct.
 export default function ActivateAccount() {
-    nav = useNavigate()
+    const nav = useNavigate()
     const { user } = useContext(DataContext)
     console.log(user);
     const { userToken } = useParams()
