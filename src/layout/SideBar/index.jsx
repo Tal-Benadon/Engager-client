@@ -67,7 +67,7 @@ export default function SideBar() {
           <li>
           <NavLink to="/myLeads">
               כל הלידים שלי
-              <Icon nameIcon={'importList'} nameColor={''} />
+              <Icon nameIcon={'leads'} nameColor={''} />
             </NavLink>
           </li>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>

@@ -17,6 +17,7 @@ import MessagePage from '../components/MessagePage';
 import WebHook from '../components/WebHook';
 import WebHookTab from '../components/WebHookTab';
 import WebHookPage from '../components/WebHookPage';
+import ActivateAccount from '../pages/ActivateAccount';
 import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
 import AllActiveLeads from '../components/AllActiveLeads';
@@ -30,6 +31,7 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
+          <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
             <Route path='myLeads' element={<MyLeads />} >
