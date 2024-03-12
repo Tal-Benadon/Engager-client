@@ -8,7 +8,7 @@ import { useParams } from 'react-router'
 import formatDate from '../../functions/DateFormat'
 
 
-// Description: This component serves as a user profile page. It is designed to display user information, including first name, last name, email, phone number, registration date, and active status indicator.
+// Description: This component serves as a user profile page. It is designed to display user information, including first fullName, last fullName, email, phone number, registration date, and active status indicator.
 //Use of this component should pass real user data from the DB as props.
 // Props:
 //   - firstName (string): The first name of the user.
@@ -27,23 +27,22 @@ export default function LeadInfoPage() {
   // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
-  const campaign = useCampaign();
+  const { campaign } = useCampaign();
 
-  const [lead, setLead] = useState({ lead: {} })
+  const [lead, setLead] = useState({})
 
   useEffect(() => {
-    if (Object.keys(campaign.campaign).length) {
-      setLead(campaign.campaign.leads.find(obj => obj.lead._id == leadId));
+    if (Object.keys(campaign).length) {
+      setLead(campaign.leads.find(obj => obj._id == leadId));
     }
-  }, [campaign.campaign.leads, leadId])
-  useEffect(() => {
-    if (Object.keys(campaign.campaign).length) {
-      setLead(campaign.campaign.leads.find(obj => obj.lead._id == leadId));
-    }
-  }, [])
+  }, [campaign.leads, leadId])
+  // useEffect(() => {
+  //   if (Object.keys(campaign).length) {
+  //     setLead(campaign.leads.find(obj => obj._id == leadId));
+  //   }
+  // }, [])
 
-  const { name, phone, email, notes, _id } = lead?.lead || {};
-  const { joinDate, isActive } = lead
+  const { fullName, phone, email, notes, _id, joinDate, isActive } = lead || {};
 
   const signUpDate = formatDate(joinDate)
   const [isEdit, setIsEdite] = useState(false)
@@ -54,25 +53,16 @@ export default function LeadInfoPage() {
 
   return (
     <div className={styles.layout}>
-      {isEdit ? 
-          <UpdateAndAddLead details={{ name, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} />
+      {isEdit ?
+        <UpdateAndAddLead details={{ fullName, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} campaign={campaign}/>
         : (<>
           <div className={styles.info}>
             <div className={styles.container}>
               <div className={styles.details}>
                 {name}
                 <div className={styles.isActive}>
-                  {isActive ? (
-                    <>
-                      <div className={styles.greenDot}></div>
-                      <span>פעיל/ה</span>
-                    </>
-                  ) : (
-                    <>
-                      <div className={styles.redDot}></div>
-                      <span>לא פעיל/ה</span>
-                    </>
-                  )}
+                  <div className={isActive ? styles.greenDot : styles.redDot}></div>
+                  <span>{isActive ? 'פעיל/ה' : 'לא פעיל/ה'}</span>
                 </div>
               </div>
               <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
@@ -84,7 +74,7 @@ export default function LeadInfoPage() {
                   <div className={styles.infoCol}>
                     <div className={styles.infoBlock}>
                       <div className={styles.miniTitle}>שם</div>
-                      <div className={styles.content}>{name}</div>
+                      <div className={styles.content}>{fullName}</div>
                     </div>
                     <div className={styles.infoBlock}>
                       <div className={styles.miniTitle}>טלפון</div>
@@ -114,7 +104,7 @@ export default function LeadInfoPage() {
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}
-            <div className={styles.messages}><InfoMessageList /></div>
+            <div className={styles.messages}><InfoMessageList leadId={leadId} /></div>
           </div>
         </>
         )}
