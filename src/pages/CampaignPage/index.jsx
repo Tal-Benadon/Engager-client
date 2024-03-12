@@ -33,11 +33,7 @@ console.log(campId);
   const [campaign, setCampaign] = useState({});
 
   const getCamp = () => {
-<<<<<<< HEAD
     api.get("/campaign/" + campId).then(setCampaign)
-=======
-    api.get(`/campaign/${campId}` + campId).then(setCampaign)
->>>>>>> c81fe53e7ef4611e13b501a05a347fb84d082166
       .catch((error) => {
         toast.error(error?.response?.data?.msg || "somthing want worng");
       });

@@ -8,13 +8,14 @@ import axios from 'axios'
 import api from '../../functions/api'
 import DataContext from '../../context/DataContext'
 import { useNavigate } from 'react-router'
+import TabSwitcher from '../TabSwitcher'
+import { NavLink } from 'react-router-dom'
 
 
 // login page.
 // <button /> gets props of content. needs to get ruot to DB to check that user fits password
 
 export default function Login() {
-
     const [formState, setFormState] = useState({})
     const { user, setUser } = useContext(DataContext)
     const nav = useNavigate()
@@ -46,9 +47,13 @@ export default function Login() {
         })
     }
 
-const toregister=()=>{
-    nav('/register')
-}
+    const toregister = () => {
+        nav('/register')
+    }
+
+    const forgetPassword = () => {
+        nav('/forgetPassword')
+    }
 
     return (
         <form onSubmit={handleSubmit} className={styles.inputSpace}>
@@ -65,7 +70,7 @@ const toregister=()=>{
                     <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                 </InputWrapper>
             </div>
-            <div className={styles.forget}>שכחתי סיסמא</div>
+            <div onClick={forgetPassword}  className={styles.forget} >שכחתי סיסמא</div>
             <button className={styles.button} type='submit' >התחברות</button>
             <button className={styles.buttongoogle} type='submit' > <img src="google.png" alt="" /> התחברות באמצעות גוגל</button>
             <div className={styles.notlogin}>

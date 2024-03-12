@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage';
 import { ManageContext } from '../context/ManageContext';
 import Test from '../tests/A_MainTest';
 import PopUp from '../components/PopUp';
+import ForgetPassword from '../components/ForgetPassword';
 import Register from '../components/Register';
 import DashboardLayout from './DashboardLayout';
 import CampaignPage from '../pages/CampaignPage';
@@ -22,6 +23,7 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
+          <Route path='forgetPassword' element={<ForgetPassword/>} />
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
             <Route path='campaign/:campId' element={<CampaignPage />}>
