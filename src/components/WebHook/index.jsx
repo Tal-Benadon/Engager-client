@@ -35,13 +35,10 @@ export default function WebHook({ campaign_id }) {
         <p className={styles.titele}>Webhook</p>
         <p className={styles.pas}>זוהי הכתובת של המנגנון שמאפשר לנו לקבל את פרטי הנרשמים מהטופס שלך, ברגע שמתבצעת הרשמה</p>
         <div className={styles.link}>
-            <div className={styles.icon} onClick={copy}>
-                <Icon nameIcon={'copy'} />
-            </div>
             <p className={styles.pLink}>{link || 'אין קישור'}</p>
         </div>
         <Button content='העתקת כתובת קישור' className='fill' onClick={copy} />
-        <Button content='ייצר קישור חדש' className='fill' onClick={createWebHook} />
+        <Button content='צור קישור חדש' className='fill' onClick={createWebHook} />
     </div>
 }
 
