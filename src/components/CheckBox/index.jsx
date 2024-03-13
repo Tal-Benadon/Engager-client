@@ -12,7 +12,7 @@ export default function CheckBox({isChecked, setIsChecked}) {
     <div className={styles.CheckBoxFunction}>
       <div onClick={handleCheckBoxChange} className={styles.svg}>
         <svg
-        className={styles.vi}
+        
           width="12"
           height="10"
           viewBox="0 0 12 10"
@@ -26,6 +26,7 @@ export default function CheckBox({isChecked, setIsChecked}) {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
+            style={{ color: 'blue' }}
           />
           : " "
         }
