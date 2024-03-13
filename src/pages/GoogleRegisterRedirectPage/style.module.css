@@ -27,14 +27,11 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
     /* margin-right: 50px; */
-}
-
-.messageHeader {
-    margin-top: 40px;
+    padding-bottom: 60px;
 }
