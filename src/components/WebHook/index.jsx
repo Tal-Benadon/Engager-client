@@ -5,13 +5,13 @@ import api from '../../functions/api'
 import axios from 'axios'
 export default function WebHook({ campaign_id }) {
     const [link, setLink] = useState()
-    useEffect(() => {
-        // axios -לשלוח את התז של הקמפיין , ליצור טוקן, ןלהחזיר אותו לתוך המשתנה
-        // api.post('/webhook' , campaign_id)
-        axios.post('http://localhost:2500/webhook', { campaign_id })
-            .then(res => setLink('https://www.engager.co.il/webhook/' + res.data))
+    // useEffect(() => {
+    //     // axios -לשלוח את התז של הקמפיין , ליצור טוקן, ןלהחזיר אותו לתוך המשתנה
+    //     // api.post('/webhook' , campaign_id)
+    //     axios.post('http://localhost:2500/webhook', { campaign_id })
+    //         .then(res => setLink('https://www.engager.co.il/webhook/' + res.data))
 
-    }, [])
+    // }, [])
     function copy() {
         navigator.clipboard.writeText(link)
     }

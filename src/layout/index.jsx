@@ -14,6 +14,9 @@ import LeadsTab from '../components/LeadsTab';
 import LeadInfoPage from '../pages/LeadInfoPage';
 import MsgTab from '../components/MsgTab';
 import MessagePage from '../components/MessagePage';
+import WebHook from '../components/WebHook';
+import WebHookTab from '../components/WebHookTab'
+import WebHookPage from '../components/WebHookPage';
 
 export default function Layout() {
   return (
@@ -33,6 +36,8 @@ export default function Layout() {
                 <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה להודעות כשאין ראוט להודעה ספציפית */}</>} />
                 <Route path=":messageId" element={<MessagePage />} />
               </Route>
+              <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
+
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
             <Route path='payment' element={<PaymentPage />} />
