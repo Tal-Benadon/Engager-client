@@ -51,12 +51,12 @@ export default function LeadsTab() {
           {
             text: "עריכת רשימה",
             icon: <Icon nameIcon={"writing"}/>,         
-             onClick: () =>  setIsOpen(<CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campId={campaign._id}/>) 
+             onClick: () =>  setIsOpen({component:<CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campId={campaign._id}/>, title:'עריכת רשימה'}) 
           },
           { 
             text: "הוספת ידנית",
             icon: <Icon nameIcon={"userWithPlus"} />,
-            onClick: () => setIsOpen(<UpdateAndAddLead setIsOpen={setIsOpen} campaign={campaign._id} />)
+            onClick: () => setIsOpen({component:<UpdateAndAddLead setIsOpen={setIsOpen} campaign={campaign._id} />, title: 'הוספה ידנית'})
           },
           {
             text: "ייבוא רשימה",

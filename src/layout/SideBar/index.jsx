@@ -62,7 +62,7 @@ export default function SideBar() {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
-        <h1>אנגייג׳ר</h1>
+        <h1 onClick={() => nav('/')}>אנגייג׳ר</h1>
         <ul>
           <li>
           <NavLink to="/myLeads">
