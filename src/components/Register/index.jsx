@@ -1,4 +1,5 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
+
 // import InputText from '../InputText/InputText'
 // import styles from './style.module.css'
 // import Button from '../Button'
@@ -135,7 +136,6 @@
 
 // }
 
-import React from 'react'
 
 export default function Register() {
     const [isChecked, setIsChecked] = useState(false);
