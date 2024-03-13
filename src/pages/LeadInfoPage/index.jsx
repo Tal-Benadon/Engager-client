@@ -27,7 +27,7 @@ export default function LeadInfoPage() {
   // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
-  const {campaign} = useCampaign();
+  const { campaign } = useCampaign();
 
   const [lead, setLead] = useState({})
 
@@ -42,7 +42,7 @@ export default function LeadInfoPage() {
   //   }
   // }, [])
 
-  const { fullName, phone, email, notes, _id,joinDate, isActive } = lead || {};
+  const { fullName, phone, email, notes, _id, joinDate, isActive } = lead || {};
 
   const signUpDate = formatDate(joinDate)
   const [isEdit, setIsEdite] = useState(false)
@@ -53,25 +53,16 @@ export default function LeadInfoPage() {
 
   return (
     <div className={styles.layout}>
-      {isEdit ? 
-          <UpdateAndAddLead details={{ fullName, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} />
+      {isEdit ?
+        <UpdateAndAddLead details={{ fullName, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} campaign={campaign}/>
         : (<>
           <div className={styles.info}>
             <div className={styles.container}>
               <div className={styles.details}>
                 {name}
                 <div className={styles.isActive}>
-                  {isActive ? (
-                    <>
-                      <div className={styles.greenDot}></div>
-                      <span>פעיל/ה</span>
-                    </>
-                  ) : (
-                    <>
-                      <div className={styles.redDot}></div>
-                      <span>לא פעיל/ה</span>
-                    </>
-                  )}
+                  <div className={isActive ? styles.greenDot : styles.redDot}></div>
+                  <span>{isActive ? 'פעיל/ה' : 'לא פעיל/ה'}</span>
                 </div>
               </div>
               <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
@@ -113,7 +104,7 @@ export default function LeadInfoPage() {
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}
-            <div className={styles.messages}><InfoMessageList /></div>
+            <div className={styles.messages}><InfoMessageList leadId={leadId} /></div>
           </div>
         </>
         )}

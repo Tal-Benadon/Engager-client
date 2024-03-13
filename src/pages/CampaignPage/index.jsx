@@ -1,19 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import styles from './style.module.css'
-import { Outlet, Route, Routes, useParams } from 'react-router'
-import { createContext } from 'react';
-import LeadsTab from '../../components/LeadsTab/index.jsx';
-import MsgTab from '../../components/MsgTab/index.jsx';
-import MessagePage from '../../components/MessagePage/index.jsx';
-import LeadInfoPage from '../LeadInfoPage/index.jsx';
-import api from '../../functions/api.js'
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import React, { useContext, useEffect, useState } from "react";
+import { Outlet, Route, Routes, useParams } from "react-router";
+import { createContext } from "react";
+import api from "../../functions/api.js";
+import { toast } from "react-toastify";
 
-// Description : 
+// Description :
 // Props : ____________ , _________
 // Creator : ________
-
 
 // יצירת קונטקסט לקמפיין
 const CampaignContext = createContext();
@@ -27,9 +20,7 @@ export const useCampaign = () => {
 
 // ---------------------------------------------
 export default function CampaignPage() {
-
   const { campId } = useParams();
-console.log(campId);
   const [campaign, setCampaign] = useState({});
 
   const getCamp = () => {
@@ -53,6 +44,5 @@ console.log(campId);
         <Outlet />
       </CampaignContext.Provider>
     </>
-  )
+  );
 }
-

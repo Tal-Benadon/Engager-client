@@ -16,31 +16,29 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
 
-  // const [user, setUser] = useState(userid);
-  const { user, setUser } = useContext(DataContext)
+  const { user, setUser } = useContext(DataContext);
   const [campName, setCampName] = useState("");
   const [starterMsg, setStarterMsg] = useState("");
-  //***TODO: Starter Message*******/
-  //***TODO: Get User Id*******/
+
+  const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
     const body = {
-      // "user": user,
+      "user": user,
       "title": campName,
       "starterMsg": starterMsg
     };
-
     setIsOpen(false);
     try {
       const response = await api.post("/campaign",
         body
       );
       toast.success(response && "נשלח בהצלחה!");
-      getCamp()
+      getCamp();
     } catch (Error) {
       console.error("Error:", Error);
-      toast.error(Error?.response?.data?.msg || "something went wrong");
+      toast.error(Error?.response?.data?.msg || "somthing want worng");
     }
   };
 
