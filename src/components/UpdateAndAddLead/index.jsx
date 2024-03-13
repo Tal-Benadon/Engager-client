@@ -18,7 +18,7 @@ export default function UpdateAndAddLead({ details, campaign }) {
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
-    const { isOpen, setIsOpen } = useContext(DataContext);
+    const {PopUp, setPopUp } = useContext(DataContext);
     const [newData, setNewData] = useState({
         name: details ? details.fullName : '',
         phone: details ? details.phone : '',
@@ -95,7 +95,7 @@ export default function UpdateAndAddLead({ details, campaign }) {
                 <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
                 <div className={styles.buttons}>
                     <Button content='שמירה' />
-                    <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setIsOpen(false) }} />
+                    <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} />
                 </div>
             </form>
             :

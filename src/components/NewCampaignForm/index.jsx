@@ -10,7 +10,7 @@ import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
 
-export default function NewCampaigenForm({ setIsOpen, getCamp }) {
+export default function NewCampaigenForm({ setPopUp, getCamp }) {
 
   // TODO: לתקן את השגיאה שקמפיין חדש לא נוצר  
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
@@ -29,7 +29,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       "title": campName,
       "starterMsg": starterMsg
     };
-    setIsOpen(false);
+    setPopUp(false);
     try {
       const response = await api.post("/campaign",
         body
@@ -78,7 +78,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
           />
           <div className={styles.actions}>
             <Button type={"submit"} className={"save"} content={"שמירה"} />
-            <Button className={"cancel"} content={"ביטול"} onClick={()=>setIsOpen(false)}/>
+            <Button className={"cancel"} content={"ביטול"} onClick={()=>setPopUp(false)}/>
           </div>
         </main>
       </form>

@@ -5,7 +5,7 @@ import Button from '../Button';
 import InputTextArea from '../InputTextArea/index';
 import { useState } from 'react';
 
-export default function MessageEdit({ isOpen, setIsOpen }) {
+export default function MessageEdit({ PopUp, setPopUp }) {
     const [subject, setSubject] = useState('')
     const [content, setContent] = useState('')
 
@@ -41,7 +41,7 @@ export default function MessageEdit({ isOpen, setIsOpen }) {
                         type="text" />
                 </main>
                 <div className={styles.actions}  >
-                    <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
+                    <Button className={"cancel"} content={"ביטול"} onClick={() => setPopUp(false)} />
                     <Button className={"save"} content={"שמירה"} />
                 </div>
             </form>

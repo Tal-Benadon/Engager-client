@@ -19,7 +19,7 @@ export default function SideBar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [campaign, setCampaign] = useState([]);
   const [campaignByDate, setCampaignByDate] = useState([]);
-  const { isOpen, setIsOpen } = useContext(DataContext);
+  const { popUp, setPopUp } = useContext(DataContext);
   const nav = useNavigate();
 
   const getCamp = () => {
@@ -110,12 +110,12 @@ export default function SideBar() {
           <div
             className={styles.item}
             onClick={() =>
-              setIsOpen(              
+              setPopUp(              
                 {
                   title: "קמפיין חדש",
-                  component: <NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />
+                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp} />
                 }
-                //  <NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp}/>
+                //  <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp}/>
               )
             }
           >

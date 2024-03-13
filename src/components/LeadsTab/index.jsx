@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortType, setSortType] = useState("date");
-  const { isOpen, setIsOpen } = useContext(DataContext);
+  const { PopUp, setPopUp } = useContext(DataContext);
   const [isEdit, setIsEdite] = useState(false);
 
   const handleEditClick = () => {
@@ -61,27 +61,27 @@ export default function LeadsTab() {
               text: "עריכת רשימה",
               icon: <Icon nameIcon={"writing"} />,
               onClick: () =>
-                setIsOpen({
+                setPopUp({
                   title: "עריכת רשימה",
                   component: (
                     <CampaignInfo
-                      setIsOpen={setIsOpen}
+                      setPopUp={setPopUp}
                       title={campaign.title}
                       campId={campaign._id}
                     />
                   ),
                 }),
-              //  <CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campId={campaign._id}/>)
+              //  <CampaignInfo setPopUp={setPopUp} title={campaign.title} campId={campaign._id}/>)
             },
             {
               text: "הוספת ידנית",
               icon: <Icon nameIcon={"userWithPlus"} />,
               onClick: () =>
-                setIsOpen({
+                setPopUp({
                   title: "עריכה והוספת אדם לקמפיין",
                   component: (
                     <UpdateAndAddLead
-                      setIsOpen={setIsOpen}
+                      setPopUp={setPopUp}
                       campaign={campaign._id}
                     />
                   ),

@@ -6,7 +6,7 @@ import InputText from "../InputText/InputText";
 import Button from "../Button";
 
 
-export default function CampaignInfo({ campId, title ,setIsOpen }) {
+export default function CampaignInfo({ campId, title ,isPopUp }) {
     const [onecampId, setoneCampId] = useState("");
     const [newTitle, setnewTitle] = useState(title);
     const [isEditing, setIsEditing] = useState(false);
@@ -16,7 +16,7 @@ export default function CampaignInfo({ campId, title ,setIsOpen }) {
     };
   
     const handleSave = async () => {
-      setIsOpen (false)
+      isPopUp (false)
     let nameMessage = { "title": newTitle }
 
       await api.put(`/campaign/${campId}`,{data: nameMessage}).then(() => {
@@ -29,7 +29,7 @@ export default function CampaignInfo({ campId, title ,setIsOpen }) {
     const handleCancel = () => {
       setnewTitle(title);
       setIsEditing(false);
-      setIsOpen(false);
+      isPopUp(false);
     };
   
     useEffect(() => {
