@@ -4,26 +4,26 @@ import api from "../../functions/api";
 import InputWrapper from "../InputWrapper";
 import InputText from "../InputText/InputText";
 import Button from "../Button";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
+import { toast } from "react-toastify";
 
 
 export default function DelCampaign({ campId, title, setIsOpen }) {
   const [onecampId, setoneCampId] = useState("");
   const nav = useNavigate();
-  const {user, setUser} = useContext(DataContext);
+  const { user, setUser } = useContext(DataContext);
 
 
   const handleDelete = async () => {
-    await api.del(`/campaign/${campId}`).catch((error) => {
-      console.error('Error updating title:', error);
-    });
-    setIsOpen(false);
-    console.log('user',user);
-    setUser({...user, campaigns: user?.campaigns?.filter(camp => {
-      camp._id != campId
-    })});
-    nav('../');
+    api.del(`/campaign/${campId}`)
+      .then(() => {
+        setIsOpen(false);
+        window.location.href= '/'
+      })
+      .catch((error) => {
+        toast.error('Error updating title:', error);
+      });
   };
 
   const handleCancel = () => {
