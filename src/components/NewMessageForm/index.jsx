@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 // Props : ____________ , _________
 // Creator : ________
 
-export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
+export default function NewMassageForm({ setPopUp, campId, getCamp }) {
 
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם ההודעה עם מספר תווים מקסימלי
@@ -36,7 +36,7 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
     e.preventDefault();
     const submmit = { subject, content };
 
-    setIsOpen(false);
+    setPopUp(false);
     
     try {
       const response = await api.post(
@@ -112,7 +112,7 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
+          <Button className={"cancel"} content={"ביטול"} onClick={() => setPopUp(false)} />
         </div>
       </form>
     </div>

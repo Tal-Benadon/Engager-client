@@ -105,3 +105,8 @@ svg {
     flex-wrap: nowrap;
     gap: 30px;
 }
+
+.eng:hover {
+    cursor: pointer;
+}
+

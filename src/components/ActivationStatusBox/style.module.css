@@ -14,5 +14,9 @@
 }
 
 .messageHeader {
-    margin-top: 40px;
+    padding-top: 40px;
+}
+
+.messageHeaderWithLoader {
+    padding: 40px 0 40px;
 }

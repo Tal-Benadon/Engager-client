@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import DataContext from '../../context/DataContext';
 import styles from "./style.module.css"
 import api from '../../functions/api';
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
@@ -13,19 +13,23 @@ export default function MyLeads() {
     const nav = useNavigate();
     const [leadsObj, setLeadsObj] = useState({});
     const [activeNum, setActiveNum] = useState(0);
-   
-    const {user} = useContext(DataContext);
-    useEffect(() => {
-        if (location.pathname === '/myLeads') {
-            nav('/myLeads/all');
-        }
 
+    const { user } = useContext(DataContext);
+    useEffect(() => {
+        if (!user) return;
         api.get(`/user/${user._id}/leads`)
             .then(setLeadsObj)
             .catch((error) => {
                 toast.error(error?.response?.data?.msg || "somthing want worng");
             });
-    }, [])
+
+    }, [user]);
+
+    useEffect(() => {
+        if (location.pathname === '/myLeads') {
+            nav('/myLeads/all');
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         if (leadsObj.leads) {
