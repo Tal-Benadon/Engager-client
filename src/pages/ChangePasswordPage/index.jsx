@@ -1,6 +1,5 @@
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom'
-import Login from '../../components/Login/Login'
 import ChangePassword from '../../components/ChangePassword'
 
 
@@ -8,12 +7,6 @@ import ChangePassword from '../../components/ChangePassword'
 export default function ChangePasswordPage() {
 
 
-  const navigate = useNavigate()
-  const arr = [{ tab: "register", text: "הרשמה" }, { tab: "login", text: "התחברות" }]
-
-  // const login = () => {
-  //   navigate(`/login`, { relative: 'path' })
-  // }
 
   return (
     < div className={styles.container}>

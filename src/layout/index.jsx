@@ -32,7 +32,7 @@ export default function Layout() {
       <ManageContext>
         <Routes>
           <Route path='login' element={<LoginPage />} />
-          <Route path='changePassword' element={<ChangePasswordPage />} />
+          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage/>} />
           <Route path='register' element={<Register />} />
 
           <Route path='forgetPassword' element={<ForgetPassword/>} />

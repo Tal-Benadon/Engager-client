@@ -13,7 +13,7 @@ export default function index() {
         e.preventDefault();
         const data = formState
         console.log(data.phone)
-        api.get(`user/${data.phone}`).then(res => console.log("הצליח", res)).
+        api.get(`user/forgetPassword/${data.phone}`).then(res => console.log("הצליח", res)).
             catch((res) => {
                 console.log("מספר טלפון אינו קיים במערכת" , res)
                 setErrorForm({ phone: "מספר טלפון אינו קיים במערכת" })
@@ -46,7 +46,8 @@ export default function index() {
             <div className={styles.allin}>
             <div className={styles.tabSwitcher}>שינוי סיסמה
             <div className={styles.line}></div>
-            </div>            
+            </div>
+            
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.inputSpace}>
                         <div className={styles.title}>אנגייג'ר</div>

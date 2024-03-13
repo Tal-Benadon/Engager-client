@@ -6,7 +6,7 @@ import InputWrapper from '../InputWrapper'
 import axios from 'axios'
 import api from '../../functions/api'
 import TabSwitcher from '../../components/TabSwitcher'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CheckBox from '../CheckBox'
 
 
@@ -18,15 +18,11 @@ export default function ChangePassword() {
     const fromtemplet = {password: '', passwordConfirm: '' }
     const [formState, setFormState] = useState(fromtemplet)
     const [errorForm, setErrorForm] = useState(fromtemplet)
-    const nav = useNavigate()
-    // async function handleSubmit(e) {
-    //     e.preventDefault();
-    //     const data = '0546339290'
-    //     api.put(`user/${data}`, data)
-    //         .then(res => {console.log(res) ; nav('/login')})
-    //         .catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
-        
-    // }
+   const params=useParams()
+   
+    async function controlToken(){
+
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -68,7 +64,8 @@ export default function ChangePassword() {
 
     return (
         <div className={styles.container}>
-            <div className={styles.circle}></div>
+
+            <div className={styles.circle}>{params}</div>
             <div className={styles.allin}>
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.title}>אנגייג'ר</div>
