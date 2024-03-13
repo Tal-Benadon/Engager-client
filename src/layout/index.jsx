@@ -22,11 +22,8 @@ import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
 import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
-<<<<<<< HEAD
 import ChangePasswordPage from '../pages/ChangePasswordPage';
-=======
 import FeedBack from '../components/FeedBack';
->>>>>>> 10c63008958cab375ee8865446ace2df4a700a1d
 
 import Plans from '../components/Plans';
 import api from '../functions/api';
@@ -42,14 +39,11 @@ export default function Layout() {
           <Route path='login' element={<LoginPage />} />
           <Route path='changePassword/:passwordToken' element={<ChangePasswordPage/>} />
           <Route path='register' element={<Register />} />
-<<<<<<< HEAD
 
           <Route path='forgetPassword' element={<ForgetPassword/>} />
 
-=======
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
->>>>>>> 10c63008958cab375ee8865446ace2df4a700a1d
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
 
           <Route element={<DashboardLayout />} >

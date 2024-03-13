@@ -65,7 +65,7 @@ export default function ChangePassword() {
     return (
         <div className={styles.container}>
 
-            <div className={styles.circle}>{params}</div>
+            <div className={styles.circle}></div>
             <div className={styles.allin}>
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.title}>אנגייג'ר</div>
