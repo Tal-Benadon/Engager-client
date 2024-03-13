@@ -129,6 +129,7 @@ export default function Register() {
                         <div className={styles.notlogin1}>כבר רשומים?</div>
                         <div onClick={tologin} className={styles.notlogin2}>התחברות זה ממש כאן</div>
                     </div>
+                </form>
             </div>
         </div>
     )
