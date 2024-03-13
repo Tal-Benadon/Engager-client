@@ -31,7 +31,7 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
-          <Route path='completeDetails/:email' element={<CompleteDetails />} />
+          <Route path='completeDetails/:email/:name?' element={<CompleteDetails />} />
           <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
