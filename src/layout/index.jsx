@@ -17,6 +17,8 @@ import MessagePage from '../components/MessagePage';
 import WebHook from '../components/WebHook';
 import WebHookTab from '../components/WebHookTab';
 import WebHookPage from '../components/WebHookPage';
+import CompleteDetails from '../pages/CompleteDetails/CompleteDetails';
+import RedirectGoogle from '../pages/RedirectGoogle/RedirectGoogle';
 import ActivateAccount from '../pages/ActivateAccount';
 import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
@@ -31,6 +33,8 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
+          <Route path='completeDetails/:email' element={<CompleteDetails />} />
+          <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
