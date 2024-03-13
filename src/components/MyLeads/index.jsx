@@ -15,7 +15,7 @@ export default function MyLeads() {
     const [activeNum, setActiveNum] = useState(0);
 
     const { user } = useContext(DataContext);
-    console.log('user', user)
+    // console.log('user', user)
     useEffect(() => {
         if (!user._id) return;
         api.get(`/user/${user._id}/leads`)
