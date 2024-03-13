@@ -10,7 +10,7 @@ export default function CheckBox({isChecked, setIsChecked}) {
 
   return (
     <div className={styles.CheckBoxFunction}>
-      <div onClick={handleCheckBoxChange} className={styles.svg} >
+      <div onClick={handleCheckBoxChange} className={styles.svg}>
         <svg
         className={styles.vi}
           width="12"

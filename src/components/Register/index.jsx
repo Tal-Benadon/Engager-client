@@ -71,9 +71,9 @@ export default function Register() {
         <div className={styles.container}>
             <div className={styles.circle}></div>
             <div className={styles.allin}>
-                <div className={styles.tabSwitcher}>
+                {/* <div className={styles.tabSwitcher}>
                     <TabSwitcher rout={arr} />
-                </div>
+                </div> */}
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.title}>אנגייג'ר</div>
                     <div className={styles.title2}>הרשמה</div>
