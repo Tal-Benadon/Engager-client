@@ -14,19 +14,19 @@ export default function ActivationStatusBox({ successStatus }) {
     useEffect(() => {
         const delayTimer = setTimeout(() => {
             const { content, additional } = switchCase(successStatus);
-            // setDelayedContent(content);
-            // setAdditionalMessage(additional)
-            // setDelayFinished(true); // Update the state to indicate that the delay has finished
+            setDelayedContent(content);
+            setAdditionalMessage(additional)
+            setDelayFinished(true); // Update the state to indicate that the delay has finished
         }, 3000);
 
         return () => clearTimeout(delayTimer);
     }, [successStatus]);
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         nav(navHandler)
-    //     }, 3000);
-    // }, [navHandler])
+    useEffect(() => {
+        setTimeout(() => {
+            nav(navHandler)
+        }, 3000);
+    }, [navHandler])
 
     const switchCase = (status) => {
         let content = ''
