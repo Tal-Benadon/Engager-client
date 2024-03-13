@@ -13,9 +13,6 @@ import Select from 'react-select';
 
 
 export default function CompleteDetails() {
-
-
-    let fullName = useParams()
     const [formState, setFormState] = useState({})
     const [selectedOption, setSelectedOption] = useState(null);
 
