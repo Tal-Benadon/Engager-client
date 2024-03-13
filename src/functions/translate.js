@@ -19,7 +19,7 @@ export default function translet(word) {
     };
   
     // מציאת התרגום המתאים לפי הפרופרטי שהועבר
-    return  TransletWords[word] || '';
+    return  TransletWords[word] || word;
   }
 
   

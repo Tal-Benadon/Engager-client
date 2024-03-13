@@ -54,7 +54,7 @@ export default function LeadInfoPage() {
   return (
     <div className={styles.layout}>
       {isEdit ?
-        <UpdateAndAddLead details={{ fullName, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} campaign={campaign}/>
+        <UpdateAndAddLead details={{ fullName, email, phone, notes, leadId: _id }} setIsEdite={setIsEdite} campaign={campaign} />
         : (<>
           <div className={styles.info}>
             <div className={styles.container}>

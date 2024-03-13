@@ -4,20 +4,32 @@ import Icon from '../Icon'
 import DataContext from '../../context/DataContext';
 
 export default function PopUp() {
-  //the function needs to recive children and need to recive isOpen and setIsOpen in the props and render them
-  // const [isOpen, setIsOpen] = useState9(false);
-  const { setIsOpen, isOpen } = useContext(DataContext)
+  //the function needs to recive children and need to recive PopUp and setPopUp in the props and render them
+  // const [PopUp, setPopUp] = useState9(false);
+  const { setPopUp, PopUp } = useContext(DataContext)
   return (
     <div className={styles.allpopup}>
-      {isOpen && (
-        <div className={styles.container} onClick={() => setIsOpen(false)}>
-          <div dir='rtl' className={styles.popup} onClick={(e) => { e.stopPropagation() }}>
+      {PopUp && (
+        <div className={styles.container} onClick={() => setPopUp(false)}>
+          <div
+            dir="rtl"
+            className={styles.popup}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+
+            
             <div className={styles.top}>
-              <span className={styles.close} onClick={() => setIsOpen(false)}>
-                <Icon nameIcon={'x'} nameColor={''} />
-              </span>
+              <div>
+                <h1>{PopUp.title}</h1>
+              </div>
+              <div className={styles.close} onClick={() => setPopUp(false)}>
+                <Icon nameIcon={"x"} nameColor={""} />
+              </div>
             </div>
-            {isOpen}
+
+            {PopUp.component}
           </div>
         </div>
       )}

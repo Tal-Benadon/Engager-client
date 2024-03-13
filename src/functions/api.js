@@ -9,9 +9,9 @@ const isProduction = 'false';
 const mainApi = async (method, path, data, headers) => {
   try {
     let fainlPath = path.startsWith("/") ? path.slice(1) : path;
-    let auth = localStorage.token ? { Authorization: localStorage.token } : {};
+    let auth = localStorage.token ? { Authorization: "Bearer " + localStorage.token } : {};
 
-    let baseUrl = isProduction==='true' ? 'https://engager-g262.onrender.com/' : 'http://localhost:2500/';
+    let baseUrl = isProduction === 'true' ? 'https://engager-g262.onrender.com/' : 'http://localhost:2500/';
 
     const url = `${baseUrl}${fainlPath}`;
 

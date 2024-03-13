@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }) {
+export default function FeedBack() {
 
   const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
@@ -20,8 +20,6 @@ export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }
       user: _id,
       message
     };
-
-    // setIsOpen(false); 
     try {
       const response = await axios.post(
         // "http://localhost:2500/campaign",
