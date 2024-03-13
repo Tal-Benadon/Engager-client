@@ -8,8 +8,6 @@ import DataContext from '../../context/DataContext';
 import api from "../../functions/api";
 
 export default function QRCodeComponent() {
-
-  // TODO: לשפץ את דף ההגדרות ולדאוג שיופיע הקוד QR
   const [socket, setSocket] = useState();
   const [code, setCode] = useState('');
   const [isReady, setIsReady] = useState(false);
@@ -39,25 +37,7 @@ export default function QRCodeComponent() {
       setIsReady(true);
     })
   },[])
-
-  // useEffect(() => {
-  //   if(socket){
-
-  //     socket.on('connect', () => {
-  //       console.log('Connected to server');
-  //     });
-      
-  //     socket.on(`qr`, (qr) => {
-  //       console.log(qr)
-  //       setCode(qr);
-  //     });
-      
-  //     socket.on('ready', () => {
-  //       setIsReady(true);
-  //     })
-  //   }
-  //   }, [socket]);
-    
+  
   return (
     <div className={styles.container}>
       {(code.length < 2) ? <Loading className={styles.loading} /> : ""}
