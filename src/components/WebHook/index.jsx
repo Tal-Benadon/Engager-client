@@ -15,8 +15,8 @@ export default function WebHook({ link }) {
 
 
     return <div className={styles.container}>
-        <p className={styles.titele}>Webhook</p>
-        <p className={styles.pas}>זוהי הכתובת של המנגנון שמאפשר לנו לקבל את פרטי הנרשמים מהטופס שלך, ברגע שמתבצעת הרשמה</p>
+        <p className={styles.titele}>קישור  API לדף נחיתה (Webhook)</p>
+        <p className={styles.pas}>זוהי הכתובת של המנגנון שמאפשר לנו לקבל את פרטי הנרשמים מהטופס שלך, ברגע שמתבצעת הרשמה דרך דף נחיתה</p>
         <div className={styles.link}>
             <p className={styles.pLink}>{link || 'אין קישור'}</p>
         </div>

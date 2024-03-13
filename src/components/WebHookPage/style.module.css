@@ -35,3 +35,12 @@
     margin-top: 20px;
     margin-right: auto;
 }
+
+.english {
+    direction: ltr;
+    text-align: left;
+}
+.img{
+    height: 400px;
+    width: 350px;
+}
