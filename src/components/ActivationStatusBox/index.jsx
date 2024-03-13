@@ -69,25 +69,21 @@ const initialTextExpPass = 'בודק את לינק הסיסמא שלך'
 
     return (
         <div className={styles.mainMessageContainer}>
-<<<<<<< HEAD
-            <h1 className={styles.messageHeader}>
-                {delayFinished ? delayedContent : handleInitialText ? initialTextExpPass : initalTextActivation }
-            </h1>
-=======
-
-            {delayFinished ?
-                <h1 className={styles.messageHeader}>{delayedContent}</h1> :
-                <>
-                    <h1 className={styles.messageHeaderWithLoader}>מפעיל את המשתמש שלך, נא להמתין...</h1> <Loading />
-                </>}
-
-
->>>>>>> 0bad6709a4d063a03555aa6ea4b0106c0d3a7bdb
-
-            {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
-
-        </div>
+ {delayFinished ? (
+  delayedContent
+) : (
+  handleInitialText ? (
+    <>
+      <h1 className={styles.messageHeader}>{initialTextExpPass}</h1>
+      <Loading />
+    </>
+  ) : (
+    <h1 className={styles.messageHeader}>{initalTextActivation}</h1>
+  )
+)}
+                    {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
+            </div> 
     )
-}
+                }
 
 
