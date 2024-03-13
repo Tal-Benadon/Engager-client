@@ -37,7 +37,8 @@ export default function LeadsTable({ filterdLeads = [], heads = []
     //             }
     //         ]
     //     }
-    // ], heads = [
+    // ], 
+    // heads = [
     //     { title: 'name', input: 'text' },
     //     { title: 'email', input: 'text' },
     //     { title: 'phone', input: 'number' },

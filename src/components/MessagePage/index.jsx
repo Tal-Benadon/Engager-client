@@ -17,7 +17,7 @@ export default function MessagePage() {
     // TODO: לחבר את שליחת ההודעה לווטסאפ
     // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
 
-    const { isOpen, setIsOpen } = useContext(DataContext)
+    const { PopUp, setPopUp } = useContext(DataContext)
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
@@ -35,7 +35,12 @@ export default function MessagePage() {
                 title={subject}
                 subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
-                iconOnClick={() => setIsOpen(<MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />)}
+                iconOnClick={() => setPopUp({
+                    title:"עריכת הודעה",
+                    component: <MessageEdit isOpen={isOpen} setPopUp={setPopUp} />
+                }
+                
+               )}
             />
             <div className={styles.message}>
                 <div className={styles.messageitem}>
