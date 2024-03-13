@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
 
 export default function ActivationStatusBox({ successStatus }) {
     const nav = useNavigate()
@@ -68,9 +69,20 @@ const initialTextExpPass = 'בודק את לינק הסיסמא שלך'
 
     return (
         <div className={styles.mainMessageContainer}>
+<<<<<<< HEAD
             <h1 className={styles.messageHeader}>
                 {delayFinished ? delayedContent : handleInitialText ? initialTextExpPass : initalTextActivation }
             </h1>
+=======
+
+            {delayFinished ?
+                <h1 className={styles.messageHeader}>{delayedContent}</h1> :
+                <>
+                    <h1 className={styles.messageHeaderWithLoader}>מפעיל את המשתמש שלך, נא להמתין...</h1> <Loading />
+                </>}
+
+
+>>>>>>> 0bad6709a4d063a03555aa6ea4b0106c0d3a7bdb
 
             {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
 

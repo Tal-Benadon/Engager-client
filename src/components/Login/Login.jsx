@@ -24,12 +24,15 @@ export default function Login() {
             e.preventDefault();
             const { token, user } = await api.post("/login", formState);
             setUser(user)
+
             localStorage.token = token
             nav("/")
         } catch (err) {
             console.error({ err })
         }
     }
+
+
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -50,6 +53,9 @@ export default function Login() {
         nav('/forgetPassword')
     }
     let root = 'accout/signInGoogle'
+
+    // console.log({formState})
+    console.log({ user })
 
     return (
         <div>
