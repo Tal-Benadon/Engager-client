@@ -105,7 +105,7 @@ export default function SideBar() {
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
           <CampaignList searchTerm={searchTerm} campaignList={campaign} />
-          <div className={styles.item} onClick={() => setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
+          <div className={styles.item} onClick={() => setIsOpen({component:<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />})}>
             <Icon nameIcon={'pluscircle'} nameColor={'create'} />
             <Button className="create"
               content="רשימה חדשה"

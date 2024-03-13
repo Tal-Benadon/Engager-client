@@ -12,6 +12,7 @@ import UpdateAndAddLead from '../UpdateAndAddLead';
 import DataContext from '../../context/DataContext'
 import CampaignInfo from '../CampInfo';
 import { useNavigate } from 'react-router-dom';
+import DelCampaign from '../DelCampaign';
 
 
 
@@ -52,7 +53,7 @@ export default function LeadsTab() {
             icon: <Icon nameIcon={"writing"}/>,         
              onClick: () =>  setIsOpen(<CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campId={campaign._id}/>) 
           },
-          {
+          { 
             text: "הוספת ידנית",
             icon: <Icon nameIcon={"userWithPlus"} />,
             onClick: () => setIsOpen(<UpdateAndAddLead setIsOpen={setIsOpen} campaign={campaign._id} />)
@@ -64,7 +65,8 @@ export default function LeadsTab() {
           {
             text: "מחיקת רשימה",
             icon: <Icon nameIcon={"trash"} />,
-            color: "red"
+            color: "red",
+            onClick: () => (setIsOpen({component:<DelCampaign setIsOpen={setIsOpen} title={campaign.title} campId={campaign._id}/>,title:'מחיקת רשימה'}))
           },
         ]} >
       

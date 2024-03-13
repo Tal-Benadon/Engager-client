@@ -17,7 +17,7 @@ export default function PopUp() {
                 <Icon nameIcon={'x'} nameColor={''} />
               </span>
             </div>
-            {isOpen}
+            {isOpen.component}
           </div>
         </div>
       )}
