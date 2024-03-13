@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
-
-// import InputText from '../InputText/InputText'
-// import styles from './style.module.css'
-// import Button from '../Button'
-// import InputWrapper from '../InputWrapper'
-// import axios from 'axios'
-// import api from '../../functions/api'
-// import TabSwitcher from '../../components/TabSwitcher'
-// import { useNavigate } from 'react-router-dom'
-// import CheckBox from '../CheckBox'
-// import getGoogleOAuthURL from '../../functions/loginWithGoogle'
+import { useNavigate } from 'react-router-dom'
+import styles from './style.module.css'
+import InputWrapper from '../InputWrapper'
+import InputText from '../InputText/InputText'
+import api from '../../functions/api'
+import CheckBox from '../CheckBox'
+import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 
 // // קומפוננטת הרשמת משתמש חדש לא ליד!! 
 
