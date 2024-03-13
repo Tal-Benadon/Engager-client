@@ -11,7 +11,6 @@ import { useNavigate } from "react-router";
 export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }) {
 
   const [user, setUser] = useState("");
-  const [campName, setCampName] = useState("");
   const [message, setMessage] = useState("");
   const nav = useNavigate()
 
@@ -19,10 +18,10 @@ export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }
     e.preventDefault();
     const SubmmitNewFeedBack = {
       user: _id,
-      campName
+      message
     };
 
-    setIsOpen(false);
+    // setIsOpen(false); 
     try {
       const response = await axios.post(
         // "http://localhost:2500/campaign",
@@ -62,9 +61,8 @@ export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }
 
           <div >
             <InputWrapper label={"תוכן ההודעה"} className={styles.nameinput}>
-              <InputTextArea name={"תוכן ההודעה"} onChange={(e) => setCampName(e.target.value)} className={styles.inputaria} rows="5"
+              <InputTextArea name={"תוכן ההודעה"} onChange={(e) => setMessage(e.target.value)} className={styles.inputaria} rows="5"
               />
-              {/* <InputText name={'password'} required={true} onChange={(e) => setMessage(e.target.value)} className={styles.input} /> */}
             </InputWrapper>
           </div>
           <button className={styles.button} type='submit' >שליחה</button>
@@ -74,43 +72,5 @@ export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }
         </div>
       </div>
     </div>
-    // <div className={styles.InputWrapper}>
-    //   <form onSubmit={handelSubmitNewFeedBack}>
-    //     <div><h1>שלח משוב</h1></div>
-    //     <main>
-    //       <InputWrapper
-    //         label={(<span className={styles.asterisk}>'*'</span>, "שם רשימה")}
-    //         subLabel={"שם פנימי שלא יהיה חשוף למצטרפים לרשימה"}
-    //         to={"campaignMsg"}
-    //         children={
-    //           <InputText
-    //             name="campaignMsg"
-    //             onChange={(e) => setUser(e.target.value)}
-    //           />
-    //         }
-    //         type="text"
-    //       />
-
-
-    //       <InputWrapper
-    //         label={"הודעת אפס"}
-    //         subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}
-    //         to={"campaignTextArea"}
-    //         children={
-    //           <InputTextArea
-    //             name={"campaignTextArea"}
-    //             onChange={(e) => setCampName(e.target.value)}
-    //           />
-    //         }
-    //         type="text"
-    //       />
-    //       {/* onClick={ setIsOpen(false)}  */}
-    //       <div className={styles.actions}>
-    //         <Button className={"cancel"} content={"ביטול"} />
-    //         <Button className={"save"} content={"שמירה"} />
-    //       </div>
-    //     </main>
-    //   </form>
-    // </div>
   );
 }
