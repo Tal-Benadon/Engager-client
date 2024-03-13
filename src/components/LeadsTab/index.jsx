@@ -12,6 +12,7 @@ import UpdateAndAddLead from "../UpdateAndAddLead";
 import DataContext from "../../context/DataContext";
 import CampaignInfo from "../CampInfo";
 import { useNavigate } from "react-router-dom";
+import DelCampaign from '../DelCampaign';
 
 export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -95,6 +96,13 @@ export default function LeadsTab() {
               text: "מחיקת רשימה",
               icon: <Icon nameIcon={"trash"} />,
               color: "red",
+              onClick: () =>
+                setPopUp({
+                  title: "מחיקת רשימה",
+                  component: (
+                    <DelCampaign setPopUp={setPopUp} title={campaign.title} campId={campaign._id}/>
+                  ),
+                }),
             },
           ]}
         >
