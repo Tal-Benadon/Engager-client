@@ -1,5 +1,8 @@
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom'
+import Login from '../../components/Login/Login'
+import ChangePassword from '../../components/ChangePassword'
+
 
 
 export default function ChangePasswordPage() {
@@ -20,7 +23,7 @@ export default function ChangePasswordPage() {
           <TabSwitcher rout={arr} />
         </div> */}
         <div className={styles.login}>
-          <Login />
+          <ChangePassword />
         </div>
       </div>
     </div>
