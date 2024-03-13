@@ -23,9 +23,9 @@ export default function LoginPage() {
     < div className={styles.container}>
       <div className={styles.circle}></div>
       <div className={styles.allin}>
-        <div className={styles.tabSwitcher}>
+        {/* <div className={styles.tabSwitcher}>
           <TabSwitcher rout={arr} />
-        </div>
+        </div> */}
         <div className={styles.login}>
           <Login />
         </div>

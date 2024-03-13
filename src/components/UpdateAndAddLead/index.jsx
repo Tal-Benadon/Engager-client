@@ -13,7 +13,6 @@ import { useCampaign } from '../../pages/CampaignPage';
 
 export default function UpdateAndAddLead({ details, campaign }) {
     const { getCamp } = useCampaign();
-    console.log(campaign)
     const { fullName, email, phone, notes, leadId } = details
 
     const [workOrFinally, setWorkOrFinally] = useState('work')

@@ -32,8 +32,6 @@ export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
   const [time, setTime] = useState();
    const [date, setDate] = useState();
 
-  console.log("setTime",setTime)
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };

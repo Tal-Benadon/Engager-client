@@ -29,7 +29,6 @@ export default function LeadsTab() {
   const nav = useNavigate()
 
   const { campaign } = useCampaign();
-  // console.log({})
   if (!Object.keys(campaign).length) return <></>
   return (
     <div className={styles.leadsTab}>

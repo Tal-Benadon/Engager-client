@@ -16,18 +16,15 @@ export default function MessagePage() {
 
     // TODO: לחבר את שליחת ההודעה לווטסאפ
     // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
-    
+
     const { isOpen, setIsOpen } = useContext(DataContext)
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
-    // const msgs = campaign.msg || [];
     const message = campaign?.msg?.find(msg => msg._id == messageId) || {};
 
     const { creationDate, subject, content } = message;
-
     let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
-    console.log('msgSent', msgSent);
 
     let dateSend = '04/05/2025'
     let timeSend = '12:24'
@@ -58,7 +55,6 @@ export default function MessagePage() {
                     onClick={async () => {
                         try {
                             const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
-
                         } catch (error) {
                             console.error("Error:", error);
                         }
