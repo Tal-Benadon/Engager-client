@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useState } from "react";
 import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
+import { setDefaultLocale } from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 
 export default function NewCampaigenForm({ setPopUp, getCamp }) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
 
 export default function ActivationStatusBox({ successStatus }) {
     const nav = useNavigate()
@@ -9,6 +10,7 @@ export default function ActivationStatusBox({ successStatus }) {
     const [delayFinished, setDelayFinished] = useState(false);
     const [additionalMessage, setAdditionalMessage] = useState('')
     const [navHandler, setNavHandler] = useState()
+    const [handleInitialText, setHandleInitialText] = useState(false)
 
     useEffect(() => {
         const delayTimer = setTimeout(() => {
@@ -38,9 +40,14 @@ export default function ActivationStatusBox({ successStatus }) {
                 additional = 'מעולה, עכשיו אתה יכול להתחבר...'
                 setNavHandler('/login')
                 break;
-            case 'Expired':
-                content = 'הקישור פג תוקף, תכף תקבל קישור חדש'
-                break;
+                case 'Expired':
+                    content = 'הקישור פג תוקף, תכף תקבל קישור חדש'
+                    break;
+                    case 'ExpiredPass':
+                        content = 'שינוי הסיסמא פג תוקף'
+                        setHandleInitialText(true)
+                    setNavHandler('/login')
+                    break;
             case 'AlreadyActive':
                 content = 'נמצאת פעיל במערכת שלנו, ברוך הבא'
                 additional = 'כבר תגיע אל דף הבית...'
@@ -57,18 +64,26 @@ export default function ActivationStatusBox({ successStatus }) {
         return { content, additional }
     }
 
-
+const initalTextActivation = 'מפעיל את המשתמש שלך, נא להמתין...'
+const initialTextExpPass = 'בודק את לינק הסיסמא שלך'
 
     return (
         <div className={styles.mainMessageContainer}>
-            <h1 className={styles.messageHeader}>
-                {delayFinished ? delayedContent : 'מפעיל את המשתמש שלך, נא להמתין...'}
-            </h1>
-
-            {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
-
-        </div>
+ {delayFinished ? (
+  delayedContent
+) : (
+  handleInitialText ? (
+    <>
+      <h1 className={styles.messageHeader}>{initialTextExpPass}</h1>
+      <Loading />
+    </>
+  ) : (
+    <h1 className={styles.messageHeader}>{initalTextActivation}</h1>
+  )
+)}
+                    {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
+            </div> 
     )
-}
+                }
 
 

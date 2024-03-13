@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage';
 import { ManageContext } from '../context/ManageContext';
 import Test from '../tests/A_MainTest';
 import PopUp from '../components/PopUp';
+import ForgetPassword from '../components/ForgetPassword';
 import Register from '../components/Register';
 import DashboardLayout from './DashboardLayout';
 import CampaignPage from '../pages/CampaignPage';
@@ -24,11 +25,9 @@ import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
 import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
+import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
-
-import Plans from '../components/Plans';
-import api from '../functions/api';
-import DataContext from '../context/DataContext';
+import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 
 export default function Layout() {
 
@@ -38,10 +37,16 @@ export default function Layout() {
       <ManageContext>
         <Routes>
           <Route path='login' element={<LoginPage />} />
+          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage/>} />
           <Route path='register' element={<Register />} />
+
+          <Route path='forgetPassword' element={<ForgetPassword/>} />
+
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
+          <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
+
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<>DashboardLayout</>} />
