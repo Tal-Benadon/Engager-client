@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
 
 export default function ActivationStatusBox({ successStatus }) {
     const nav = useNavigate()
@@ -61,9 +62,14 @@ export default function ActivationStatusBox({ successStatus }) {
 
     return (
         <div className={styles.mainMessageContainer}>
-            <h1 className={styles.messageHeader}>
-                {delayFinished ? delayedContent : 'מפעיל את המשתמש שלך, נא להמתין...'}
-            </h1>
+
+            {delayFinished ?
+                <h1 className={styles.messageHeader}>{delayedContent}</h1> :
+                <>
+                    <h1 className={styles.messageHeaderWithLoader}>מפעיל את המשתמש שלך, נא להמתין...</h1> <Loading />
+                </>}
+
+
 
             {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
 

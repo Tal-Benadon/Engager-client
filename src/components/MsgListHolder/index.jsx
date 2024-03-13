@@ -29,7 +29,7 @@ const { getCamp} = useCampaign()
       <span className={styles.newMsg}>
         <div className={styles.item} onClick={() => setPopUp({
           title:"הודעה חדשה",
-          componnet:<NewMessageForm setPopUp={setPopUp} campId={campId} getCamp={getCamp} />
+          component:<NewMessageForm setPopUp={setPopUp} campId={campId} getCamp={getCamp} />
         })}>
           <Icon nameIcon={'pluscircle'} nameColor={'create'} />
           <Button className="create"

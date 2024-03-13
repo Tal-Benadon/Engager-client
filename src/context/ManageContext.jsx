@@ -7,7 +7,7 @@ export function ManageContext({ children }) {
 
   const [user, setUser] = useState({});
   const [PopUp, setPopUp] = useState(false);
-
+  const [allCamps, setAllCamps] = useState([]);
 
   const nav = useNavigate();
 
@@ -17,14 +17,20 @@ export function ManageContext({ children }) {
         await api.get('/accout/tokenToUser').then(res => setUser(res))
       };
       tokenToUser();
-    } else {
-      nav('/')
-    }
+    } else {}
   }, [])
+
+  const getAllCamps = () => {
+    api
+      .get(`/campaign`)
+      .then((res) => {
+        setAllCamps(res)
+      })
+  };
 
   return (
 
-    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp }}>
+    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp ,allCamps, setAllCamps,getAllCamps}}>
       {children}
     </DataContext.Provider>
   );
