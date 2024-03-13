@@ -11,7 +11,7 @@ import DataContext from '../../context/DataContext'
 import { useCampaign } from '../../pages/CampaignPage';
 
 
-export default function UpdateAndAddLead({ details, campaign }) {
+export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
     const { getCamp } = useCampaign();
     const { fullName, email, phone, notes, leadId } = details
 

@@ -15,6 +15,10 @@
     padding: 2rem;
     height: 100%;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
   }
 
 
@@ -161,15 +165,15 @@
 
   .sentMessagesContainer {
     width: 100%;
-    height: 280px;
+    max-height: 300px;
     padding: 20px 40px;
     border-radius: 8px;
     border: 1px solid var(--border-box-color);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: #F7F7F7;
-    gap: 10px;
-
+    /* gap: 10px; */
   }
 
   .messages {
