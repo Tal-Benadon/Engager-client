@@ -24,6 +24,7 @@ import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 
+import Plans from '../components/Plans';
 
 export default function Layout() {
   return (
@@ -39,6 +40,7 @@ export default function Layout() {
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
 
           <Route element={<DashboardLayout />} >
+            {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<>DashboardLayout</>} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
