@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useState } from "react";
 import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
+import { setDefaultLocale } from "react-datepicker";
 
 export default function NewCampaigenForm({ setIsOpen, getCamp }) {
 
@@ -19,12 +20,14 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   // const [user, setUser] = useState(userid);
   const { user, setUser } = useContext(DataContext)
   const [campName, setCampName] = useState("");
+  const [starterMsg, setStarterMsg] = useState("");
+
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
     const body = {
-      // "user": user,
+      "user": user,
       "title": campName,
       "starterMsg": starterMsg
     };
@@ -57,7 +60,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             children={
               <InputText
                 name="campaignMsg"
-                onChange={(e) => setUser(e.target.value)}
+                onChange={(e) => setCampName(e.target.value)}
               />
             }
             type="text"
@@ -71,14 +74,14 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             children={
               <InputTextArea
                 name={"campaignTextArea"}
-                onChange={(e) => setCampName(e.target.value)}
+                onChange={(e) => setStarterMsg(e.target.value)}
               />
             }
             type="text"
           />
           <div className={styles.actions}>
             <Button type={"submit"} className={"save"} content={"שמירה"} />
-            <Button className={"cancel"} content={"ביטול"} onClick={()=>setIsOpen(false)}/>
+            <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
           </div>
         </main>
       </form>
