@@ -71,7 +71,8 @@ export default function Login() {
                 <button className={styles.button} type='submit' >התחברות</button>
             </form>
             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
-                <img src="google.png" alt="" />
+            <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
+                {/* <img src="google.png" alt="" /> */}
                 התחברות באמצעות גוגל
             </a>
             <div className={styles.notlogin}>

@@ -26,6 +26,7 @@ import FeedBack from '../components/FeedBack';
 import Plans from '../components/Plans';
 import api from '../functions/api';
 import DataContext from '../context/DataContext';
+import Dashboard from '../pages/Dashboard';
 
 export default function Layout() {
 
@@ -41,7 +42,7 @@ export default function Layout() {
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
-            <Route index element={<>DashboardLayout</>} />
+            <Route index element={<Dashboard/>} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
