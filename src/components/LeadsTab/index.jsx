@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useCampaign } from "../../pages/CampaignPage";
 import HeadLine from "../HeadLine";
 import TabSwitcher from "../TabSwitcher";
@@ -26,7 +26,15 @@ export default function LeadsTab() {
 
   const nav = useNavigate();
 
-  const { campaign } = useCampaign();
+  const { campaign, setCampaign } = useCampaign();
+  const [newCampaign, setNewCampaign] = useState({});
+
+  useEffect(() => {
+    setCampaign(newCampaign);
+  }, [newCampaign])
+
+
+
   if (!Object.keys(campaign).length) return <></>;
   return (
     <div className={styles.leadsTab}>
@@ -43,7 +51,6 @@ export default function LeadsTab() {
           { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
         ]}
       />
-
       <SearchBar
         sortType={sortType}
         setSortType={setSortType}
@@ -69,6 +76,7 @@ export default function LeadsTab() {
                       setPopUp={setPopUp}
                       title={campaign.title}
                       campId={campaign._id}
+                      setNewCampaign={setNewCampaign}
                     />
                   ),
                 }),
@@ -100,7 +108,7 @@ export default function LeadsTab() {
                 setPopUp({
                   title: "מחיקת רשימה",
                   component: (
-                    <DelCampaign setPopUp={setPopUp} title={campaign.title} campId={campaign._id}/>
+                    <DelCampaign setPopUp={setPopUp} title={campaign.title} campId={campaign._id} />
                   ),
                 }),
             },
