@@ -49,12 +49,13 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
+        console.log("newDataaaaaaaa", newData);
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
         } else {
             setErorrState()
             if (editOrAdd == 'add') {
-                api.post(`/campaign/${campaign._id}/lead`, { data: { ...newData, campaign: campaign } })
+                api.post(`/campaign/${campaign._id}/lead`, { data: newData })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -68,6 +69,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                     .then(res => {
                         setWorkOrFinally('finally')
                         getCamp()
+                        console.log("res", res);
                     })
                     .catch(e => {
                         if (e.response.data == "phoneExist") {
@@ -94,7 +96,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                 <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={(e) => handleChange(e)} type={"email"} />} />
                 <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
                 <div className={styles.buttons}>
-                    <Button content='שמירה' />
+                    <Button content='שמירה' type='submit'/>
                     <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} />
                 </div>
             </form>
