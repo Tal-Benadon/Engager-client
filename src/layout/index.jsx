@@ -21,6 +21,7 @@ import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
 import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
+import FeedBack from '../components/FeedBack';
 
 import Plans from '../components/Plans';
 
@@ -32,7 +33,7 @@ export default function Layout() {
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
-          <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
+          <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
@@ -53,6 +54,7 @@ export default function Layout() {
               </Route>
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
+            <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
         </Routes>
