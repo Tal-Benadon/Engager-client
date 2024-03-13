@@ -8,7 +8,7 @@ import api from '../../functions/api'
 import TabSwitcher from '../../components/TabSwitcher'
 import { useNavigate } from 'react-router-dom'
 import CheckBox from '../CheckBox'
-
+import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 
 // קומפוננטת הרשמת משתמש חדש לא ליד!! 
 
@@ -67,6 +67,9 @@ export default function Register() {
     const tologin = () => {
         nav('/login')
     }
+
+    let root = 'accout/signUpGoogle'
+
     return (
         <div className={styles.container}>
             <div className={styles.circle}></div>
@@ -108,25 +111,24 @@ export default function Register() {
                     {isChecked ?
                         <div>
                             <button className={styles.button} type='submit' >הרשמה</button>
-                            <button className={styles.buttongoogle} type='submit' >
-                                <img src="google.png" alt="" />
-                                הרשמה באמצעות גוגל
-                            </button>
+                            <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
+                              <img src="google.png" alt="" />
+                              הרשמה באמצעות גוגל
+                            </a>
                         </div>
                         :
                         <div>
                             <div className={styles.button1}>הרשמה</div>
-                            <div className={styles.buttongoogle1}>
-                                <img src="google.png" alt="" />
-                                הרשמה באמצעות גוגל
-                            </div>
+                            <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle1}>
+                              <img src="google.png" alt="" />
+                              הרשמה באמצעות גוגל
+                            </a>
                         </div>
                     }
                     <div className={styles.notlogin}>
                         <div className={styles.notlogin1}>כבר רשומים?</div>
                         <div onClick={tologin} className={styles.notlogin2}>התחברות זה ממש כאן</div>
                     </div>
-                </form>
             </div>
         </div>
     )
