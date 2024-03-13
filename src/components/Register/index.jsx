@@ -138,14 +138,6 @@
 import React from 'react'
 
 export default function Register() {
-<<<<<<< HEAD
-  return (
-    <div>
-      
-    </div>
-  )
-}
-=======
     const [isChecked, setIsChecked] = useState(false);
 
     const fromtemplet = { name: '', phone: '', email: '', password: '', passwordConfirm: '' }
@@ -267,4 +259,3 @@ export default function Register() {
     )
 
 }
->>>>>>> cb120a77c8e929e85a695a0f591a74cc0b87be05

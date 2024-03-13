@@ -6,10 +6,6 @@ import { useNavigate } from 'react-router';
 export function ManageContext({ children }) {
 
   const [user, setUser] = useState({});
-<<<<<<< HEAD
-  const [isOpen, setIsOpen] = useState(false);
-  
-=======
   const [PopUp, setPopUp] = useState(false);
   const [allCamps, setAllCamps] = useState([]);
 
@@ -23,7 +19,6 @@ export function ManageContext({ children }) {
       tokenToUser();
     } else {}
   }, [])
->>>>>>> cb120a77c8e929e85a695a0f591a74cc0b87be05
 
   const getAllCamps = () => {
     api
