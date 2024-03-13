@@ -8,8 +8,12 @@ import axios from 'axios'
 import api from '../../functions/api'
 import DataContext from '../../context/DataContext'
 import { useNavigate } from 'react-router'
+<<<<<<< HEAD
 import TabSwitcher from '../TabSwitcher'
 import { NavLink } from 'react-router-dom'
+=======
+import getGoogleOAuthURL from '../../functions/loginWithGoogle'
+>>>>>>> a3a24d924533e88fc1cadd689d42561700a36eeb
 
 import CheckBox from '../CheckBox'
 
@@ -48,20 +52,18 @@ export default function Login() {
         nav('/register')
     }
 
+<<<<<<< HEAD
     const forgetPassword = () => {
         nav('/forgetPassword')
     }
+=======
+    let root = 'accout/signInGoogle'
+>>>>>>> a3a24d924533e88fc1cadd689d42561700a36eeb
 
     return (
-        <form onSubmit={handleSubmit} className={styles.inputSpace}>
-            <div className={styles.title}>אנגייג'ר</div>
-            <div className={styles.title2}>התחברות</div>
-            <div>
-                <InputWrapper label={"טלפון"} >
-                    <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                </InputWrapper>
-            </div>
+        <div>
 
+<<<<<<< HEAD
             <div >
                 <InputWrapper label={"סיסמה"} className={styles.nameinput}>
                     <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
@@ -70,10 +72,33 @@ export default function Login() {
             <div onClick={forgetPassword}  className={styles.forget} >שכחתי סיסמא</div>
             <button className={styles.button} type='submit' >התחברות</button>
             <button className={styles.buttongoogle} type='submit' > <img src="google.png" alt="" /> התחברות באמצעות גוגל</button>
+=======
+            <form onSubmit={handleSubmit} className={styles.inputSpace}>
+                <div className={styles.title}>אנגייג'ר</div>
+                <div className={styles.title2}>התחברות</div>
+                <div>
+                    <InputWrapper label={"טלפון"} >
+                        <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                    </InputWrapper>
+                </div>
+
+                <div >
+                    <InputWrapper label={"סיסמה"} className={styles.nameinput}>
+                        <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                    </InputWrapper>
+                </div>
+                <div className={styles.forget}>שכחתי סיסמא</div>
+                <button className={styles.button} type='submit' >התחברות</button>
+            </form>
+            <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
+                <img src="google.png" alt="" />
+                התחברות באמצעות גוגל
+            </a>
+>>>>>>> a3a24d924533e88fc1cadd689d42561700a36eeb
             <div className={styles.notlogin}>
                 <div className={styles.notlogin1}>עדיין לא רשומים?</div>
                 <div onClick={toregister} className={styles.notlogin2}>הרשמה זה ממש כאן</div>
             </div>
-        </form>
+        </div>
     )
 }

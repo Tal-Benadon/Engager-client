@@ -15,6 +15,8 @@ import LeadsTab from '../components/LeadsTab';
 import LeadInfoPage from '../pages/LeadInfoPage';
 import MsgTab from '../components/MsgTab';
 import MessagePage from '../components/MessagePage';
+import CompleteDetails from '../pages/CompleteDetails/CompleteDetails';
+import RedirectGoogle from '../pages/RedirectGoogle/RedirectGoogle';
 import ActivateAccount from '../pages/ActivateAccount';
 import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
@@ -29,9 +31,14 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
+<<<<<<< HEAD
 
           <Route path='forgetPassword' element={<ForgetPassword/>} />
 
+=======
+          <Route path='completeDetails/:email' element={<CompleteDetails />} />
+          <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
+>>>>>>> a3a24d924533e88fc1cadd689d42561700a36eeb
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
 
           <Route element={<DashboardLayout />} >
