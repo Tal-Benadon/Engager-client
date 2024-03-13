@@ -7,7 +7,7 @@ import InputTextArea from "../InputTextArea/index";
 import { toast } from 'react-toastify';
 import React, { useState } from "react";
 
-export default function FeedBack({ isPopUp, _id = "65ba97e536d6af41e9beb0d1" }) {
+export default function FeedBack({ PopUp, _id = "65ba97e536d6af41e9beb0d1" }) {
 
   const [user, setUser] = useState("");
   const [campName, setCampName] = useState("");
@@ -19,7 +19,7 @@ export default function FeedBack({ isPopUp, _id = "65ba97e536d6af41e9beb0d1" }) 
       campName
     };
 
-    isPopUp(false);
+    PopUp(false);
     try {
       const response = await axios.post(
         // "http://localhost:2500/campaign",
@@ -73,7 +73,7 @@ export default function FeedBack({ isPopUp, _id = "65ba97e536d6af41e9beb0d1" }) 
             }
             type="text"
           />
-          {/* onClick={ isPopUp(false)}  */}
+          {/* onClick={ PopUp(false)}  */}
           <div className={styles.actions}>
             <Button className={"cancel"} content={"ביטול"} />
             <Button className={"save"} content={"שמירה"} />
