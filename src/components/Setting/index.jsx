@@ -5,42 +5,63 @@ import InputWrapper from '../InputWrapper/index';
 import styles from './style.module.css';
 import Loading from '../Loading'
 import DataContext from '../../context/DataContext';
-import  api  from "../../functions/api";
+import api from "../../functions/api";
 
 export default function QRCodeComponent() {
 
   // TODO: לשפץ את דף ההגדרות ולדאוג שיופיע הקוד QR
-
+  const [socket, setSocket] = useState();
   const [code, setCode] = useState('');
-  const socket = io('http://localhost:3000');
   const [isReady, setIsReady] = useState(false);
 
   const { user } = useContext(DataContext);
-const userForNow = {
-    _id: "123456789",
-    name: 'אלירז',
-}  
 
   useEffect(() => {
-    socket.on('connect', () => {
+    const temp =io('http://localhost:3000', {
+      auth: {
+        userData: {
+          _id: "123456789",
+          name: 'אלירז',
+        }
+      }
+  
+    })
+    temp.on('connect', () => {
       console.log('Connected to server');
-      socket.emit('activate', userForNow._id);
     });
-
-    socket.on(`qr`, (qr) => {
+    
+    temp.on(`qr`, (qr) => {
       console.log(qr)
       setCode(qr);
     });
-
-    socket.on('ready', () => {
+    
+    temp.on('ready', () => {
       setIsReady(true);
     })
-  }, []);
+  },[])
 
+  // useEffect(() => {
+  //   if(socket){
+
+  //     socket.on('connect', () => {
+  //       console.log('Connected to server');
+  //     });
+      
+  //     socket.on(`qr`, (qr) => {
+  //       console.log(qr)
+  //       setCode(qr);
+  //     });
+      
+  //     socket.on('ready', () => {
+  //       setIsReady(true);
+  //     })
+  //   }
+  //   }, [socket]);
+    
   return (
     <div className={styles.container}>
       {(code.length < 2) ? <Loading className={styles.loading} /> : ""}
-      {(!isReady && code.length>2) ? <QRCode value={code} className={styles.qrCode} /> : ""}
+      {(!isReady && code.length > 2) ? <QRCode value={code} className={styles.qrCode} /> : ""}
       <InputWrapper subLabel={"נא לא לרענן את העמוד"} className={styles.inputWrapper} />
       <div className={styles.text}>
         כיצד להשתמש ב-WhatsApp באינגייג'ר:
