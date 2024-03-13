@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useState } from "react";
 import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
+import { useNavigate } from "react-router-dom";
 
 export default function NewCampaigenForm({ setIsOpen, getCamp }) {
 
@@ -19,7 +20,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   const { user, setUser } = useContext(DataContext);
   const [campName, setCampName] = useState("");
   const [starterMsg, setStarterMsg] = useState("");
-
+  const nav = useNavigate()
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
@@ -36,6 +37,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       );
       toast.success(response && "נשלח בהצלחה!");
       getCamp();
+      nav(`/campaign/${response._id}/webhook`)
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");
@@ -78,7 +80,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
           />
           <div className={styles.actions}>
             <Button type={"submit"} className={"save"} content={"שמירה"} />
-            <Button className={"cancel"} content={"ביטול"} onClick={()=>setIsOpen(false)}/>
+            <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
           </div>
         </main>
       </form>

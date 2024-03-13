@@ -6,23 +6,21 @@ import axios from 'axios'
 import Button from '../Button'
 import { toast } from "react-toastify";
 
-export default function WebHook({ campaign_id }) {
-    const [link, setLink] = useState('65c9d1ae431dbc73b311ee14')
+export default function WebHook({ campaign_id, webhook, link }) {
+    // const [link, setLink] = useState('https://www.engager.co.il/webhook/' + webhook)
 
 
-    const createWebHook = async () => {
-        try {
-            const res = await api.post('/webhook', { campaign_id })
-            setLink('https://www.engager.co.il/webhook/' + res.data)
-        } catch (error) {
-            console.error('Error creating webhook:', error)
-        }
-    }
+    // const createWebHook = async () => {
+    //     if (confirm("אתה בטוח?") == true) {
+    //         try {
+    //             const res = await api.post('/webhook', { campaign_id })
+    //             setLink('https://www.engager.co.il/webhook/' + res)
 
-
-    // useEffect(() => {
-    //     createWebHook()
-    // }, [campaign_id])
+    //         } catch (error) {
+    //             console.error('Error creating webhook:', error)
+    //         }
+    //     }
+    // }
 
 
     function copy() {
@@ -38,7 +36,7 @@ export default function WebHook({ campaign_id }) {
             <p className={styles.pLink}>{link || 'אין קישור'}</p>
         </div>
         <Button content='העתקת כתובת קישור' className='fill' onClick={copy} />
-        <Button content='צור קישור חדש' className='fill' onClick={createWebHook} />
+        {/* <Button content='צור קישור חדש' className='fill' onClick={createWebHook} /> */}
     </div>
 }
 
