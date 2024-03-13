@@ -42,7 +42,11 @@ export default function index() {
     }
     return (
         <div className={styles.container}>
+            <div className={styles.circle}></div>
             <div className={styles.allin}>
+            <div className={styles.tabSwitcher}>שינוי סיסמה
+            <div className={styles.line}></div>
+            </div>            
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.inputSpace}>
                         <div className={styles.title}>אנגייג'ר</div>
