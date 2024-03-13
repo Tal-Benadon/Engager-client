@@ -21,8 +21,8 @@ import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
 import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
-
 import Plans from '../components/Plans';
+import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 
 export default function Layout() {
   return (
@@ -32,7 +32,8 @@ export default function Layout() {
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
-          <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
+          <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
+          <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
 
 export default function ActivationStatusBox({ successStatus }) {
     const nav = useNavigate()
@@ -13,19 +14,19 @@ export default function ActivationStatusBox({ successStatus }) {
     useEffect(() => {
         const delayTimer = setTimeout(() => {
             const { content, additional } = switchCase(successStatus);
-            setDelayedContent(content);
-            setAdditionalMessage(additional)
-            setDelayFinished(true); // Update the state to indicate that the delay has finished
+            // setDelayedContent(content);
+            // setAdditionalMessage(additional)
+            // setDelayFinished(true); // Update the state to indicate that the delay has finished
         }, 3000);
 
         return () => clearTimeout(delayTimer);
     }, [successStatus]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            nav(navHandler)
-        }, 3000);
-    }, [navHandler])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         nav(navHandler)
+    //     }, 3000);
+    // }, [navHandler])
 
     const switchCase = (status) => {
         let content = ''
@@ -61,9 +62,14 @@ export default function ActivationStatusBox({ successStatus }) {
 
     return (
         <div className={styles.mainMessageContainer}>
-            <h1 className={styles.messageHeader}>
-                {delayFinished ? delayedContent : 'מפעיל את המשתמש שלך, נא להמתין...'}
-            </h1>
+
+            {delayFinished ?
+                <h1 className={styles.messageHeader}>{delayedContent}</h1> :
+                <>
+                    <h1 className={styles.messageHeaderWithLoader}>מפעיל את המשתמש שלך, נא להמתין...</h1> <Loading />
+                </>}
+
+
 
             {delayFinished && additionalMessage && <p className={styles.additionalMessage}>{additionalMessage}</p>}
 
