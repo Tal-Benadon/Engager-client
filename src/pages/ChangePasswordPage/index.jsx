@@ -1,11 +1,13 @@
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom'
 import ChangePassword from '../../components/ChangePassword'
+import { useState } from 'react'
+import ActivationStatusBox from '../../components/ActivationStatusBox'
 
 
 
 export default function ChangePasswordPage() {
-
+const [tokenExpired, setTokenExpired] = useState(false)
 
 
   return (
@@ -16,7 +18,9 @@ export default function ChangePasswordPage() {
           <TabSwitcher rout={arr} />
         </div> */}
         <div className={styles.login}>
-          <ChangePassword />
+          {tokenExpired ? <ActivationStatusBox successStatus={'ExpiredPass'}/> :
+          <ChangePassword setTokenExpired={setTokenExpired} />
+        }
         </div>
       </div>
     </div>

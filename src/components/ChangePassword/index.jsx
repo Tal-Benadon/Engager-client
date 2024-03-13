@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputText from '../InputText/InputText'
 import styles from './style.module.css'
 import Button from '../Button'
@@ -12,17 +12,31 @@ import CheckBox from '../CheckBox'
 
 
 
-export default function ChangePassword() {
+export default function ChangePassword({setTokenExpired}) {
     const [isChecked, setIsChecked] = useState(false);
 
-    const fromtemplet = {password: '', passwordConfirm: '' }
+    const fromtemplet = { password: '', passwordConfirm: '' }
     const [formState, setFormState] = useState(fromtemplet)
     const [errorForm, setErrorForm] = useState(fromtemplet)
-   const params=useParams()
-   
-    async function controlToken(){
+    const params = useParams()
 
+useEffect(() => {
+    async function controlToken() {
+        const token = params.passwordToken
+        console.log(token);
+        api.get(`user/controlToken/${token}`).
+            then(res => {console.log("הטוקן בתוקף", res)
+        if (res.successStatus==='ExpiredPass'){
+            setTokenExpired(true)
+        }
+        })
+            .catch((res) => {
+                console.log("עבר תוקף התוקן", res)
+            })
     }
+
+    controlToken()
+}, [])
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -31,7 +45,7 @@ export default function ChangePassword() {
         console.log(formState)
         api.put(`user/${data}`, formState).then(res => console.log("הצליח", res)).
             catch((res) => {
-                console.log("התחברות נכשלה" , res)
+                console.log("התחברות נכשלה", res)
             })
     }
 
@@ -82,7 +96,7 @@ export default function ChangePassword() {
                     </InputWrapper>
                     {errorForm.passwordConfirm &&
                         <div className={styles.error}>{errorForm.passwordConfirm}</div>}
-                            <button className={styles.button} type='submit' >עדכון סיסמה</button>    
+                    <button className={styles.button} type='submit' >עדכון סיסמה</button>
                 </form>
             </div>
         </div>
