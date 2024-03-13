@@ -9,16 +9,7 @@ export default function App() {
   const notify = () => toast("Wow so easy!");
   let nav = useNavigate()
 
-  useEffect(() => {
-    if (!localStorage.token) {
-      nav('/login');
-      return;
-    }
 
-    // TODO: verify token and make request to map from token to user
-    // and save in context
-    // api.post('/user/verify', {token:ls.token})
-  }, [])
 
   return (
     <div>
