@@ -12,7 +12,6 @@ import CampaignItem from "../CampaignItem";
 
 export default function NewCampaigenForm({ setPopUp, getCamp }) {
 
-  // TODO: לתקן את השגיאה שקמפיין חדש לא נוצר  
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
 

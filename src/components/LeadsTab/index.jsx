@@ -91,7 +91,7 @@ export default function LeadsTab() {
                   component: (
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
-                      campaign={campaign._id}
+                      campaign={campaign}
                     />
                   ),
                 }),

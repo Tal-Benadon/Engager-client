@@ -9,6 +9,7 @@ import DataContext from "../../context/DataContext";
 import NewCampaigenForm from "../../components/NewCampaignForm";
 import api from "../../functions/api";
 import FeedBack from "../../components/FeedBack";
+import ConfirmLogOut from "../../components/ConfirmLogOut";
 
 export default function SideBar() {
   // TODO: לגרום לכך שמתי שלוחצים על החיפוש האינפוט ישר יהיה בפוקוס ומוכן להקלדה
@@ -54,9 +55,6 @@ export default function SideBar() {
     }, new Date(0));
   };
 
-  const deleteLS = () => {
-    delete localStorage.token;
-  };
 
   return (
     <div className={styles.sidebar}>
@@ -95,11 +93,17 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
-          <li onClick={deleteLS}>
-            <NavLink to="/login">
+          <li onClick={() =>
+              setPopUp(              
+                {
+                  title: 'התנתקות',
+                  component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'}/>
+                }
+              )}>
+              <NavLink>
               התנתקות
               <Icon nameIcon={"logout"} nameColor={""} />
-            </NavLink>
+              </NavLink>
           </li>
         </ul>
       </div>

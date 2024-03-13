@@ -13,7 +13,7 @@ export default function DelCampaign({ campId, title,  setPopUp }) {
   const [onecampId, setoneCampId] = useState("");
   const nav = useNavigate();
   const { user, setUser } = useContext(DataContext);
-
+ 
 
   const handleDelete = async () => {
     api.del(`/campaign/${campId}`)
