@@ -19,13 +19,14 @@ export default function MyLeads() {
         if (location.pathname === '/myLeads') {
             nav('/myLeads/all');
         }
-
+        if (!user) return;
         api.get(`/user/${user._id}/leads`)
             .then(setLeadsObj)
             .catch((error) => {
                 toast.error(error?.response?.data?.msg || "somthing want worng");
             });
-    }, [])
+
+    }, [user])
 
     useEffect(() => {
         if (leadsObj.leads) {

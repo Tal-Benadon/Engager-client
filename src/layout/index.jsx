@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './style.module.css'
 import { Outlet, Route, Routes } from 'react-router';
 import LoginPage from '../pages/LoginPage';
@@ -23,8 +23,12 @@ import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
 
 import Plans from '../components/Plans';
+import api from '../functions/api';
+import DataContext from '../context/DataContext';
 
 export default function Layout() {
+
+
   return (
     <div className={styles.layout}>
       <ManageContext>
