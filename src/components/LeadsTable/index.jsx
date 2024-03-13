@@ -4,7 +4,7 @@ import translet from '../../functions/translate';
 import formatDate from '../../functions/DateFormat';
 import formatDateTime from '../../functions/timeDateFormat';
 import Icon from '../Icon';
-// import Select from 'react-select';
+import Select from 'react-select';
 
 
 // הפונקציה הזאת מקבלת מערך של אובייקטים של משתמשים וממציגה את הפרטים שלהם על פי מערך נוסף
@@ -37,7 +37,8 @@ export default function LeadsTable({ filterdLeads = [], heads = []
     //             }
     //         ]
     //     }
-    // ], heads = [
+    // ], 
+    // heads = [
     //     { title: 'name', input: 'text' },
     //     { title: 'email', input: 'text' },
     //     { title: 'phone', input: 'number' },
