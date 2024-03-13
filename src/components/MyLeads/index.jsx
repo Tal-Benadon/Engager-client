@@ -16,9 +16,6 @@ export default function MyLeads() {
 
     const { user } = useContext(DataContext);
     useEffect(() => {
-        if (location.pathname === '/myLeads') {
-            nav('/myLeads/all');
-        }
         if (!user) return;
         api.get(`/user/${user._id}/leads`)
             .then(setLeadsObj)
@@ -26,7 +23,13 @@ export default function MyLeads() {
                 toast.error(error?.response?.data?.msg || "somthing want worng");
             });
 
-    }, [user])
+    }, [user]);
+
+    useEffect(() => {
+        if (location.pathname === '/myLeads') {
+            nav('/myLeads/all');
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         if (leadsObj.leads) {
