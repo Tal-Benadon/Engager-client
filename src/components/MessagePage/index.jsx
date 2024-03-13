@@ -35,7 +35,12 @@ export default function MessagePage() {
                 title={subject}
                 subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
-                iconOnClick={() => setIsOpen(<MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />)}
+                iconOnClick={() => setIsOpen({
+                    title:"עריכת הודעה",
+                    component: <MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />
+                }
+                
+               )}
             />
             <div className={styles.message}>
                 <div className={styles.messageitem}>

@@ -13,11 +13,12 @@ export default function PopUp() {
         <div className={styles.container} onClick={() => setIsOpen(false)}>
           <div dir='rtl' className={styles.popup} onClick={(e) => { e.stopPropagation() }}>
             <div className={styles.top}>
+              <h3>{isOpen.title}</h3>
               <span className={styles.close} onClick={() => setIsOpen(false)}>
                 <Icon nameIcon={'x'} nameColor={''} />
               </span>
             </div>
-            {isOpen}
+            {isOpen.component}
           </div>
         </div>
       )}

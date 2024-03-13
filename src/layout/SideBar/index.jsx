@@ -66,7 +66,7 @@ export default function SideBar() {
           <li>
             <NavLink to="/myLeads">
               כל הלידים שלי
-              <Icon nameIcon={'leads'} nameColor={''} />
+              <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
@@ -110,8 +110,12 @@ export default function SideBar() {
           <div
             className={styles.item}
             onClick={() =>
-              setIsOpen(
-                <NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />
+              setIsOpen(              
+                {
+                  title: "קמפיין חדש",
+                  component: <NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />
+                }
+                //  <NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp}/>
               )
             }
           >

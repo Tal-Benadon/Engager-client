@@ -27,7 +27,10 @@ const { getCamp} = useCampaign()
         <MessageList searchTerm={searchTerm} />
       </div>
       <span className={styles.newMsg}>
-        <div className={styles.item} onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} campId={campId} getCamp={getCamp} />)}>
+        <div className={styles.item} onClick={() => setIsOpen({
+          title:"הודעה חדשה",
+          componnet:<NewMessageForm setIsOpen={setIsOpen} campId={campId} getCamp={getCamp} />
+        })}>
           <Icon nameIcon={'pluscircle'} nameColor={'create'} />
           <Button className="create"
           content='הודעה חדשה'

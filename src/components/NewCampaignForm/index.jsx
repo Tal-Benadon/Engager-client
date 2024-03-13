@@ -46,7 +46,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
     <div className={styles.InputWrapper}>
       <form onSubmit={handelSubmitNewCampaigen}>
         <div>
-          <h1>רשימה חדשה</h1>
+          {/* <h1>רשימה חדשה</h1> */}
         </div>
         <main>
           <InputWrapper
