@@ -35,6 +35,9 @@ export default function CompleteDetails() {
         })
     }
 
+    const toregister = () =>{
+        nav('/register')
+    }
 
     return (
         < div className={styles.container}>

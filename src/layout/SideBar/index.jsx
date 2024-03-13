@@ -87,12 +87,12 @@ export default function SideBar() {
               <Icon nameIcon={'setting'} nameColor={''} />
             </NavLink>
           </li>
-          {/* <li>
+          <li>
             <NavLink to="/feedback">
               שליחת פידבק
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
-          </li> */}
+          </li>
           <li onClick={deleteLS}>
             <NavLink to="/login">
               התנתקות
