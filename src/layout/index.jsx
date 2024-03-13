@@ -22,6 +22,7 @@ import MyLeads from '../components/MyLeads';
 import AllLeads from '../components/AllLeads';
 import AllActiveLeads from '../components/AllActiveLeads';
 import AllInactiveLeads from '../components/AllInactiveLeads';
+import ChangePasswordPage from '../pages/ChangePasswordPage';
 
 
 export default function Layout() {
@@ -30,15 +31,11 @@ export default function Layout() {
       <ManageContext>
         <Routes>
           <Route path='login' element={<LoginPage />} />
+          <Route path='changePassword' element={<ChangePasswordPage />} />
           <Route path='register' element={<Register />} />
-<<<<<<< HEAD
 
           <Route path='forgetPassword' element={<ForgetPassword/>} />
 
-=======
-          <Route path='completeDetails/:email' element={<CompleteDetails />} />
-          <Route path= 'redircetGoogle/:token' element={<RedirectGoogle/>}/>
->>>>>>> a3a24d924533e88fc1cadd689d42561700a36eeb
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
 
           <Route element={<DashboardLayout />} >
