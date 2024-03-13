@@ -36,7 +36,8 @@ export default function LeadsTab() {
     setCampaign(campaign)
   },[campaign])
 
-  // if (!Object.keys(campaign).length) return <></>;
+  // debugger
+  if (!Object.keys(campaign).length) return <></>;
   return (
     <div className={styles.leadsTab}>
       <HeadLine

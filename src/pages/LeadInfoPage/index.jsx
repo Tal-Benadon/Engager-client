@@ -27,7 +27,7 @@ export default function LeadInfoPage() {
   // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
-  // const { campaign } = useCamLpaign();
+  const { campaign } = useCampaign();
 
   const [lead, setLead] = useState({})
 
