@@ -55,20 +55,18 @@
 }
 
 .top {
-    align-items: center;
+    
     /* border-bottom: 1px solid #E8E8E8; */
     justify-content: space-between;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 10px 20px 10px 20px;
+    width: 100%;
 }
 
 .close {
     width: 24px;
-    height: 24px;
     cursor: pointer;
-    position: absolute;
-    left: 15px;
-    top: 15px;
 }
+

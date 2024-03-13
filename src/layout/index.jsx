@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './style.module.css'
 import { Outlet, Route, Routes } from 'react-router';
 import LoginPage from '../pages/LoginPage';
@@ -14,18 +14,39 @@ import LeadsTab from '../components/LeadsTab';
 import LeadInfoPage from '../pages/LeadInfoPage';
 import MsgTab from '../components/MsgTab';
 import MessagePage from '../components/MessagePage';
+import CompleteDetails from '../pages/CompleteDetails/CompleteDetails';
+import RedirectGoogle from '../pages/RedirectGoogle/RedirectGoogle';
+import ActivateAccount from '../pages/ActivateAccount';
+import MyLeads from '../components/MyLeads';
+import AllLeads from '../components/AllLeads';
+import AllActiveLeads from '../components/AllActiveLeads';
+import AllInactiveLeads from '../components/AllInactiveLeads';
+import FeedBack from '../components/FeedBack';
+
 import Plans from '../components/Plans';
+import api from '../functions/api';
+import DataContext from '../context/DataContext';
 
 export default function Layout() {
+
+
   return (
     <div className={styles.layout}>
       <ManageContext>
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
+          <Route path='completeDetails/:email' element={<CompleteDetails />} />
+          <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
+          <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<>DashboardLayout</>} />
+            <Route path='myLeads' element={<MyLeads />} >
+              <Route path="all" element={<AllLeads />} />
+              <Route path="active" element={<AllActiveLeads />} />
+              <Route path="inactive" element={<AllInactiveLeads />} />
+            </Route>
             <Route path='campaign/:campId' element={<CampaignPage />}>
               <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
                 <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}</>} />
@@ -37,6 +58,7 @@ export default function Layout() {
               </Route>
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
+            <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
         </Routes>

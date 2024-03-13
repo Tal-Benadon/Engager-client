@@ -8,7 +8,6 @@ import NewMessageForm from '../NewMessageForm'
 import DataContext from '../../context/DataContext'
 import Icon from '../../components/Icon'
 import { useParams } from 'react-router'
-import api from '../../functions/api'
 import { useCampaign } from '../../pages/CampaignPage'
 
 // Description : 
@@ -19,7 +18,7 @@ export default function MsgListHolder() {
   const [searchTerm, setSearchTerm] = useState('')
   const {campId} =useParams()
 const { getCamp} = useCampaign()
-  const { isOpen, setIsOpen } = useContext(DataContext);
+  const { PopUp, setPopUp } = useContext(DataContext);
 
   return (
     <>
@@ -28,7 +27,10 @@ const { getCamp} = useCampaign()
         <MessageList searchTerm={searchTerm} />
       </div>
       <span className={styles.newMsg}>
-        <div className={styles.item} onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} campId={campId} getCamp={getCamp} />)}>
+        <div className={styles.item} onClick={() => setPopUp({
+          title:"הודעה חדשה",
+          componnet:<NewMessageForm setPopUp={setPopUp} campId={campId} getCamp={getCamp} />
+        })}>
           <Icon nameIcon={'pluscircle'} nameColor={'create'} />
           <Button className="create"
           content='הודעה חדשה'

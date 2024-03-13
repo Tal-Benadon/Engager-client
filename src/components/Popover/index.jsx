@@ -45,17 +45,17 @@ export default function Popover({ list, children, fnName, }) {
         let totalHeight = screenHeight - elmentHeight;
         if (isClicked) return setIsClicked(false)
         if (totalWidth > 210) {
-            finalStyle.left = 38;
+            finalStyle.left = 15;
         }
         else {
-            finalStyle.right = 38;
+            finalStyle.right = 15;
         }
 
         if (totalHeight > maxHeight) {
-            finalStyle.top = 25
+            finalStyle.top = 15
 
         } else {
-            finalStyle.bottom = 25
+            finalStyle.bottom = 15
         }
 
         setIsClicked(finalStyle)

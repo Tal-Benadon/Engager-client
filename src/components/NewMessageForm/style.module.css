@@ -26,5 +26,15 @@
     align-items: center;
     display: flex;
     flex-direction: row-reverse;
-    margin: 30px;
+    margin: 30px 0px;
 }
+
+/* .timing{
+    background-color:  #F7F7F7;
+ }  */
+ 
+ .pickers{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+ }
