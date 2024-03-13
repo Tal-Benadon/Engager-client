@@ -67,12 +67,7 @@ export default function Login() {
                     <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                 </InputWrapper>
             </div>
-<<<<<<< HEAD
             <div onClick={forgetPassword}  className={styles.forget} >שכחתי סיסמא</div>
-=======
-
-            <div className={styles.forget}>שכחתי סיסמא</div>
->>>>>>> 9ba8b08ca7248ffb4958e0549df11cf3aaa9db0d
             <button className={styles.button} type='submit' >התחברות</button>
             <button className={styles.buttongoogle} type='submit' > <img src="google.png" alt="" /> התחברות באמצעות גוגל</button>
             <div className={styles.notlogin}>

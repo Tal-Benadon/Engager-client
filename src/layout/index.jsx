@@ -29,11 +29,11 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
-<<<<<<< HEAD
+
           <Route path='forgetPassword' element={<ForgetPassword/>} />
-=======
+
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
->>>>>>> 9ba8b08ca7248ffb4958e0549df11cf3aaa9db0d
+
           <Route element={<DashboardLayout />} >
             <Route index element={<>DashboardLayout</>} />
             <Route path='myLeads' element={<MyLeads />} >

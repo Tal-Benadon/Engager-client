@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import InputWrapper from '../InputWrapper'
 import InputText from '../InputText/InputText'
 import styles from './style.module.css'
+import api from '../../functions/api'
 
 
 export default function index() {
@@ -11,9 +12,12 @@ export default function index() {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = formState
-        api.post("/user", data).
-            catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
-console.log("submit");
+        console.log(data.phone)
+        api.get(`user/${data.phone}`).then(res => console.log("הצליח", res)).
+            catch((res) => {
+                console.log("מספר טלפון אינו קיים במערכת" , res)
+                setErrorForm({ phone: "מספר טלפון אינו קיים במערכת" })
+            })
     }
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -38,20 +42,20 @@ console.log("submit");
     }
     return (
         <div className={styles.container}>
-             <div className={styles.allin}>
-             <form className={styles.inputSpace} onSubmit={handleSubmit}>
-            <div className={styles.inputSpace}>
-            <div className={styles.title}>אנגייג'ר</div>
-                <InputWrapper label={"טלפון"} setIsVisible={true} >
-                    <InputText type={'phone'} name={'phone'} required={true} onChange={handleChange}
-                     value={formState.phone} className={styles.input} />
-                    {errorForm.phone &&
-                        <div className={styles.error}>{errorForm.phone}</div>}
-                </InputWrapper>
-                <button className={styles.button} type='submit' >שלחו לי קישור לשינוי סיסמא</button>
-            </div>
+            <div className={styles.allin}>
+                <form className={styles.inputSpace} onSubmit={handleSubmit}>
+                    <div className={styles.inputSpace}>
+                        <div className={styles.title}>אנגייג'ר</div>
+                        <InputWrapper label={"טלפון"} setIsVisible={true} >
+                            <InputText type={'phone'} name={'phone'} required={true} onChange={handleChange}
+                                value={formState.phone} className={styles.input} />
+                            {errorForm.phone &&
+                                <div className={styles.error}>{errorForm.phone}</div>}
+                        </InputWrapper>
+                        <button className={styles.button} type='submit' >שלחו לי קישור לשינוי סיסמא</button>
+                    </div>
 
-            </form>
+                </form>
             </div>
         </div>
     )
