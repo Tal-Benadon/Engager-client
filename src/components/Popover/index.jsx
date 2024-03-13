@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
 export default function Popover({ list, children, fnName, }) {
-      // TODO: לעשות שכאשר לוחצים מחוץ לתפריט הנפתח הוא נסגר ולא רק כשלוחצים על האייקון שלו שוב
-
     const maxHeight = (list.length * 50) + 20
     const [isClicked, setIsClicked] = useState(false)
+
+
 
 
     let finalFunction = {}
     if (fnName === "onClick") {
         finalFunction = {
-            onClick: handleClick
+            onClick: handleClick,
+            onMouseLeave: () => {
+                setIsClicked(false);
+            }
         };
     } else if (fnName === "onOver") {
         finalFunction = {
@@ -21,7 +24,10 @@ export default function Popover({ list, children, fnName, }) {
         };
     } else if (fnName === "onRight") {
         finalFunction = {
-            onContextMenu: handleClick
+            onContextMenu: handleClick,
+            onMouseLeave: () => {
+                setIsClicked(false);
+            }
         }
 
     }
@@ -39,17 +45,17 @@ export default function Popover({ list, children, fnName, }) {
         let totalHeight = screenHeight - elmentHeight;
         if (isClicked) return setIsClicked(false)
         if (totalWidth > 210) {
-            finalStyle.left = 38;
+            finalStyle.left = 15;
         }
         else {
-            finalStyle.right = 38;
+            finalStyle.right = 15;
         }
 
         if (totalHeight > maxHeight) {
-            finalStyle.top = 25
+            finalStyle.top = 15
 
         } else {
-            finalStyle.bottom = 25
+            finalStyle.bottom = 15
         }
 
         setIsClicked(finalStyle)
@@ -61,6 +67,7 @@ export default function Popover({ list, children, fnName, }) {
                 {children}
             </button>
             {!isClicked ? ""
+
                 : <div className={style.Popover} style={isClicked} >
                     <ul >
                         {list?.map?.(item => (

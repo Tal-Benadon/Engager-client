@@ -6,11 +6,12 @@ import formatDateTime from '../../functions/timeDateFormat';
 import Icon from '../Icon';
 import Select from 'react-select';
 
+
 // הפונקציה הזאת מקבלת מערך של אובייקטים של משתמשים וממציגה את הפרטים שלהם על פי מערך נוסף
 // שצריך להעביר לה שצריך לכלול כותרת, סוג הסינון, וערכים אם מדובר בסינון על פי רשימה
 // ראו דוגמה בערכי הברירת מחדל שהפונקציה מקבלת
 
-export default function LeadsTable({filterdLeads = [], heads = []
+export default function LeadsTable({ filterdLeads = [], heads = []
     // filterdLeads = [
     //     {
     //         name: "John Doe",
