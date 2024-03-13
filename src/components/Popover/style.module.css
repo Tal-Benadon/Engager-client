@@ -5,11 +5,11 @@
     cursor: pointer;
 }
 
-.children{
+.children {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    padding: 17px;
+    padding: 10px;
 }
 
 .Popover {

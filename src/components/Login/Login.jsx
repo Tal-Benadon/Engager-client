@@ -17,7 +17,7 @@ export default function Login() {
 
     const [formState, setFormState] = useState({})
     const { user, setUser } = useContext(DataContext)
-const nav =useNavigate()
+    const nav = useNavigate()
     async function handleSubmit(e) {
         try {
             e.preventDefault();
@@ -54,7 +54,7 @@ const nav =useNavigate()
             <div >
                 <InputWrapper label={"טלפון"} >
                     <div className={styles.inputSpace}>
-                    <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} />
+                        <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} />
                     </div>
                 </InputWrapper>
             </div>

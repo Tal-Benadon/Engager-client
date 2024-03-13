@@ -14,6 +14,7 @@ import LeadsTab from '../components/LeadsTab';
 import LeadInfoPage from '../pages/LeadInfoPage';
 import MsgTab from '../components/MsgTab';
 import MessagePage from '../components/MessagePage';
+import Plans from '../components/Plans';
 
 export default function Layout() {
   return (
@@ -23,6 +24,7 @@ export default function Layout() {
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<Register />} />
           <Route element={<DashboardLayout />} >
+            {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<>DashboardLayout</>} />
             <Route path='campaign/:campId' element={<CampaignPage />}>
               <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
