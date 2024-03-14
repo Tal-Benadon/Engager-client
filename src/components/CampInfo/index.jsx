@@ -36,7 +36,7 @@ export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign ,
     setIsEditing(false);
     setPopUp(false);
   };
-
+   
   useEffect(() => {
     if (campId) {
       api.get(`/campaign/${campId}`).then((res) => {
