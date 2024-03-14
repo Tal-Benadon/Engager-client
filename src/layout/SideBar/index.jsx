@@ -21,7 +21,7 @@ export default function SideBar() {
   const [campaign, setCampaign] = useState([]);
   const [campaignByDate, setCampaignByDate] = useState([]);
 
-  const { popUp, setPopUp,allCamps,getAllCamps } = useContext(DataContext);
+  const { popUp, setPopUp, allCamps, getAllCamps } = useContext(DataContext);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -62,17 +62,26 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
-            <span>
-              חיפוש
-              <Icon nameIcon={"search"} nameColor={""} />
-            </span>
-          </li>
+          {!displaySearchBar && (
+            <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+              <span>
+                חיפוש
+                <Icon nameIcon={"search"} nameColor={""} />
+              </span>
+            </li>
+          )}
           {displaySearchBar && (
             <li>
               <SearchBar
+                className={styles.searchbar}
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
+                autoFocus
+                onBlur={() => {
+                  if (searchTerm.trim() === "") {
+                    setDisplaySearchBar(false);
+                  }
+                }}
               />
             </li>
           )}
@@ -103,7 +112,7 @@ export default function SideBar() {
           <div
             className={styles.item}
             onClick={() =>
-              setPopUp(              
+              setPopUp(
                 {
                   title: "קמפיין חדש",
                   component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
