@@ -1,0 +1,15 @@
+.msgTab {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-left: 2px solid var(--grayElement);
+    padding: 15px;
+    gap: 10px;
+    position: relative;
+}
+
+.menu{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
