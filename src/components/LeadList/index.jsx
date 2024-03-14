@@ -14,6 +14,8 @@ export default function LeadList({ searchTerm, sortType }) {
   const [sortedLeadArray, setSortedLeadArray] = useState([]);
 
   useEffect(() => {
+    console.log('leadLeast',campaign.leads);
+
     let sortedArray = [...campaign.leads];
     if (sortType === 'name') {
       sortedArray.sort((a, b) => {
@@ -31,13 +33,18 @@ export default function LeadList({ searchTerm, sortType }) {
       });
     }
     setSortedLeadArray(sortedArray);
+    console.log('SortedLeadArray', sortedLeadArray);
+
   }, [sortType, campaign.leads]);
+
+
   
 
   return (
     <div className={styles.leadArray}>
-      {sortedLeadArray
-        .filter(l => l.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+      {sortedLeadArray.length > 0 ?
+      sortedLeadArray
+        .filter(l => l?.fullName?.toLowerCase().includes(searchTerm.toLowerCase()))
         .map((lead) => (
           <LeadItem
             campaignId={campaign._id}
@@ -47,7 +54,8 @@ export default function LeadList({ searchTerm, sortType }) {
             id={lead._id}
             date={formatDate(lead.joinDate)}
           />
-        ))}
+        ))
+      : <h3>no leads yet</h3>}
     </div>
   );
 }
