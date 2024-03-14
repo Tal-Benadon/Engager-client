@@ -12,7 +12,6 @@ import { useCampaign } from '../../pages/CampaignPage';
 
 
 export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
-    console.log('###',campaign);
     const { getCamp } = useCampaign();
     const { fullName, email, phone, notes, leadId } = details
 
