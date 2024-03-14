@@ -54,7 +54,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
         } else {
             setErorrState()
             if (editOrAdd == 'add') {
-                api.post(`/campaign/${campaign}/lead`, { data: { ...newData, campaign: campaign } })
+                api.post(`/campaign/${campaign._id}/lead`, { data: { ...newData, campaign: campaign } })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -64,7 +64,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                         setNewData(result)
                     }
                 }
-                api.put(`/campaign/${campaign}/lead/${leadId}`, newData)
+                api.put(`/campaign/${campaign._id}/lead/${leadId}`, newData)
                     .then(res => {
                         setWorkOrFinally('finally')
                         getCamp()

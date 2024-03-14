@@ -12,14 +12,15 @@ import { toast } from "react-toastify";
 export default function DelCampaign({ campId, title,  setPopUp }) {
   const [onecampId, setoneCampId] = useState("");
   const nav = useNavigate();
-  const { user, setUser } = useContext(DataContext);
- 
+  const { user, setUser,getAllCamps } = useContext(DataContext);
+
 
   const handleDelete = async () => {
     api.del(`/campaign/${campId}`)
       .then(() => {
         setPopUp(false);
-        window.location.href= '/'
+        getAllCamps()
+        nav("/")
       })
       .catch((error) => {
         toast.error('Error updating title:', error);

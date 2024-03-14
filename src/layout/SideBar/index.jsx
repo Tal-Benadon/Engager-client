@@ -7,8 +7,6 @@ import SearchBar from "../../components/SearchBar";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../../context/DataContext";
 import NewCampaigenForm from "../../components/NewCampaignForm";
-import api from "../../functions/api";
-import FeedBack from "../../components/FeedBack";
 import ConfirmLogOut from "../../components/ConfirmLogOut";
 
 export default function SideBar() {
@@ -18,22 +16,11 @@ export default function SideBar() {
 
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [campaign, setCampaign] = useState([]);
-  const [campaignByDate, setCampaignByDate] = useState([]);
-  const { popUp, setPopUp } = useContext(DataContext);
+  const { setPopUp,allCamps,getAllCamps } = useContext(DataContext);
   const nav = useNavigate();
 
-  const getCamp = () => {
-    api
-      .get(`/campaign`)
-      .then((res) => {
-        // nav(`campaign/${res[0]._id}`)
-        setCampaign(res);
-      })
-      .then();
-  };
   useEffect(() => {
-    getCamp();
+    getAllCamps();
   }, []);
 
   const sortCamps = (camps) => {
@@ -110,14 +97,14 @@ export default function SideBar() {
       <div className={styles.lists}>
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist}>
-          <CampaignList searchTerm={searchTerm} campaignList={campaign} />
+          <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
           <div
             className={styles.item}
             onClick={() =>
               setPopUp(              
                 {
                   title: "קמפיין חדש",
-                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp} />
+                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
                 }
                 //  <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp}/>
               )
