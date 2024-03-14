@@ -5,7 +5,7 @@ import styles from './style.module.css'
 // Creator : yehoshua preiser
 export default function InputTextArea({ style = {},name={}, ...props }) {
   return (
-    <textarea className={styles.textarea}  name={name} id={name} style={style} {...props} />
+    <textarea className={styles.textarea}  name={name} id={name} style={style} {...props}  />
     
   )
 }
