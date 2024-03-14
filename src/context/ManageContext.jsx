@@ -12,7 +12,7 @@ export function ManageContext({ children }) {
   const nav = useNavigate();
 
   useEffect(() => {
-    if (localStorage.token && !user) {
+    if (localStorage.token && !user._id) {
       const tokenToUser = async () => {
         await api.get('/accout/tokenToUser').then(res => setUser(res))
       };
