@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 // Creator : Yehoshua Preiser
 
 export default function LeadList({ searchTerm, sortType }) {
-  const { campaign } =useCampaign()
+  const { campaign } = useCampaign()
   const [sortedLeadArray, setSortedLeadArray] = useState([]);
 
   useEffect(() => {
@@ -20,24 +20,25 @@ export default function LeadList({ searchTerm, sortType }) {
         if (a.name && b.name) {
           return a.name.localeCompare(b.name);
         }
-        return 0; 
+        return 0;
       });
     } else if (sortType === 'date') {
       sortedArray.sort((a, b) => {
         if (a.joinDate && b.joinDate) {
           return a.joinDate.localeCompare(b.joinDate);
         }
-        return 0; 
+        return 0;
       });
     }
     setSortedLeadArray(sortedArray);
   }, [sortType, campaign.leads]);
-  
+
 
   return (
     <div className={styles.leadArray}>
       {sortedLeadArray
-        .filter(l => l.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+        // .filter(l => l.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
+        // .filter(l => l.fullName && searchTerm && l.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
         .map((lead) => (
           <LeadItem
             campaignId={campaign._id}

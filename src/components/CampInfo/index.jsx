@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from './style.module.css'
 import api from "../../functions/api";
 import InputWrapper from "../InputWrapper";
 import InputText from "../InputText/InputText";
 import Button from "../Button";
 import { useCampaign } from "../../pages/CampaignPage";
+import DataContext from "../../context/DataContext";
 
 
-export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign }) {
+export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign ,getCamp}) {
   const [onecampId, setoneCampId] = useState("");
   const [newTitle, setnewTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
+  const { getAllCamps } = useContext(DataContext);
 
   const handleEdit = (e) => {
     setnewTitle(e.target.value);
@@ -22,7 +24,7 @@ export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign }
 
     await api.put(`/campaign/${campId}`, { data: nameMessage }).then((res) => {
       setNewCampaign(res)
-      // console.log('res', res)
+      getAllCamps()
     }).catch((error) => {
       console.error('Error updating title:', error);
     });
