@@ -21,6 +21,7 @@ export const useCampaign = () => {
 // ---------------------------------------------
 export default function CampaignPage() {
   const { campId } = useParams();
+  // const [campName, setCampName] = useState('');
   const [campaign, setCampaign] = useState({});
 
   const getCamp = () => {
@@ -30,17 +31,27 @@ export default function CampaignPage() {
       });
   }
 
+  // אולי למחוק
+  // const getName = () => {api.get("/campaign/" + campId).then(res => setCampName(res.title))
+  // .catch((error) => {
+  //   toast.error(error?.response?.data?.msg || "somthing want worng");
+  // })}
+
+
   useEffect(() => {
     if (campId) {
 
       getCamp()
+      // getName()
     }
   }, [campId]);
+// }, [campId, campName]);
+
 
 
   return (
     <>
-      <CampaignContext.Provider value={{ campaign, getCamp, setCampaign }}>
+      <CampaignContext.Provider value={{ campaign, getCamp, setCampaign}}>
         <Outlet />
       </CampaignContext.Provider>
     </>
