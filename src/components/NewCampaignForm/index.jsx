@@ -10,17 +10,17 @@ import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
 import { setDefaultLocale } from "react-datepicker";
+import { useNavigate } from "react-router-dom";
 
 export default function NewCampaigenForm({ setPopUp, getCamp }) {
 
-  // TODO: לתקן את השגיאה שקמפיין חדש לא נוצר  
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
 
   const { user, setUser } = useContext(DataContext);
   const [campName, setCampName] = useState("");
   const [starterMsg, setStarterMsg] = useState("");
-
+  const nav = useNavigate()
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
@@ -37,6 +37,7 @@ export default function NewCampaigenForm({ setPopUp, getCamp }) {
       );
       toast.success(response && "נשלח בהצלחה!");
       getCamp();
+      nav(`/campaign/${response._id}/webhook`)
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");

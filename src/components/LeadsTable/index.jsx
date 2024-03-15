@@ -50,7 +50,13 @@ export default function LeadsTable({ filterdLeads = [], heads = []
     const [filters, setFilters] = useState({});
 
     const handleFilterChange = (key, value) => {
-        setFilters({ ...filters, [key]: value });
+        const newFilters = { ...filters, [key]: value };
+
+        if (value === '') {
+            delete newFilters[key];
+        }
+    
+        setFilters(newFilters);
     };
 
     // פונקציית הסינון
@@ -103,7 +109,7 @@ export default function LeadsTable({ filterdLeads = [], heads = []
             <tbody>
                 <tr id={styles.filters}>
                     {heads.map(h => (
-                        <td key={h.title}>
+                        <td key={h.title} className={h.input === 'select' ? styles.selectInput : ''}>
                             {h.input === 'select' && (
                                 <Select
                                     options={h.inputValues.map((option, index) => ({ value: option, label: option }))}
@@ -135,7 +141,7 @@ export default function LeadsTable({ filterdLeads = [], heads = []
                     )}
                 </tr>
                 {filteredData.map(lead => (
-                    <tr key={lead.email}>
+                    <tr key={lead._id}>
                         {heads.map(h => (
                             h.title === 'isOnline' ? (
                                 <td key={h.title} className={lead[h.title] ? styles.online : styles.offline}>
@@ -144,7 +150,7 @@ export default function LeadsTable({ filterdLeads = [], heads = []
                             ) : h.title === 'joinDate' ? (
                                 <td key={h.title}>{formatDateTime(lead[h.title])[0]}, {formatDateTime(lead[h.title])[1]}</td>
                             ) : (
-                                <td key={h.title}>{lead[h.title]}</td>
+                                <td id={styles.regularTd} key={h.title}>{lead[h.title]}</td>
                             )
                         ))}
                     </tr>
