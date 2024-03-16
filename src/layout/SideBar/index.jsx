@@ -10,13 +10,11 @@ import NewCampaigenForm from "../../components/NewCampaignForm";
 import ConfirmLogOut from "../../components/ConfirmLogOut";
 
 export default function SideBar() {
-  // TODO: לגרום לכך שמתי שלוחצים על החיפוש האינפוט ישר יהיה בפוקוס ומוכן להקלדה
-  // TODO: לשים את האינפוט על שורת החיפוש ולא מתחתיו
   // TODO: ?"בלחיצה על התנתקות לשים פופאפ "האם אתה בטוח שברצונך להתנתק
 
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const { setPopUp,allCamps,getAllCamps } = useContext(DataContext);
+  const { setPopUp, allCamps, getAllCamps } = useContext(DataContext);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -54,17 +52,26 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
-            <span>
-              חיפוש
-              <Icon nameIcon={"search"} nameColor={""} />
-            </span>
-          </li>
+          {!displaySearchBar && (
+            <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+              <span>
+                חיפוש
+                <Icon nameIcon={"search"} nameColor={""} />
+              </span>
+            </li>
+          )}
           {displaySearchBar && (
             <li>
               <SearchBar
+                className={styles.searchbar}
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
+                autoFocus
+                onBlur={() => {
+                  if (searchTerm.trim() === "") {
+                    setDisplaySearchBar(false);
+                  }
+                }}
               />
             </li>
           )}
@@ -101,7 +108,7 @@ export default function SideBar() {
           <div
             className={styles.item}
             onClick={() =>
-              setPopUp(              
+              setPopUp(
                 {
                   title: "קמפיין חדש",
                   component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
