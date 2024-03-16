@@ -7,13 +7,14 @@ import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import DatePicker from "../DatePicker";
 import TimePicker from "../TimePicker";
-
+import { useRef } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import api from "../../functions/api";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
 import { useCampaign } from "../../pages/CampaignPage/index";
+
 
 // Description :
 // Props : ____________ , _________
@@ -37,7 +38,7 @@ export default function NewMassageForm({
   const [text, setText] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [showSelect, setShowSelect] = useState(false);
-  
+  const  textareaRef = useRef(null)
   const [time, setTime] = useState();
   const [date, setDate] = useState();
 
@@ -47,7 +48,7 @@ export default function NewMassageForm({
 
   const handleInputChange = (e) => {
     const inputText = e.target.value;
-    setText(inputText);
+    setContent(inputText);
 
     if (inputText.slice(-1) === '@') {
       setShowSelect(true);
@@ -64,15 +65,17 @@ export default function NewMassageForm({
     setSelectedOption(selectedKey);
     if (selectedKey) {
       // const selectedValue = fields[selectedKey];
-      setText((prevText) => prevText.concat( selectedKey+' ')) 
-
+      setContent((prevText) => prevText.concat( selectedKey+' ')) 
+     
     } else {
-      setText((prevText) => prevText.slice(0, -1));
+      setContent((prevText) => prevText.slice(0, -1));
     }
   
     setShowSelect(false);
     setSelectedOption ('')
-    textareaRef.current.focus();
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
       };
   // const dinamicFiled = ()=>{
   //   let newText = content.replace(/([\^@])/g, `<select onClick="(e)=>setSelectedOp(e)" ><option value="">בחר שדה דינמי</option><option` +
@@ -83,18 +86,21 @@ export default function NewMassageForm({
  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // setContent(text)
+    // console.log("content == = = ", text);
     const submmit = { subject, content };
+    console.log("submmit == = = ",submmit);
 
     setIsOpen(false);
 
-    try {
-      const response = await api.post(`/campaign/${campId}/msg`, submmit);
-      toast.success(response && "נשלח בהצלחה!");
-      getCamp();
-    } catch (error) {
-      console.error("Error:", error);
-      toast.error(Error?.response?.data?.msg || "something went wrong");
-    }
+    // try {
+    //   const response = await api.post(`/campaign/${campId}/msg`, submmit);
+    //   toast.success(response && "נשלח בהצלחה!");
+    //   getCamp();
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   toast.error(Error?.response?.data?.msg || "something went wrong");
+    // }
   };
 
   return (
@@ -120,7 +126,7 @@ export default function NewMassageForm({
           subLabel="זוהי ההודעה שתשלח בתזמון הנבחר"
           to={"msgContent"}
           children={
-            <InputTextArea name={"msgContent"}  value={text} onChange={handleInputChange} />
+            <InputTextArea name={"msgContent"} ref={textareaRef} value={content} onChange={handleInputChange} />
           }
           type="text"
         />
