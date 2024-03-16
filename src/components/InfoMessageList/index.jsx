@@ -25,14 +25,14 @@ export default function MessageList({ searchTerm, leadId }) {
     });
     setOrganizedMessages(messagesByDate(fullArr, "sentDate"));
   }, [leadId]);
-
+  debugger;
   return (
     <div className={styles.MessageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index} className={styles.messageListDiv}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
-            {searchTerm.trim() !== "" ?
+            {searchTerm?.trim() ?
               messages.filter((message) =>
                 message.subject?.toLowerCase().includes(searchTerm?.trim().toLowerCase()))
                 .map((message, messageIndex) => (
