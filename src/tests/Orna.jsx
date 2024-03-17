@@ -14,7 +14,7 @@ export default function Orna() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const campaignRes = await api.get('/campaign' );
+        const campaignRes = await api.get('/campaign');
         console.log('campaignRes', campaignRes);
         const userRes = await api.get('/user');
         if (!campaignRes || !userRes) {
