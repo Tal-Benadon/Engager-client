@@ -12,46 +12,76 @@ import CheckBox from '../CheckBox'
 
 
 
-export default function ChangePassword({setTokenExpired}) {
+export default function ChangePassword({ setTokenExpired }) {
     const [isChecked, setIsChecked] = useState(false);
 
     const fromtemplet = { password: '', passwordConfirm: '' }
     const [formState, setFormState] = useState(fromtemplet)
     const [errorForm, setErrorForm] = useState(fromtemplet)
     const params = useParams()
+    const [phone,setPhone]=useState()
+    const pass={password:formState.password}
 
-useEffect(() => {
-    async function controlToken() {
-        const token = params.passwordToken
-        console.log(token);
-        api.get(`user/controlToken/${token}`).
-            then(res => {console.log("הטוקן בתוקף", res)
-        if (res.successStatus==='ExpiredPass'){
-            setTokenExpired(true)
+
+   
+ //ברגע שעולה הדף הטוקן נשלח לבדיקה האם תקף אם כן מציג את הדף אם לא שולח ללוגאין
+    useEffect(() => {
+        async function controlToken() {
+            const token = params.passwordToken
+            console.log(token);
+            api.get(`user/controlToken/${token}`).
+                then(res => {
+                    console.log("הטוקן בתוקף", res)
+                    setPhone( res.phone)
+                    if (res.successStatus === 'ExpiredPass') {
+                        setTokenExpired(true)
+                    }
+                })
+                .catch((res) => {
+                    console.log("עבר תוקף התוקן", res)
+                })
         }
-        })
-            .catch((res) => {
-                console.log("עבר תוקף התוקן", res)
-            })
-    }
+        controlToken()
+    }, [])
 
-    controlToken()
-}, [])
+// //ברג
+// async function updateNewPassword() {
+//     const token = params.passwordToken
+//     console.log(token);
+//     const pass=formState.password
+//     console.log(pass);
+//     api.put(`user/controlToken/${token}`).
+//         then(res => {
+//             console.log("הטוקן בתוקף", res)
+            
+//             if (res.successStatus === 'ExpiredPass') {
+//                 setTokenExpired(true)
+//             }
+//         })
+//         .catch((res) => {
+//             console.log("עבר תוקף התוקן", res)
+//         })
+// }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const data = '0546339290'
+        const data = phone
         console.log(data)
-        console.log(formState)
-        api.put(`user/${data}`, formState).then(res => console.log("הצליח", res)).
+        console.log(pass)
+        api.put(`user/updatePass/${data}`, pass).then(res => console.log("הצליח", res)).
             catch((res) => {
                 console.log("התחברות נכשלה", res)
             })
     }
 
+
+
+
+
     const checkInput = (newData = '', name) => {
         const pas = newData.password
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+        
 
         if ([name] == 'passwordConfirm' && (newData.passwordConfirm) != (pas)) {//עובד נפלא
             setErrorForm(old => ({ ...old, [name]: 'סיסמה לא תואמת' }))
