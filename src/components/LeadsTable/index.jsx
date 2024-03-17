@@ -68,7 +68,7 @@ export default function LeadsTable({ filterdLeads = [], heads = []
                 if (!isNaN(filterDate.getTime()) && !isNaN(leadDate.getTime()) && filterDate.getTime() !== leadDate.getTime()) {
                     return false;
                 }
-            } else if (filters[key] && lead[key] && !lead[key].toString().toLowerCase().includes(filters[key].toLowerCase())) {
+            } else if (filters[key] && lead[key] && !lead[key]?.toString().toLowerCase().includes(filters[key]?.toLowerCase())) {
                 return false;
             }
         }
