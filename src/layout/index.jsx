@@ -29,6 +29,7 @@ import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 import Dashboard from '../pages/Dashboard';
+import Plans from '../components/Plans';
 
 export default function Layout() {
 
@@ -47,10 +48,10 @@ export default function Layout() {
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-
+          <Route path='first-plan' element={<Plans />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
-            <Route index element={<Dashboard/>} />
+            <Route index element={<Dashboard />} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />

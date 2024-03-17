@@ -67,8 +67,8 @@ export default function ActivationStatusBox({ successStatus, account }) {
 
             case 'Activated':
                 content = 'המשתמש הופעל בהצלחה :)'
-                additional = 'מעולה, שולחים אותך לדף הבית שלנו...'
-                setNavHandler('/')
+                additional = 'מעולה, עכשיו נותר לבחור את התוכנית המתאימה...'
+                setNavHandler('/first-plan')
                 break;
             case 'Expired':
                 content = 'הקישור פג תוקף, תכף תקבל קישור חדש'
