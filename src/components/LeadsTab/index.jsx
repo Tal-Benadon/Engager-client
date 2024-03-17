@@ -82,11 +82,11 @@ export default function LeadsTab() {
               //  <CampaignInfo setPopUp={setPopUp} title={campaign.title} campId={campaign._id} />)
             },
             {
-              text: "הוספת ידנית",
+              text: "הוספה ידנית",
               icon: <Icon nameIcon={"userWithPlus"} />,
               onClick: () =>
                 setPopUp({
-                  title: "עריכה והוספת אדם לקמפיין",
+                  title: "הוספת אדם לקמפיין",
                   component: (
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
