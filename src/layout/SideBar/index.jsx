@@ -7,21 +7,14 @@ import SearchBar from "../../components/SearchBar";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../../context/DataContext";
 import NewCampaigenForm from "../../components/NewCampaignForm";
-import api from "../../functions/api";
-import FeedBack from "../../components/FeedBack";
-import { useCampaign } from "../../pages/CampaignPage";
+import ConfirmLogOut from "../../components/ConfirmLogOut";
 
 export default function SideBar() {
-  // TODO: לגרום לכך שמתי שלוחצים על החיפוש האינפוט ישר יהיה בפוקוס ומוכן להקלדה
-  // TODO: לשים את האינפוט על שורת החיפוש ולא מתחתיו
   // TODO: ?"בלחיצה על התנתקות לשים פופאפ "האם אתה בטוח שברצונך להתנתק
 
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [campaign, setCampaign] = useState([]);
-  const [campaignByDate, setCampaignByDate] = useState([]);
-
-  const { popUp, setPopUp,allCamps,getAllCamps } = useContext(DataContext);
+  const { setPopUp, allCamps, getAllCamps } = useContext(DataContext);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -47,9 +40,6 @@ export default function SideBar() {
     }, new Date(0));
   };
 
-  const deleteLS = () => {
-    delete localStorage.token;
-  };
 
   return (
     <div className={styles.sidebar}>
@@ -62,17 +52,26 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
-            <span>
-              חיפוש
-              <Icon nameIcon={"search"} nameColor={""} />
-            </span>
-          </li>
+          {!displaySearchBar && (
+            <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+              <span>
+                חיפוש
+                <Icon nameIcon={"search"} nameColor={""} />
+              </span>
+            </li>
+          )}
           {displaySearchBar && (
             <li>
               <SearchBar
+                className={styles.searchbar}
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
+                autoFocus
+                onBlur={() => {
+                  if (searchTerm.trim() === "") {
+                    setDisplaySearchBar(false);
+                  }
+                }}
               />
             </li>
           )}
@@ -88,11 +87,17 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
-          <li onClick={deleteLS}>
-            <NavLink to="/login">
+          <li onClick={() =>
+              setPopUp(              
+                {
+                  title: 'התנתקות',
+                  component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'}/>
+                }
+              )}>
+              <NavLink>
               התנתקות
               <Icon nameIcon={"logout"} nameColor={""} />
-            </NavLink>
+              </NavLink>
           </li>
         </ul>
       </div>
@@ -103,7 +108,7 @@ export default function SideBar() {
           <div
             className={styles.item}
             onClick={() =>
-              setPopUp(              
+              setPopUp(
                 {
                   title: "קמפיין חדש",
                   component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />

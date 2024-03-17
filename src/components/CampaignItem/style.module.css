@@ -1,51 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-}
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-.item {
-    width: 95%;
-    font-size: 18px;
-    font-family: 'Heebo', sans-serif;
-    border-radius: 8px;
-    margin-left: 5px;
-}
+    .item {
+        width: 95%;
+        font-size: 18px;
+        font-family: 'Heebo', sans-serif;
+        border-radius: 8px;
+        margin-left: 5px;
+    }
 
-.item:hover {
-    background-color: #FFFFFF;
-}
+    .item:hover {
+        background-color: #FFFFFF;
+    }
 
-.nameitem {
-    width: 100%;
-    justify-content: start;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: right;
-    background-color: transparent;
-    direction: rtl;
-    display: inline-block
-}
+    .nameitem {
+        width: 100%;
+        justify-content: start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: right;
+        background-color: transparent;
+        direction: rtl;
+        display: inline-block
+    }
 
-.item a {
-    padding: 0 5px;
-    width: 100%;
-    align-items: center;
-    display: flex;
-    background-color: transparent;
-}
+    .nameitem:hover {
+        overflow: visible;
+        width: fit-content;
+        z-index: 100;
+        white-space: normal; 
+    }
+    
 
-.iconitem {
-    align-items: center;
-    width: 20px;
-    margin: 7px 0 0 7px;
-    background-color: transparent;
-}
+    .item a {
+        padding: 0 5px;
+        width: 100%;
+        align-items: center;
+        display: flex;
+        background-color: transparent;
+    }
 
-.active {
-    border: rgb(14, 157, 133) solid 2px;
-    border-radius: 8px;
-    width: 100%;
-}
+    .iconitem {
+        align-items: center;
+        width: 20px;
+        margin: 7px 0 0 7px;
+        background-color: transparent;
+    }
+
+    .active {
+        border: rgb(14, 157, 133) solid 2px;
+        border-radius: 8px;
+        width: 100%;
+    }
