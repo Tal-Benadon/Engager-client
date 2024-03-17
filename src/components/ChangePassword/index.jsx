@@ -96,6 +96,7 @@ useEffect(() => {
                     </InputWrapper>
                     {errorForm.passwordConfirm &&
                         <div className={styles.error}>{errorForm.passwordConfirm}</div>}
+
                     <button className={styles.button} type='submit' >עדכון סיסמה</button>
                 </form>
             </div>
