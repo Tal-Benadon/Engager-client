@@ -15,19 +15,32 @@ import Select from 'react-select';
 export default function CompleteDetails() {
     const [formState, setFormState] = useState({})
     const [selectedOption, setSelectedOption] = useState(null);
+    const [errorForm, setErrorForm] = useState({})
 
     // const { user, setUser } = useContext(DataContext)
     const nav = useNavigate()
     const { email } = useParams();
 
+    const checkInput = (newData = '', name) => {
+        const phone = newData.phone
+        const phoneRegex = /^(?:0[5][2-9]\d(?:-?\d){6})$/;
 
+
+        if ([name] == 'phone' && (!phoneRegex.test(phone))) {//עובד נפלא
+            setErrorForm(old => ({ ...old, [name]: 'המספר אינו תואם ווצאפ' }))
+        }
+        else {
+            setErrorForm(0)
+        }
+    }
 
     async function handleSubmit(e) {
+        e.preventDefault();
+        console.log("formSteteeeeeeeee", formState);
         try {
-            console.log("formSteteeeeeeeee", formState);
-            e.preventDefault();
             const res = await api.put(`/user/update/${email}`, formState);
-            console.log('User details updated:', res.data);
+            // console.log('User details updated:', res.data);
+            console.log(formState);
         } catch (err) {
             console.error({ err })
         }
@@ -40,6 +53,7 @@ export default function CompleteDetails() {
             ...prevState,
             [name]: value
         }));
+        checkInput({ ...formState, [name]: value }, name)
     };
 
     const handleChangeOption = (selectedOption) => {
@@ -80,6 +94,8 @@ export default function CompleteDetails() {
                         <div>
                             <InputWrapper label={"טלפון"} >
                                 <InputText name={'phone'} type='phone' required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                                {errorForm.phone &&
+                                    <div className={styles.error}>{errorForm.phone}</div>}
                             </InputWrapper>
                         </div>
                         <div>
