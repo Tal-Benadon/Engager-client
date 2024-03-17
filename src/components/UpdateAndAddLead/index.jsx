@@ -8,28 +8,29 @@ import axios from 'axios'
 import api from '../../functions/api'
 import LeadInfoPage from '../../pages/LeadInfoPage/index'
 import DataContext from '../../context/DataContext'
-import { useCampaign } from '../../pages/CampaignPage';
+import { toast } from 'react-toastify';
+// import  from './LeadInfoPage'
 
 
-export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
-    // const { getCamp } = useCampaign();
+export default function UpdateAndAddLead({ details, campaign }) {
+    // להעביר כזה אובייקט.. בקשה...
+    // details = {fullName:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
 
 
-    const { fullName, email, phone, notes, leadId } = details
-
-    const [workOrFinally, setWorkOrFinally] = useState('work')
+    const [fetchedCampaigns, setFetchedCampaigns] = useState(null);
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
-    const {PopUp, setPopUp } = useContext(DataContext);
+    const { setPopUp } = useContext(DataContext);
+    const { user, setUser } = useContext(DataContext)
+
     const [newData, setNewData] = useState({
-        name: details ? details.fullName : '',
+        fullName: details ? details.fullName : '',
         phone: details ? details.phone : '',
         email: details ? details.email : '',
         notes: details ? details.notes : ''
     })
 
     useEffect(() => {
-        setWorkOrFinally('work')
         if (details) {
             setEditOrAdd('edit')
         } else { setEditOrAdd('add') }
@@ -51,28 +52,37 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
+        console.log(newData)
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
         } else {
             setErorrState()
             if (editOrAdd == 'add') {
-                api.post(`/campaign/${campaign._id}/lead`, { data: newData })
-                    .then(setWorkOrFinally('finally'))
+                try {
+                    api.post(`lead/${campaign}/lead/`, { userId: user._id, data: { ...newData } })
+                    toast.success(response && "נשלח בהצלחה!");
+                    fetchCampaign()
+                } catch (error) {
+                    console.log(error);
+                    toast.error(Error?.response?.data?.msg || "somthing want worng");
+
+                }
             } else {
                 if (Object.keys(newData).includes('phone')) {
                     if (newData.phone == details.phone) {
                         let result = newData
                         delete result.phone
                         setNewData(result)
+                        console.log('😓😓😓😓');
                     }
                 }
-                api.put(`/campaign/${campaign._id}/lead/${leadId}`, newData)
+                api.put('/lead/' + details.leadId, newData)
                     .then(res => {
-                        setWorkOrFinally('finally')
-                        getCamp()
-                        console.log("res", res);
+                        console.log('🧸' + res.data)
+                        fetchCampaign()
                     })
                     .catch(e => {
+                        console.log("🚛luliau", e.response.data);
                         if (e.response.data == "phoneExist") {
                             setErorrState('מספר הטלפון כבר קיים במערכת')
                         }
@@ -82,30 +92,36 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
     }
 
 
+    const fetchCampaign = async () => {
+        try {
+            const response = await api.get(`/campaign/`);
+            setFetchedCampaigns(response.data);
+        } catch (error) {
+            console.error('Error fetching campaign data:', error);
+        }
+    };
+
 
     return <div className={styles.contanier} >
-        {(workOrFinally == 'work')
-            ?
-            <form onSubmit={(e) => handleOnSubmit(e)} >
-                <InputWrapper label={'שם מלא'} children={<InputText name='name' value={newData.name} required={true} onChange={(e) => handleChange(e)} />} />
-                <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e)} />} />
-                {(erorrState)
-                    ?
-                    <div className={styles.error}>{erorrState}</div>
-                    :
-                    null}
-                <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={(e) => handleChange(e)} type={"email"} />} />
-                <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
-                <div className={styles.buttons}>
-                    <Button content='שמירה' type='submit'/>
-                    <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} />
-                </div>
-            </form>
-            :
-            (editOrAdd == "edit") ?
-                <LeadInfoPage /> :
-                <div>ההצטרפות בוצעה בהצלחה!</div>
-        }
+        <form onSubmit={(e) => handleOnSubmit(e)} >
+            <h1>{newData.fullName}</h1>
+            <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={(e) => handleChange(e)} />} />
+            <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e)} />} />
+            {(erorrState)
+                ?
+                <div className={styles.error}>{erorrState}</div>
+                :
+                null}
+            <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={(e) => handleChange(e)} type={"email"} />} />
+            <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
+            <div className={styles.buttons}>
+                <Button type='submit' content='שמירה' onClick={() => setPopUp(false)} />
+                {/* <Button type='submit' content='שמירה'  /> */}
+                <Button content='ביטול' className='cancel' onClick={() => setPopUp(false)} />
+                {/* <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} /> */}
+
+            </div>
+        </form>
 
     </div>
 }
