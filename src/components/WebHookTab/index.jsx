@@ -47,25 +47,22 @@ export default function WebHookTab() {
   if (!Object.keys(campaign).length) return <></>
 
   return (
-    <div className={styles.msgTab}>
-      <HeadLine
-        title={campaign.title}
-        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-      />
-      <TabSwitcher rout={[
-        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
-        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
-      ]} />
-      <WebHook campaign_id={campaign._id} webhook={campaign.webhook} link={link} />
-      <div className={styles.menu}>
+  <div className={styles.msgTab}>
+    <div className={styles.headerContainer}>
+    <div className={styles.titlesContainer}>
+        <HeadLine
+          title={campaign.title}
+          subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
+        />
+      </div>
+      <div className={styles.popOverContainer}>
         <Popover fnName={"onClick"} list={[
           {
             text: "מחיקת קישור קיים ויצרת קישור חדש",
             icon: <Icon nameIcon={"writing"} />,
             onClick: () => setPopUp(
               {
-                title: " קישור חדש לדף נחיתה",
+                title: "קישור חדש לדף נחיתה",
                 component: <WebHookPopUp setPopUp={setPopUp} setConfirm={setConfirm} />
               }
             )
@@ -74,6 +71,20 @@ export default function WebHookTab() {
           <Icon nameIcon={"menu"} />
         </Popover>
       </div>
+      
+
     </div>
-  )
+    <TabSwitcher rout={[
+      { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+      { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
+      { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
+    ]} />
+    <WebHook campaign_id={campaign._id} webhook={campaign.webhook} link={link} />
+    <div className={styles.menu}>
+      {/* TODO: ליישם את האופציות של התפריט הנפתח */}
+    </div>
+  </div>
+)
+
+  
 }
