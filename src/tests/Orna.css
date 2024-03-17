@@ -1,5 +1,5 @@
 
-.charts_container {
+.charts-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,7 +13,7 @@
     max-width: 400px;
     width: 100%;
   }
-  .chart_title {
+  .chart-title {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
