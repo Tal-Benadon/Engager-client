@@ -70,11 +70,11 @@ export default function LeadsTab() {
                 }),
             },
             {
-              text: "הוספת ידנית",
+              text: "הוספה ידנית",
               icon: <Icon nameIcon={"userWithPlus"} />,
               onClick: () =>
                 setPopUp({
-                  title: "עריכה והוספת אדם לקמפיין",
+                  title: "הוספת אדם לקמפיין",
                   component: (
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
