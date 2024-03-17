@@ -15,7 +15,7 @@ export default function LeadItem({ campaignId, name, email, date, id }) {
 const {getCamp} = useCampaign()
 
 const handleDelete= async (campaignId,id)=>{
-await api.del(`/lead/${campaignId}/lead/${id}`).then((res) => {
+await api.del(`/campaign/${campaignId}/lead/${id}`).then((res) => {
   getCamp()
 console.log(res);
 }).catch((error) => {
