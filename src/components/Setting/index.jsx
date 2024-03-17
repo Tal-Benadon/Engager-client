@@ -1,58 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import QRCode from 'react-qr-code';
 import io from 'socket.io-client';
 import InputWrapper from '../InputWrapper/index';
 import styles from './style.module.css';
 import Loading from '../Loading'
-
-// const socket5 = io('http://localhost:3000');
+import DataContext from '../../context/DataContext';
+import api from "../../functions/api";
 
 export default function QRCodeComponent() {
-
-  // TODO: לשפץ את דף ההגדרות ולדאוג שיופיע הקוד QR
-
+  const [socket, setSocket] = useState();
   const [code, setCode] = useState('');
+  const [isReady, setIsReady] = useState(false);
 
-  // useEffect(() => {
-  //   socket5.on('connect', () => {
-  //     console.log('Connected to server');
-  //   });
+  const { user } = useContext(DataContext);
 
-  //   socket5.on('qr', (qr) => {
-  //     console.log(qr)
-  //     setCode(qr);
-  //   });
-
-  //   socket5.on('ready', () => {
-  //     setCode(":-)");
-  //   })
-  // }, []);
-const text = `כיצד להשתמש ב-WhatsApp באינגג'ר
-
-1. פותחים את WhatsApp בטלפון.
-
-2. מקישים על תפריט ב-Android או על הגדרותב-iPhone.
-
-3. להקיש על מכשירים מקושרים ואז על קישור מכשיר
-
-4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.`
+  useEffect(() => {
+    const temp =io('http://localhost:3000', {
+      auth: {
+        userData: {
+          _id: "123456789",
+          name: 'אלירז',
+        }
+      }
+  
+    })
+    temp.on('connect', () => {
+      console.log('Connected to server');
+    });
+    
+    temp.on(`qr`, (qr) => {
+      console.log(qr)
+      setCode(qr);
+    });
+    
+    temp.on('ready', () => {
+      setIsReady(true);
+    })
+  },[])
+  
   return (
     <div className={styles.container}>
-    {(code.length < 2) ? <Loading className={styles.loading} /> : ""}
-    {(code.length > 3) ? <QRCode value={code} className={styles.qrCode} /> : ""}
-    <InputWrapper subLabel={"נא לא לרענן את העמוד"} className={styles.inputWrapper} />
-    <div className={styles.text}>
-    כיצד להשתמש ב-WhatsApp באינגייג'ר:
-</div>
-<div className={styles.text2}>
-1. פותחים את WhatsApp בטלפון.
-<br/>
-2. מקישים על תפריט ב-Android או על הגדרות ב-iPhone.
-<br/>
-3. להקיש על מכשירים מקושרים ואז על קישור מכשיר
-<br/>
-4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.
+      {(code.length < 2) ? <Loading className={styles.loading} /> : ""}
+      {(!isReady && code.length > 2) ? <QRCode value={code} className={styles.qrCode} /> : ""}
+      <InputWrapper subLabel={"נא לא לרענן את העמוד"} className={styles.inputWrapper} />
+      <div className={styles.text}>
+        כיצד להשתמש ב-WhatsApp באינגייג'ר:
+      </div>
+      <div className={styles.text2}>
+        1. פותחים את WhatsApp בטלפון.
+        <br />
+        2. מקישים על תפריט ב-Android או על הגדרות ב-iPhone.
+        <br />
+        3. להקיש על מכשירים מקושרים ואז על קישור מכשיר
+        <br />
+        4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.
+      </div>
     </div>
-  </div>
   );
 }

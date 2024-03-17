@@ -5,11 +5,11 @@
     cursor: pointer;
 }
 
-.children{
+.children {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    padding: 17px;
+    padding: 10px;
 }
 
 .Popover {
@@ -35,7 +35,7 @@
 }
 
 .Popover li {
-    height: 50px;
+    min-height: 50px;
     padding: 12px;
     display: flex;
     justify-content: flex-start;
@@ -64,4 +64,7 @@
     color: rgb(14, 157, 133);
     border-radius: 8px;
 
+}
+.text{
+    text-align: center;
 }
