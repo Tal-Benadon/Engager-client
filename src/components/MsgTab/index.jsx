@@ -21,7 +21,9 @@ export default function MsgTab() {
       />
       <TabSwitcher rout={[
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
+        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
+
       ]} />
       <MsgListHolder />
       <div className={styles.menu}>

@@ -11,12 +11,12 @@ import formatDate from '../../functions/DateFormat';
 // Creator : yehoshua preiser
 export default function MessageList({ searchTerm }) {
 
-  const { campaign } =useCampaign();
+  const { campaign } = useCampaign();
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-      const messages = messagesByDate(campaign.msg,"creationDate");
-      setOrganizedMessages(messages);
+    const messages = messagesByDate(campaign.msg, "creationDate");
+    setOrganizedMessages(messages);
   }, [campaign.msg]);
 
   return (
@@ -25,23 +25,34 @@ export default function MessageList({ searchTerm }) {
         <div key={index} className={styles.messages}>
           <div className={styles.date}>{date}</div>
           <ul className={styles.unorderedList}>
-            {messages.filter(message =>
-              message.subject.toLowerCase().includes(searchTerm.toLowerCase())
-            ).map((message, messageIndex) => (
-              < li key={messageIndex} >
-                <MessageItem
-                  campaignId={campaign._id}
-                  msgId={message._id}
-                  title={message.subject}
-                  date={formatDate(message.creationDate)}
-                  time={formatTime(message.creationDate)}
-                />
-              </li>
-            ))}
+            {searchTerm.trim() !== "" ?
+              messages.filter((message) =>
+                message.subject?.toLowerCase().includes(searchTerm.trim()?.toLowerCase())
+              ).map((message, messageIndex) => (
+                <li key={messageIndex}>
+                  <MessageItem
+                    campaignId={campaign._id}
+                    msgId={message._id}
+                    title={message.subject}
+                    date={formatDate(message.creationDate)}
+                    time={formatTime(message.creationDate)}
+                  />
+                </li>
+              ))
+              : messages.map((message, messageIndex) => (
+                <li key={messageIndex}>
+                  <MessageItem
+                    campaignId={campaign._id}
+                    msgId={message._id}
+                    title={message.subject}
+                    date={formatDate(message.creationDate)}
+                    time={formatTime(message.creationDate)}
+                  />
+                </li>
+              ))}
           </ul>
         </div>
-      ))
-      }
-    </div >
+      ))}
+    </div>
   );
 }
