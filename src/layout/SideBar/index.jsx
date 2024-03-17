@@ -15,6 +15,7 @@ export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { setPopUp, allCamps, getAllCamps } = useContext(DataContext);
+
   const nav = useNavigate();
 
   useEffect(() => {
@@ -88,16 +89,16 @@ export default function SideBar() {
             </NavLink>
           </li>
           <li onClick={() =>
-              setPopUp(              
-                {
-                  title: 'התנתקות',
-                  component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'}/>
-                }
-              )}>
-              <NavLink>
+            setPopUp(
+              {
+                title: 'התנתקות',
+                component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'} />
+              }
+            )}>
+            <NavLink>
               התנתקות
               <Icon nameIcon={"logout"} nameColor={""} />
-              </NavLink>
+            </NavLink>
           </li>
         </ul>
       </div>
