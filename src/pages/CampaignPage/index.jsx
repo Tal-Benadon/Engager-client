@@ -51,7 +51,7 @@ export default function CampaignPage() {
 
   return (
     <>
-      <CampaignContext.Provider value={{ campaign, getCamp, setCampaign }}>
+      <CampaignContext.Provider value={{ campaign, getCamp, setCampaign}}>
         <Outlet />
       </CampaignContext.Provider>
     </>

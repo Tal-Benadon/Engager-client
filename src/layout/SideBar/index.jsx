@@ -7,32 +7,18 @@ import SearchBar from "../../components/SearchBar";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../../context/DataContext";
 import NewCampaigenForm from "../../components/NewCampaignForm";
-import api from "../../functions/api";
-import FeedBack from "../../components/FeedBack";
+import ConfirmLogOut from "../../components/ConfirmLogOut";
 
 export default function SideBar() {
-  // TODO: לגרום לכך שמתי שלוחצים על החיפוש האינפוט ישר יהיה בפוקוס ומוכן להקלדה
-  // TODO: לשים את האינפוט על שורת החיפוש ולא מתחתיו
   // TODO: ?"בלחיצה על התנתקות לשים פופאפ "האם אתה בטוח שברצונך להתנתק
 
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [campaign, setCampaign] = useState([]);
-  const [campaignByDate, setCampaignByDate] = useState([]);
-  const { popUp, setPopUp } = useContext(DataContext);
+  const { setPopUp, allCamps, getAllCamps } = useContext(DataContext);
   const nav = useNavigate();
 
-  const getCamp = () => {
-    api
-      .get(`/campaign`)
-      .then((res) => {
-        // nav(`campaign/${res[0]._id}`)
-        setCampaign(res);
-      })
-      .then();
-  };
   useEffect(() => {
-    getCamp();
+    getAllCamps();
   }, []);
 
   const sortCamps = (camps) => {
@@ -54,14 +40,11 @@ export default function SideBar() {
     }, new Date(0));
   };
 
-  const deleteLS = () => {
-    delete localStorage.token;
-  };
 
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
-        <h1>אנגייג׳ר</h1>
+        <h1 onClick={() => nav('/')} className={styles.eng}>אנגייג׳ר</h1>
         <ul>
           <li>
             <NavLink to="/myLeads">
@@ -69,17 +52,26 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
-            <span>
-              חיפוש
-              <Icon nameIcon={"search"} nameColor={""} />
-            </span>
-          </li>
+          {!displaySearchBar && (
+            <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+              <span>
+                חיפוש
+                <Icon nameIcon={"search"} nameColor={""} />
+              </span>
+            </li>
+          )}
           {displaySearchBar && (
             <li>
               <SearchBar
+                className={styles.searchbar}
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
+                autoFocus
+                onBlur={() => {
+                  if (searchTerm.trim() === "") {
+                    setDisplaySearchBar(false);
+                  }
+                }}
               />
             </li>
           )}
@@ -95,25 +87,31 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
-          <li onClick={deleteLS}>
-            <NavLink to="/login">
+          <li onClick={() =>
+              setPopUp(              
+                {
+                  title: 'התנתקות',
+                  component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'}/>
+                }
+              )}>
+              <NavLink>
               התנתקות
               <Icon nameIcon={"logout"} nameColor={""} />
-            </NavLink>
+              </NavLink>
           </li>
         </ul>
       </div>
       <div className={styles.lists}>
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist}>
-          <CampaignList searchTerm={searchTerm} campaignList={campaign} />
+          <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
           <div
             className={styles.item}
             onClick={() =>
-              setPopUp(              
+              setPopUp(
                 {
                   title: "קמפיין חדש",
-                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp} />
+                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
                 }
                 //  <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp}/>
               )

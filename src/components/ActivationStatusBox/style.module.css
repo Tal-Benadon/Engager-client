@@ -13,6 +13,11 @@
     /* margin-right: 50px; */
 }
 
-.messageHeader {
-    margin-top: 40px;
+
+.messageHeaderWithLoader {
+    padding: 40px 0 40px;
+}
+
+.finalText {
+    padding: 40px 0 10px;
 }

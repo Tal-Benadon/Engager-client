@@ -10,14 +10,12 @@ import DataContext from '../../context/DataContext'
 import { useNavigate } from 'react-router'
 import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 
-import CheckBox from '../CheckBox'
 
 
 // login page.
 // <button /> gets props of content. needs to get ruot to DB to check that user fits password
 
 export default function Login() {
-
     const [formState, setFormState] = useState({})
     const { user, setUser } = useContext(DataContext)
     const nav = useNavigate()
@@ -26,12 +24,15 @@ export default function Login() {
             e.preventDefault();
             const { token, user } = await api.post("/login", formState);
             setUser(user)
+
             localStorage.token = token
             nav("/")
         } catch (err) {
             console.error({ err })
         }
     }
+
+
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -48,7 +49,13 @@ export default function Login() {
         nav('/register')
     }
 
+    const forgetPassword = () => {
+        nav('/forgetPassword')
+    }
     let root = 'accout/signInGoogle'
+
+    // console.log({formState})
+    console.log({ user })
 
     return (
         <div>
@@ -67,7 +74,7 @@ export default function Login() {
                         <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                     </InputWrapper>
                 </div>
-                <div className={styles.forget}>שכחתי סיסמא</div>
+                <div onClick={forgetPassword} className={styles.forget} >שכחתי סיסמא</div>
                 <button className={styles.button} type='submit' >התחברות</button>
             </form>
             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>

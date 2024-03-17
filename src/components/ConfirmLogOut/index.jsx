@@ -9,40 +9,23 @@ import DataContext from "../../context/DataContext";
 import { toast } from "react-toastify";
 
 
-export default function DelCampaign({ campId, title,  setPopUp }) {
-  const [onecampId, setoneCampId] = useState("");
+export default function ConfirmLogOut({title, setPopUp }) {
   const nav = useNavigate();
-  const { user, setUser,getAllCamps } = useContext(DataContext);
-
-
-  const handleDelete = async () => {
-    api.del(`/campaign/${campId}`)
-      .then(() => {
-        setPopUp(false);
-        getAllCamps()
-        nav("/")
-      })
-      .catch((error) => {
-        toast.error('Error updating title:', error);
-      });
+ 
+  const handleLogOut = async () => {
+    delete localStorage.token;
+    setPopUp(false);
+    nav("/login");
   };
 
   const handleCancel = () => {
     setPopUp(false);
   };
 
-  useEffect(() => {
-    if (campId) {
-      api.get(`/campaign/${campId}`).then((res) => {
-        setoneCampId(res.data);
-      });
-    }
-  }, [campId]);
 
   return (
     <div>
-
-      <span>האם אתה בטוח שתרצה למחוק את הקמפיין '{title}'?</span>
+      <span>האם אתה בטוח שברצונך להתנתק?</span>
       <div className={styles.buttons}>
         <Button
           onClick={handleCancel}
@@ -50,9 +33,9 @@ export default function DelCampaign({ campId, title,  setPopUp }) {
           content={"ביטול"}
         />
         <Button
-          onClick={handleDelete}
+          onClick={handleLogOut}
           className={"save"}
-          content={"מחיקה"}
+          content={title}
         />
       </div>
     </div>
