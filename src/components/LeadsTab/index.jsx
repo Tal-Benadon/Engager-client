@@ -40,27 +40,16 @@ export default function LeadsTab() {
   if (!Object.keys(campaign).length) return <></>;
   return (
     <div className={styles.leadsTab}>
-      <HeadLine
-        title={campaign.title}
-        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-      />
-      <TabSwitcher rout={[
-        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
-        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
-      ]} />
 
-      <SearchBar
-        sortType={sortType}
-        setSortType={setSortType}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        sortButton={true}
-      />
-      <div className={styles.LeadListHolder}>
-        <LeadList sortType={sortType} searchTerm={searchTerm} />
-      </div>
-      <div className={styles.menu}>
+      <div className={styles.headerContainer}>
+
+        <div className={styles.titlesContainer}>
+          <HeadLine
+            title={campaign.title}
+            subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
+          />
+        </div>
+        <div className={styles.popOverContainer}>
         <Popover
           fnName={"onClick"}
           list={[
@@ -79,7 +68,6 @@ export default function LeadsTab() {
                     />
                   ),
                 }),
-              //  <CampaignInfo setPopUp={setPopUp} title={campaign.title} campId={campaign._id} />)
             },
             {
               text: "הוספת ידנית",
@@ -107,7 +95,11 @@ export default function LeadsTab() {
                 setPopUp({
                   title: "מחיקת רשימה",
                   component: (
-                    <DelCampaign setPopUp={setPopUp} title={campaign.title} campId={campaign._id} />
+                    <DelCampaign
+                      setPopUp={setPopUp}
+                      title={campaign.title}
+                      campId={campaign._id}
+                    />
                   ),
                 }),
             },
@@ -115,6 +107,24 @@ export default function LeadsTab() {
         >
           <Icon nameIcon={"menu"} />
         </Popover>
+        </div>
+        
+      </div>
+      <TabSwitcher rout={[
+        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
+        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
+      ]} />
+
+      <SearchBar
+        sortType={sortType}
+        setSortType={setSortType}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        sortButton={true}
+      />
+      <div className={styles.LeadListHolder}>
+        <LeadList sortType={sortType} searchTerm={searchTerm} />
       </div>
     </div >
   );
