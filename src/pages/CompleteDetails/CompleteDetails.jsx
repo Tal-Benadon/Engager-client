@@ -16,7 +16,7 @@ export default function CompleteDetails() {
     const [formState, setFormState] = useState({})
     const [selectedOption, setSelectedOption] = useState(null);
     const [errorForm, setErrorForm] = useState({})
-
+    const [render, setRender] = useState(false)
     // const { user, setUser } = useContext(DataContext)
     const nav = useNavigate()
     const { email } = useParams();
@@ -34,13 +34,24 @@ export default function CompleteDetails() {
         }
     }
 
+    const timeoutAndNavigate = () => {
+        setTimeout(() => {
+            nav('/login')
+
+        }, 5000);
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
         console.log("formSteteeeeeeeee", formState);
         try {
             const res = await api.put(`/user/update/${email}`, formState);
-            // console.log('User details updated:', res.data);
-            console.log(formState);
+            if (res) {
+
+                setRender(true)
+                // timeoutAndNavigate()
+            }
+
         } catch (err) {
             console.error({ err })
         }
@@ -78,50 +89,60 @@ export default function CompleteDetails() {
     }
 
     return (
-        < div className={styles.container}>
+        <div className={styles.container}>
             <div className={styles.circle}></div>
             <div className={styles.allin}>
                 <div>
+                    {render ? (
+                        <>
+                            <h1> ההרשמה נקלטה בהצלחה, כבר תקבל הודעה להפעלת המשתמש שלך</h1>
 
-                    <form onSubmit={handleSubmit} className={styles.inputSpace}>
-                        <div className={styles.title}>אנגייג'ר</div>
-                        <div className={styles.title2}>השלמת פרטים קטנה וסיימנו..</div>
-                        <div>
-                            <InputWrapper label={"שם מלא"} >
-                                <InputText name={'fullName'} type='text' required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                            </InputWrapper>
-                        </div>
-                        <div>
-                            <InputWrapper label={"טלפון"} >
-                                <InputText name={'phone'} type='phone' required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                                {errorForm.phone &&
-                                    <div className={styles.error}>{errorForm.phone}</div>}
-                            </InputWrapper>
-                        </div>
-                        <div>
-                            <InputWrapper label={"תחום עיסוק"} >
-                                <InputText name={'occupation'} type='text' required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                            </InputWrapper>
-                        </div>
-                        <div>
-                            <InputWrapper label={"מספר עובדים בעסק"}>
-                                <Select
-                                    name={'amountOfEmployees'}
-                                    value={selectedOption}
-                                    onChange={handleChangeOption}
-                                    options={options}
-                                    className={styles.select}
-                                />
-                            </InputWrapper>
-                        </div>
-                        <button className={styles.button} type='submit'>שליחה</button>
-                    </form>
+                            <button className={styles.button}>לא קיבלת את ההודעה? לחץ כאן</button>
+                        </>
+                    ) : (
+                        <>
+                            <form onSubmit={handleSubmit} className={styles.inputSpace}>
+                                <div className={styles.title}>אנגייג'ר</div>
+                                <div className={styles.title2}>השלמת פרטים קטנה וסיימנו..</div>
+                                <div>
+                                    <InputWrapper label={"שם מלא"} >
+                                        <InputText name={'fullName'} type='text' required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                                    </InputWrapper>
+                                </div>
+                                <div>
+                                    <InputWrapper label={"טלפון"} >
+                                        <InputText name={'phone'} type='phone' required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
+                                        {errorForm.phone &&
+                                            <div className={styles.error}>{errorForm.phone}</div>}
+                                    </InputWrapper>
+                                </div>
+                                <div>
+                                    <InputWrapper label={"תחום עיסוק"} >
+                                        <InputText name={'occupation'} type='text' required={true} onChange={handleChange} value={formState.occupation} className={styles.input} />
+                                    </InputWrapper>
+                                </div>
+                                <div>
+                                    <InputWrapper label={"מספר עובדים בעסק"}>
+                                        <Select
+                                            name={'amountOfEmployees'}
+                                            value={selectedOption}
+                                            onChange={handleChangeOption}
+                                            options={options}
+                                            className={styles.select}
+                                        />
+                                    </InputWrapper>
+                                </div>
+                                <button className={styles.button} type='submit'>שליחה</button>
+                            </form>
 
-                    <div className={styles.notlogin}>
-                        <div className={styles.notlogin1}>עדיין לא רשומים?</div>
-                        <div onClick={toregister} className={styles.notlogin2}>הרשמה זה ממש כאן</div>
-                    </div>
+                            <div className={styles.notlogin}>
+                                <div className={styles.notlogin1}>עדיין לא רשומים?</div>
+                                <div onClick={toregister} className={styles.notlogin2}>הרשמה זה ממש כאן</div>
+                            </div>
+                        </>
+                    )}
                 </div>
-            </div></div>
-    )
+            </div>
+        </div>
+    );
 }
