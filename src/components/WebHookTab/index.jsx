@@ -9,6 +9,8 @@ import Icon from '../Icon';
 import WebHook from '../WebHook';
 import api from '../../functions/api'
 import WebHookPopUp from '../WebHookPopup';
+import { toast } from 'react-toastify';
+
 
 export default function WebHookTab() {
 
@@ -26,10 +28,11 @@ export default function WebHookTab() {
   }, [campaign])
 
   useEffect(() => {
-    createWebHook()
-    return () => {
-      setConfirm(false)
+    if (confirm) {
+      createWebHook()
     }
+    setConfirm(false)
+
   }, [confirm])
 
 
@@ -38,9 +41,12 @@ export default function WebHookTab() {
     try {
       const res = await api.post('/webhook', { campId, userId })
       setLink('https://www.engager.co.il/webhook/' + res)
+      toast.success(response && "נשלח בהצלחה!");
 
     } catch (error) {
-      console.error('Error creating webhook:', error)
+      console.error('Error creating webhook:', error);
+      toast.error(Error?.response?.data?.msg || "something went wrong");
+
     }
   }
 

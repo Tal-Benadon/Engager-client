@@ -27,14 +27,14 @@ export default function LeadsTab() {
 
   const { campaign, setCampaign } = useCampaign();
   const [newCampaign, setNewCampaign] = useState({});
-  const {setAllCamps} = useContext(DataContext)
+  const { setAllCamps } = useContext(DataContext)
   useEffect(() => {
     setCampaign(newCampaign);
   }, [newCampaign])
 
-  useEffect(()=>{
+  useEffect(() => {
     setCampaign(campaign)
-  },[campaign])
+  }, [campaign])
 
   // debugger
   if (!Object.keys(campaign).length) return <></>;
