@@ -28,6 +28,7 @@ import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
+import Dashboard from '../pages/Dashboard';
 
 export default function Layout() {
 
@@ -67,6 +68,8 @@ export default function Layout() {
               <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
