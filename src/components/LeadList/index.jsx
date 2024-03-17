@@ -5,8 +5,8 @@ import formatDate from '../../functions/DateFormat';
 import { useCampaign } from '../../pages/CampaignPage';
 import { useEffect, useState } from 'react';
 
-// Description : gets a leads array from context, maps it to LeadItem component, with filter by seach and sorting function.
-// Props : sortType and searchTerm from usestate of seachbar
+// Description : gets a leads array from context, maps it to LeadItem component, with filter by search and sorting function.
+// Props : sortType and searchTerm from usestate of searchbar
 // Creator : Yehoshua Preiser
 
 export default function LeadList({ searchTerm, sortType }) {
@@ -36,9 +36,20 @@ export default function LeadList({ searchTerm, sortType }) {
 
   return (
     <div className={styles.leadArray}>
-      {sortedLeadArray
-        .filter(l => l.fullName?.toLowerCase().includes(searchTerm?.toLowerCase()))
-        .map((lead) => (
+      {searchTerm.trim() !== "" ?
+        sortedLeadArray
+          .filter(l => l.fullName?.toLowerCase().includes(searchTerm?.trim().toLowerCase()))
+          .map((lead) => (
+            <LeadItem
+              campaignId={campaign._id}
+              name={lead.fullName}
+              email={lead.email}
+              key={lead._id}
+              id={lead._id}
+              date={formatDate(lead.joinDate)}
+            />
+          ))
+        : sortedLeadArray.map((lead) => (
           <LeadItem
             campaignId={campaign._id}
             name={lead.fullName}
@@ -47,7 +58,9 @@ export default function LeadList({ searchTerm, sortType }) {
             id={lead._id}
             date={formatDate(lead.joinDate)}
           />
-        ))}
+        ))
+
+      }
     </div>
   );
 }

@@ -23,7 +23,7 @@ import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 //         api.post("/user", data)
 //             .then(res => {console.log(res) ; nav('/login')})
 //             .catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
-        
+
 //     }
 
 //     const checkInput = (newData = '', name) => {
@@ -136,17 +136,17 @@ import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 export default function Register() {
     const [isChecked, setIsChecked] = useState(false);
 
-    const fromtemplet = { name: '', phone: '', email: '', password: '', passwordConfirm: '' }
-    const [formState, setFormState] = useState(fromtemplet)
-    const [errorForm, setErrorForm] = useState(fromtemplet)
+    const fromTemplate = { name: '', phone: '', email: '', password: '', passwordConfirm: '' }
+    const [formState, setFormState] = useState(fromTemplate)
+    const [errorForm, setErrorForm] = useState(fromTemplate)
     const nav = useNavigate()
     async function handleSubmit(e) {
         e.preventDefault();
         const data = formState
         api.post("/user", data)
-            .then(res => {console.log(res) ; nav('/login')})
+            .then(res => { console.log(res); nav('/login') })
             .catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
-        
+
     }
 
     const checkInput = (newData = '', name) => {
@@ -204,18 +204,18 @@ export default function Register() {
                         <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                     </InputWrapper>
 
-                    {/* <InputWrapper label={"טלפון"} setIsVisible={true} >
+                    <InputWrapper label={"טלפון"} setIsVisible={true} >
                         <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
                         {errorForm.phone &&
                             <div className={styles.error}>{errorForm.phone}</div>}
-                    </InputWrapper> */}
+                    </InputWrapper>
 
                     <InputWrapper label={"אמייל"} setIsVisible={true} >
                         <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} className={styles.input} />
                         {errorForm.email &&
                             <div className={styles.error}>{errorForm.email}</div>}
                     </InputWrapper>
-{/* 
+
                     <InputWrapper label={"סיסמה"} setIsVisible={true} >
                         <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} className={styles.input} />
                         {errorForm.password &&
@@ -226,23 +226,28 @@ export default function Register() {
                         <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} className={styles.input} />
                     </InputWrapper>
                     {errorForm.passwordConfirm &&
-                        <div className={styles.error}>{errorForm.passwordConfirm}</div>}*/}
-                    <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} /> 
+                        <div className={styles.error}>{errorForm.passwordConfirm}</div>}
+                    <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} />
                     {isChecked ?
                         <div>
                             <button className={styles.button} type='submit' >הרשמה</button>
                             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
-                              <img src="google.png" alt="" />
-                              הרשמה באמצעות גוגל
+                                <img src="google.png" alt="" />
+                                הרשמה באמצעות גוגל
                             </a>
                         </div>
                         :
                         <div>
                             <div className={styles.button1}>הרשמה</div>
                             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle1}>
+<<<<<<< HEAD
                               <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
                               {/* <img src="google.png" alt="" /> */}
                               הרשמה באמצעות גוגל
+=======
+                                <img src="google.png" alt="" />
+                                הרשמה באמצעות גוגל
+>>>>>>> e6af5aa691db570448ecb4e3f4215cdc2976d888
                             </a>
                         </div>
                     }
