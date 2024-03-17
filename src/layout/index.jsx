@@ -28,6 +28,7 @@ import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
+import Dashboard from '../pages/Dashboard';
 
 export default function Layout() {
 
@@ -37,10 +38,10 @@ export default function Layout() {
       <ManageContext>
         <Routes>
           <Route path='login' element={<LoginPage />} />
-          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage/>} />
+          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage />} />
           <Route path='register' element={<Register />} />
 
-          <Route path='forgetPassword' element={<ForgetPassword/>} />
+          <Route path='forgetPassword' element={<ForgetPassword />} />
 
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
@@ -49,7 +50,7 @@ export default function Layout() {
 
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
-            <Route index element={<>DashboardLayout</>} />
+            <Route index element={<Dashboard/>} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />

@@ -36,7 +36,7 @@ export default function FeedBack() {
 
     } catch (Error) {
       console.error("Error:", Error);
-      toast.error(Error?.response?.data?.msg || "somthing want worng");
+      toast.error(Error?.response?.data?.msg || "something went wrong");
 
     }
   };
@@ -48,7 +48,7 @@ export default function FeedBack() {
   return (
     <div className={styles.container}>
       <div className={styles.allin}>
-        <div className={styles.circle}></div>
+      <div className={styles.circle}></div>
         <form onSubmit={handelSubmitNewFeedBack} className={styles.inputSpace}>
           <div className={styles.title}>דברו איתנו</div>
           <div>

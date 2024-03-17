@@ -29,6 +29,7 @@ export default function PopUp() {
               </div>
             </div>
 
+
             {PopUp.component}
           </div>
         </div>
