@@ -9,6 +9,8 @@ import Icon from '../Icon';
 import WebHook from '../WebHook';
 import api from '../../functions/api'
 import WebHookPopUp from '../WebHookPopup';
+import { toast } from 'react-toastify';
+
 
 export default function WebHookTab() {
 
@@ -26,10 +28,11 @@ export default function WebHookTab() {
   }, [campaign])
 
   useEffect(() => {
-    createWebHook()
-    return () => {
-      setConfirm(false)
+    if (confirm) {
+      createWebHook()
     }
+    setConfirm(false)
+
   }, [confirm])
 
 
@@ -38,34 +41,34 @@ export default function WebHookTab() {
     try {
       const res = await api.post('/webhook', { campId, userId })
       setLink('https://www.engager.co.il/webhook/' + res)
+      toast.success(response && "נשלח בהצלחה!");
 
     } catch (error) {
-      console.error('Error creating webhook:', error)
+      console.error('Error creating webhook:', error);
+      toast.error(Error?.response?.data?.msg || "something went wrong");
+
     }
   }
 
   if (!Object.keys(campaign).length) return <></>
 
   return (
-    <div className={styles.msgTab}>
-      <HeadLine
-        title={campaign.title}
-        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-      />
-      <TabSwitcher rout={[
-        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
-        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
-      ]} />
-      <WebHook campaign_id={campaign._id} webhook={campaign.webhook} link={link} />
-      <div className={styles.menu}>
+  <div className={styles.msgTab}>
+    <div className={styles.headerContainer}>
+    <div className={styles.titlesContainer}>
+        <HeadLine
+          title={campaign.title}
+          subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
+        />
+      </div>
+      <div className={styles.popOverContainer}>
         <Popover fnName={"onClick"} list={[
           {
             text: "מחיקת קישור קיים ויצרת קישור חדש",
             icon: <Icon nameIcon={"writing"} />,
             onClick: () => setPopUp(
               {
-                title: " קישור חדש לדף נחיתה",
+                title: "קישור חדש לדף נחיתה",
                 component: <WebHookPopUp setPopUp={setPopUp} setConfirm={setConfirm} />
               }
             )
@@ -74,6 +77,20 @@ export default function WebHookTab() {
           <Icon nameIcon={"menu"} />
         </Popover>
       </div>
+      
+
     </div>
-  )
+    <TabSwitcher rout={[
+      { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+      { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
+      { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
+    ]} />
+    <WebHook campaign_id={campaign._id} webhook={campaign.webhook} link={link} />
+    <div className={styles.menu}>
+      {/* TODO: ליישם את האופציות של התפריט הנפתח */}
+    </div>
+  </div>
+)
+
+  
 }

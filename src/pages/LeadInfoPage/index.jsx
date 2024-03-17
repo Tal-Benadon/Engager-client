@@ -8,7 +8,7 @@ import { useParams } from 'react-router'
 import formatDate from '../../functions/DateFormat'
 import DataContext from "../../context/DataContext";
 
-
+import Button from '../../components/Button'
 // Description: This component serves as a user profile page. It is designed to display user information, including first fullName, last fullName, email, phone number, registration date, and active status indicator.
 //Use of this component should pass real user data from the DB as props.
 // Props:
@@ -44,8 +44,7 @@ export default function LeadInfoPage() {
   //   }
   // }, [])
 
-  const { fullName, phone, email, notes, _id, joinDate, isActive } = lead || {};
-
+  const { fullName, phone, email, notes, _id,extra, joinDate, isActive } = lead || {};
   const signUpDate = formatDate(joinDate)
   const [isEdit, setIsEdite] = useState(false)
 
@@ -122,3 +121,6 @@ export default function LeadInfoPage() {
     </div>
   )
 }
+
+
+ 
