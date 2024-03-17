@@ -1,96 +1,29 @@
 import React from 'react';
 import styles from './style.module.css';
+import api from '../../functions/api';
+import { useState, useEffect } from 'react';
+
 
 export default function Plans() {
+    const [plansData, setPlansData] = useState([]);
 
+    useEffect(() => {
+        api.get('/plans')
+            .then(res => { setPlansData(res) })
+            .catch(error => {
+                console.error('Error fetching plans:', error);
+            });
+    }, []);
+    console.log(plansData);
     function getIcon(value) {
         return value ? '✓' : '✗';
     }
 
-    const plans = [
-        {
-            "name": "חינמי",
-            "price": 0,
-            "max_num_leads": 0,
-            "leads_from_webhook": true,
-            "contact_management_interface": true,
-            "num_leads_in_list": 1,
-            "opening_msg_to_new_lids": 30,
-            "msg_number": 100,
-            "uploading_file_list": true,
-            "data_transfer_crm": false,
-            "split_terminals": false,
-            "notification_new_lead": false,
-            "copywriting_msg": false,
-            "connection_to_whatsApp": false,
-            "customer_journey": false,
-            "technical_support": false,
-            "update_version": false
-        },
 
-        {
-            "name": "בסיסי",
-            "price": 117,
-            "max_num_leads": 0,
-            "leads_from_webhook": true,
-            "contact_management_interface": true,
-            "num_leads_in_list": 6,
-            "opening_msg_to_new_lids": 150,
-            "msg_number": 500,
-            "uploading_file_list": true,
-            "data_transfer_crm": false,
-            "split_terminals": false,
-            "notification_new_lead": false,
-            "copywriting_msg": false,
-            "connection_to_whatsApp": false,
-            "customer_journey": false,
-            "technical_support": true,
-            "update_version": true
-        },
-        {
-            "name": "פרימיום",
-            "price": 280,
-            "max_num_leads": 0,
-            "leads_from_webhook": true,
-            "contact_management_interface": true,
-            "num_leads_in_list": 0,
-            "opening_msg_to_new_lids": 1000,
-            "msg_number": 15000,
-            "uploading_file_list": true,
-            "data_transfer_crm": true,
-            "split_terminals": false,
-            "notification_new_lead": false,
-            "copywriting_msg": false,
-            "connection_to_whatsApp": false,
-            "customer_journey": false,
-            "technical_support": true,
-            "update_version": true
-        },
-        {
-            "name": "כוכב",
-            "price": -1,
-            "max_num_leads": 0,
-            "leads_from_webhook": true,
-            "contact_management_interface": true,
-            "num_leads_in_list": 0,
-            "opening_msg_to_new_lids": 0,
-            "msg_number": 0,
-            "uploading_file_list": true,
-            "data_transfer_crm": true,
-            "split_terminals": true,
-            "notification_new_lead": true,
-            "copywriting_msg": true,
-            "connection_to_whatsApp": true,
-            "customer_journey": true,
-            "technical_support": true,
-            "update_version": true
-        },
-
-    ];
 
     return (
         <div className={styles.container}>
-            {plans.map((plan, index) => (
+            {plansData?.map((plan, index) => (
                 <div key={index} >
                     <ul className={`${styles.card} `}>
                         {plan.name === "basic" ? (

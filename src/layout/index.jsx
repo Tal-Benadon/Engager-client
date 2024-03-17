@@ -31,6 +31,7 @@ import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 import Plans from '../components/Plans';
 import api from '../functions/api';
 import DataContext from '../context/DataContext';
+import Dashboard from '../pages/Dashboard';
 
 export default function Layout() {
 
@@ -51,7 +52,8 @@ export default function Layout() {
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
           <Route path='plans' element={<Plans />} />
           <Route element={<DashboardLayout />} >
-            <Route index element={<>DashboardLayout</>} />
+            <Route path='plans' element={<Plans />} />
+            <Route index element={<Dashboard />} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
@@ -72,6 +74,7 @@ export default function Layout() {
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
+
         </Routes>
         <Test />
         <PopUp />
