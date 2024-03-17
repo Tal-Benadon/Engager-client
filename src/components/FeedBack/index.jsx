@@ -36,7 +36,7 @@ export default function FeedBack() {
 
     } catch (Error) {
       console.error("Error:", Error);
-      toast.error(Error?.response?.data?.msg || "somthing want worng");
+      toast.error(Error?.response?.data?.msg || "something went wrong");
 
     }
   };
