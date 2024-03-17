@@ -48,7 +48,7 @@ export default function FeedBack() {
   return (
     <div className={styles.container}>
       <div className={styles.allin}>
-        <div className={styles.circle}></div>
+      <div className={styles.circle}></div>
         <form onSubmit={handelSubmitNewFeedBack} className={styles.inputSpace}>
           <div className={styles.title}>דברו איתנו</div>
           <div>
