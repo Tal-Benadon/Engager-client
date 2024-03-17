@@ -17,12 +17,12 @@
     color: white;
 }
 
-.button:hover{
+.button:hover {
     background-color: #0e9d85e0;
     cursor: pointer;
 }
 
-.buttongoogle:hover{
+.buttongoogle:hover {
     color: black;
     cursor: pointer;
 }
@@ -73,6 +73,7 @@
     color: rgb(87, 87, 87);
     cursor: pointer;
 }
+
 /* 
 img {
     background: url("google.png");
@@ -132,11 +133,26 @@ img {
 }
 
 .circle {
-    border: 190px solid rgba(14, 157, 133, 0.103)    ;
+    border: 190px solid rgba(14, 157, 133, 0.103);
     border-radius: 100%;
     width: 600px;
     height: 600px;
     position: fixed;
     top: -240px;
     left: -240px;
+}
+
+.error {
+    min-width: 30%;
+    font-size: .8rem;
+    background-color: #e3dcdc;
+    border-radius: 10px;
+    color: #000;
+    transform: scale(1);
+    height: 1.3rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.6rem;
+    overflow-x: auto;
+    text-align: start;
 }
