@@ -51,13 +51,12 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
-        console.log("newDataaaaaaaa", newData);
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
         } else {
             setErorrState()
             if (editOrAdd == 'add') {
-                api.post(`/lead/${campaign._id}/lead`, { data: newData })
+                api.post(`/campaign/${campaign._id}/lead`, { data: newData })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -67,7 +66,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                         setNewData(result)
                     }
                 }
-                api.put(`/lead/${campaign._id}/lead/${leadId}`, newData)
+                api.put(`/campaign/${campaign._id}/lead/${leadId}`, newData)
                     .then(res => {
                         setWorkOrFinally('finally')
                         getCamp()
