@@ -47,8 +47,33 @@
 .icon {
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .icon:hover {
     cursor: pointer;
+}
+.item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    line-height: 24px;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    gap: 15px;
+    background-color: var(--green-color);
+
+}
+
+/* .item svg {
+    height: 24px;
+    width: 24px;
+    background: #0E9D851A;
+    border-radius: 50%;
+} */
+
+.item:hover {
+    cursor: pointer;
+    background-color: var(--green-hover);
 }

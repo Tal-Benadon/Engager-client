@@ -28,6 +28,7 @@ import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
+import Dashboard from '../pages/Dashboard';
 
 export default function Layout() {
 
@@ -49,7 +50,7 @@ export default function Layout() {
 
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
-            <Route index element={<>DashboardLayout</>} />
+            <Route index element={<Dashboard/>} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
