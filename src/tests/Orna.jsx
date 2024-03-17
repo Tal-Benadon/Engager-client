@@ -1,9 +1,13 @@
+import SideBar from '../layout/SideBar'
 import React, { useEffect, useState } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, Line, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import api from '../functions/api';
-import './Orna.css';
+import styles from './style.module.css';
+
+
 export default function Orna() {
+
   const [data, setData] = useState({
     campaignsPerUser: {},
     messagesPerCampaign: {},
@@ -74,6 +78,7 @@ export default function Orna() {
     };
     fetchData();
   }, []);
+
   const createChartData = (data, label) => {
     const colors = Object.keys(data).map(() => `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`);
     return {
@@ -90,31 +95,53 @@ export default function Orna() {
     };
   };
   return (
-    <div className="charts-container">
-      <div className="chart-wrapper">
-        <h2 className="chart-title">Campaigns per User</h2>
-        <Doughnut data={createChartData(data.campaignsPerUser, 'Campaigns per User')} />
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <SideBar />
+      <h2>
+        פרטי משתמש+אייקון מחובר/לא, תאריך הצטרפות, באיזה חבילה הוא נמצא
+      </h2>
+      <div>
+        <br />
+        שם טבלה: שם הקמפיין      <br />
+
+        תצוגת: ליין צרט      <br />
+
+        Y =  מספר ההודעות      <br />
+
+        X = חודשים      <br />
+
+        השורה- הודעות 0, הודעות תפוצה
+        <br />
+
       </div>
-      <div className="chart-wrapper">
-        <h2 className="chart-title">Messages per Campaign</h2>
-        <Doughnut data={createChartData(data.messagesPerCampaign, 'Messages per Campaign')} />
-      </div>
-      <div className="chart-wrapper">
-        <h2 className="chart-title">Leads per Campaign</h2>
+      <div className={styles.chart_wrapper}>
+        <h2 className={styles.chart_title}>כמה לידים לקמפיין</h2>
         <Doughnut data={createChartData(data.leadsPerCampaign, 'Leads per Campaign')} />
       </div>
-      <div className="chart-wrapper">
-        <h2 className="chart-title">Leads per User</h2>
-        <Doughnut data={createChartData(data.leadsPerUser, 'Leads per User')} />
+      <div>
+        <br />
+        שם טבלה: הודעות בדרך      <br />
+
+        תצוגת: בר צרט      <br />
+        X =  קמפיינים       <br />
+
+        Y =  מספר ההודעות שנשלחו      <br />
+
+        Y2 = מספר ההודעות לשליחה      <br />
+
+
       </div>
-      <div className="chart-wrapper">
-        <h2 className="chart-title">Messages per User</h2>
-        <Doughnut data={createChartData(data.messagesPerUser, 'Messages per User')} />
+      <div>
+        <br />
+        שם טבלה: כמה הודעות לכל קמפיין      <br />
+
+        תצוגת: דונאט צרט      <br />
+
+        Y =  מספר ההודעות      <br />
+
+        X = שמות קמפיינים      <br />
+
       </div>
     </div>
-  );
+  )
 }
-
-
-
-
