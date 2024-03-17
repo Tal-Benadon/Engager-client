@@ -240,14 +240,9 @@ export default function Register() {
                         <div>
                             <div className={styles.button1}>הרשמה</div>
                             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle1}>
-<<<<<<< HEAD
                               <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
                               {/* <img src="google.png" alt="" /> */}
                               הרשמה באמצעות גוגל
-=======
-                                <img src="google.png" alt="" />
-                                הרשמה באמצעות גוגל
->>>>>>> e6af5aa691db570448ecb4e3f4215cdc2976d888
                             </a>
                         </div>
                     }
