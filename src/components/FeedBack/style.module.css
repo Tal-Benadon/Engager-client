@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .container {
-    width: 100vw;
+    width: 83.5vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,8 +9,8 @@
     align-items: start;
     text-align: right;
     background-color: hsla(0, 0%, 97%, 0.85);
+   
 }
-
 .allin {
     width: 600px;
     height: auto;
