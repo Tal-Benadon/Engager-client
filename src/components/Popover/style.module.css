@@ -1,6 +1,6 @@
 .mainIcon {
     position: relative;
-    width: fit-content;
+    width: 100%;
     z-index: 100;
     cursor: pointer;
 }
@@ -10,6 +10,7 @@
     background-color: transparent;
     border: none;
     padding: 10px;
+    width: 100%;
 }
 
 .Popover {
