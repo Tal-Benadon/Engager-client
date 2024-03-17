@@ -18,7 +18,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
-    const {PopUp, setPopUp } = useContext(DataContext);
+    const { PopUp, setPopUp } = useContext(DataContext);
     const [newData, setNewData] = useState({
         name: details ? details.fullName : '',
         phone: details ? details.phone : '',
@@ -49,6 +49,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
+        console.log(newData)
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
         } else {
