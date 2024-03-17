@@ -4,6 +4,7 @@ import { Outlet } from 'react-router'
 import styles from './style.module.css'
 import { useNavigate } from 'react-router-dom'
 import LoginPage from '../../pages/LoginPage'
+import Dashboard from '../../pages/Dashboard'
 export default function DashboardLayout() {
   const nav = useNavigate()
   if (!localStorage.token || localStorage.token === '' || localStorage.token === 'undefined') {
@@ -16,6 +17,7 @@ export default function DashboardLayout() {
       <div className={styles.layout}>
         <SideBar />
         {/* TODO: להוסיף מסך פתיחה בכניסה לאפליקציה כשאין ראוט ספציפי */}
+        <Dashboard/>
         <Outlet />
       </div>
     )
