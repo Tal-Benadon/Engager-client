@@ -100,8 +100,7 @@ export default function SideBar() {
         <div className={styles.newlist}>
           <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
         </div>
-      </div> 
-      <div className={styles.item}
+        <div className={styles.item}
             onClick={() =>
               setPopUp(
                 {
@@ -113,6 +112,7 @@ export default function SideBar() {
             <Icon nameIcon={"pluscircle"} nameColor={"create"} />
             <Button className="create" content="רשימה חדשה" />
       </div>
+      </div> 
       <div className={styles.userContainer}>
       <UserProfile/>
       </div>
