@@ -27,7 +27,7 @@ export default function CampaignPage() {
   const getCamp = () => {
     api.get(`/campaign/${campId}`).then(setCampaign)
       .catch((error) => {
-        toast.error(error?.response?.data?.msg || "somthing want worng");
+        toast.error(error?.response?.data?.msg || "something went wrong");
       });
   }
 

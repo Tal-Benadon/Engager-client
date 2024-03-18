@@ -57,7 +57,7 @@ export default function index() {
                             {errorForm.phone &&
                                 <div className={styles.error}>{errorForm.phone}</div>}
                         </InputWrapper>
-                        <button className={styles.button} type='submit' >שלחו לי קישור לשינוי סיסמא</button>
+                        <button className={styles.button} type='submit' >שלחו לי קישור לשינוי סיסמה</button>
                     </div>
 
                 </form>

@@ -22,7 +22,7 @@ import Ronit from './Ronit'
 import Shaked from './Shaked'
 import Shir from './Shir'
 import Tal from './Tal'
-import Teliha from './Teliha'
+import Teliha from './teliha/Teliha'
 
 
 export default function Test() {

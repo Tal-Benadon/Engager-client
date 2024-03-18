@@ -20,7 +20,10 @@ export default function WebHook({ link }) {
         <div className={styles.link}>
             <p className={styles.pLink}>{link || 'אין קישור'}</p>
         </div>
-        <Button content='העתקת כתובת קישור' className='fill' onClick={copy} />
+        <div className={styles.item} >
+            <Icon nameIcon={'copy'} nameColor={'white'} />
+            <Button content='העתקת כתובת קישור' className='fill' onClick={copy} />
+        </div>
     </div>
 }
 

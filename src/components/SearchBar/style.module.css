@@ -8,6 +8,7 @@
     padding: 5px 12px; 
     border-radius: 8px;
     border: 1px solid; 
+    transition: border-color 0.3s, box-shadow 0.3s;
   }
   
   .SearchIcon {
@@ -17,6 +18,7 @@
     transform: translateY(-50%);
     color: gray;
     cursor: pointer;
+    transition: color 0.3s;
   }
   
   .Input {
@@ -27,7 +29,12 @@
     padding-right: 30px;
     direction: rtl;
     background-color: inherit;
+    transition: color 0.3s;
   }
+  .InputBlurred {
+    color: gray;
+  }
+    
 
   .SortIcon {
     position: absolute; /* Position the sort icon absolutely */
@@ -36,5 +43,6 @@
     transform: translateY(-50%);
     color: gray;
     cursor: pointer;
+    transition: color 0.3s;
   }
   
