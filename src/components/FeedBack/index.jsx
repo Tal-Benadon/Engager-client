@@ -17,16 +17,14 @@ export default function FeedBack() {
     e.preventDefault();
     try {
       const response = await api.post(
-        `/feedback/${user}`, content ,
+        `/feedback/${user}`, content,
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-
       toast.success(response && "נשלח בהצלחה!");
-
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");
