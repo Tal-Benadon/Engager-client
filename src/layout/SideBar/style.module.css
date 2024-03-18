@@ -57,9 +57,12 @@ svg {
     flex-direction: column;
     flex-wrap: nowrap;
     padding: 32px 20px;
-    border-bottom: 2px solid var(--grayElement);
     border-top: 2px solid var(--grayElement);
     gap: 8px;
+    flex: 2;
+    height: 100%;
+    overflow-y: auto;
+    border-bottom: 2px solid var(--grayElement);
 }
 
 .liststitle {
@@ -75,7 +78,23 @@ svg {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    height: 100%;
+    overflow-y: auto;
+    /* direction: rtl; */
+    /* לנסות להעביר גלילה לימין */
 }
+
+/* .newlist ::-webkit-scrollbar {
+    direction: rtl;
+  }
+
+  .newlist::-moz-scrollbar {
+    direction: rtl;
+  }
+  
+  .newlist::-ms-scrollbar {
+    direction: rtl;
+  } */
 
 .item {
     display: flex;
@@ -84,19 +103,13 @@ svg {
     line-height: 24px;
     padding: 8px;
     border-radius: 8px;
-}
-
-.item svg {
-    height: 24px;
-    width: 24px;
-    background: #0E9D851A;
-    border-radius: 50%;
+    position: sticky;
+    margin: 5px 7px 10px 3px;
 }
 
 .item:hover {
     cursor: pointer;
     background-color: var(--white-hover);
-
 }
 
 .camplist {
@@ -110,3 +123,7 @@ svg {
     cursor: pointer;
 }
 
+.userContainer{
+    width: 100%;
+    margin: auto;
+}

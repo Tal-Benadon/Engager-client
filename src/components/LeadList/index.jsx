@@ -14,6 +14,7 @@ export default function LeadList({ searchTerm, sortType }) {
   const [sortedLeadArray, setSortedLeadArray] = useState([]);
 
   useEffect(() => {
+
     let sortedArray = [...campaign.leads];
     if (sortType === 'name') {
       sortedArray.sort((a, b) => {
@@ -31,6 +32,7 @@ export default function LeadList({ searchTerm, sortType }) {
       });
     }
     setSortedLeadArray(sortedArray);
+
   }, [sortType, campaign.leads]);
 
 

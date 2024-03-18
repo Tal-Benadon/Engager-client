@@ -1,0 +1,40 @@
+.user {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    align-items: center;
+}
+
+.nameAndImg {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+}
+
+.userCircle {
+    height: 36px;
+    width: 36px;
+    background: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.userCircle img {
+    max-width: 100%; 
+    max-height: 100%; 
+    width: auto;
+    height: auto; 
+}
+
+.userCircle svg {
+    width: 30px;
+    height: 30px;
+}
+
+.whatsappIcon {
+    color: white;
+    margin: 7px;
+}
