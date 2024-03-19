@@ -17,7 +17,6 @@ export default function DashboardLayout() {
       <div className={styles.layout}>
         <SideBar />
         {/* TODO: להוסיף מסך פתיחה בכניסה לאפליקציה כשאין ראוט ספציפי */}
-        <Dashboard/>
         <Outlet />
       </div>
     )

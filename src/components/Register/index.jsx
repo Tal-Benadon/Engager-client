@@ -143,10 +143,12 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = formState
-        api.post("/user", data)
-            .then(res => { console.log(res); nav('/login') })
-            .catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
-
+        try {
+            const response = await api.post("/user", data)
+            if (response) nav(`/completeDetails/${response.email}`)
+        } catch (error) {
+            console.error({ "User creation failed": error });
+        }
     }
 
     const checkInput = (newData = '', name) => {
@@ -199,16 +201,16 @@ export default function Register() {
                 </div> */}
                 <form className={styles.inputSpace} onSubmit={handleSubmit}>
                     <div className={styles.title}>אנגייג'ר</div>
-                    <div className={styles.title2}>הרשמה</div>
+                    {/* <div className={styles.title2}>הרשמה</div>
                     <InputWrapper label={"שם"} setIsVisible={true} >
                         <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                    </InputWrapper>
+                    </InputWrapper> */}
 
-                    <InputWrapper label={"טלפון"} setIsVisible={true} >
+                    {/* <InputWrapper label={"טלפון"} setIsVisible={true} >
                         <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
                         {errorForm.phone &&
                             <div className={styles.error}>{errorForm.phone}</div>}
-                    </InputWrapper>
+                    </InputWrapper> */}
 
                     <InputWrapper label={"אמייל"} setIsVisible={true} >
                         <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} className={styles.input} />
@@ -240,8 +242,9 @@ export default function Register() {
                         <div>
                             <div className={styles.button1}>הרשמה</div>
                             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle1}>
-                                <img src="google.png" alt="" />
-                                הרשמה באמצעות גוגל
+                              <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
+                              {/* <img src="google.png" alt="" /> */}
+                              הרשמה באמצעות גוגל
                             </a>
                         </div>
                     }
