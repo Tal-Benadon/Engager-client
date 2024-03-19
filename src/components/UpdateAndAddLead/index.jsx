@@ -45,38 +45,12 @@ export default function UpdateAndAddLead({ details={}, campaign, getCamp,isEdit 
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErrorState('מספר הטלפון לא תקין ')
         } else {
-<<<<<<< HEAD
-            setErorrState()
-            if (editOrAdd == 'add') {
-                api.post(`/campaign/${campaign._id}/lead`, { data: { ...newData, campaign: campaign } })
-                    .then(setWorkOrFinally('finally'))
-            } else {
-                if (Object.keys(newData).includes('phone')) {
-                    if (newData.phone == details.phone) {
-                        let result = newData
-                        delete result.phone
-                        setNewData(result)
-                    }
-                }
-                console.log("campaign._id:", campaign._id,"leadId:",leadId );
-                api.put(`/campaign/${campaign._id}/lead/${leadId}`, newData)
-                    .then(res => {
-                        setWorkOrFinally('finally')
-                        getCamp()
-                    })
-                    .catch(e => {
-                        if (e.response.data == "phoneExist") {
-                            setErorrState('מספר הטלפון כבר קיים במערכת')
-                        }
-                    })
-=======
             setErrorState()
             const thenF = _ => { toast.success("בוצע בהצלחה!"); getCamp() }
             const catchF = error => toast.error(error || "somthing want worng")
             if (!isEdit) {
                 api.post(`/campaign/${campaign._id}/lead/`, { data: { ...newData } })
                     .then(thenF).catch(catchF)
->>>>>>> c3593e2f7efd1e1c87ecd9afb70012e5f3172a14
             }
             else {
                 api.put(`/campaign/${campaign._id}/lead/${details.leadId}`, newData)
