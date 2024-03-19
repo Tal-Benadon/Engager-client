@@ -53,7 +53,7 @@ export default function Layout() {
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-            
+
           <Route path='first-plan' element={<Plans />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
@@ -77,15 +77,12 @@ export default function Layout() {
               <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
             </Route>
 
-
-            <Route path='settings' element={<><SettingsTab/><Outlet/></>}>
+            <Route path='settings' element={<><SettingsTab /><Outlet /></>}>
               <Route index element={<>{/*להוסיף פרטי יוזר או משהו תלוי מה רוצים במסך הראשוני כשלוחצים על הגדרות*/}</>} />
-              <Route path='QrCode' element={<QRCodeComponent/>} />
+              <Route path='QrCode' element={<QRCodeComponent />} />
               <Route path='plans' element={<Plans />} />
             </Route>
 
-
-            {/* <Route path='settings' element={<QRCodeComponent />} /> */}
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>

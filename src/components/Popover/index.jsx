@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
-export default function Popover({ list, children, fnName, }) {
-    const maxHeight = (list.length * 50) + 20
-    const [isClicked, setIsClicked] = useState(false)
+export default function Popover({ list, children, fnName,}) {
+    const maxHeight = (list.length * 50) + 20;
+    const [isClicked, setIsClicked] = useState(false);
 
 
 
@@ -36,7 +36,7 @@ export default function Popover({ list, children, fnName, }) {
 
     function handleClick(e) {
         e.preventDefault()
-        let screenWidth = window.screen.width
+        let screenWidth = window.screen.width;
         let screenHeight = window.screen.height;
         let finalStyle = { display: 'flex' }
         let elementWidth = e.screenX;
@@ -50,8 +50,10 @@ export default function Popover({ list, children, fnName, }) {
         else {
             finalStyle.right = 15;
         }
-
-        if (totalHeight > maxHeight) {
+        if (e.pageY > 800) {
+            finalStyle.bottom = 15;
+        }
+        else if (totalHeight > maxHeight) {
             finalStyle.top = 15
 
         } else {
