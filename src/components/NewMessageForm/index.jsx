@@ -117,7 +117,7 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
             to="pickers">
             <div className={styles.pickers}>
               <DatePicker handleDateChange={handleDateChange} setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
-              <TimePicker handleTimeChange={handleTimeChange} setSelectedTime={setSelectedDateTime} selectedTime={selectedDateTime} />
+              <TimePicker handleTimeChange={handleTimeChange} selectedDate={selectedDate} selectedTime={selectedDateTime} />
             </div>
           </InputWrapper>
         </div>
