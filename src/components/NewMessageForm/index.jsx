@@ -29,15 +29,39 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
 
-  const [time, setTime] = useState();
-   const [date, setDate] = useState();
+  const [selectedDateTime, setSelectedDateTime] = useState(null)
+  const [selectedDate, setSelectedDate] = useState(null)
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    if (selectedDateTime) {
+      const updatedDateTime = new Date(date)
+      updatedDateTime.setHours(selectedDateTime.getHours(), selectedDateTime.getMinutes())
+      setSelectedDateTime(updatedDateTime)
+      console.log(updatedDateTime);
+    } else {
+      setSelectedDateTime(date);
+    }
+  }
+
+  const handleTimeChange = (time) => {
+    if (!selectedDate) {
+      console.log("please select a date first?");
+      return
+    }
+    const updatedDateTime = new Date(selectedDate)
+    updatedDateTime.setHours(time.getHours(), time.getMinutes())
+    setSelectedDateTime(updatedDateTime)
+    console.log(updatedDateTime);
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
-
+    console.log(selectedDateTime.getTime());
     setPopUp(false);
-    
+
     try {
       const response = await api.post(
         `/campaign/${campId}/msg`,
@@ -69,8 +93,8 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
             }
             type="text"
           ></InputWrapper>
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
@@ -84,30 +108,21 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
             type="text"
           />
         </main>
-        <br />
+        {/* <br /> */}
 
 
         <div className={styles.timing}>
-      <InputWrapper label="תזמון"  
-      subLabel='הזמן הנכון לשלוח את ההודעה זו...' 
-      to = "pickers">
-        <div className={styles.pickers}>
-         <DatePicker
-         name={'date'}
-         date={date}
-         setDate={setDate}
+          <InputWrapper label="תזמון"
+            subLabel='הזמן הנכון לשלוח את הודעה זו...'
+            to="pickers">
+            <div className={styles.pickers}>
+              <DatePicker handleDateChange={handleDateChange} setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
+              <TimePicker handleTimeChange={handleTimeChange} setSelectedTime={setSelectedDateTime} selectedTime={selectedDateTime} />
+            </div>
+          </InputWrapper>
+        </div>
 
-            /> 
-         <TimePicker 
-          name={'time'}
-          time={time}
-          setTime={setTime}
-           />
-         </div>
-      </InputWrapper>
-         </div>
-       
-        
+
 
 
         <div className={styles.actions}>
