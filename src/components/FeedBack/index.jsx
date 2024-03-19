@@ -3,13 +3,14 @@ import InputWrapper from "../InputWrapper";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import { toast } from 'react-toastify';
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from 'react-router'
 import { useNavigate } from "react-router";
 import api from "../../functions/api";
+import DataContext from "../../context/DataContext";
 
 export default function FeedBack() {
-  const { user } = useParams()
+  const { user, setUser } = useContext(DataContext)
   const [content, setContent] = useState("");
   const nav = useNavigate()
 
@@ -17,13 +18,7 @@ export default function FeedBack() {
     e.preventDefault();
     try {
       const response = await api.post(
-        `/feedback/${user}`, content,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+        `/feedback/${user}`, content);
       toast.success(response && "נשלח בהצלחה!");
     } catch (Error) {
       console.error("Error:", Error);
@@ -39,7 +34,7 @@ export default function FeedBack() {
   return (
     <div className={styles.container}>
       <div className={styles.allin}>
-      <div className={styles.circle}></div>
+        <div className={styles.circle}></div>
         <form onSubmit={handelSubmitNewFeedBack} className={styles.inputSpace}>
           <div className={styles.title}>דברו איתנו</div>
           <div>
