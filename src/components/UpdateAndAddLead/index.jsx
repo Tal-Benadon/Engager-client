@@ -65,7 +65,7 @@ export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
                     }
                 }
                 console.log("campaign._id:", campaign._id,"leadId:",leadId );
-                api.put(`/lead/${campaign._id}/lead/${leadId}`, newData)
+                api.put(`/campaign/${campaign._id}/lead/${leadId}`, newData)
                     .then(res => {
                         setWorkOrFinally('finally')
                         getCamp()
