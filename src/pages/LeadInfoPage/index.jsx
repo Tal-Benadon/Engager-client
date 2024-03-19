@@ -56,7 +56,6 @@ export default function LeadInfoPage() {
   let data = { userId: user._id }
   const handleTrash = async (leadPhone) => {
     try {
-      console.log("phoneeeee", leadPhone);
       await api.del(`campaign/lead/${leadPhone}/all`, data).then((res) => {
         getCamp();
         console.log(res);
