@@ -50,7 +50,7 @@ export default function Popover({ list, children, fnName,}) {
         else {
             finalStyle.right = 15;
         }
-        if (e.pageY > 800) {
+        if (e.pageY > 600) {
             finalStyle.bottom = 15;
         }
         else if (totalHeight > maxHeight) {
