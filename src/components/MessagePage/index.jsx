@@ -11,13 +11,15 @@ import MessageEdit from '../MessageEdit';
 import Button from '../Button';
 import axios from 'axios';
 import api from '../../functions/api';
-
+import PopUp from '../PopUp';
+import ScheduleInput from '../ScheduleInput';
 export default function MessagePage() {
 
     // TODO: לחבר את שליחת ההודעה לווטסאפ
     // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
 
     const { PopUp, setPopUp } = useContext(DataContext)
+
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
@@ -65,7 +67,13 @@ export default function MessagePage() {
                         }
                     }}
                 />
-
+                <Button
+                    content='תזמן הודעה'
+                    onClick={() => setPopUp(true)}
+                />
+                {/* <PopUp setPopUp={setPopUp} title={"תזמון הודעה"}>
+                    <ScheduleInput setPopUp={setPopUp} />
+                </PopUp> */}
             </div>
 
             <Accordion

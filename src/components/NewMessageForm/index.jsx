@@ -15,6 +15,7 @@ import { useState } from "react";
 import api from "../../functions/api";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
+import ScheduleInput from "../ScheduleInput";
 
 // Description :
 // Props : ____________ , _________
@@ -29,37 +30,16 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
 
-  const [selectedDateTime, setSelectedDateTime] = useState(null)
-  const [selectedDate, setSelectedDate] = useState(null)
+  const [date, setDate] = useState(null)
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    if (selectedDateTime) {
-      const updatedDateTime = new Date(date)
-      updatedDateTime.setHours(selectedDateTime.getHours(), selectedDateTime.getMinutes())
-      setSelectedDateTime(updatedDateTime)
-      console.log(updatedDateTime);
-    } else {
-      setSelectedDateTime(date);
-    }
-  }
 
-  const handleTimeChange = (time) => {
-    if (!selectedDate) {
-      console.log("please select a date first?");
-      return
-    }
-    const updatedDateTime = new Date(selectedDate)
-    updatedDateTime.setHours(time.getHours(), time.getMinutes())
-    setSelectedDateTime(updatedDateTime)
-    console.log(updatedDateTime);
-  }
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
-    console.log(selectedDateTime.getTime());
+    console.log(date);
+    console.log(date.getTime());
     setPopUp(false);
 
     try {
@@ -115,10 +95,7 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
           <InputWrapper label="תזמון"
             subLabel='הזמן הנכון לשלוח את הודעה זו...'
             to="pickers">
-            <div className={styles.pickers}>
-              <DatePicker handleDateChange={handleDateChange} setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
-              <TimePicker handleTimeChange={handleTimeChange} selectedDate={selectedDate} selectedTime={selectedDateTime} />
-            </div>
+            <ScheduleInput setDate={setDate} />
           </InputWrapper>
         </div>
 
