@@ -27,40 +27,29 @@ export default function LeadsTab() {
 
   const { campaign, setCampaign } = useCampaign();
   const [newCampaign, setNewCampaign] = useState({});
-  const {setAllCamps} = useContext(DataContext)
+  const { setAllCamps } = useContext(DataContext)
   useEffect(() => {
     setCampaign(newCampaign);
   }, [newCampaign])
 
-  useEffect(()=>{
+  useEffect(() => {
     setCampaign(campaign)
-  },[campaign])
+  }, [campaign])
 
   // debugger
   if (!Object.keys(campaign).length) return <></>;
   return (
     <div className={styles.leadsTab}>
-      <HeadLine
-        title={campaign.title}
-        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-      />
-      <TabSwitcher rout={[
-        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
-        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
-      ]} />
 
-      <SearchBar
-        sortType={sortType}
-        setSortType={setSortType}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        sortButton={true}
-      />
-      <div className={styles.LeadListHolder}>
-        <LeadList sortType={sortType} searchTerm={searchTerm} />
-      </div>
-      <div className={styles.menu}>
+      <div className={styles.headerContainer}>
+
+        <div className={styles.titlesContainer}>
+          <HeadLine
+            title={campaign.title}
+            subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
+          />
+        </div>
+        <div className={styles.popOverContainer}>
         <Popover
           fnName={"onClick"}
           list={[
@@ -79,18 +68,17 @@ export default function LeadsTab() {
                     />
                   ),
                 }),
-              //  <CampaignInfo setPopUp={setPopUp} title={campaign.title} campId={campaign._id} />)
             },
             {
-              text: "הוספת ידנית",
+              text: "הוספה ידנית",
               icon: <Icon nameIcon={"userWithPlus"} />,
               onClick: () =>
                 setPopUp({
-                  title: "עריכה והוספת אדם לקמפיין",
+                  title: "הוספת אדם לקמפיין",
                   component: (
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
-                      campaign={campaign}
+                      campaign={campaign._id}
                     />
                   ),
                 }),
@@ -107,7 +95,11 @@ export default function LeadsTab() {
                 setPopUp({
                   title: "מחיקת רשימה",
                   component: (
-                    <DelCampaign setPopUp={setPopUp} title={campaign.title} campId={campaign._id} />
+                    <DelCampaign
+                      setPopUp={setPopUp}
+                      title={campaign.title}
+                      campId={campaign._id}
+                    />
                   ),
                 }),
             },
@@ -115,6 +107,24 @@ export default function LeadsTab() {
         >
           <Icon nameIcon={"menu"} />
         </Popover>
+        </div>
+        
+      </div>
+      <TabSwitcher rout={[
+        { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
+        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
+      ]} />
+
+      <SearchBar
+        sortType={sortType}
+        setSortType={setSortType}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        sortButton={true}
+      />
+      <div className={styles.LeadListHolder}>
+        <LeadList sortType={sortType} searchTerm={searchTerm} />
       </div>
     </div >
   );

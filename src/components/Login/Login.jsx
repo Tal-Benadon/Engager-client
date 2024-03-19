@@ -64,8 +64,9 @@ export default function Login() {
                 <div className={styles.title}>אנגייג'ר</div>
                 <div className={styles.title2}>התחברות</div>
                 <div>
-                    <InputWrapper label={"טלפון"} >
-                        <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+
+                    <InputWrapper label={"אמייל"} setIsVisible={true} >
+                        <InputText name={'email'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                     </InputWrapper>
                 </div>
 
@@ -74,11 +75,11 @@ export default function Login() {
                         <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                     </InputWrapper>
                 </div>
-                <div onClick={forgetPassword} className={styles.forget} >שכחתי סיסמא</div>
+                <div onClick={forgetPassword} className={styles.forget} >שכחתי סיסמה</div>
                 <button className={styles.button} type='submit' >התחברות</button>
             </form>
             <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
-            <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
+                <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
                 {/* <img src="google.png" alt="" /> */}
                 התחברות באמצעות גוגל
             </a>

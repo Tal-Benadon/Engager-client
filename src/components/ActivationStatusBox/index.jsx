@@ -67,14 +67,14 @@ export default function ActivationStatusBox({ successStatus, account }) {
 
             case 'Activated':
                 content = 'המשתמש הופעל בהצלחה :)'
-                additional = 'מעולה, שולחים אותך לדף הבית שלנו...'
-                setNavHandler('/')
+                additional = 'מעולה, עכשיו נותר לבחור את התוכנית המתאימה...'
+                setNavHandler('/first-plan')
                 break;
             case 'Expired':
                 content = 'הקישור פג תוקף, תכף תקבל קישור חדש'
                 break;
             case 'ExpiredPass':
-                content = 'שינוי הסיסמא פג תוקף'
+                content = 'שינוי הסיסמה פג תוקף'
                 setNavHandler('/login')
                 break;
             case 'AlreadyActive':
@@ -94,7 +94,7 @@ export default function ActivationStatusBox({ successStatus, account }) {
     }
 
     const initalTextActivation = 'מפעיל את המשתמש שלך, נא להמתין...'
-    const initialTextExpPass = 'בודק את לינק הסיסמא שלך'
+    const initialTextExpPass = 'בודק את לינק הסיסמה שלך'
 
     return (
         <div className={styles.mainMessageContainer}>

@@ -1,15 +1,13 @@
 import React from 'react'
-import LeadInfoPage from '../pages/LeadInfoPage'
-import MessageItem from '../components/MessageItem'
+import Loading from '../components/Loading/index'
 
 export default function Refael() {
   return (
 
 
     <div>
-<MessageItem/>
+<Loading/>
 
-      {/* <LeadInfoPage/> */}
       Refael
       function
       TO
