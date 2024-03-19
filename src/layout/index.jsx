@@ -29,10 +29,8 @@ import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 import Plans from '../components/Plans';
-import api from '../functions/api';
-import DataContext from '../context/DataContext';
 import Dashboard from '../pages/Dashboard';
-// import Plans from '../components/Plans';
+import Plans from '../components/Plans';
 
 export default function Layout() {
 
