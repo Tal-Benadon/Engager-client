@@ -8,7 +8,8 @@ export function ManageContext({ children }) {
   const [user, setUser] = useState({});
   const [PopUp, setPopUp] = useState(false);
   const [allCamps, setAllCamps] = useState([]);
-
+  const [usersObj, setUsersObj] = useState({});
+  // const [] = useState()
   const nav = useNavigate();
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export function ManageContext({ children }) {
 
   return (
 
-    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps }}>
+    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps, usersObj, setUsersObj }}>
       {children}
     </DataContext.Provider>
   );

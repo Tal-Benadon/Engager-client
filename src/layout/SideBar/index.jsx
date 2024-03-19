@@ -100,6 +100,12 @@ export default function SideBar() {
               <Icon nameIcon={"logout"} nameColor={""} />
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/myUsers">
+              כל הלקוחות שלי
+              <Icon nameIcon={"leads"} nameColor={""} />
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className={styles.lists}>
