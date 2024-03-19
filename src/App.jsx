@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import api from './functions/api';
 
 export default function App() {
-  const notify = () => toast("Wow so easy!");
+    const notify = () => toast("Wow so easy!");
   let nav = useNavigate()
 
 
