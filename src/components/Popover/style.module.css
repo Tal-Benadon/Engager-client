@@ -1,8 +1,6 @@
-
-
-
 .mainIcon {
-    position: relative;
+    /* background-color: aqua; */
+    position: static;
     width: 100%;
     z-index: 100;
     cursor: pointer;
