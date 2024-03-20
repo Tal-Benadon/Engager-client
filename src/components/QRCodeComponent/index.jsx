@@ -38,27 +38,31 @@ export default function QRCodeComponent() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      {code.length < 2 ? <Loading className={styles.loading} /> : ""}
-      {!isReady && code.length > 2 ? (
-        <QRCode value={code} className={styles.qrCode} />
-      ) : (
-        ""
-      )}
-      <InputWrapper
-        subLabel={"נא לא לרענן את העמוד"}
-        className={styles.inputWrapper}
-      />
-      <div className={styles.text}>כיצד להשתמש ב-WhatsApp באינגייג'ר:</div>
-      <div className={styles.text2}>
-        1. פותחים את WhatsApp בטלפון.
-        <br />
-        2. מקישים על תפריט ב-Android או על הגדרות ב-iPhone.
-        <br />
-        3. להקיש על מכשירים מקושרים ואז על קישור מכשיר
-        <br />
-        4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.
-      </div>
+    <div className={styles.QrContainer}>
+      <>
+        {/* // <div className={styles.container}> */}
+        {code.length < 2 ? <Loading className={styles.loading} /> : ""}
+        {!isReady && code.length > 2 ? (
+          <QRCode value={code} className={styles.qrCode} />
+        ) : (
+          ""
+        )}
+        <InputWrapper
+          subLabel={"נא לא לרענן את העמוד"}
+          className={styles.inputWrapper}
+        />
+        <div className={styles.text}>כיצד להשתמש ב-WhatsApp באינגייג'ר:</div>
+        <div className={styles.text2}>
+          1. פותחים את WhatsApp בטלפון.
+          <br />
+          2. מקישים על תפריט ב-Android או על הגדרות ב-iPhone.
+          <br />
+          3. להקיש על מכשירים מקושרים ואז על קישור מכשיר
+          <br />
+          4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.
+        </div>
+        {/* </div> */}
+      </>
     </div>
   );
 }

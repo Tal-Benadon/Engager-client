@@ -9,7 +9,7 @@ import ForgetPassword from "../components/ForgetPassword";
 import Register from "../components/Register";
 import DashboardLayout from "./DashboardLayout";
 import CampaignPage from "../pages/CampaignPage";
-import QRCodeComponent from "../components/Setting";
+import QRCodeComponent from "../components/QRCodeComponent";
 import PaymentPage from "../pages/PaymentPage";
 import LeadsTab from "../components/LeadsTab";
 import LeadInfoPage from "../pages/LeadInfoPage";
@@ -28,10 +28,11 @@ import AllInactiveLeads from "../components/AllInactiveLeads";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import FeedBack from "../components/FeedBack";
 import GoogleRegisterRedirectPage from "../pages/GoogleRegisterRedirectPage";
-import Plans from "../components/Plans";
 import api from "../functions/api";
 import DataContext from "../context/DataContext";
 import Dashboard from "../pages/Dashboard";
+import Plans from "../components/Plans";
+import SettingsTab from "../components/SettingsTab";
 
 export default function Layout() {
   return (
@@ -43,8 +44,13 @@ export default function Layout() {
             path="changePassword/:passwordToken"
             element={<ChangePasswordPage />}
           />
+          <Route
+            path="changePassword/:passwordToken"
+            element={<ChangePasswordPage />}
+          />
           <Route path="register" element={<Register />} />
 
+          <Route path="forgetPassword" element={<ForgetPassword />} />
           <Route path="forgetPassword" element={<ForgetPassword />} />
 
           <Route path="completeDetails/:email" element={<CompleteDetails />} />
@@ -87,6 +93,7 @@ export default function Layout() {
                 />
                 <Route path=":leadId" element={<LeadInfoPage />} />
               </Route>
+
               <Route
                 path="messages"
                 element={
@@ -116,8 +123,27 @@ export default function Layout() {
                 }
               />
             </Route>
-            <Route path="settings" element={<QRCodeComponent />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+
+            <Route
+              path="settings"
+              element={
+                <>
+                  <SettingsTab />
+                  <Outlet />
+                </>
+              }
+            >
+              <Route
+                index
+                element={
+                  <>
+                    {/*להוסיף פרטי יוזר או משהו תלוי מה רוצים במסך הראשוני כשלוחצים על הגדרות*/}
+                  </>
+                }
+              />
+              <Route path="QrCode" element={<QRCodeComponent />} />
+              <Route path="plans" element={<Plans />} />
+            </Route>
 
             <Route path="feedback" element={<FeedBack />} />
             <Route path="payment" element={<PaymentPage />} />

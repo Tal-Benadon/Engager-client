@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
-export default function Popover({ list, children, fnName, }) {
-    const maxHeight = (list.length * 50) + 20
-    const [isClicked, setIsClicked] = useState(false)
+export default function Popover({ list, children, fnName,}) {
+    const maxHeight = (list.length * 50) + 20;
+    const [isClicked, setIsClicked] = useState(false);
 
 
 
@@ -36,7 +36,7 @@ export default function Popover({ list, children, fnName, }) {
 
     function handleClick(e) {
         e.preventDefault()
-        let screenWidth = window.screen.width
+        let screenWidth = window.screen.width;
         let screenHeight = window.screen.height;
         let finalStyle = { display: 'flex' }
         let elementWidth = e.screenX;
@@ -50,8 +50,10 @@ export default function Popover({ list, children, fnName, }) {
         else {
             finalStyle.right = 15;
         }
-
-        if (totalHeight > maxHeight) {
+        if (e.pageY > 600) {
+            finalStyle.bottom = 15;
+        }
+        else if (totalHeight > maxHeight) {
             finalStyle.top = 15
 
         } else {
@@ -62,25 +64,32 @@ export default function Popover({ list, children, fnName, }) {
     }
 
     return (
+
         <div className={style.mainIcon} {...finalFunction} >
             <button className={style.children} >
                 {children}
             </button>
             {!isClicked ? ""
 
-                : <div className={style.Popover} style={isClicked} >
-                    <ul >
-                        {list?.map?.(item => (
-                            <li className={item.color === "red" ? style.red : style.green}
-                                onClick={item.onClick} key={item.text} >
-                                <span className={style.icon}>{item.icon}</span>
-                                <span className={style.text}>{item.text}</span>
-                            </li>
-                        ))}
-                    </ul>
+                :
+
+                <div className={style.Popover} style={isClicked} >
+                    <div className={style.container}>
+                        <ul >
+                            {list?.map?.(item => (
+                                <li className={item.color === "red" ? style.red : style.green}
+                                    onClick={item.onClick} key={item.text} >
+                                    <span className={style.icon}>{item.icon}</span>
+                                    <span className={style.text}>{item.text}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div  >
                 </div>
+
             }
         </div>
+
     );
 }
 
