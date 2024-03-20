@@ -39,7 +39,9 @@ export default function QRCodeComponent() {
   },[])
   
   return (
-    <div className={styles.container}>
+    <div className={styles.QrContainer}>
+    <>
+    {/* // <div className={styles.container}> */}
       {(code.length < 2) ? <Loading className={styles.loading} /> : ""}
       {(!isReady && code.length > 2) ? <QRCode value={code} className={styles.qrCode} /> : ""}
       <InputWrapper subLabel={"נא לא לרענן את העמוד"} className={styles.inputWrapper} />
@@ -55,6 +57,8 @@ export default function QRCodeComponent() {
         <br />
         4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.
       </div>
+    {/* </div> */}
+    </>
     </div>
   );
 }

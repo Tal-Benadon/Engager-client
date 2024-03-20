@@ -70,7 +70,7 @@ export default function UpdateAndAddLead({ details={}, campaign, getCamp,isEdit 
             <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={handleChange} />} />
             <div className={styles.buttons}>
                 <Button type='submit' content='שמירה' />
-                <Button content='ביטול' className='cancel' />
+                <Button content='ביטול' className='cancel' onClick={()=>{setPopUp(false)}} />
             </div>
         </form>
     </div>

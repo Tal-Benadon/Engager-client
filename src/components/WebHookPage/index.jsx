@@ -35,7 +35,7 @@ export default function WebHookPage() {
             <p>שולחים בקשת POST לכתובת ה Webhook המופיעה בדף זה.</p>
             <p>את המידע שולחים ב BODY בתצורה הבאה:</p>
             <br />
-            <img className={styles.img} src='/webhook.png' alt="webhook" />
+            <img className={styles.img} src='/webhookExplain.png' alt="webhook" />
         </div>
 
 
