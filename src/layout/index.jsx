@@ -33,6 +33,9 @@ import DataContext from "../context/DataContext";
 import Dashboard from "../pages/Dashboard";
 import Plans from "../components/Plans";
 import SettingsTab from "../components/SettingsTab";
+import CheckOut from "../pages/CheckOut";
+import MyUsers from "../components/MyUsers";
+import AllUsers from "../components/AllUsers";
 
 export default function Layout() {
   return (
@@ -49,10 +52,7 @@ export default function Layout() {
             element={<ChangePasswordPage />}
           />
           <Route path="register" element={<Register />} />
-
           <Route path="forgetPassword" element={<ForgetPassword />} />
-          <Route path="forgetPassword" element={<ForgetPassword />} />
-
           <Route path="completeDetails/:email" element={<CompleteDetails />} />
           <Route path="redircetGoogle/:token" element={<RedirectGoogle />} />
           <Route
@@ -63,15 +63,20 @@ export default function Layout() {
             path="activate-user/:userToken"
             element={<ActivateAccount />}
           />
-
           <Route path="first-plan" element={<Plans />} />
           <Route element={<DashboardLayout />}>
             {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<Dashboard />} />
+            <Route path="checkOut" element={<CheckOut />} />
             <Route path="myLeads" element={<MyLeads />}>
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
               <Route path="inactive" element={<AllInactiveLeads />} />
+            </Route>
+            <Route path="myUsers" element={<MyUsers />}>
+              <Route path="all" element={<AllUsers />} />
+              {/* <Route path="active" element={<AllActiveLeads />} /> */}
+              {/* <Route path="inactive" element={<AllInactiveLeads />} /> */}
             </Route>
             <Route path="campaign/:campId" element={<CampaignPage />}>
               <Route
@@ -123,7 +128,6 @@ export default function Layout() {
                 }
               />
             </Route>
-
             <Route
               path="settings"
               element={
@@ -144,7 +148,6 @@ export default function Layout() {
               <Route path="QrCode" element={<QRCodeComponent />} />
               <Route path="plans" element={<Plans />} />
             </Route>
-
             <Route path="feedback" element={<FeedBack />} />
             <Route path="payment" element={<PaymentPage />} />
           </Route>

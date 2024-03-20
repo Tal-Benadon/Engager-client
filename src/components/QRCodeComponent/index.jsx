@@ -6,35 +6,25 @@ import styles from "./style.module.css";
 import Loading from "../Loading";
 import DataContext from "../../context/DataContext";
 import api from "../../functions/api";
-import Button from "../Button";
 
 export default function QRCodeComponent() {
-  const { user } = useContext(DataContext);
-  const [socket, setSocket] = useState();
   const [code, setCode] = useState("");
   const [isReady, setIsReady] = useState(false);
-  const temp = io("http://localhost:3000", {
-    auth: {
-      userData: {
-        _id: user._id,
-        name: user.name,
-      },
-    },
-  });
-  useEffect(() => {
-    temp.on("connect", () => {
-      console.log("Connected to server");
-    });
-    temp.on(`qr`, (qr) => {
-      console.log(qr);
-      setCode(qr);
-    });
 
-    temp.on("ready", () => {
-      setIsReady(true);
-    });
-    temp.on("disconnect", () => {});
-  }, [temp]);
+  const { user } = useContext(DataContext);
+
+  const { socket } = useContext(DataContext);
+  useEffect(() => {
+    if (socket) {
+      socket.on(`qr`, (qr) => {
+        setCode(qr);
+      });
+
+      socket.on("ready", () => {
+        setIsReady(true);
+      });
+    }
+  }, []);
 
   return (
     <div className={styles.QrContainer}>
@@ -61,11 +51,6 @@ export default function QRCodeComponent() {
           4. מפנים את הטלפון לכיוון המסך וסורקים את קוד ה-QR.
         </div>
         {/* </div> */}
-        <Button
-          onClick={() => temp.emit("logOut")}
-          className={"disconnect"}
-          content={"התנתקות"}
-        />
       </>
     </div>
   );
