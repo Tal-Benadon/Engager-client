@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DataContext from './DataContext';
 import api from '../functions/api';
 import { useNavigate } from 'react-router';
+import io from 'socket.io-client';
 
 export function ManageContext({ children }) {
 
@@ -10,6 +11,7 @@ export function ManageContext({ children }) {
   const [allCamps, setAllCamps] = useState([]);
 
   const nav = useNavigate();
+  const [socket, setSocket] = useState();
 
   useEffect(() => {
     if (localStorage.token && !user._id) {
@@ -19,6 +21,36 @@ export function ManageContext({ children }) {
       tokenToUser();
     } else { }
   }, [])
+
+
+  useEffect(()=>{
+    let userId = user._id
+      if (userId){
+        setSocket(io('http://localhost:3000', {
+          auth: {
+            userData: {
+              _id: userId,
+              name: user.name,
+            }}
+        })
+        )
+       
+      }
+  }, [user._id])
+const [queueJob, setQueueJob] = useState() 
+  useEffect(()=>{
+    if(socket){
+      socket.on('connect', () => {
+        console.log('Connected to server of whatsapp');
+        socket.emit('queue')
+      });
+      socket.on(`queue`, (queue) => {
+        console.log('🌹🌹🌹');
+        console.log(queue)
+        setQueueJob(queue)
+      })
+    }
+  },[socket])
 
   const getAllCamps = () => {
 
@@ -31,7 +63,7 @@ export function ManageContext({ children }) {
 
   return (
 
-    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps }}>
+    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps, socket, queueJob }}>
       {children}
     </DataContext.Provider>
   );

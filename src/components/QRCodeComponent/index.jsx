@@ -8,34 +8,25 @@ import DataContext from '../../context/DataContext';
 import api from "../../functions/api";
 
 export default function QRCodeComponent() {
-  const [socket, setSocket] = useState();
+
   const [code, setCode] = useState('');
   const [isReady, setIsReady] = useState(false);
 
   const { user } = useContext(DataContext);
 
+  const { socket } = useContext(DataContext);
   useEffect(() => {
-    const temp =io('http://localhost:3000', {
-      auth: {
-        userData: {
-          _id: "123456789",
-          name: 'אלירז',
-        }
-      }
-  
-    })
-    temp.on('connect', () => {
-      console.log('Connected to server');
-    });
+    if (socket){
+      socket.on(`qr`, (qr) => {
+        setCode(qr);
+      });
+      
+      socket.on('ready', () => {
+        setIsReady(true);
+      })
+      
+    }
     
-    temp.on(`qr`, (qr) => {
-      console.log(qr)
-      setCode(qr);
-    });
-    
-    temp.on('ready', () => {
-      setIsReady(true);
-    })
   },[])
   
   return (
