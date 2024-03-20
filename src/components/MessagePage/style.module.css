@@ -34,4 +34,6 @@
 .send {
     margin-top: 20px;
     margin-right: auto;
+    display: flex;
+    gap: 36px;
 }
