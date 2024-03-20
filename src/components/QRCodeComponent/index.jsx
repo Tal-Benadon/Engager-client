@@ -20,14 +20,12 @@ export default function QRCodeComponent() {
       socket.on(`qr`, (qr) => {
         setCode(qr);
       });
-      
       socket.on('ready', () => {
         setIsReady(true);
       })
       
     }
-    
-  },[])
+  },[socket])
   
   return (
     <div className={styles.QrContainer}>
