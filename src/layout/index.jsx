@@ -9,7 +9,7 @@ import ForgetPassword from '../components/ForgetPassword';
 import Register from '../components/Register';
 import DashboardLayout from './DashboardLayout';
 import CampaignPage from '../pages/CampaignPage';
-import QRCodeComponent from '../components/Setting';
+import QRCodeComponent from '../components/QRCodeComponent';
 import PaymentPage from '../pages/PaymentPage';
 import LeadsTab from '../components/LeadsTab';
 import LeadInfoPage from '../pages/LeadInfoPage';
@@ -28,8 +28,11 @@ import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
-import Plans from '../components/Plans';
+import api from '../functions/api';
+import DataContext from '../context/DataContext';
 import Dashboard from '../pages/Dashboard';
+import Plans from '../components/Plans';
+import SettingsTab from '../components/SettingsTab';
 
 export default function Layout() {
 
@@ -40,15 +43,17 @@ export default function Layout() {
         <Routes>
           <Route path='login' element={<LoginPage />} />
           <Route path='changePassword/:passwordToken' element={<ChangePasswordPage />} />
+          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage />} />
           <Route path='register' element={<Register />} />
 
+          <Route path='forgetPassword' element={<ForgetPassword />} />
           <Route path='forgetPassword' element={<ForgetPassword />} />
 
           <Route path='completeDetails/:email' element={<CompleteDetails />} />
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-            
+
           <Route path='first-plan' element={<Plans />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
@@ -59,18 +64,24 @@ export default function Layout() {
               <Route path="inactive" element={<AllInactiveLeads />} />
             </Route>
             <Route path='campaign/:campId' element={<CampaignPage />}>
+
               <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
                 <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}</>} />
                 <Route path=":leadId" element={<LeadInfoPage />} />
               </Route>
+
               <Route path="messages" element={<><MsgTab /><Outlet /></>}>
                 <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה להודעות כשאין ראוט להודעה ספציפית */}</>} />
                 <Route path=":messageId" element={<MessagePage />} />
               </Route>
               <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
             </Route>
-            <Route path='settings' element={<QRCodeComponent />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+
+            <Route path='settings' element={<><SettingsTab /><Outlet /></>}>
+              <Route index element={<>{/*להוסיף פרטי יוזר או משהו תלוי מה רוצים במסך הראשוני כשלוחצים על הגדרות*/}</>} />
+              <Route path='QrCode' element={<QRCodeComponent />} />
+              <Route path='plans' element={<Plans />} />
+            </Route>
 
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
