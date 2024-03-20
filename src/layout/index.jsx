@@ -33,60 +33,124 @@ import DataContext from '../context/DataContext';
 import Dashboard from '../pages/Dashboard';
 import Plans from '../pages/Plans';
 import SettingsTab from '../components/SettingsTab';
+import MyUsers from '../components/MyUsers';
+import AllUsers from '../components/AllUsers';
+import CheckOut from '../tests/Israel';
 
 export default function Layout() {
-
-
   return (
     <div className={styles.layout}>
       <ManageContext>
         <Routes>
-          <Route path='login' element={<LoginPage />} />
-          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage />} />
-          <Route path='changePassword/:passwordToken' element={<ChangePasswordPage />} />
-          <Route path='register' element={<Register />} />
-
-          <Route path='forgetPassword' element={<ForgetPassword />} />
-          <Route path='forgetPassword' element={<ForgetPassword />} />
-
-          <Route path='completeDetails/:email' element={<CompleteDetails />} />
-          <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
-          <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
-          <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-
-          <Route path='first-plan' element={<Plans />} />
-          <Route element={<DashboardLayout />} >
+          <Route path="login" element={<LoginPage />} />
+          <Route
+            path="changePassword/:passwordToken"
+            element={<ChangePasswordPage />}
+          />
+          <Route
+            path="changePassword/:passwordToken"
+            element={<ChangePasswordPage />}
+          />
+          <Route path="register" element={<Register />} />
+          <Route path="forgetPassword" element={<ForgetPassword />} />
+          <Route path="completeDetails/:email" element={<CompleteDetails />} />
+          <Route path="redircetGoogle/:token" element={<RedirectGoogle />} />
+          <Route
+            path="user-doesnt-exists"
+            element={<GoogleRegisterRedirectPage />}
+          />
+          <Route
+            path="activate-user/:userToken"
+            element={<ActivateAccount />}
+          />
+          <Route path="first-plan" element={<Plans />} />
+          <Route element={<DashboardLayout />}>
             {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<Dashboard />} />
-            <Route path='myLeads' element={<MyLeads />} >
+            <Route path="checkOut" element={<CheckOut />} />
+            <Route path="myLeads" element={<MyLeads />}>
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
               <Route path="inactive" element={<AllInactiveLeads />} />
             </Route>
-            <Route path='campaign/:campId' element={<CampaignPage />}>
-
-              <Route path="leads" element={<><LeadsTab /><Outlet /></>}>
-                <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}</>} />
+            <Route path="myUsers" element={<MyUsers/>}>
+              <Route path="all" element={<AllUsers />} />
+              {/* <Route path="active" element={<AllActiveLeads />} /> */}
+              {/* <Route path="inactive" element={<AllInactiveLeads />} /> */}
+            </Route>
+            <Route path="campaign/:campId" element={<CampaignPage />}>
+              <Route
+                path="leads"
+                element={
+                  <>
+                    <LeadsTab />
+                    <Outlet />
+                  </>
+                }
+              >
+                <Route
+                  index
+                  element={
+                    <>
+                      {/* TODO: להוסיף מסך פתיחה בכניסה ללידים כשאין ראוט לליד ספציפי */}
+                    </>
+                  }
+                />
                 <Route path=":leadId" element={<LeadInfoPage />} />
               </Route>
 
-              <Route path="messages" element={<><MsgTab /><Outlet /></>}>
-                <Route index element={<>{/* TODO: להוסיף מסך פתיחה בכניסה להודעות כשאין ראוט להודעה ספציפית */}</>} />
+              <Route
+                path="messages"
+                element={
+                  <>
+                    <MsgTab />
+                    <Outlet />
+                  </>
+                }
+              >
+                <Route
+                  index
+                  element={
+                    <>
+                      {/* TODO: להוסיף מסך פתיחה בכניסה להודעות כשאין ראוט להודעה ספציפית */}
+                    </>
+                  }
+                />
                 <Route path=":messageId" element={<MessagePage />} />
               </Route>
-              <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
+              <Route
+                path="webhook"
+                element={
+                  <>
+                    <WebHookTab />
+                    <WebHookPage />
+                  </>
+                }
+              />
             </Route>
-
-            <Route path='settings' element={<><SettingsTab /><Outlet /></>}>
-              <Route index element={<>{/*להוסיף פרטי יוזר או משהו תלוי מה רוצים במסך הראשוני כשלוחצים על הגדרות*/}</>} />
-              <Route path='QrCode' element={<QRCodeComponent />} />
-              <Route path='plans' element={<Plans />} />
+            <Route
+              path="settings"
+              element={
+                <>
+                  <SettingsTab />
+                  <Outlet />
+                </>
+              }
+            >
+              <Route
+                index
+                element={
+                  <>
+                    {/*להוסיף פרטי יוזר או משהו תלוי מה רוצים במסך הראשוני כשלוחצים על הגדרות*/}
+                  </>
+                }
+              />
+              <Route path="QrCode" element={<QRCodeComponent />} />
+              <Route path="plans" element={<Plans />} />
             </Route>
-
-            <Route path='feedback' element={<FeedBack />} />
-            <Route path='payment' element={<PaymentPage />} />
+            <Route path="feedback" element={<FeedBack />} />
+            <Route path="payment" element={<PaymentPage />} />
           </Route>
-
         </Routes>
         <Test />
         <PopUp />
