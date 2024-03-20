@@ -33,6 +33,7 @@ import DataContext from '../context/DataContext';
 import Dashboard from '../pages/Dashboard';
 import Plans from '../components/Plans';
 import SettingsTab from '../components/SettingsTab';
+import CheckOut from '../pages/CheckOut';
 
 export default function Layout() {
 
@@ -58,6 +59,7 @@ export default function Layout() {
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<Dashboard />} />
+            <Route path='checkOut' element={<CheckOut />} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
