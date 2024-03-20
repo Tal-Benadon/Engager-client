@@ -32,7 +32,7 @@ import Plans from '../components/Plans';
 import Dashboard from '../pages/Dashboard';
 import MsgQueue from '../components/msgQueue';
 import Icon from '../components/Icon';
-// import Plans from '../components/Plans';
+import Plans from '../components/Plans';
 
 export default function Layout() {
 
