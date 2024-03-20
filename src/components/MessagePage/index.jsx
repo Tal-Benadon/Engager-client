@@ -13,6 +13,7 @@ import axios from 'axios';
 import api from '../../functions/api';
 import PopUp from '../PopUp';
 import ScheduleInput from '../ScheduleInput';
+import InputWrapper from '../InputWrapper';
 export default function MessagePage() {
 
     // TODO: לחבר את שליחת ההודעה לווטסאפ
@@ -20,6 +21,20 @@ export default function MessagePage() {
 
     const { PopUp, setPopUp } = useContext(DataContext)
 
+    const [date, setDate] = useState(null)
+
+    const formatDateSchedule = (date) => {
+        const day = date.getDate().toString().padStart(2, '0')
+        const month = (date.getMonth() + 1).toString().padStart(2, '0')
+        const year = date.getFullYear()
+        return `${day}/${month}/${year}`
+    }
+
+    const formatTimeSchedule = (date) => {
+        const hours = date.getHours().toString().padStart(2, '0')
+        const minutes = date.getMinutes().toString().padStart(2, '0')
+        return `${hours}:${minutes}`
+    }
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
@@ -28,8 +43,14 @@ export default function MessagePage() {
     const { creationDate, subject, content } = message;
     let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
 
-    let dateSend = '04/05/2025'
-    let timeSend = '12:24'
+    let dateSend = formatDateSchedule(date || new Date())
+    let timeSend = formatTimeSchedule(date || new Date())
+
+
+    const schedulingButton = () => {
+        setPopUp(false)
+        //TODO: ADD LOGIC OF UPDATING THE TIME TO SEND IN THE SERVER
+    }
 
     return (
         <div className={styles.MessagePage}>
@@ -67,13 +88,23 @@ export default function MessagePage() {
                         }
                     }}
                 />
+
+
                 <Button
                     content='תזמן הודעה'
-                    onClick={() => setPopUp(true)}
-                />
-                {/* <PopUp setPopUp={setPopUp} title={"תזמון הודעה"}>
-                    <ScheduleInput setPopUp={setPopUp} />
-                </PopUp> */}
+                    onClick={() => setPopUp({
+                        title: "תזמון הודעה", component:
+
+                            <form className={styles.schedulePopUp} onSubmit={(e) => e.preventDefault()}><ScheduleInput setDate={setDate} />
+                                <Button
+                                    content='בחר זמן'
+                                    onClick={() => schedulingButton()}
+                                />
+                            </form>
+
+                    })} />
+
+
             </div>
 
             <Accordion
