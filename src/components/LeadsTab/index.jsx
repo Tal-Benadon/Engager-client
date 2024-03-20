@@ -25,7 +25,7 @@ export default function LeadsTab() {
 
   const nav = useNavigate();
 
-  const { campaign, setCampaign } = useCampaign();
+  const { campaign, setCampaign,getCamp } = useCampaign();
   const [newCampaign, setNewCampaign] = useState({});
   const { setAllCamps } = useContext(DataContext)
   useEffect(() => {
@@ -78,7 +78,9 @@ export default function LeadsTab() {
                   component: (
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
-                      campaign={campaign._id}
+                      campaign={campaign}
+                      getCamp={getCamp}
+                      isEdit={false}
                     />
                   ),
                 }),

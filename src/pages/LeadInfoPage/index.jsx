@@ -28,7 +28,7 @@ export default function LeadInfoPage() {
   // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
-  const { campaign } = useCampaign();
+  const { campaign,getCamp } = useCampaign();
   const { setPopUp } = useContext(DataContext);
 
   const [lead, setLead] = useState({})
@@ -44,14 +44,13 @@ export default function LeadInfoPage() {
   //   }
   // }, [])
 
-  const { fullName, phone, email, notes, _id,extra, joinDate, isActive } = lead || {};
+  const { fullName, phone, email, notes, _id, extra={}, joinDate, isActive } = lead || {};
   const signUpDate = formatDate(joinDate)
   const [isEdit, setIsEdite] = useState(false)
 
   const handleEditClick = () => {
     setIsEdite(true)
   }
-
   return (
     <div className={styles.layout}>
       <div className={styles.info}>
@@ -72,7 +71,8 @@ export default function LeadInfoPage() {
                     setPopUp={setPopUp}
                     campaign={campaign}
                     details={{ fullName, email, phone, notes, leadId: _id }}
-                    setIsEdite={setIsEdite}
+                    isEdit={true}
+                    getCamp={getCamp}
                   />
                 )
               })
@@ -105,6 +105,14 @@ export default function LeadInfoPage() {
                   <div colSpan="2" >{notes}</div>
                 </div>
               </div>
+              {Object.keys(extra).map((item, index) => {
+                return <div key={index} className={styles.infoCol}>
+                  <div className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>{extra[item].he}</div>
+                    <div className={styles.content}>{extra[item].value}</div>
+                  </div>
+                </div>
+              })}
             </div>
             <div className={styles.signUpDate}>
               תאריך ההצטרפות: {signUpDate}
@@ -123,4 +131,3 @@ export default function LeadInfoPage() {
 }
 
 
- 

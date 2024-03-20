@@ -50,7 +50,7 @@ export default function Popover({ list, children, fnName,}) {
         else {
             finalStyle.right = 15;
         }
-        if (e.pageY > 800) {
+        if (e.pageY > 600) {
             finalStyle.bottom = 15;
         }
         else if (totalHeight > maxHeight) {
@@ -64,25 +64,32 @@ export default function Popover({ list, children, fnName,}) {
     }
 
     return (
+
         <div className={style.mainIcon} {...finalFunction} >
             <button className={style.children} >
                 {children}
             </button>
             {!isClicked ? ""
 
-                : <div className={style.Popover} style={isClicked} >
-                    <ul >
-                        {list?.map?.(item => (
-                            <li className={item.color === "red" ? style.red : style.green}
-                                onClick={item.onClick} key={item.text} >
-                                <span className={style.icon}>{item.icon}</span>
-                                <span className={style.text}>{item.text}</span>
-                            </li>
-                        ))}
-                    </ul>
+                :
+
+                <div className={style.Popover} style={isClicked} >
+                    <div className={style.container}>
+                        <ul >
+                            {list?.map?.(item => (
+                                <li className={item.color === "red" ? style.red : style.green}
+                                    onClick={item.onClick} key={item.text} >
+                                    <span className={style.icon}>{item.icon}</span>
+                                    <span className={style.text}>{item.text}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div  >
                 </div>
+
             }
         </div>
+
     );
 }
 
