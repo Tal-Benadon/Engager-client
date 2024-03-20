@@ -133,7 +133,7 @@ export default function Dashboard() {
       }
     };
     fetchData();
-     }, []);
+  }, []);
 
   useEffect(() => {
     const fetchMessageDataLeft = async () => {
@@ -171,7 +171,7 @@ export default function Dashboard() {
           max0messages = myPlan.opening_msg_to_new_lids;
           maxBroadcastMessages = myPlan.msg_number;
           maxCampaigns = myPlan.num_leads_in_list;
-          
+
         }
 
         setPlanName(myPlan.name);
@@ -200,9 +200,27 @@ export default function Dashboard() {
           backgroundColor: colors,
           borderColor: 'rgba(0, 0, 0, 0.5)',
           borderWidth: 1,
+          radius: "60%",
         }
       ],
-    };
+      options: {
+        legend: {
+          display: false,
+        },
+        scales: {
+          label: {
+            fontColor: 'white',
+            display: false,
+
+          },
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+            },
+          }],
+        },
+      }
+    }
   };
   const createLineData = (data, title) => {
     const today = new Date();
@@ -223,36 +241,35 @@ export default function Dashboard() {
   return (
     <div className={styles.main_container}>
       <div className={styles.user_details}>
-        <h1>פרטי משתמש</h1>
-        <br />
-        <h2>שם משתמש: {user.name}</h2><img src={user.avatar} alt="User Image" />
+        <img src={user.avatar} alt="User Image" />
+        <h2>שם משתמש: {user.name}</h2>
+
         <h2>מספר הקמפיינים שלך: {data.campaignsPerUser ? data.campaignsPerUser[user._id] : 0}</h2>
         <h2>תאריך התחברות: {formatDateTime(userCreatedDate)[0]} </h2>
-        <div className={styles.plansWrapper}>
-          {/* <Plans/> */}
-          <h2> ברשותך חבילה מסוג: {planName}</h2>
-          <h2> תאריך הצטרפות: </h2>
-          <h2> כמות הודעות אפס שנשארו:  {message0Left} </h2>
-        
-          <h2>   כמות הודעות תפוצה שנשארו החודש {broadcastMessagesLeft}</h2>
-          
-          <h2>מספר קמפיינים שנשארו: {campaignsLeft}</h2>
-         
-          <button onClick={()=>{nav('/plans')}} >לשדרוג החבילה לחץ כאן</button>
-        </div>
+        {/* <Plans/> */}
+      </div >
+      <div className={styles.user_details}>
+        <h2> ברשותך חבילה מסוג: {planName}</h2>
+        <h2> תאריך הצטרפות: </h2>
+        <h2> כמות הודעות אפס שנשארו:  {message0Left} </h2>
+
+        <h2>   כמות הודעות תפוצה שנשארו החודש {broadcastMessagesLeft}</h2>
+
+        <h2>מספר קמפיינים שנשארו: {campaignsLeft}</h2>
+
+        <button onClick={() => { nav('/plans') }} >לשדרוג החבילה לחץ כאן</button>
       </div>
       <div className={styles.charts_container}>
         <div className={styles.chart_wrapper}>
-          <h2 className={styles.chart_title}>הודעות תפוצה שנשלחו</h2>
-          <Line data={createLineData(data.broadcastMessages, 'Broadcast Messages Sent')} />
-        </div>
-        <div className={styles.chart_wrapper}>
           <h2 className={styles.chart_title}>כמה לידים לקמפיין</h2>
-          <Bar data={createChartData(data.leadsPerCampaign, 'Leads per Campaign')} />
-        </div>
-        <div className={styles.chart_wrapper}>
-          <h2 className={styles.chart_title}>הודעות לכל קמפיין</h2>
-          <Doughnut data={createChartData(data.messagesPerCampaign, 'Messages per Campaign')} />
+          <Bar data={createChartData(data.leadsPerCampaign, 'Leads per Campaign')}
+           options={{
+            plugins: {
+              legend: {
+                display: false // מסתיר את התוויות
+              }
+            }
+          }} />
         </div>
         <div className={styles.chart_wrapper}>
           <h2 className={styles.chart_title}>הודעות בדרך</h2>
@@ -277,7 +294,23 @@ export default function Dashboard() {
               ],
             }}
           />
-        </div></div>
+        </div>
+        <div className={styles.chart_wrapper}>
+          <h2 className={styles.chart_title}>הודעות תפוצה שנשלחו</h2>
+          <Line data={createLineData(data.broadcastMessages, 'Broadcast Messages Sent')}
+           options={{
+            plugins: {
+              legend: {
+                display: false // מסתיר את התוויות
+              }
+            }
+          }} />
+        </div>
+        <div className={styles.chart_wrapper}>
+          <h2 className={styles.chart_title}>הודעות לכל קמפיין</h2>
+          <Doughnut data={createChartData(data.messagesPerCampaign, 'Messages per Campaign')} />
+        </div>
+      </div>
     </div>
   );
 }
