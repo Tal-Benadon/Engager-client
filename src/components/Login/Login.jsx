@@ -9,13 +9,16 @@ import api from '../../functions/api'
 import DataContext from '../../context/DataContext'
 import { useNavigate } from 'react-router'
 import getGoogleOAuthURL from '../../functions/loginWithGoogle'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // login page.
 // <button /> gets props of content. needs to get ruot to DB to check that user fits password
 
 export default function Login() {
+    const notify = () => toast(`Wrong username or password`);
+
     const [formState, setFormState] = useState({})
     const { user, setUser } = useContext(DataContext)
     const nav = useNavigate()
@@ -28,7 +31,8 @@ export default function Login() {
             localStorage.token = token
             nav("/")
         } catch (err) {
-            console.error({ err })
+            console.error(err);
+            notify();
         }
     }
 
