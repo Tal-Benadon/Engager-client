@@ -31,10 +31,12 @@ import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 import Plans from '../components/Plans';
 import Dashboard from '../pages/Dashboard';
 import MsgQueue from '../components/msgQueue';
+import Icon from '../components/Icon';
 // import Plans from '../components/Plans';
 
 export default function Layout() {
 
+  let arr = [{ campaignName: "בריכת שחייה", userName: "מרים פוני", time: "14.10.24 , 13:49" }, { campaignName: "חדר כושר", userName: "גילה שוראקי", time: "19.03.23 , 17:12" }]
 
   return (
     <div className={styles.layout}>
@@ -50,7 +52,7 @@ export default function Layout() {
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-            
+
           <Route path='first-plan' element={<Plans />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
@@ -73,7 +75,7 @@ export default function Layout() {
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path='msgqueue' element={<MsgQueue />} />
+            {/* <Route path='msgqueue' element={<MsgQueue arr={arr} />} /> */}
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
@@ -81,6 +83,7 @@ export default function Layout() {
         </Routes>
         <Test />
         <PopUp />
+        <MsgQueue arr={arr}/>
       </ManageContext>
     </div>
   )
