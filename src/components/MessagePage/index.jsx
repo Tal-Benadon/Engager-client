@@ -4,7 +4,7 @@ import styles from './style.module.css'
 import Accordion from '../Accordion'
 import { useCampaign } from '../../pages/CampaignPage';
 import { useParams } from 'react-router';
-import formatDate from '../../functions/DateFormat';
+import formatDate from '../../functions/dateFormat';
 import campaignHelper from '../../functions/campaignHelper'
 import DataContext from '../../context/DataContext';
 import MessageEdit from '../MessageEdit';

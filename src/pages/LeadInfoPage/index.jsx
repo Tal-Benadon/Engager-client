@@ -5,7 +5,7 @@ import styles from './style.module.css'
 import UpdateAndAddLead from '../../components/UpdateAndAddLead'
 import { useCampaign } from '../CampaignPage'
 import { useParams } from 'react-router'
-import formatDate from '../../functions/DateFormat'
+import formatDate from '../../functions/dateFormat'
 import DataContext from "../../context/DataContext";
 
 import Button from '../../components/Button'

@@ -2,33 +2,33 @@ import React from 'react'
 import {Route, Routes } from 'react-router-dom'
 
 
-import Ariyeh from './Ariyeh'
-import Eliraz from './Eliraz'
-import Gila from './Gila'
-import Hilel from './Hilel'
-import Hotam from './Hotam'
-import Israel from './Israel'
-import Jacob from './Jacob'
-import Joshua from './Joshua'
-import Liel from './Liel'
-import Maayan from './Maayan'
-import Miryam from './Miryam'
-import Moti from './Moti'
-import Or from  './Or'
-import Orna from './Orna'
-import Refael from './Refael'
-import Roni from './Roni'
-import Ronit from './Ronit'
-import Shaked from './Shaked'
-import Shir from './Shir'
-import Tal from './Tal'
-import Teliha from './teliha/Teliha'
+// import Ariyeh from './Ariyeh'
+// import Eliraz from './Eliraz'
+// import Gila from './Gila'
+// import Hilel from './Hilel'
+// import Hotam from './Hotam'
+// import Israel from './Israel'
+// import Jacob from './Jacob'
+// import Joshua from './Joshua'
+// import Liel from './Liel'
+// import Maayan from './Maayan'
+// import Miryam from './Miryam'
+// import Moti from './Moti'
+// import Or from  './Or'
+// import Orna from './Orna'
+// import Refael from './Refael'
+// import Roni from './Roni'
+// import Ronit from './Ronit'
+// import Shaked from './Shaked'
+// import Shir from './Shir'
+// import Tal from './Tal'
+// import Teliha from './teliha/Teliha'
 
 
 export default function Test() {
     return (
         <div>    
-            <Routes>
+            {/* <Routes>
                 <Route path='/ariyeh' element={<Ariyeh/>} />
                 <Route path='/eliraz' element={<Eliraz/>} />
                 <Route path='/gila' element={<Gila />} />
@@ -55,7 +55,7 @@ export default function Test() {
 
             </Routes>
          
-
+ */}
 
         </div>
     )
