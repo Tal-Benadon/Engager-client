@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DataContext from './DataContext';
 import api from '../functions/api';
 import { useNavigate } from 'react-router';
+import io from 'socket.io-client';
 
 export function ManageContext({ children }) {
 
@@ -11,32 +12,45 @@ export function ManageContext({ children }) {
 
   const nav = useNavigate();
   const [socket, setSocket] = useState();
-function createSocket(user){
-    if (user){
-      console.log({miriam: user});
-      // setSocket(io('http://localhost:3000', {
-      //   auth: {
-      //     userData: {
-      //       _id: "65ed9c525b51ed6b4bd16107",
-      //       // _id: user.userId,
-      //       name: 'אלירז',
-      //     }
-      //   }
-      // })
-      // )
-    }
-}
+
   useEffect(() => {
     if (localStorage.token && !user._id) {
       const tokenToUser = async () => {
         await api.get('/accout/tokenToUser').then(res => setUser(res))
-        console.log(user);
-        // createSocket(user)
       };
       tokenToUser();
     } else { }
   }, [])
 
+
+  useEffect(()=>{
+    let userId = user._id
+      if (userId){
+        setSocket(io('http://localhost:3000', {
+          auth: {
+            userData: {
+              _id: userId,
+              name: user.name,
+            }}
+        })
+        )
+       
+      }
+  }, [user._id])
+const [queueJob, setQueueJob] = useState() 
+  useEffect(()=>{
+    if(socket){
+      socket.on('connect', () => {
+        console.log('Connected to server of whatsapp');
+        socket.emit('queue')
+      });
+      socket.on(`queue`, (queue) => {
+        console.log('🌹🌹🌹');
+        console.log(queue)
+        setQueueJob(queue)
+      })
+    }
+  },[socket])
 
   const getAllCamps = () => {
 
@@ -49,7 +63,7 @@ function createSocket(user){
 
   return (
 
-    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps, socket }}>
+    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps, socket, queueJob }}>
       {children}
     </DataContext.Provider>
   );

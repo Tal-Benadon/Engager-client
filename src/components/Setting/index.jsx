@@ -14,28 +14,18 @@ export default function QRCodeComponent() {
 
   const { user } = useContext(DataContext);
 
+  const { socket } = useContext(DataContext);
   useEffect(() => {
-    // const temp =io('http://localhost:3000', {
-    //   auth: {
-    //     userData: {
-    //       _id: "65ed9c525b51ed6b4bd16107",
-    //       name: 'אלירז',
-    //     }
-    //   }
-  
-    // })
-    temp.on('connect', () => {
-      console.log('Connected to server');
-    });
-    
-    temp.on(`qr`, (qr) => {
-      console.log(qr)
-      setCode(qr);
-    });
-    
-    temp.on('ready', () => {
-      setIsReady(true);
-    })
+    if (socket){
+      socket.on(`qr`, (qr) => {
+        setCode(qr);
+      });
+      
+      socket.on('ready', () => {
+        setIsReady(true);
+      })
+      
+    }
     
   },[])
   
