@@ -21,6 +21,8 @@ export default function Dashboard() {
   const { user } = useContext(DataContext);
   console.log("user",user)
   const fixCreatedDate = formatDateTime(user.createdDate)[0];
+
+  const [plansData, setPlansData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -110,7 +112,22 @@ export default function Dashboard() {
       }
     };
     fetchData();
+    const fetchPlansData = async () => {
+      try {
+        const plansRes = await api.get('/plans');
+        if (!plansRes) {
+          throw new Error('Failed to fetch data');
+        }
+        console.log("plansRes", plansRes)
+        setPlansData(plansRes);
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      }
+    };
+    fetchPlansData();
   }, []);
+
+  console.log("data", plansData)
   const createChartData = (data, label) => {
     const colors = Object.keys(data).map(() => `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`);
     return {
