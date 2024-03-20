@@ -30,7 +30,8 @@ import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 import Plans from '../components/Plans';
 import Dashboard from '../pages/Dashboard';
-import Plans from '../components/Plans';
+import MsgQueue from '../components/msgQueue';
+// import Plans from '../components/Plans';
 
 export default function Layout() {
 
@@ -72,7 +73,7 @@ export default function Layout() {
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
             <Route path="/dashboard" element={<Dashboard />} />
-
+            <Route path='msgqueue' element={<MsgQueue />} />
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
