@@ -8,22 +8,22 @@ import DataContext from '../../context/DataContext';
 import api from "../../functions/api";
 
 export default function QRCodeComponent() {
-  const [socket, setSocket] = useState();
+
   const [code, setCode] = useState('');
   const [isReady, setIsReady] = useState(false);
 
   const { user } = useContext(DataContext);
 
   useEffect(() => {
-    const temp =io('http://localhost:3000', {
-      auth: {
-        userData: {
-          _id: "123456789",
-          name: 'אלירז',
-        }
-      }
+    // const temp =io('http://localhost:3000', {
+    //   auth: {
+    //     userData: {
+    //       _id: "65ed9c525b51ed6b4bd16107",
+    //       name: 'אלירז',
+    //     }
+    //   }
   
-    })
+    // })
     temp.on('connect', () => {
       console.log('Connected to server');
     });
@@ -36,6 +36,7 @@ export default function QRCodeComponent() {
     temp.on('ready', () => {
       setIsReady(true);
     })
+    
   },[])
   
   return (

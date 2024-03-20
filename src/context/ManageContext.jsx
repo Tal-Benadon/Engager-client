@@ -10,15 +10,33 @@ export function ManageContext({ children }) {
   const [allCamps, setAllCamps] = useState([]);
 
   const nav = useNavigate();
-
+  const [socket, setSocket] = useState();
+function createSocket(user){
+    if (user){
+      console.log({miriam: user});
+      // setSocket(io('http://localhost:3000', {
+      //   auth: {
+      //     userData: {
+      //       _id: "65ed9c525b51ed6b4bd16107",
+      //       // _id: user.userId,
+      //       name: 'אלירז',
+      //     }
+      //   }
+      // })
+      // )
+    }
+}
   useEffect(() => {
     if (localStorage.token && !user._id) {
       const tokenToUser = async () => {
         await api.get('/accout/tokenToUser').then(res => setUser(res))
+        console.log(user);
+        // createSocket(user)
       };
       tokenToUser();
     } else { }
   }, [])
+
 
   const getAllCamps = () => {
 
@@ -31,7 +49,7 @@ export function ManageContext({ children }) {
 
   return (
 
-    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps }}>
+    <DataContext.Provider value={{ user, setUser, PopUp, setPopUp, allCamps, setAllCamps, getAllCamps, socket }}>
       {children}
     </DataContext.Provider>
   );
