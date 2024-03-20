@@ -46,19 +46,15 @@ const [queueJob, setQueueJob] = useState()
         socket.emit('queue')
       });
       socket.on(`queue`, (queue) => {
-        console.log('🌹🌹🌹', queue);
         setQueueJob(queue)
       })
     }
-    useEffect(() => {
-      console.log('🪻🪻🪻', queueJob);
-    }, [queueJob]);
     
-    // return ()=>{
-    //   if(socket)
-    //   socket.disconnect()
-    // }
-  },[socket])
+    return ()=>{
+        if(socket)
+        socket.disconnect()
+      }
+    },[socket])
 
   const getAllCamps = () => {
     api.get(`/campaign`).then((res) => {
