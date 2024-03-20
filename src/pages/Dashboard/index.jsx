@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Doughnut, Line, Bar } from 'react-chartjs-2';
-import { format, addMonths, subMonths } from 'date-fns'; // ייבוא פונקציות format ו-addMonths מתוך חבילת date-fns
+import { format, addMonths, subMonths } from 'date-fns';
 import 'chart.js/auto';
 import api from '../../functions/api';
 import styles from './style.module.css';
 import DataContext from '../../context/DataContext';
-
-
+import formatDateTime from '../../functions/timeDateFormat';
+import Plans from '../../components/Plans';
 export default function Dashboard() {
   const [data, setData] = useState({
     broadcastMessages: {},
@@ -19,12 +19,14 @@ export default function Dashboard() {
     messagesReceived: {},
   });
   const { user } = useContext(DataContext);
-  user.createdDate = new Date("1900-09-01T14:53:48.170Z").toLocaleDateString();
+  console.log("user",user)
+  const fixCreatedDate = formatDateTime(user.createdDate)[0];
   useEffect(() => {
     const fetchData = async () => {
       try {
         const campaignRes = await api.get('/campaign');
         const userRes = await api.get('/user');
+        console.log("userRes",userRes)
         if (!campaignRes || !userRes) {
           throw new Error('Failed to fetch data');
         }
@@ -142,14 +144,25 @@ export default function Dashboard() {
   };
   return (
     <div className={styles.main_container}>
-    
       <div className={styles.user_details}>
         <h1>פרטי משתמש</h1>
         <br />
-        <h2>שם משתמש: {user.name}</h2>
+        <h2>שם משתמש: {user.name}</h2><img src={user.avatar} alt="User Image" />
         <h2>מספר הקמפיינים שלך: {data.campaignsPerUser ? data.campaignsPerUser[user._id] : 0}</h2>
-        <h2>תאריך התחברות: {user.createdDate}</h2>
+        <h2>תאריך התחברות: {fixCreatedDate} </h2>
+        <div className={styles.plansWrapper}>
+          {/* <Plans/> */}
+        <h2> ברשותך חבילה מסוג:</h2>
+      <h2> תאריך הצטרפות: </h2>
+     <h2> כמות הודעות אפס שנשארו: </h2>
+       {/* {user.subscription.opening_msg_to_new_lids - campaigns.msg.isZeroMsg = true then campagins.recievedMsgs.length } */}
+       <h2>   כמות הודעות תפוצה שנשארו החודש</h2>
+          {/* {user.subscription.msg_number - user.messagesSent} */}
+<h2>מספר קמפיינים שנשארו:</h2>
+          <button >לשדרוג החבילה לחץ כאן</button>
+        </div>
       </div>
+      <div className={styles.charts_container}>
       <div className={styles.chart_wrapper}>
         <h2 className={styles.chart_title}>הודעות תפוצה שנשלחו</h2>
         <Line data={createLineData(data.broadcastMessages, 'Broadcast Messages Sent')} />
@@ -185,7 +198,7 @@ export default function Dashboard() {
             ],
           }}
         />
-      </div>
+      </div></div>
     </div>
   );
         }
