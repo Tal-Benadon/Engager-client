@@ -31,7 +31,7 @@ import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
 import api from '../functions/api';
 import DataContext from '../context/DataContext';
 import Dashboard from '../pages/Dashboard';
-import Plans from '../components/Plans';
+import Plans from '../pages/Plans';
 import SettingsTab from '../components/SettingsTab';
 
 export default function Layout() {
