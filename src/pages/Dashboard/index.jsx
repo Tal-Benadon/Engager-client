@@ -238,7 +238,7 @@ export default function Dashboard() {
           
           <h2>מספר קמפיינים שנשארו: {campaignsLeft}</h2>
          
-          <button onClick={()=>{nav('/plans')}} >לשדרוג החבילה לחץ כאן</button>
+          <button onClick={()=>{nav('/settings/plans')}} >לשדרוג החבילה לחץ כאן</button>
         </div>
       </div>
       <div className={styles.charts_container}>
