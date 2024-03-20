@@ -23,7 +23,7 @@ export default function MyUsers() {
                 toast.error(error?.response?.data?.msg || "somthing want worng");
             });
 
-    }, []);
+    }, [user._id]);
 
     useEffect(() => {
         if (location.pathname === '/myUsers') {
@@ -43,11 +43,11 @@ export default function MyUsers() {
             <h2 className={styles.title}>המשתמשים שלי</h2>
             <p className={styles.info}>{usersObj.users?.length} משתמשים, {activeNum} פעילים</p>
             <div className={styles.tabSwitcher}>
-                <TabSwitcher rout={[
+                {/* <TabSwitcher rout={[
                     { tab: `myUsers/active`, text: `פעילים` },
                     { tab: `myUsers/inactive`, text: "לא פעילים" },
                     { tab: `myUsers/all`, text: "כל המשתמשים" }
-                ]} />
+                ]} /> */}
             </div>
             <Outlet />
         </div>

@@ -28,6 +28,7 @@ import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
+import Plans from '../components/Plans';
 import Dashboard from '../pages/Dashboard';
 import MyUsers from '../components/MyUsers';
 import AllUsers from '../components/AllUsers';
@@ -49,7 +50,8 @@ export default function Layout() {
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-
+            
+          <Route path='first-plan' element={<Plans />} />
           <Route element={<DashboardLayout />} >
             {/* <Route path='plans' element={<Plans />} /> */}
             <Route index element={<Dashboard />} />
@@ -75,9 +77,12 @@ export default function Layout() {
               <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
+
         </Routes>
         <Test />
         <PopUp />

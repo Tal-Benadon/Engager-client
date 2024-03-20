@@ -25,7 +25,7 @@ export default function LeadsTab() {
 
   const nav = useNavigate();
 
-  const { campaign, setCampaign } = useCampaign();
+  const { campaign, setCampaign,getCamp } = useCampaign();
   const [newCampaign, setNewCampaign] = useState({});
   const { setAllCamps } = useContext(DataContext)
   useEffect(() => {
@@ -70,15 +70,17 @@ export default function LeadsTab() {
                 }),
             },
             {
-              text: "הוספת ידנית",
+              text: "הוספה ידנית",
               icon: <Icon nameIcon={"userWithPlus"} />,
               onClick: () =>
                 setPopUp({
-                  title: "עריכה והוספת אדם לקמפיין",
+                  title: "הוספת אדם לקמפיין",
                   component: (
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
-                      campaign={campaign._id}
+                      campaign={campaign}
+                      getCamp={getCamp}
+                      isEdit={false}
                     />
                   ),
                 }),

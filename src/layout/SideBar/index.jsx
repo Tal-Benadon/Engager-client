@@ -7,10 +7,9 @@ import SearchBar from "../../components/SearchBar";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../../context/DataContext";
 import NewCampaigenForm from "../../components/NewCampaignForm";
-import ConfirmLogOut from "../../components/ConfirmLogOut";
+import UserProfile from "../../components/UserProfile";
 
 export default function SideBar() {
-  // TODO: ?"בלחיצה על התנתקות לשים פופאפ "האם אתה בטוח שברצונך להתנתק
 
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,6 +52,12 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
+          <li>
+            <NavLink to="myUsers">
+              כל הלקוחות שלי
+              <Icon nameIcon={"leads"} nameColor={""} />
+            </NavLink>
+          </li>
           {!displaySearchBar && (
             <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
               <span>
@@ -88,7 +93,7 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
-          <li onClick={() =>
+          {/* <li onClick={() =>
             setPopUp(
               {
                 title: 'התנתקות',
@@ -99,37 +104,36 @@ export default function SideBar() {
               התנתקות
               <Icon nameIcon={"logout"} nameColor={""} />
             </NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink to="/myUsers">
               כל הלקוחות שלי
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={styles.lists}>
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist}>
           <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
-          <div
-            className={styles.item}
-            onClick={() =>
-              setPopUp(
-                {
-                  title: "קמפיין חדש",
-                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
-                }
-                //  <NewCampaigenForm setPopUp={setPopUp} getCamp={getCamp}/>
-              )
-            }
-          >
-            <Icon nameIcon={"pluscircle"} nameColor={"create"} />
-            <Button className="create" content="רשימה חדשה" />
-          </div>
+        </div>
+        <div className={styles.item}
+          onClick={() =>
+            setPopUp(
+              {
+                title: "קמפיין חדש",
+                component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
+              }
+            )
+          }>
+          <Icon nameIcon={"pluscircle"} nameColor={"create"} />
+          <Button className="create" content="רשימה חדשה" />
         </div>
       </div>
-      <div className={styles.user}></div>
+      <div className={styles.userContainer}>
+        <UserProfile />
+      </div>
     </div>
   );
 }
