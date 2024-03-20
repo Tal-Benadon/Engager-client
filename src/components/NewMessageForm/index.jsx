@@ -15,7 +15,6 @@ import { useParams } from "react-router";
 import { toast } from "react-toastify";
 import { useCampaign } from "../../pages/CampaignPage/index";
 
-
 // Description :
 // Props : ____________ , _________
 // Creator : ________
@@ -33,113 +32,106 @@ export default function NewMassageForm({
   const [subject, setSubject] = useState("");
 
   const [content, setContent] = useState("");
-  const [endContent, setEndContent] = useState("");
-  const leadKeys = Object.keys(campaign.leads[0]);
-  const [selectedOp, setSelectedOp] = useState("");
-  const [selectedOption, setSelectedOption] = useState('');
+  const [preContent, setPreContent] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
   const [showSelect, setShowSelect] = useState(false);
-  const  textareaRef = useRef(null)
+  const textareaRef = useRef(null);
   const [time, setTime] = useState();
   const [date, setDate] = useState();
 
+  const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
+  const translations = {
+    fullName: "שם",
+    email: "אימייל",
+    phone: "טלפון",
+    notes: "הערות",
+    joinDate: "הצטרפות",
+  };
+  const hebMainFields = mainfields.map((word) => translations[word]);
+  const extraFields = Object.entries(campaign.leads[0]["extra"]).map(
+    (ef) => ef[1].he
+  );
+  const fields = [...hebMainFields, ...extraFields];
+
+  const close = () => {
+    setIsOpen((prev) => false);
+  };
+  const preperText = (text) => {
+    const reverseTranslations = {
+      "שם": "fullName",
+     "אימייל": "email",
+    "טלפון": "phone",
+      "הערות": "notes",
+      "הצטרפות": "joinDate",
+    };
+    console.log("text:", text);
+    // const regex = /@([\u0590-\u05FF\s]+)/g;
+    const regex = /@([\u0590-\u05FF]+)\s?/g
+    const matches = text.match(regex);
+    console.log("matches", matches);
+    matches.forEach((m) =>
+      Object.keys(reverseTranslations).forEach((i) => {
+        console.log("i",i);
+        console.log("m",m);
+        console.log(i, m.replace("@", ""));
+        if (i == m.replace("@", "").trim()) {
+          text = text.replace(m, `@${reverseTranslations[i.trim()]} `, 1);
+        }
+      })
+    );
+    console.log("text:----",text);
+     return text
+  };
+
+  const handleInputChange = (e) => {
+    const inputText = e.target.value;
+    setPreContent(inputText);
+    if (inputText.slice(-1) === "@") {
+      setShowSelect(true);
+    } else {
+      setShowSelect(false);
+    }
+  };
   
 
-const mainfields = Object.keys(campaign.leads[0]).slice(0, -3)
-const translations = {
-  fullName: 'שם מלא',
-  email: 'אימייל',
-  phone: 'טלפון',
-  notes: 'הערות',
-  joinDate: 'תאריך הצטרפות'
-};
-const hebMainFields = mainfields.map(word => translations[word]);
-const extraFields = Object.entries(campaign.leads[0]['extra']).map(ef=> ef[1].he)
-const fields =  [...hebMainFields, ...extraFields];
-
-
-
-const close=()=>{
-  setIsOpen(prev=>false);
-}
-const preperText=(text)=>{
-  const reverseTranslations = {
-    'שם מלא': 'fullName',
-    'אימייל':  'email',
-    'טלפון' : 'phone',
-    'הערות': 'notes',
-    'תאריך הצטרפות': 'joinDate'
-}
-console.log("text:", text);
-const regex = /@([\u0590-\u05FF\s]+)/g;
-const matches = text.match(regex);
-matches.forEach(m => Object.keys(reverseTranslations).forEach((i) => {
-  console.log(i,m.replace('@',''));
-    if (i==m.replace('@','').trim()){
-    text = text.replace(m, `@${reverseTranslations[i.trim()]} `,1)
-  }}))
-
-  setEndContent(prev=>{
-  console.log(prev);
-  return text})
-}
-
-const handleInputChange = (e) => {
-  const inputText = e.target.value;
-  setContent(inputText);  
-  if (inputText.slice(-1) === '@') {
-    setShowSelect(true);
-  } else {
-    setShowSelect(false);
-  }
-};
-// useEffect(()=>{
-  //   console.log(text);
-  // },[text])
-  
   const handleSelectChange = (e) => {
     const selectedKey = e.target.value;
     setSelectedOption(selectedKey);
     if (selectedKey) {
       // const selectedValue = fields[selectedKey];
-      setContent((prevText) => prevText.concat( selectedKey+' ')) 
-     
+      setPreContent((prevText) => prevText.concat(selectedKey + " "));
     } else {
-      setContent((prevText) => prevText.slice(0, -1));
+      setPreContent((prevText) => prevText.slice(0, -1));
     }
-  
+
     setShowSelect(false);
-    setSelectedOption ('')
+    setSelectedOption("");
     if (textareaRef.current) {
       textareaRef.current.focus();
     }
-      };
-  // const dinamicFiled = ()=>{
-  //   let newText = content.replace(/([\^@])/g, `<select onClick="(e)=>setSelectedOp(e)" ><option value="">בחר שדה דינמי</option><option` +
-  //    leadKeys.map(option => `<option value="${'^^'+option}">${option}</option>`).join('') +`</select>`);
-  //    console.log("op",selectedOp);
-  //    return newText;
-  // }
- 
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const submmit = { subject, content };   
-      preperText(''+content)
-  //   try {
-  //     const response = await api.post(`/campaign/${campId}/msg`, submmit);
-  //     toast.success(response && "נשלח בהצלחה!");
-  //     getCamp();
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     toast.error(Error?.response?.data?.msg || "something went wrong");
-  //   }
+   
+    setContent(preperText(preContent));
   };
-useEffect(()=>{
-  if(endContent){
-
-    console.log('change',endContent);
-    close()
-  }
-  },[endContent])
+  useEffect(() => {
+    if (content) {    
+      const submmit = { subject, content };
+      console.log("submit", submmit);
+        async()=>{ try {
+              const response = await api.post(`/campaign/${campId}/msg`, submmit);
+              toast.success(response && "נשלח בהצלחה!");
+              getCamp();
+            } catch (error) {
+              console.error("Error:", error);
+              toast.error(Error?.response?.data?.msg || "something went wrong");
+      }
+      close()
+      }
+    }
+  }, [content]);
   return (
     <div className={styles.InputWrapper}>
       <form onSubmit={handleSubmit}>
@@ -159,24 +151,29 @@ useEffect(()=>{
           <br />
           <br />
           <InputWrapper
-          label="הודעה"
-          subLabel="זוהי ההודעה שתשלח בתזמון הנבחר"
-          to={"msgContent"}
-          children={
-            <InputTextArea name={"msgContent"} fRef={textareaRef} value={content} onChange={handleInputChange} />
-          }
-          type="text"
-        />
+            label="הודעה"
+            subLabel="זוהי ההודעה שתשלח בתזמון הנבחר"
+            to={"msgContent"}
+            children={
+              <InputTextArea
+                name={"msgContent"}
+                fRef={textareaRef}
+                value={preContent}
+                onChange={handleInputChange}
+              />
+            }
+            type="text"
+          />
           {showSelect && (
-        <select value={selectedOption} onChange={handleSelectChange}>
-          <option value="">בחר שדה דינמי</option>
-          {fields.map((field) => (
-            <option key={field} value={field}>
-              {field}
-            </option>
-          ))}
-        </select>
-      )}
+            <select value={selectedOption} onChange={handleSelectChange}>
+              <option value="">בחר שדה דינמי</option>
+              {fields.map((field) => (
+                <option key={field} value={field}>
+                  {field}
+                </option>
+              ))}
+            </select>
+          )}
         </main>
         <br />
 
@@ -205,40 +202,3 @@ useEffect(()=>{
     </div>
   );
 }
-
-// const user = {
-//   name: 'John Doe',
-//   email: 'john@example.com',
-//   age: 25,
-//   city: 'New York',
-// };
-
-// import React, { useState } from 'react';
-
-
-  
-  
-
-  // return (
-  //   <div>
-  //     <input
-  //       type="text"
-  //       value={text}
-  //       onChange={handleInputChange}
-  //       placeholder="Type @ to select a field"
-  //     />
-  //     {showSelect && (
-  //       <select value={selectedOption} onChange={handleSelectChange}>
-  //         <option value="">Select a field</option>
-  //         {fields.map((field) => (
-  //           <option key={field} value={field}>
-  //             {field}
-  //           </option>
-  //         ))}
-  //       </select>
-  //     )}
-  //   </div>
-  // );
-
-
-// export default DynamicTextInput;
