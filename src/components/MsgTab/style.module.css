@@ -13,3 +13,29 @@
     top: 0px;
     left: 0px;
 }
+
+
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+  }
+  
+  .titlesContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popOverContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .popOverContainer:hover{
+    background-color: #F3F3F5;
+border-radius: 5px;
+
+  }
+  

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import styles from "./style.module.css";
 import { Link } from "react-router-dom";
 
-export default function CheckBox() {
-  const [isChecked, setIsChecked] = useState(false);
+export default function CheckBox({isChecked, setIsChecked}) {
 
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
@@ -13,7 +12,7 @@ export default function CheckBox() {
     <div className={styles.CheckBoxFunction}>
       <div onClick={handleCheckBoxChange} className={styles.svg}>
         <svg
-        className={styles.vi}
+        
           width="12"
           height="10"
           viewBox="0 0 12 10"
@@ -27,15 +26,14 @@ export default function CheckBox() {
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
+            style={{ color: 'blue' }}
           />
           : " "
         }
         </svg>
-    
       </div>
-
       <div className={styles.text}>
-        קראתי ואני מסכים ל <Link>תקנון האתר</Link> ולכל האמור בו
+        קראתי ואני מסכים ל <Link className={styles.text}>תקנון האתר</Link> ולכל האמור בו
       </div>
     </div>
   );

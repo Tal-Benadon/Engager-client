@@ -9,17 +9,18 @@ import React, { useContext, useEffect, useState } from "react";
 import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
+import { setDefaultLocale } from "react-datepicker";
+import { useNavigate } from "react-router-dom";
 
-export default function NewCampaigenForm({ setIsOpen, getCamp }) {
+export default function NewCampaigenForm({ setPopUp, getCamp }) {
 
-  // TODO: לתקן את השגיאה שקמפיין חדש לא נוצר  
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
 
   const { user, setUser } = useContext(DataContext);
   const [campName, setCampName] = useState("");
   const [starterMsg, setStarterMsg] = useState("");
-
+  const nav = useNavigate()
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
@@ -29,13 +30,14 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       "title": campName,
       "starterMsg": starterMsg
     };
-    setIsOpen(false);
+    setPopUp(false);
     try {
       const response = await api.post("/campaign",
         body
       );
       toast.success(response && "נשלח בהצלחה!");
       getCamp();
+      nav(`/campaign/${response._id}/webhook`)
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");
@@ -46,7 +48,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
     <div className={styles.InputWrapper}>
       <form onSubmit={handelSubmitNewCampaigen}>
         <div>
-          <h1>רשימה חדשה</h1>
+          {/* <h1>רשימה חדשה</h1> */}
         </div>
         <main>
           <InputWrapper
@@ -78,7 +80,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
           />
           <div className={styles.actions}>
             <Button type={"submit"} className={"save"} content={"שמירה"} />
-            <Button className={"cancel"} content={"ביטול"} onClick={()=>setIsOpen(false)}/>
+            <Button className={"cancel"} content={"ביטול"} onClick={()=>setPopUp(false)}/>
           </div>
         </main>
       </form>

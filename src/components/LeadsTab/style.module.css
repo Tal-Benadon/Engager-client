@@ -1,22 +1,49 @@
-.leadsTab{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border-left: 2px solid var(--grayElement);
-    padding: 15px;
-    gap: 10px;
-    position: relative;
+.leadsTab {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 2px solid var(--grayElement);
+  padding: 15px;
+  gap: 10px;
+  position: relative;
 }
 
-.LeadListHolder{
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    width: 100%;
+.LeadListHolder {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
 }
 
-.menu{
-    position: absolute;
-    top: 0px;
-    left: 0px;
+.menu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titlesContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.popOverContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.popOverContainer:hover {
+  width: 40px;
+  height: 40px;
+  background-color: #F3F3F5;
 }

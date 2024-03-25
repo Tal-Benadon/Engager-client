@@ -8,14 +8,16 @@ import axios from 'axios'
 import api from '../../functions/api'
 import DataContext from '../../context/DataContext'
 import { useNavigate } from 'react-router'
-
-import CheckBox from '../CheckBox'
+import getGoogleOAuthURL from '../../functions/loginWithGoogle'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // login page.
 // <button /> gets props of content. needs to get ruot to DB to check that user fits password
 
 export default function Login() {
+    const notify = () => toast(`Wrong username or password`);
 
     const [formState, setFormState] = useState({})
     const { user, setUser } = useContext(DataContext)
@@ -25,12 +27,16 @@ export default function Login() {
             e.preventDefault();
             const { token, user } = await api.post("/login", formState);
             setUser(user)
+
             localStorage.token = token
             nav("/")
         } catch (err) {
-            console.error({ err })
+            console.error(err);
+            notify();
         }
     }
+
+
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -43,33 +49,48 @@ export default function Login() {
         })
     }
 
-const toregister=()=>{
-    nav('/register')
-}
+    const toregister = () => {
+        nav('/register')
+    }
+
+    const forgetPassword = () => {
+        nav('/forgetPassword')
+    }
+    let root = 'accout/signInGoogle'
+
+    // console.log({formState})
+    console.log({ user })
 
     return (
-        <form onSubmit={handleSubmit} className={styles.inputSpace}>
-            <div className={styles.title}>אנגייג'ר</div>
-            <div className={styles.title2}>התחברות</div>
-            <div>
-                <InputWrapper label={"טלפון"} >
-                    <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                </InputWrapper>
-            </div>
+        <div>
 
-            <div >
-                <InputWrapper label={"סיסמה"} className={styles.nameinput}>
-                    <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
-                </InputWrapper>
-            </div>
+            <form onSubmit={handleSubmit} className={styles.inputSpace}>
+                <div className={styles.title}>אנגייג'ר</div>
+                <div className={styles.title2}>התחברות</div>
+                <div>
 
-            <div className={styles.forget}>שכחתי סיסמא</div>
-            <button className={styles.button} type='submit' >התחברות</button>
-            <button className={styles.buttongoogle} type='submit' > <img src="google.png" alt="" /> התחברות באמצעות גוגל</button>
+                    <InputWrapper label={"אמייל"} setIsVisible={true} >
+                        <InputText name={'email'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                    </InputWrapper>
+                </div>
+
+                <div >
+                    <InputWrapper label={"סיסמה"} className={styles.nameinput}>
+                        <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
+                    </InputWrapper>
+                </div>
+                <div onClick={forgetPassword} className={styles.forget} >שכחתי סיסמה</div>
+                <button className={styles.button} type='submit' >התחברות</button>
+            </form>
+            <a href={getGoogleOAuthURL(root)} className={styles.buttongoogle}>
+                <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
+                {/* <img src="google.png" alt="" /> */}
+                התחברות באמצעות גוגל
+            </a>
             <div className={styles.notlogin}>
                 <div className={styles.notlogin1}>עדיין לא רשומים?</div>
                 <div onClick={toregister} className={styles.notlogin2}>הרשמה זה ממש כאן</div>
             </div>
-        </form>
+        </div>
     )
 }

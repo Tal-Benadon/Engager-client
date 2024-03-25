@@ -15,34 +15,44 @@ export default function MsgTab() {
 
   return (
     <div className={styles.msgTab}>
-      <HeadLine
-        title={campaign.title}
-        subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-      />
+
+      <div className={styles.headerContainer}>
+
+        <div className={styles.titlesContainer}>
+          <HeadLine
+            title={campaign.title}
+            subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`} />
+        </div>
+        <div className={styles.popOverContainer}>
+          <Popover fnName={"onClick"} list={[
+            {
+              text: "עריכת רשימה",
+              icon: <Icon nameIcon={"writing"} />
+            },
+            {
+              text: "ייבוא רשימה",
+              icon: <Icon nameIcon={"importList"} />
+            },
+            {
+              text: "מחיקת רשימה",
+              icon: <Icon nameIcon={"trash"} />,
+              color: "red"
+            },
+          ]} >
+            <Icon nameIcon={"menu"} />
+          </Popover>
+        </div>
+      </div>
       <TabSwitcher rout={[
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
-        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
+        { tab: `campaign/${campaign._id}/messages`, text: "הודעות" },
+        { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
+
       ]} />
       <MsgListHolder />
       <div className={styles.menu}>
         {/* TODO: ליישם את האופציות של התפריט הנפתח */}
-        <Popover fnName={"onClick"} list={[
-          {
-            text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
-          },
-          {
-            text: "ייבוא רשימה",
-            icon: <Icon nameIcon={"importList"} />
-          },
-          {
-            text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"trash"} />,
-            color: "red"
-          },
-        ]} >
-          <Icon nameIcon={"menu"} />
-        </Popover>
+
       </div>
     </div>
   )

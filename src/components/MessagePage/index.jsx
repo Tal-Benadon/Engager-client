@@ -11,13 +11,30 @@ import MessageEdit from '../MessageEdit';
 import Button from '../Button';
 import axios from 'axios';
 import api from '../../functions/api';
-
+import PopUp from '../PopUp';
+import ScheduleInput from '../ScheduleInput';
+import InputWrapper from '../InputWrapper';
 export default function MessagePage() {
 
     // TODO: לחבר את שליחת ההודעה לווטסאפ
     // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
-    
-    const { isOpen, setIsOpen } = useContext(DataContext)
+
+    const { PopUp, setPopUp } = useContext(DataContext)
+
+    const [date, setDate] = useState(null)
+
+    const formatDateSchedule = (date) => {
+        const day = date.getDate().toString().padStart(2, '0')
+        const month = (date.getMonth() + 1).toString().padStart(2, '0')
+        const year = date.getFullYear()
+        return `${day}/${month}/${year}`
+    }
+
+    const formatTimeSchedule = (date) => {
+        const hours = date.getHours().toString().padStart(2, '0')
+        const minutes = date.getMinutes().toString().padStart(2, '0')
+        return `${hours}:${minutes}`
+    }
 
     const { messageId } = useParams();
     const { campaign } = useCampaign() || {};
@@ -26,8 +43,14 @@ export default function MessagePage() {
     const { creationDate, subject, content } = message;
     let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
 
-    let dateSend = '04/05/2025'
-    let timeSend = '12:24'
+    let dateSend = formatDateSchedule(date || new Date())
+    let timeSend = formatTimeSchedule(date || new Date())
+
+
+    const schedulingButton = () => {
+        setPopUp(false)
+        //TODO: ADD LOGIC OF UPDATING THE TIME TO SEND IN THE SERVER
+    }
 
     return (
         <div className={styles.MessagePage}>
@@ -35,7 +58,12 @@ export default function MessagePage() {
                 title={subject}
                 subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
-                iconOnClick={() => setIsOpen(<MessageEdit isOpen={isOpen} setIsOpen={setIsOpen} />)}
+                iconOnClick={() => setPopUp({
+                    title: "עריכת הודעה",
+                    component: <MessageEdit isOpen={isOpen} setPopUp={setPopUp} />
+                }
+
+                )}
             />
             <div className={styles.message}>
                 <div className={styles.messageitem}>
@@ -55,12 +83,27 @@ export default function MessagePage() {
                     onClick={async () => {
                         try {
                             const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
-
                         } catch (error) {
                             console.error("Error:", error);
                         }
                     }}
                 />
+
+
+                <Button
+                    content='תזמן הודעה'
+                    onClick={() => setPopUp({
+                        title: "תזמון הודעה", component:
+
+                            <form className={styles.schedulePopUp} onSubmit={(e) => e.preventDefault()}><ScheduleInput setDate={setDate} />
+                                <Button
+                                    content='בחר זמן'
+                                    onClick={() => schedulingButton()}
+                                />
+                            </form>
+
+                    })} />
+
 
             </div>
 

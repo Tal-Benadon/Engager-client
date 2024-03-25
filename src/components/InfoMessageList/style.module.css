@@ -9,13 +9,14 @@
     letter-spacing: 0em;
     text-align: right;
     color: #6B6B6B;
+    margin-top: 10px;
 }
 
 .MessageList {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 32px
+    gap: 10px
 }
 
 .messageListDiv{

@@ -1,39 +1,25 @@
-import styles from './style.module.css'
-import { NavLink, useNavigate } from 'react-router-dom'
-import Icon from '../../components/Icon'
-import CampaignList from '../../components/CampaignList'
-import Button from '../../components/Button'
-import SearchBar from '../../components/SearchBar'
-import { useContext, useEffect, useState } from 'react'
-import DataContext from '../../context/DataContext'
-import NewCampaigenForm from '../../components/NewCampaignForm'
-import api from '../../functions/api'
-import FeedBack from '../../components/FeedBack'
+import styles from "./style.module.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import Icon from "../../components/Icon";
+import CampaignList from "../../components/CampaignList";
+import Button from "../../components/Button";
+import SearchBar from "../../components/SearchBar";
+import { useContext, useEffect, useState } from "react";
+import DataContext from "../../context/DataContext";
+import NewCampaigenForm from "../../components/NewCampaignForm";
+import UserProfile from "../../components/UserProfile";
 
 export default function SideBar() {
 
-  // TODO: לגרום לכך שמתי שלוחצים על החיפוש האינפוט ישר יהיה בפוקוס ומוכן להקלדה
-  // TODO: לשים את האינפוט על שורת החיפוש ולא מתחתיו
-  // TODO: ?"בלחיצה על התנתקות לשים פופאפ "האם אתה בטוח שברצונך להתנתק
+  const [displaySearchBar, setDisplaySearchBar] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const { setPopUp, allCamps, getAllCamps } = useContext(DataContext);
 
-  const [displaySearchBar, setDisplaySearchBar] = useState(false)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [campaign, setCampaign] = useState([])
-  const [campaignByDate, setCampaignByDate] = useState([])
-  const { isOpen, setIsOpen } = useContext(DataContext);
-  const nav = useNavigate()
+  const nav = useNavigate();
 
-  const getCamp = () => {
-    api.get(`/campaign`)
-      .then(res => {
-        // nav(`campaign/${res[0]._id}`)
-        setCampaign(res)
-      })
-      .then()
-  }
   useEffect(() => {
-    getCamp()
-  }, [])
+    getAllCamps();
+  }, []);
 
   const sortCamps = (camps) => {
     return camps.slice().sort((a, b) => {
@@ -54,71 +40,100 @@ export default function SideBar() {
     }, new Date(0));
   };
 
-  const deleteLS = () => {
-    delete localStorage.token
-  }
-
 
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
-        <h1>אנגייג׳ר</h1>
+        <h1 onClick={() => nav('/')} className={styles.eng}>אנגייג׳ר</h1>
         <ul>
           <li>
-          <NavLink to="/myLeads">
+            <NavLink to="/myLeads">
               כל הלידים שלי
-              <Icon nameIcon={'leads'} nameColor={''} />
+              <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
-            <span>
-              חיפוש
-              <Icon nameIcon={'search'} nameColor={''} />
-            </span>
+          <li>
+            <NavLink to="myUsers">
+              כל הלקוחות שלי
+              <Icon nameIcon={"leads"} nameColor={""} />
+            </NavLink>
           </li>
-          {displaySearchBar &&
-            <li>
-              <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          {!displaySearchBar && (
+            <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
+              <span>
+                חיפוש
+                <Icon nameIcon={"search"} nameColor={""} />
+              </span>
             </li>
-          }
+          )}
+          {displaySearchBar && (
+            <li>
+              <SearchBar
+                className={styles.searchbar}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                autoFocus
+                onBlur={() => {
+                  if (searchTerm.trim() === "") {
+                    setDisplaySearchBar(false);
+                  }
+                }}
+              />
+            </li>
+          )}
           <li>
             <NavLink to="/settings">
               הגדרות
-              <Icon nameIcon={'setting'} nameColor={''} />
+              <Icon nameIcon={"setting"} nameColor={""} />
             </NavLink>
           </li>
-          {/* <li>
+          <li>
             <NavLink to="/feedback">
               שליחת פידבק
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
-          </li> */}
-          <li onClick={deleteLS}>
-            <NavLink to="/login">
-              התנתקות
-              <Icon nameIcon={'logout'} nameColor={''} />
-            </NavLink>
           </li>
+          {/* <li onClick={() =>
+            setPopUp(
+              {
+                title: 'התנתקות',
+                component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'} />
+              }
+            )}>
+            <NavLink>
+              התנתקות
+              <Icon nameIcon={"logout"} nameColor={""} />
+            </NavLink>
+          </li> */}
+          {/* <li>
+            <NavLink to="/myUsers">
+              כל הלקוחות שלי
+              <Icon nameIcon={"leads"} nameColor={""} />
+            </NavLink>
+          </li> */}
         </ul>
       </div>
-      <div className={styles.lists} >
+      <div className={styles.lists}>
         <div className={styles.liststitle}>רשימות</div>
-        <div className={styles.newlist} >
-          <CampaignList searchTerm={searchTerm} campaignList={campaign} />
-          <div className={styles.item} onClick={() => setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
-            <Icon nameIcon={'pluscircle'} nameColor={'create'} />
-            <Button className="create"
-              content="רשימה חדשה"
-            />
-          </div>
+        <div className={styles.newlist}>
+          <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
         </div>
-
-
+        <div className={styles.item}
+          onClick={() =>
+            setPopUp(
+              {
+                title: "קמפיין חדש",
+                component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
+              }
+            )
+          }>
+          <Icon nameIcon={"pluscircle"} nameColor={"create"} />
+          <Button className="create" content="רשימה חדשה" />
+        </div>
       </div>
-      <div className={styles.user} >
-
+      <div className={styles.userContainer}>
+        <UserProfile />
       </div>
     </div>
-  )
+  );
 }
-

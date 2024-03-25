@@ -1,72 +1,104 @@
   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-:root {
-    --green-color: #0E9D85;
-    --white-color: white;
-    --white-color: white;
+  :root {
+      --green-color: rgb(14, 157, 133);
+      --white-color: white;
+      --white-color: white;
 
 
-    --green-hover: #0B7D6A;
-    --white-hover: #E5E5E5;
-    --gray-hover: #ccc;
+      --green-hover: #0B7D6A;
+      --white-hover: #E5E5E5;
+      --gray-hover: #ccc;
 
-    --button-font: 'Heebo', sans-serif;
+      --button-font: 'Heebo', sans-serif;
 
   }
 
 
 
-.save {
-    background-color: var(--green-color);
-    gap: 6px;
-    width: 115px;
-    height: 55px;
-    border-radius: 8px;
-    border: 1px;
-    padding: 7px, 32px, 7px, 32px;
-    font-size: 18px;
-    font-weight: 400;
-    color: white;
-    font-family: var(--button-font);
-    cursor: pointer;
-}
+  .save {
+      background-color: var(--green-color);
+      gap: 6px;
+      width: 115px;
+      height: 55px;
+      border-radius: 8px;
+      border: 1px;
+      padding: 7px, 32px, 7px, 32px;
+      font-size: 18px;
+      font-weight: 400;
+      color: white;
+      font-family: var(--button-font);
+      cursor: pointer;
+  }
 
-.save:hover {
-    background-color: var(--green-hover) ;
-}
+  .save:hover {
+      background-color: var(--green-hover);
+  }
 
-.cancel  {
-    background-color:var(--white-hover);
-    gap: 6px;
-    Width: 115px;
-    Height: 55px;
-    border-radius: 8px;
-    border: 1px;
-    padding: 7px, 32px, 7px, 32px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #6B6B6B;
-    font-family: var(--button-font);
-    cursor: pointer;
+  .cancel {
+      background-color: var(--white-hover);
+      gap: 6px;
+      Width: 115px;
+      Height: 55px;
+      border-radius: 8px;
+      border: 1px;
+      padding: 7px, 32px, 7px, 32px;
+      font-size: 18px;
+      font-weight: 400;
+      color: #6B6B6B;
+      font-family: var(--button-font);
+      cursor: pointer;
 
-}
+  }
 
-.cancel:hover {
-    background-color:var(--gray-hover);
-    color: #444;
-}
+  .cancel:hover {
+      background-color: var(--gray-hover);
+      color: #444;
+  }
 
-.create {
-    text-decoration: none;
-    color: #000;
-    margin-right: 15px;
-    background: none;
-    float: right;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-/* 
+  .create {
+      text-decoration: none;
+      color: #000;
+      margin-right: 15px;
+      background: none;
+      float: right;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+  }
+
+  /* 
 .create:hover {
     background-color:var(--white-hover);
 } */
+  .fill {
+      background-color: inherit;
+      gap: 6px;
+      width: 100%;
+      height: 55px;
+      border-radius: 8px;
+      border: 1px;
+      padding: 7px, 32px, 7px, 32px;
+      font-size: 18px;
+      font-weight: 400;
+      color: white;
+      font-family: var(--button-font);
+      cursor: pointer;
+  }
+
+
+  .red {
+      background-color: rgb(200, 0, 0);
+      gap: 6px;
+      Width: 115px;
+      Height: 55px;
+      border-radius: 8px;
+      border: 1px;
+      padding: 7px, 32px, 7px, 32px;
+      font-size: 18px;
+      font-weight: 400;
+      color: white;
+      font-family: var(--button-font);
+      cursor: pointer;
+
+  }

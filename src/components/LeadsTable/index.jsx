@@ -6,11 +6,12 @@ import formatDateTime from '../../functions/timeDateFormat';
 import Icon from '../Icon';
 import Select from 'react-select';
 
+
 // הפונקציה הזאת מקבלת מערך של אובייקטים של משתמשים וממציגה את הפרטים שלהם על פי מערך נוסף
 // שצריך להעביר לה שצריך לכלול כותרת, סוג הסינון, וערכים אם מדובר בסינון על פי רשימה
 // ראו דוגמה בערכי הברירת מחדל שהפונקציה מקבלת
 
-export default function LeadsTable({filterdLeads = [], heads = []
+export default function LeadsTable({ filterdLeads = [], heads = []
     // filterdLeads = [
     //     {
     //         name: "John Doe",
@@ -36,7 +37,8 @@ export default function LeadsTable({filterdLeads = [], heads = []
     //             }
     //         ]
     //     }
-    // ], heads = [
+    // ], 
+    // heads = [
     //     { title: 'name', input: 'text' },
     //     { title: 'email', input: 'text' },
     //     { title: 'phone', input: 'number' },
@@ -48,7 +50,13 @@ export default function LeadsTable({filterdLeads = [], heads = []
     const [filters, setFilters] = useState({});
 
     const handleFilterChange = (key, value) => {
-        setFilters({ ...filters, [key]: value });
+        const newFilters = { ...filters, [key]: value };
+
+        if (value === '') {
+            delete newFilters[key];
+        }
+
+        setFilters(newFilters);
     };
 
     // פונקציית הסינון
@@ -60,7 +68,7 @@ export default function LeadsTable({filterdLeads = [], heads = []
                 if (!isNaN(filterDate.getTime()) && !isNaN(leadDate.getTime()) && filterDate.getTime() !== leadDate.getTime()) {
                     return false;
                 }
-            } else if (filters[key] && lead[key] && !lead[key].toString().toLowerCase().includes(filters[key].toLowerCase())) {
+            } else if (filters[key] && lead[key] && !lead[key]?.toString().toLowerCase().includes(filters[key]?.toLowerCase())) {
                 return false;
             }
         }
@@ -101,7 +109,7 @@ export default function LeadsTable({filterdLeads = [], heads = []
             <tbody>
                 <tr id={styles.filters}>
                     {heads.map(h => (
-                        <td key={h.title}>
+                        <td key={h.title} className={h.input === 'select' ? styles.selectInput : ''}>
                             {h.input === 'select' && (
                                 <Select
                                     options={h.inputValues.map((option, index) => ({ value: option, label: option }))}
@@ -133,17 +141,19 @@ export default function LeadsTable({filterdLeads = [], heads = []
                     )}
                 </tr>
                 {filteredData.map(lead => (
-                    <tr key={lead.email}>
+                    <tr key={lead._id}>
                         {heads.map(h => (
                             h.title === 'isOnline' ? (
                                 <td key={h.title} className={lead[h.title] ? styles.online : styles.offline}>
                                     {lead[h.title] ? "פעיל" : "לא פעיל"}
                                 </td>
                             ) : h.title === 'joinDate' ? (
-                                <td key={h.title}>{formatDateTime(lead[h.title])[0]}, {formatDateTime(lead[h.title])[1]}</td>
-                            ) : (
-                                <td key={h.title}>{lead[h.title]}</td>
-                            )
+                                <td key={h.title}>{formatDateTime(lead[h.title])[0]}</td>
+                            ) :
+                                h.title === "avatar" ? (<td className={styles.avatarTd} key={h.title}><img className={styles.avatar} src={lead[h.title]} /></td>
+                                ) : (
+                                    <td id={styles.regularTd} key={h.title}>{lead[h.title]}</td>
+                                )
                         ))}
                     </tr>
                 ))}

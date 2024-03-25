@@ -14,23 +14,24 @@ import api from "../../functions/api";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
 import { useCampaign } from "../../pages/CampaignPage/index";
+import ScheduleInput from "../ScheduleInput";
 
 // Description :
 // Props : ____________ , _________
 // Creator : ________
 
-export default function NewMassageForm({
-  setIsOpen,
-  campId,
-  getCamp,
-  campaign,
-}) {
+export default function NewMassageForm(
+  { setPopUp,
+     campId,
+      getCamp,
+    campaign,
+   }) {
+
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם ההודעה עם מספר תווים מקסימלי
   // TODO: לעשות שהשימרה תתן התראה שההודעה נשמרה בהצלחה ולא נשלחה בהצלחה
 
   const [subject, setSubject] = useState("");
-
   const [content, setContent] = useState("");
   const [preContent, setPreContent] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
@@ -38,8 +39,8 @@ export default function NewMassageForm({
   const textareaRef = useRef(null);
   const [time, setTime] = useState();
   const [date, setDate] = useState();
-
-  const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
+  
+const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
   const translations = {
     fullName: "שם",
     email: "אימייל",
@@ -148,8 +149,8 @@ export default function NewMassageForm({
             }
             type="text"
           ></InputWrapper>
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <InputWrapper
             label="הודעה"
             subLabel="זוהי ההודעה שתשלח בתזמון הנבחר"
@@ -175,28 +176,23 @@ export default function NewMassageForm({
             </select>
           )}
         </main>
-        <br />
+        {/* <br /> */}
+
 
         <div className={styles.timing}>
-          <InputWrapper
-            label="תזמון"
-            subLabel="הזמן הנכון לשלוח את ההודעה זו..."
-            to="pickers"
-          >
-            <div className={styles.pickers}>
-              <DatePicker name={"date"} date={date} setDate={setDate} />
-              <TimePicker name={"time"} time={time} setTime={setTime} />
-            </div>
+          <InputWrapper label="תזמון"
+            subLabel='הזמן הנכון לשלוח את הודעה זו...'
+            to="pickers">
+            <ScheduleInput setDate={setDate} />
           </InputWrapper>
         </div>
 
+
+
+
         <div className={styles.actions}>
-          <Button type={"submit"} className={"save"} content={"שמירה"} />
-          <Button
-            className={"cancel"}
-            content={"ביטול"}
-            onClick={() => setIsOpen(false)}
-          />
+          <Button className={"save"} content={"שמירה"} />
+          <Button className={"cancel"} content={"ביטול"} onClick={() => setPopUp(false)} />
         </div>
       </form>
     </div>
