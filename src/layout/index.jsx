@@ -33,7 +33,7 @@ import CheckOut from "../pages/CheckOut"
 import MyUsers from "../components/MyUsers"
 import AllUsers from "../components/AllUsers"
 import UserDetails from "../pages/UserDetails"
-import MsgQueue from "../components/msgQueue"
+// import MsgQueue from "../components/msgQueue"
 
 export default function Layout() {
 
@@ -160,7 +160,7 @@ export default function Layout() {
         </Routes>
         <Test />
         <PopUp />
-        <MsgQueue arr={arr}/>
+        {/* <MsgQueue arr={arr}/> */}
       </ManageContext>
     </div>
   )
