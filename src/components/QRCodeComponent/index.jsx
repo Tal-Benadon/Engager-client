@@ -22,9 +22,12 @@ export default function QRCodeComponent() {
 
       socket.on("ready", () => {
         setIsReady(true)
+        setCode(qr);
+      });
+      socket.on('ready', () => {
+        setIsReady(true);
       })
     }
-    
   },[socket])
   
   return (
