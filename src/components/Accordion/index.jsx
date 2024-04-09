@@ -2,7 +2,7 @@
 // import styles from './style.module.css';
 // import Icon from '../Icon'
 // import LeadItem from '../LeadItem';
-// import formatDate from '../../functions/DateFormat';
+// import formatDate from '../../functions/dateFormat';
 
 // export default function Accordion({ title, children, campaignId }) {
 //   const [isOpenAcord, setIsOpenAcord] = useState(false);
@@ -49,7 +49,7 @@ import React, { useState } from 'react';
 import styles from './style.module.css';
 import Icon from '../Icon';
 import LeadItem from '../LeadItem';
-import formatDate from '../../functions/DateFormat';
+import formatDate from '../../functions/dateFormat';
 
 export default function Accordion({ title,  leadList, campaignId }) {
 

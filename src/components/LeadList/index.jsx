@@ -1,7 +1,7 @@
 import styles from './style.module.css';
 import demo from '../../data/lead.data.json';
 import LeadItem from '../LeadItem';
-import formatDate from '../../functions/DateFormat';
+import formatDate from '../../functions/dateFormat';
 import { useCampaign } from '../../pages/CampaignPage';
 import { useEffect, useState } from 'react';
 

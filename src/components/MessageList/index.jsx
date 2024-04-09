@@ -4,7 +4,7 @@ import messagesByDate from '../../functions/messagesByDate';
 import MessageItem from '../MessageItem';
 import { useCampaign } from '../../pages/CampaignPage';
 import formatTime from '../../functions/timeFormat';
-import formatDate from '../../functions/DateFormat';
+import formatDate from '../../functions/dateFormat';
 
 // Description : gets a message array from context, maps it to MessageItem component seperated by date, with filter by seach
 // Props : searchTerm from usestate of seachbar

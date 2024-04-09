@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from "./style.module.css"
 import translet from '../../functions/translate';
-import formatDate from '../../functions/DateFormat';
+import formatDate from '../../functions/dateFormat';
 import formatDateTime from '../../functions/timeDateFormat';
 import Icon from '../Icon';
 import Select from 'react-select';

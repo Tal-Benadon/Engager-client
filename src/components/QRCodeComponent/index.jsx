@@ -24,8 +24,9 @@ export default function QRCodeComponent() {
         setIsReady(true)
       })
     }
-  }, [])
-
+    
+  },[socket])
+  
   return (
     <div className={styles.QrContainer}>
       <>
