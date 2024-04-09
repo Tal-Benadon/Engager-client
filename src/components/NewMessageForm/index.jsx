@@ -49,7 +49,7 @@ const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
     joinDate: "הצטרפות",
   };
   const hebMainFields = mainfields.map((word) => translations[word]);
-  const extraFields = Object.entries(campaign.leads[0]["extra"]).map(
+  const extraFields = Object.entries(campaign.leads[0]["extra"]??{}).map(
     (ef) => ef[1].he
   );
   const fields = [...hebMainFields, ...extraFields];

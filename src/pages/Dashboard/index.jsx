@@ -147,7 +147,7 @@ export default function Dashboard() {
         let itsMe = {};
         let userCreatedDate = '';
 
-        userInfo.forEach((u) => {
+        userInfo?.forEach((u) => {
           if (u._id === user._id) {
             itsMe = u;
           }
