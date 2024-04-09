@@ -1,203 +1,202 @@
-  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Secular+One&display=swap');
 
 
-  /* TODO: remove the roots from here */
-  :root {
+/* TODO: remove the roots from here */
+:root {
+  --font: 'Heebo', sans-serif;
+  --title-color: #000000;
+  --details-color: #E8E8E8;
+  --border-box-color: #F3F3F5;
+}
 
-    --font: 'Heebo', sans-serif;
-    --title-color: #000000;
-    --details-color: #E8E8E8;
-    --border-box-color: #F3F3F5;
-  }
-
-  .layout {
-    padding: 2rem;
-    height: 100%;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-
-
-  .info {
-    width: 100%;
-    /* min-width: 715px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  .details {
-    font-family: "Secular One", sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    text-align: right;
-    /*display: flex;
+.layout {
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
   flex-direction: column;
-  justify-content: center; */
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .isActive {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-    color: #6B6B6B;
-    font-size: 18px;
-    font-weight: 400;
-  }
-
-  .edit {
-    font-size: 18px;
-    margin: 10px;
-  }
-
-  .edit:hover {
-    cursor: pointer;
-  }
-
-  .trash {
-    margin: 10px;
-    cursor: pointer;
-  }
-
-  .greenDot {
-    width: 8px;
-    height: 8px;
-    background-color: #0DDEBB;
-    border-radius: 50%;
-    margin-left: 5px;
-  }
-
-  .redDot {
-    width: 8px;
-    height: 8px;
-    background-color: #de0d30;
-    border-radius: 50%;
-    margin-left: 5px;
-  }
-
-  .allFields {
-    position: relative;
-    width: 100%;
-    padding: 30px 100px 60px 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    border-radius: 8px;
-    border: 1px solid var(--border-box-color);
-  }
-
-  .detailsFrame {
-    /* margin: auto; */
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background-color: #ffffff;
-    gap: 20px;
-  }
-
-  .telAndEmail {
-    display: flex;
-    flex-direction: row;
+  align-items: center;
+  gap: 25px;
+}
 
 
-  }
+.info {
+  width: 100%;
+  /* min-width: 715px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
 
-  .infoCol {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    gap: 20px;
-  }
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 
-  .infoFullCol {
-    /* background:red; */
-    width: 100%;
-  }
+.details {
+  font-family: "Secular One", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: right;
+  /*display: flex;
+flex-direction: column;
+justify-content: center; */
+}
 
-  .infoBlock {
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-  }
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
 
-  .miniTitle {
-    font-family: var(--font);
-    font-size: 16px;
-    font-weight: 600;
-    text-align: right;
-    color: #000000;
-    padding: 2px;
+.isActive {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  color: #6B6B6B;
+  font-size: 18px;
+  font-weight: 400;
+}
 
-  }
+.edit {
+  font-size: 18px;
+  margin: 10px;
+}
 
-  .content {
-    text-align: right;
-    font-size: 22px;
-    font-weight: 700;
-    font-family: var(--font);
+.edit:hover {
+  cursor: pointer;
+}
 
-  }
+.trash {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.greenDot {
+  width: 8px;
+  height: 8px;
+  background-color: #0DDEBB;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.redDot {
+  width: 8px;
+  height: 8px;
+  background-color: #de0d30;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.allFields {
+  position: relative;
+  width: 100%;
+  padding: 30px 100px 60px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  border: 1px solid var(--border-box-color);
+}
+
+.detailsFrame {
+  /* margin: auto; */
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  gap: 20px;
+}
+
+.telAndEmail {
+  display: flex;
+  flex-direction: row;
 
 
-  .signUpDate {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    font-family: var(--font);
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14px;
-    letter-spacing: 0em;
-    text-align: right;
-  }
+}
+
+.infoCol {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  gap: 20px;
+}
+
+.infoFullCol {
+  /* background:red; */
+  width: 100%;
+}
+
+.infoBlock {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.miniTitle {
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+  color: #000000;
+  padding: 2px;
+
+}
+
+.content {
+  text-align: right;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font);
+
+}
 
 
-  .sentMessagesContainer {
-    width: 100%;
-    max-height: 300px;
-    padding: 20px 40px;
-    border-radius: 8px;
-    border: 1px solid var(--border-box-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #F7F7F7;
-    /* gap: 10px; */
-  }
+.signUpDate {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: right;
+}
 
-  .messages {
-    overflow: auto;
-    width: 100%;
 
-  }
+.sentMessagesContainer {
+  width: 100%;
+  max-height: 300px;
+  padding: 20px 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-box-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #F7F7F7;
+  /* gap: 10px; */
+}
 
-  .sentTitle {
-    font-family: var(--font);
-    font-size: 16px;
-    font-weight: 600;
-    text-align: right;
-    color: #000000;
-  }
+.messages {
+  overflow: auto;
+  width: 100%;
+
+}
+
+.sentTitle {
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+  color: #000000;
+}
