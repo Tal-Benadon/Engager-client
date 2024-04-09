@@ -1,38 +1,39 @@
-import styles from './style.module.css'
-import { Outlet, Route, Routes } from 'react-router';
-import LoginPage from '../pages/LoginPage';
-import { ManageContext } from '../context/ManageContext';
-import Test from '../tests/A_MainTest';
-import PopUp from '../components/PopUp';
-import ForgetPassword from '../components/ForgetPassword';
-import Register from '../components/Register';
-import DashboardLayout from './DashboardLayout';
-import CampaignPage from '../pages/CampaignPage';
-import QRCodeComponent from '../components/QRCodeComponent';
-import PaymentPage from '../pages/PaymentPage';
-import LeadsTab from '../components/LeadsTab';
-import LeadInfoPage from '../pages/LeadInfoPage';
-import MsgTab from '../components/MsgTab';
-import MessagePage from '../components/MessagePage';
-import WebHookTab from '../components/WebHookTab';
-import WebHookPage from '../components/WebHookPage';
-import CompleteDetails from '../pages/CompleteDetails/CompleteDetails';
-import RedirectGoogle from '../pages/RedirectGoogle/RedirectGoogle';
-import ActivateAccount from '../pages/ActivateAccount';
-import MyLeads from '../components/MyLeads';
-import AllLeads from '../components/AllLeads';
-import AllActiveLeads from '../components/AllActiveLeads';
-import AllInactiveLeads from '../components/AllInactiveLeads';
-import ChangePasswordPage from '../pages/ChangePasswordPage';
-import FeedBack from '../components/FeedBack';
-import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
-import Dashboard from '../pages/Dashboard';
-import Plans from '../pages/Plans';
-import SettingsTab from '../components/SettingsTab';
-import MyUsers from '../components/MyUsers';
-import AllUsers from '../components/AllUsers';
-import CheckOut from '../pages/CheckOut';
-import MsgQueue from '../components/msgQueue';
+import styles from "./style.module.css"
+import { Outlet, Route, Routes } from "react-router"
+import LoginPage from "../pages/LoginPage"
+import { ManageContext } from "../context/ManageContext"
+import Test from "../tests/A_MainTest"
+import PopUp from "../components/PopUp"
+import ForgetPassword from "../components/ForgetPassword"
+import Register from "../components/Register"
+import DashboardLayout from "./DashboardLayout"
+import CampaignPage from "../pages/CampaignPage"
+import QRCodeComponent from "../components/QRCodeComponent"
+import PaymentPage from "../pages/PaymentPage"
+import LeadsTab from "../components/LeadsTab"
+import LeadInfoPage from "../pages/LeadInfoPage"
+import MsgTab from "../components/MsgTab"
+import MessagePage from "../components/MessagePage"
+import WebHookTab from "../components/WebHookTab"
+import WebHookPage from "../components/WebHookPage"
+import CompleteDetails from "../pages/CompleteDetails/CompleteDetails"
+import RedirectGoogle from "../pages/RedirectGoogle/RedirectGoogle"
+import ActivateAccount from "../pages/ActivateAccount"
+import MyLeads from "../components/MyLeads"
+import AllLeads from "../components/AllLeads"
+import AllActiveLeads from "../components/AllActiveLeads"
+import AllInactiveLeads from "../components/AllInactiveLeads"
+import ChangePasswordPage from "../pages/ChangePasswordPage"
+import FeedBack from "../components/FeedBack"
+import GoogleRegisterRedirectPage from "../pages/GoogleRegisterRedirectPage"
+import Dashboard from "../pages/Dashboard"
+import Plans from "../pages/Plans"
+import SettingsTab from "../components/SettingsTab"
+import CheckOut from "../pages/CheckOut"
+import MyUsers from "../components/MyUsers"
+import AllUsers from "../components/AllUsers"
+import UserDetails from "../pages/UserDetails"
+import MsgQueue from "../components/msgQueue"
 
 export default function Layout() {
 
@@ -151,6 +152,7 @@ export default function Layout() {
               />
               <Route path="QrCode" element={<QRCodeComponent />} />
               <Route path="plans" element={<Plans />} />
+              <Route path="userDetails" element={<UserDetails />} />
             </Route>
             <Route path="feedback" element={<FeedBack />} />
             <Route path="payment" element={<PaymentPage />} />
