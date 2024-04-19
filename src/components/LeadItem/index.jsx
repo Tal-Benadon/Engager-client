@@ -28,10 +28,11 @@ export default function LeadItem({ campaignId, name, email, date, id }) {
 
   ];
   return (
+    
     <Popover list={list} fnName='onRight'  >
-
       <NavLink to={`/campaign/${campaignId}/leads/${id}`}
-        className={({ isActive }) => isActive ? styles.leadActive : styles.lead}>
+      className={({ isActive }) => isActive ? styles.leadActive : styles.lead}>
+
         <div className={styles.square}>
           <LuUserCircle2 className={styles.activeIcon} />
         </div>

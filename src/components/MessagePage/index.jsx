@@ -1,29 +1,27 @@
-import React, { useContext, useState } from 'react'
-import HeadLine from '../HeadLine'
-import styles from './style.module.css'
-import Accordion from '../Accordion'
-import { useCampaign } from '../../pages/CampaignPage';
-import { useParams } from 'react-router';
-import formatDate from '../../functions/dateFormat';
-import campaignHelper from '../../functions/campaignHelper'
-import DataContext from '../../context/DataContext';
-import MessageEdit from '../MessageEdit';
-import Button from '../Button';
 import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { useParams } from 'react-router';
+import DataContext from '../../context/DataContext';
 import api from '../../functions/api';
-import PopUp from '../PopUp';
+import campaignHelper from '../../functions/campaignHelper';
+import formatDate from '../../functions/dateFormat';
+import { useCampaign } from '../../pages/CampaignPage';
+import Accordion from '../Accordion';
+import Button from '../Button';
+import HeadLine from '../HeadLine';
+import MessageEdit from '../MessageEdit';
 import ScheduleInput from '../ScheduleInput';
-import InputWrapper from '../InputWrapper';
+import styles from './style.module.css';
+
+
+// TODO: לחבר את שליחת ההודעה לווטסאפ
+// TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
+
 export default function MessagePage() {
-
-    // TODO: לחבר את שליחת ההודעה לווטסאפ
-    // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
-
     const { PopUp, setPopUp, user } = useContext(DataContext)
-
-
-
     const [date, setDate] = useState(null)
+    const { messageId } = useParams();
+    const { campaign } = useCampaign() || {};
 
     const formatDateSchedule = (date) => {
         const day = date.getDate().toString().padStart(2, '0')
@@ -38,13 +36,10 @@ export default function MessagePage() {
         return `${hours}:${minutes}`
     }
 
-    const { messageId } = useParams();
-    const { campaign } = useCampaign() || {};
     const message = campaign?.msg?.find(msg => msg._id == messageId) || {};
-
     const { creationDate, subject, content } = message;
-    let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
 
+    let msgSent = campaignHelper.msgSentDetails(campaign, message._id);
     let dateSend = formatDateSchedule(date || new Date())
     let timeSend = formatTimeSchedule(date || new Date())
 
@@ -64,18 +59,31 @@ export default function MessagePage() {
         }
     }
 
+    const editMsg = () => setPopUp({
+        title: "עריכת הודעה",
+        component: <MessageEdit isOpen={isOpen} setPopUp={setPopUp} />
+    })
+
+    const send = async () => {
+        try {
+            const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
+        } catch (error) { console.error("Error:", error); }
+    }
+
+    const schedule = () => setPopUp({
+        title: "תזמון הודעה",
+        component: (<form className={styles.schedulePopUp} onSubmit={(e) => e.preventDefault()}><ScheduleInput setDate={setDate} />
+            <Button content='בחר זמן' onClick={() => schedulingButton(date, user._id)} />
+        </form>)
+    })
+
     return (
         <div className={styles.MessagePage}>
             <HeadLine
                 title={subject}
                 subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
-                iconOnClick={() => setPopUp({
-                    title: "עריכת הודעה",
-                    component: <MessageEdit isOpen={isOpen} setPopUp={setPopUp} />
-                }
-
-                )}
+                iconOnClick={editMsg}
             />
             <div className={styles.message}>
                 <div className={styles.messageitem}>
@@ -90,33 +98,8 @@ export default function MessagePage() {
                 }
             </div>
             <div className={styles.send}>
-                <Button
-                    content='שלח'
-                    onClick={async () => {
-                        try {
-                            const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
-                        } catch (error) {
-                            console.error("Error:", error);
-                        }
-                    }}
-                />
-
-
-                <Button
-                    content='תזמן הודעה'
-                    onClick={() => setPopUp({
-                        title: "תזמון הודעה", component:
-
-                            <form className={styles.schedulePopUp} onSubmit={(e) => e.preventDefault()}><ScheduleInput setDate={setDate} />
-                                <Button
-                                    content='בחר זמן'
-                                    onClick={() => schedulingButton(date, user._id)}
-                                />
-                            </form>
-
-                    })} />
-
-
+                <Button content='שלח' onClick={send} />
+                <Button content='תזמן הודעה' onClick={schedule} />
             </div>
 
             <Accordion
