@@ -16,17 +16,12 @@ import { toast } from "react-toastify";
 import { useCampaign } from "../../pages/CampaignPage/index";
 import ScheduleInput from "../ScheduleInput";
 
-// Description :
-// Props : ____________ , _________
-// Creator : ________
-
-export default function NewMassageForm(
-  { setPopUp,
-     campId,
-      getCamp,
-    campaign,
-   }) {
-
+export default function NewMassageForm({
+  setPopUp,
+  campId,
+  getCamp,
+  campaign,
+}) {
   // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
   // TODO: להגביל את אורך שם ההודעה עם מספר תווים מקסימלי
   // TODO: לעשות שהשימרה תתן התראה שההודעה נשמרה בהצלחה ולא נשלחה בהצלחה
@@ -39,8 +34,8 @@ export default function NewMassageForm(
   const textareaRef = useRef(null);
   const [time, setTime] = useState();
   const [date, setDate] = useState();
-  
-const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
+
+  const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
   const translations = {
     fullName: "שם",
     email: "אימייל",
@@ -49,39 +44,39 @@ const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
     joinDate: "הצטרפות",
   };
   const hebMainFields = mainfields.map((word) => translations[word]);
-  const extraFields = Object.entries(campaign.leads[0]["extra"]??{}).map(
+  const extraFields = Object.entries(campaign.leads[0]["extra"] ?? {}).map(
     (ef) => ef[1].he
   );
   const fields = [...hebMainFields, ...extraFields];
 
   const close = () => {
-    setIsOpen((prev) => false);
+    setPopUp(false);
   };
   const preperText = (text) => {
     const reverseTranslations = {
-      "שם": "fullName",
-     "אימייל": "email",
-    "טלפון": "phone",
-      "הערות": "notes",
-      "הצטרפות": "joinDate",
+      שם: "fullName",
+      אימייל: "email",
+      טלפון: "phone",
+      הערות: "notes",
+      הצטרפות: "joinDate",
     };
     console.log("text:", text);
     // const regex = /@([\u0590-\u05FF\s]+)/g;
-    const regex = /@([\u0590-\u05FF]+)\s?/g
+    const regex = /@([\u0590-\u05FF]+)\s?/g;
     const matches = text.match(regex);
     console.log("matches", matches);
-    matches.forEach((m) =>
-      Object.keys(reverseTranslations).forEach((i) => {
-        console.log("i",i);
-        console.log("m",m);
-        console.log(i, m.replace("@", ""));
-        if (i == m.replace("@", "").trim()) {
-          text = text.replace(m, `@${reverseTranslations[i.trim()]} `, 1);
-        }
-      })
-    );
-    console.log("text:----",text);
-     return text
+    // matches.forEach((m) =>
+    //   Object.keys(reverseTranslations).forEach((i) => {
+    //     console.log("i", i);
+    //     console.log("m", m);
+    //     console.log(i, m.replace("@", ""));
+    //     if (i == m.replace("@", "").trim()) {
+    //       text = text.replace(m, `@${reverseTranslations[i.trim()]} `, 1);
+    //     }
+    //   })
+    // );
+    console.log("text:----", text);
+    return text;
   };
 
   const handleInputChange = (e) => {
@@ -93,7 +88,6 @@ const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
       setShowSelect(false);
     }
   };
-  
 
   const handleSelectChange = (e) => {
     const selectedKey = e.target.value;
@@ -111,26 +105,27 @@ const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
       textareaRef.current.focus();
     }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     setContent(preperText(preContent));
   };
   useEffect(() => {
-    if (content) {    
+    if (content) {
       const submmit = { subject, content };
       console.log("submit", submmit);
-        async()=>{ try {
-              const response = await api.post(`/campaign/${campId}/msg`, submmit);
-              toast.success(response && "נשלח בהצלחה!");
-              getCamp();
-            } catch (error) {
-              console.error("Error:", error);
-              toast.error(Error?.response?.data?.msg || "something went wrong");
-      }
-      close()
-      }
+      async () => {
+        try {
+          const response = await api.post(`/campaign/${campId}/msg`, submmit);
+          toast.success(response && "נשלח בהצלחה!");
+          getCamp();
+        } catch (error) {
+          console.error("Error:", error);
+          toast.error(Error?.response?.data?.msg || "something went wrong");
+        }
+        close();
+      };
     }
   }, [content]);
   return (
@@ -178,21 +173,23 @@ const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
         </main>
         {/* <br /> */}
 
-
         <div className={styles.timing}>
-          <InputWrapper label="תזמון"
-            subLabel='הזמן הנכון לשלוח את הודעה זו...'
-            to="pickers">
+          <InputWrapper
+            label="תזמון"
+            subLabel="הזמן הנכון לשלוח את הודעה זו..."
+            to="pickers"
+          >
             <ScheduleInput setDate={setDate} />
           </InputWrapper>
         </div>
 
-
-
-
         <div className={styles.actions}>
-          <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} onClick={() => setPopUp(false)} />
+          <Button type={"submit"} className={"save"} content={"שמירה"} />
+          <Button
+            className={"cancel"}
+            content={"ביטול"}
+            onClick={() => setPopUp(false)}
+          />
         </div>
       </form>
     </div>
