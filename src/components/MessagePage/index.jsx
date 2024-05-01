@@ -12,6 +12,9 @@ import HeadLine from '../HeadLine';
 import MessageEdit from '../MessageEdit';
 import ScheduleInput from '../ScheduleInput';
 import styles from './style.module.css';
+import { MdEdit } from "react-icons/md";
+import { formatDateSchedule, formatTimeSchedule } from './functions';
+
 
 
 // TODO: לחבר את שליחת ההודעה לווטסאפ
@@ -21,20 +24,7 @@ export default function MessagePage() {
     const { PopUp, setPopUp, user } = useContext(DataContext)
     const [date, setDate] = useState(null)
     const { messageId } = useParams();
-    const { campaign } = useCampaign() || {};
-
-    const formatDateSchedule = (date) => {
-        const day = date.getDate().toString().padStart(2, '0')
-        const month = (date.getMonth() + 1).toString().padStart(2, '0')
-        const year = date.getFullYear()
-        return `${day}/${month}/${year}`
-    }
-
-    const formatTimeSchedule = (date) => {
-        const hours = date.getHours().toString().padStart(2, '0')
-        const minutes = date.getMinutes().toString().padStart(2, '0')
-        return `${hours}:${minutes}`
-    }
+    const { campaign, getCamp } = useCampaign() || {};
 
     const message = campaign?.msg?.find(msg => msg._id == messageId) || {};
     const { creationDate, subject, content } = message;
@@ -61,7 +51,7 @@ export default function MessagePage() {
 
     const editMsg = () => setPopUp({
         title: "עריכת הודעה",
-        component: <MessageEdit isOpen={isOpen} setPopUp={setPopUp} />
+        component: <MessageEdit campaignId={campaign?._id} isOpen={PopUp} message={message} getCamp={getCamp} setPopUp={setPopUp} />
     })
 
     const send = async () => {
@@ -83,6 +73,7 @@ export default function MessagePage() {
                 title={subject}
                 subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
+                icon={<MdEdit/>}
                 iconOnClick={editMsg}
             />
             <div className={styles.message}>

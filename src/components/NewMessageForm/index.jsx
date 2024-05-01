@@ -102,6 +102,7 @@ export default function NewMassageForm({ setPopUp, campId, getCamp, campaign, })
     setContent(t);
     try {
       const submmit = { subject, content: t };
+      console.log(submmit);
       const response = await api.post(`/campaign/${campId}/msg`, submmit);
       toast.success(response && "נשלח בהצלחה!");
       getCamp();
