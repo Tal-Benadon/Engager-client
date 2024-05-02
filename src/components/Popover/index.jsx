@@ -5,11 +5,13 @@ export default function Popover({ list, children, fnName, }) {
     const maxHeight = (list.length * 50) + 20
     const [isClicked, setIsClicked] = useState(false)
 
-    let finalFunction = { onMouseLeave: () => setIsClicked(false) }
+    let finalFunction = {  }
+    // finalFunction.onMouseLeave = () => setIsClicked(false)
     if (fnName === "onClick")
         finalFunction.onClick = handleClick
-    else if (fnName === "onOver")
+    else if (fnName === "onOver") {   
         finalFunction.onMouseEnter = handleClick
+    }
     else if (fnName === "onRight")
         finalFunction.onContextMenu = handleClick
 
@@ -27,13 +29,13 @@ export default function Popover({ list, children, fnName, }) {
 
         if (totalWidth > 210) finalStyle.left = 15;
 
-        else finalStyle.right = 15;
+        else finalStyle.right = -10;
 
         if (e.pageY > 100) finalStyle.bottom = 15;
 
         else if (totalHeight > maxHeight) finalStyle.top = 15
 
-        else finalStyle.bottom = 15
+        else finalStyle.bottom = -10
 
         setIsClicked(finalStyle)
     }
@@ -44,7 +46,7 @@ export default function Popover({ list, children, fnName, }) {
                 {children}
             </button>
             {!isClicked ? null :
-                (<div className={style.Popover} style={isClicked} >
+                (<div className={style.Popover} style={isClicked} onMouseLeave={()=>setIsClicked(false)} >
                     <ul >
                         {list?.map?.(item => (
                             <li className={item.color === "red" ? style.red : style.green}

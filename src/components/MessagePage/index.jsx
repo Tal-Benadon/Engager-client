@@ -76,6 +76,7 @@ export default function MessagePage() {
                 icon={<MdEdit/>}
                 iconOnClick={editMsg}
             />
+
             <div className={styles.message}>
                 <div className={styles.messageitem}>
                     {content}
@@ -88,6 +89,7 @@ export default function MessagePage() {
                     <div className={styles.messageitem}><button onClick={() => alert('תזמן')}>תזמן הודעה</button></div>
                 }
             </div>
+            
             <div className={styles.send}>
                 <Button content='שלח' onClick={send} />
                 <Button content='תזמן הודעה' onClick={schedule} />

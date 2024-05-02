@@ -50,6 +50,7 @@
 .MsgName {
     font-family: var(--default-font);
     display: flex;
+    padding: 0 2px;
     /* flex-direction: column; */
     align-items: flex-end;
 }

@@ -1,24 +1,9 @@
-import React, { useContext, useState } from 'react'
-import HeadLine from '../HeadLine'
-import styles from './style.module.css'
-import Accordion from '../Accordion'
-import { useCampaign } from '../../pages/CampaignPage';
-import { useParams } from 'react-router';
-import campaignHelper from '../../functions/campaignHelper'
-import DataContext from '../../context/DataContext';
-import MessageEdit from '../MessageEdit';
-import Button from '../Button';
-import axios from 'axios';
-import api from '../../functions/api';
+import React from 'react';
+import styles from './style.module.css';
 
 export default function WebHookPage() {
-
     // TODO: לחבר את שליחת ההודעה לווטסאפ
     // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
-
-
-
-
 
     return (
         <div className={styles.MessagePage}>
@@ -34,11 +19,9 @@ export default function WebHookPage() {
             <p>שולחים בקשת POST לכתובת ה Webhook המופיעה בדף זה.</p>
             <p>את המידע שולחים ב BODY בתצורה הבאה:</p>
             <br />
+            {/* TODO - לא עובד אצלי לבדוק האם אצל השאר כן עובד */}
             <img className={styles.img} src='/webhookExplain.png' alt="webhook" />
         </div>
-
-
-
     )
 }
 

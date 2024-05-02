@@ -1,19 +1,17 @@
 .contanier {
-    padding: 25px 58px 20px 58px;
+    padding: 25px ;
     border-radius: 8px;
     /* border: 1px solid #E8E8E8; */
     gap: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 20px;
-    height: 81vh;
+    /* margin: 20px; */
+    /* height: 81vh; */
 }
 
 .formContent {
-    max-height: 87%;
-    overflow: scroll;
-
+    overflow-y: auto;
 }
 
 .form {
