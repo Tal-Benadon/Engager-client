@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './style.module.css'
 import Icon from '../Icon';
 import Popover from '../Popover'
@@ -17,10 +17,12 @@ import Confirm from '../Confirm';
 export default function LeadItem({ campaignId, name, email, date, id }) {
   const { getCamp } = useCampaign()
   const { setPopUp } = useContext(DataContext);
+  const navigate = useNavigate()
 
   const handleDelete = async (campaignId, id) => {
     await api.del(`/campaign/${campaignId}/lead/${id}`).then((res) => {
       getCamp()
+      navigate(-1)
       setPopUp(false)
       console.log(res);
     }).catch((error) => {
@@ -52,7 +54,6 @@ export default function LeadItem({ campaignId, name, email, date, id }) {
         <div className={styles.nameAndDetails}>
           <div className={styles.name}>{name}</div>
           <div className={styles.DateAndEmail}>
-            {/* TODO: להוסיף 3 נקודות לאימיילים ארוכים מידי וליישר את התאריך לצד שמאל של הקומפוננטה */}
             <div className={styles.email}>{email}</div>
             <div className={styles.date}>{date}</div>
           </div>

@@ -23,7 +23,6 @@ import Confirm from '../../components/Confirm'
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-// TODO: לרווח בין פרטי הליד להודעות שלנשלחו אליו
 export default function LeadInfoPage() {
   const navigate = useNavigate();
   const { leadId } = useParams();
@@ -140,9 +139,9 @@ export default function LeadInfoPage() {
       </div>
 
       <div className={styles.sentMessagesContainer}>
-        <div className={styles.sentTitle}>הודעות שנשלחו</div>
-        {/* ***TODO: make it only sent messages*** */}
-        <div className={styles.messages}><InfoMessageList leadId={leadId} /></div>
+        <div className={styles.messages}>
+          <InfoMessageList leadId={leadId} />
+        </div>
       </div>
     </div>
   )

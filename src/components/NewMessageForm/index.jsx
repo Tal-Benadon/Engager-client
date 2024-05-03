@@ -14,12 +14,6 @@ import ScheduleInput from "../ScheduleInput";
 // Creator : ________
 
 export default function NewMassageForm({ setPopUp, campId, getCamp, campaign, }) {
-
-  // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
-  // TODO: להגביל את אורך שם ההודעה עם מספר תווים מקסימלי
-  // TODO: לעשות שהשימרה תתן התראה שההודעה נשמרה בהצלחה ולא נשלחה בהצלחה
-  // TODO - dont save the new message - YOSEF
-
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [preContent, setPreContent] = useState("");
@@ -28,8 +22,6 @@ export default function NewMassageForm({ setPopUp, campId, getCamp, campaign, })
   const textareaRef = useRef(null);
   const [time, setTime] = useState();
   const [date, setDate] = useState();
-
-
   const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
 
   const translations = {
@@ -142,6 +134,7 @@ export default function NewMassageForm({ setPopUp, campId, getCamp, campaign, })
             to={"msgName"}
             children={
               <InputText
+                maxLength={100}
                 name={"msgName"}
                 onChange={(e) => setSubject(e.target.value)}
               />

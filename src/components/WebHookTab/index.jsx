@@ -13,13 +13,10 @@ import { toast } from 'react-toastify';
 
 
 export default function WebHookTab() {
-
-  const { PopUp, setPopUp } = useContext(DataContext);
-
+  const {  setPopUp } = useContext(DataContext);
   const { campaign } = useCampaign();
   const campId = campaign?._id
   const userId = campaign?.user
-
   const [link, setLink] = useState('')
   const [confirm, setConfirm] = useState(false)
 
@@ -28,25 +25,18 @@ export default function WebHookTab() {
   }, [campaign])
 
   useEffect(() => {
-    if (confirm) {
-      createWebHook()
-    }
+    if (confirm) createWebHook()
     setConfirm(false)
-
   }, [confirm])
-
-
 
   const createWebHook = async () => {
     try {
       const res = await api.post('/webhook', { campId, userId })
       setLink('https://www.engager.co.il/webhook/' + res)
       toast.success(response && "נשלח בהצלחה!");
-
     } catch (error) {
       console.error('Error creating webhook:', error);
       toast.error(Error?.response?.data?.msg || "something went wrong");
-
     }
   }
 
@@ -86,9 +76,6 @@ export default function WebHookTab() {
       { tab: `campaign/${campaign._id}/webhook`, text: "קישור" }
     ]} />
     <WebHook campaign_id={campaign._id} webhook={campaign.webhook} link={link} />
-    <div className={styles.menu}>
-      {/* TODO: ליישם את האופציות של התפריט הנפתח */}
-    </div>
   </div>
 )
 

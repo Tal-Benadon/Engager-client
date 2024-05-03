@@ -70,23 +70,34 @@ position: relative;
   .nameAndDetails {
       display: flex;
       flex-direction: column;
+      text-overflow: ellipsis;
+      overflow: hidden; 
+      white-space: nowrap;
+      padding-left: 1rem;
+      flex: 1;
   }
 
 .DateAndEmail {
     display: flex;
     flex-direction: row;
+    width: 100%;
     gap: 10px;
     font-family: var(--font);
     font-size: 12px;
     color: var(--details-color);
-    justify-content: right;
+    justify-content: space-between;
+    text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
 }
 
 
 .email{
   font-size: 12px;
   color: #6B6B6B;
-
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
 }
 
 .date{

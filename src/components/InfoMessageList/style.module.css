@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.sentTitle {
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: right;
+    color: #000000;
+  }
 
 .date {
     font-family: 'Heebo';

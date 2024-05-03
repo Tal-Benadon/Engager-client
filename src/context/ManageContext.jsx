@@ -20,7 +20,7 @@ export function ManageContext({ children }) {
   }, [])
 
   useEffect(() => {
-    // TODO - delete return
+    // TODO YOSEF - delete return
     return;
     let userId = user._id
     if (!userId) return;
@@ -28,7 +28,7 @@ export function ManageContext({ children }) {
   }, [user._id])
   
   useEffect(() => {
-    // TODO - delete return
+    // TODO YOSEF - delete return
     return;
     if (socket ) {
       socket.on('connect', () => {

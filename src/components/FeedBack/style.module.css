@@ -1,29 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .container {
-    width: 83.5vw;
+    grid-column: span 2;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     text-align: right;
     background-color: hsla(0, 0%, 97%, 0.85);
    
 }
 .allin {
     width: 600px;
-    height: auto;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 100px;
 }
 
 .circle {
@@ -90,7 +85,6 @@
 }
 
 .title2 {
-    /* background-color: aqua; */
     margin: -7px 0 0 0;
     display: flex;
     font-size: 18px;
@@ -99,7 +93,6 @@
 }
 
 .input {
-    /* background-color: aqua; */
     width: 100%;
     border-radius: 5px;
     height: 30px;
