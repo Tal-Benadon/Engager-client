@@ -2,12 +2,13 @@
 
 .container{
     position: relative;
-    top: auto;
+    /* top: auto; */
 }
+
 .mainIcon {
     /* background-color: aqua; */
     position: relative;
-    width: 100%;
+    /* width: 100%; */
     cursor: pointer;
 
 }

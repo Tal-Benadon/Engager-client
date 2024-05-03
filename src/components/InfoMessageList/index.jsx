@@ -38,6 +38,8 @@ export default function MessageList({ searchTerm, leadId }) {
                 .map((message, messageIndex) => (
                   <li key={messageIndex}>
                     <MessageItem
+                      content={message.content }
+                      subject={message.subject}
                       campaignId={campaign._id}
                       msgId={message.msgId}
                       title={message.subject}
@@ -49,6 +51,8 @@ export default function MessageList({ searchTerm, leadId }) {
               : messages.map((message, messageIndex) => (
                 <li key={messageIndex}>
                   <MessageItem
+                     content={message.content }
+                     subject={message.subject}
                     campaignId={campaign._id}
                     msgId={message.msgId}
                     title={message.subject}

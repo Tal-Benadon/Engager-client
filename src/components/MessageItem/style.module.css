@@ -14,6 +14,10 @@
       padding: 20px 16px 20px 16px;
   }
 
+  .main ul{
+    width: 200px;
+  }
+
   .message {
       background-color: white;
   }

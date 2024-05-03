@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
 
-export default function Popover({ list, children, fnName, }) {
+export default function Popover({ list, children, fnName,outStyle = {} }) {
     const maxHeight = (list.length * 50) + 20
     const [isClicked, setIsClicked] = useState(false)
 
@@ -46,7 +46,7 @@ export default function Popover({ list, children, fnName, }) {
                 {children}
             </button>
             {!isClicked ? null :
-                (<div className={style.Popover} style={isClicked} onMouseLeave={()=>setIsClicked(false)} >
+                (<div className={style.Popover} style={{ ...(isClicked || {}), ...outStyle}} onMouseLeave={()=>setIsClicked(false)} >
                     <ul >
                         {list?.map?.(item => (
                             <li className={item.color === "red" ? style.red : style.green}
