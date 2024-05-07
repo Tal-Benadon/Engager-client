@@ -9,38 +9,28 @@ export function ManageContext({ children }) {
   const [PopUp, setPopUp] = useState(false)
   const [allCamps, setAllCamps] = useState([])
   const [usersObj, setUsersObj] = useState({})
-  // const [] = useState()
-  const nav = useNavigate()
+  const [queueJob, setQueueJob] = useState()
   const [socket, setSocket] = useState()
+  const nav = useNavigate()
 
   useEffect(() => {
-    if (localStorage.token && !user._id) {
-      const tokenToUser = async () => {
-        await api.get("/accout/tokenToUser").then((res) => setUser(res))
-      }
-      tokenToUser()
-    } else {
-    }
+    const tokenToUser = async () =>
+      await api.get("/accout/tokenToUser").then((res) => setUser(res))
+    if (localStorage.token && !user._id) tokenToUser()
   }, [])
 
   useEffect(() => {
+    // TODO YOSEF - delete return
+    return;
     let userId = user._id
-    if (userId) {
-      setSocket(
-        io("http://localhost:3000", {
-          auth: {
-            userData: {
-              _id: userId,
-              name: user.name,
-            },
-          },
-        })
-      )
-    }
+    if (!userId) return;
+    setSocket(io("http://localhost:3000", { auth: { userData: { _id: userId, name: user.name } } }))
   }, [user._id])
-const [queueJob, setQueueJob] = useState() 
-  useEffect(()=>{
-    if(socket){
+  
+  useEffect(() => {
+    // TODO YOSEF - delete return
+    return;
+    if (socket ) {
       socket.on('connect', () => {
         console.log('Connected to server of whatsapp');
         socket.emit('queue')
@@ -49,18 +39,15 @@ const [queueJob, setQueueJob] = useState()
         setQueueJob(queue)
       })
     }
-    
-    return ()=>{
-        if(socket)
-        socket.disconnect()
-      }
-    },[socket])
 
-  const getAllCamps = () => {
-    api.get(`/campaign`).then((res) => {
-      setAllCamps(res)
-    })
-  }
+    return () => {
+      if (socket) socket.disconnect()
+    }
+  }, [socket])
+
+  const getAllCamps = () => 
+    api.get(`/campaign`).then((res) => setAllCamps(res))
+  
 
   return (
     <DataContext.Provider

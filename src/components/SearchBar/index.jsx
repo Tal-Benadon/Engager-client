@@ -17,7 +17,7 @@ import { useState, useEffect } from 'react';
 // searchTerm and setSearchTerm for managing search queries,
 // setSortType for toggling between sorting by name and date,
 // sortButton to display or hide the sorting button.
-export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sortType,autoFocus, onFocus, onBlur , sortButton = false }) {
+export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sortType, autoFocus, onFocus, onBlur, sortButton = false }) {
   // TODO: לסדר את התפריט סינון מבחינת אייקונים ולעשות שיסגר כשלוחצים מחוצה לו, בנוסף להוסיף אותו גם להודעות
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -66,9 +66,8 @@ export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sort
         }}
         onBlur={() => {
           setFocused(false);
-          onBlur();
         }}
-        
+
       />
       {/* <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/> */}
       <FaSearch className={styles.SearchIcon} onClick={() => { }} />

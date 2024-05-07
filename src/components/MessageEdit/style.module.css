@@ -1,13 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.main{
+.InputWrapper form{
     display: flex;
-    /* כדי לאפשר שבר לשורות חדשות */
-    /* flex-wrap: wrap; */
-    /* כדי ליישר את האלמנטים אנכית */
-    align-items: flex-end;
-    /* כדי ליישר את האלמנטים אופקית */
-    justify-content: space-between;
+    flex-direction: column;
     padding: 1rem;
 }
 

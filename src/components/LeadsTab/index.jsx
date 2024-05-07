@@ -18,16 +18,16 @@ export default function LeadsTab() {
   const [sortType, setSortType] = useState("date");
   const { setPopUp } = useContext(DataContext);
   const [isEdit, setIsEdite] = useState(false);
+  const nav = useNavigate();
+  const { campaign, setCampaign,getCamp } = useCampaign();
+  const [newCampaign, setNewCampaign] = useState({});
+  const { setAllCamps } = useContext(DataContext)
 
   const handleEditClick = () => {
     setIsEdite(true);
   };
 
-  const nav = useNavigate();
 
-  const { campaign, setCampaign,getCamp } = useCampaign();
-  const [newCampaign, setNewCampaign] = useState({});
-  const { setAllCamps } = useContext(DataContext)
   useEffect(() => {
     setCampaign(newCampaign);
   }, [newCampaign])

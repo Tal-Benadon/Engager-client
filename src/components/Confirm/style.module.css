@@ -1,0 +1,29 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   padding: 2rem 20px 1rem 20px;
+   gap: 2rem;
+   max-width: 500px;
+}
+
+.container h2{
+   font-size: 1.2rem;
+}
+
+.container .buttons {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+
+.container .buttons button {
+   cursor: pointer;
+   padding: 10px 20px;
+   border: none;
+   border: 1px solid var(--main-color);
+
+}
+
+.confirm {
+   background-color: var(--main-color);
+}

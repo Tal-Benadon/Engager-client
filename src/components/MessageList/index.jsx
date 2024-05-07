@@ -15,7 +15,8 @@ export default function MessageList({ searchTerm }) {
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {
-    const messages = messagesByDate(campaign.msg, "creationDate");
+    const filteredDeleted = campaign.msg?.filter?.(message => message.isActive) || [];
+    const messages = messagesByDate(filteredDeleted, "creationDate");
     setOrganizedMessages(messages);
   }, [campaign.msg]);
 
@@ -32,6 +33,8 @@ export default function MessageList({ searchTerm }) {
                 <li key={messageIndex}>
                   <div className={styles.date}>{date}</div>
                   <MessageItem
+                    content={message.content}
+                    subject={message.subject}
                     campaignId={campaign._id}
                     msgId={message._id}
                     title={message.subject}
@@ -44,6 +47,8 @@ export default function MessageList({ searchTerm }) {
                 <li key={messageIndex}>
                   <div className={styles.date}>{date}</div>
                   <MessageItem
+                    content={message.content}
+                    subject={message.subject}
                     campaignId={campaign._id}
                     msgId={message._id}
                     title={message.subject}
