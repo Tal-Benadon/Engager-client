@@ -50,10 +50,6 @@ export default function MsgTab() {
 
       ]} />
       <MsgListHolder />
-      <div className={styles.menu}>
-        {/* TODO: ליישם את האופציות של התפריט הנפתח */}
-
-      </div>
     </div>
   )
 }

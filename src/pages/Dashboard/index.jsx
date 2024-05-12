@@ -147,17 +147,17 @@ export default function Dashboard() {
         let itsMe = {};
         let userCreatedDate = '';
 
-        userInfo?.forEach((u) => {
+        userInfo?.forEach?.((u) => {
           if (u._id === user._id) {
             itsMe = u;
           }
         });
 
         if (itsMe) {
-          message0 = itsMe.msgCount.firstMsgCount;
-          broadcastMessages = itsMe.msgCount.counter;
-          myCampaigns = itsMe.campaigns.length;
-          userCreatedDate = itsMe.createdDate;
+          message0 = itsMe.msgCount?.firstMsgCount;
+          broadcastMessages = itsMe.msgCount?.counter;
+          myCampaigns = itsMe.campaigns?.length;
+          userCreatedDate = itsMe?.createdDate;
         }
 
         if (itsMe) {

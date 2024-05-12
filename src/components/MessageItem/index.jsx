@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
-import styles from './style.module.css';
 import { BiMessageRoundedDetail } from "react-icons/bi";
-import { RiCheckDoubleFill } from "react-icons/ri";
+import { CiClock2, CiEdit } from "react-icons/ci";
+import { FaCheck, FaRegCirclePause } from "react-icons/fa6";
 import { MdOutlineMotionPhotosPaused } from "react-icons/md";
-import { FaCheck } from "react-icons/fa6";
-import { CiClock2 } from "react-icons/ci";
+import { RiCheckDoubleFill } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
-
+import styles from './style.module.css';
+import Popover from "../Popover";
+import Icon from "../Icon";
+import { FaTrashAlt } from "react-icons/fa";
+import DataContext from "../../context/DataContext";
+import MessageEdit from "../MessageEdit";
+import { useCampaign } from "../../pages/CampaignPage";
+import { useContext } from "react";
+import { toast } from "react-toastify";
+import Confirm from '../Confirm'
+import api from "../../functions/api";
 
 // Description: This component displays a message item based on the provided properties.
-// Props: 
+// Props:
 // - title: The message title.
 // - time: The time the message was sent.
 // - date: The date the message was sent.
@@ -20,32 +28,63 @@ import { NavLink } from 'react-router-dom';
 
 
 
-// export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
+export default function MessageItem({ campaignId, msgId, content, subject, title, time, date, isCampaignActive = true, read = true, pending = false }) {
+  const { setPopUp } = useContext(DataContext)
+  const { getCamp } = useCampaign()
 
-export default function MessageItem({ campaignId, msgId, title, time, date, isCampaignActive = true, read = true, pending = false }) {
-  // TODO: להגביל את הרוחב של כותרת ההודעה עם 3 נקודות כדי שלא יפלוש מגבול הקומפוננטה
-  // TODO: לדאוג לזה שאייקון ההודעה לא ימעך אם השם ארוך מידי
+  const deleteMsg = async () => {
+    try {
+      await api.del(`campaign/${campaignId}/msg/${msgId}`)
+      toast.success('ההודעה נמחקה בהצלחה')
+      setPopUp(false)
+      getCamp()
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setPopUp({
+      title: 'עריכת הודעה',
+      component: <MessageEdit campaignId={campaignId} setPopUp={setPopUp} getCamp={getCamp} message={{ content, subject, _id: msgId }} msgId={msgId} title={title} />
+    })
+  }
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setPopUp({
+      title: 'מחיקת הודעה',
+      component: <Confirm onConfirm={deleteMsg} text="האם אתה בטוח שברצונך למחוק את ההודעה?" />
+    })
+  }
 
-  //**state for active section. changing the background to gray and the icon to green*** */
 
-  // const [isOnActive, setIsOnActive] = useState(false);
-  // const toggleActive = () => setIsOnActive(!isOnActive);
-
-  //***************************************************************************************** */
+  const list = [
+    { text: 'עריכה', icon: <CiEdit />, onClick: handleEdit },
+    { text: 'השהיה', icon: <FaRegCirclePause />, onClick: () => alert('TODO') },
+    { text: 'מחיקה', icon: <FaTrashAlt />, onClick: handleDelete, color: 'red' },
+  ]
 
   return (
-
-    // <div className={`${styles.message} ${isOnActive ? 'messageActive' : ''}`} onClick={toggleActive}>
-    <NavLink to={`/campaign/${campaignId}/messages/${msgId}`}
-      className={({ isActive }) => isActive ? styles.messageActive : styles.message}>
-      <div className={styles.square}>
-        {isCampaignActive ? <BiMessageRoundedDetail className={styles.activeIcon} /> : <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
-      </div>
+    <NavLink
+      to={`/campaign/${campaignId}/messages/${msgId}`}
+      className={({ isActive }) => `${isActive ? styles.messageActive : styles.message} ${styles.main}`}>
+      <Popover list={list} fnName='onRight' outStyle={{ top: '20px', bottom: 'none', right: '20px', left: 'none' }}  >
+        <div className={styles.square}>
+          {isCampaignActive ?
+            <BiMessageRoundedDetail className={styles.activeIcon} /> :
+            <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
+        </div>
+      </Popover>
       <div className={styles.titleAndDetails}>
-        <div className={styles.title}>{title}</div>
+        <p className={styles.title}>{title}</p>
         <div className={styles.DateAndTime}>
-        {pending ? <CiClock2 className={styles.pendingIcon} /> : read ? <RiCheckDoubleFill className={styles.readIcon} /> : <FaCheck className={styles.unreadIcon} />}
-
+          {pending ?
+            <CiClock2 className={styles.pendingIcon} /> :
+            read ?
+              <RiCheckDoubleFill className={styles.readIcon} /> :
+              <FaCheck className={styles.unreadIcon} />}
           <div className={styles.time}>{time}</div>
           <div className={styles.creationDate}>{date}</div>
           <div className={styles.checkIcon}>

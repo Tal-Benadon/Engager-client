@@ -1,5 +1,6 @@
 import axios from "axios";
-const isProduction = 'false';
+const isProduction = import.meta.env.VITE_PRODUCTION
+  , urlProd = import.meta.env.VITE_URL_PRODUCTION;
 
 // headers: {
 //     'Content-Type': 'application/json', // Example header, you can add more as needed
@@ -11,7 +12,7 @@ const mainApi = async (method, path, data, headers) => {
     let fainlPath = path.startsWith("/") ? path.slice(1) : path;
     let auth = localStorage.token ? { Authorization: "Bearer " + localStorage.token } : {};
 
-    let baseUrl = isProduction === 'true' ? 'https://engager-g262.onrender.com/' : 'http://localhost:2500/';
+    let baseUrl = isProduction === "true" ? urlProd : 'http://localhost:2500/';
 
     const url = `${baseUrl}${fainlPath}`;
 

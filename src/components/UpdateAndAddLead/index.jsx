@@ -60,13 +60,13 @@ export default function UpdateAndAddLead({ details = {}, campaign, getCamp, isEd
     }
 
     return <div className={styles.contanier} >
-        <h1>{newData.fullName}</h1>
+        {/* <h1>{newData.fullName}</h1> */}
         <form onSubmit={handleOnSubmit} className={styles.form} >
             <div className={styles.formContent}>
-                <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={handleChange} />} />
-                <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e, true)} />} />
+                <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName || ''} required={true} onChange={handleChange} />} />
+                <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone|| ''} required={true} onChange={(e) => handleChange(e, true)} />} />
                 {errorState && <div className={styles.error}>{errorState}</div>}
-                <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={handleChange} type={"email"} />} />
+                <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email|| ''} onChange={handleChange} type={"email"} />} />
                 {details?.extra &&
                     Object.entries(newData.extra).map((ex, i) =>
                         <InputWrapper
@@ -74,7 +74,7 @@ export default function UpdateAndAddLead({ details = {}, campaign, getCamp, isEd
                             label={ex[1].he}
                             children={<InputText
                                 name={ex[0]}
-                                value={newData.extra[ex[0]].value}
+                                value={newData.extra[ex[0]].value|| ''}
                                 onChange={(e) => handleChange(e, false, ex[0])}
                                 type={"text"}
                             />}

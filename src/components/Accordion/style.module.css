@@ -47,7 +47,7 @@
   margin: 0 10px 0 10px;
   border-radius: 5px;
   max-height: 250px;
-  overflow-y: scroll;
+  overflow-y: auto;
   direction: ltr;
 }
 

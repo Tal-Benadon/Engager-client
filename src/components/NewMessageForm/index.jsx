@@ -1,20 +1,17 @@
 import styles from "./style.module.css";
-import axios, { Axios } from "axios";
 
-import InputWrapper from "../InputWrapper";
+import { useEffect, useRef, useState, forwardRef } from "react";
+import { toast } from "react-toastify";
+import api from "../../functions/api";
 import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
-import DatePicker from "../DatePicker";
-import TimePicker from "../TimePicker";
-import { useRef } from "react";
-import { FaTimes } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import api from "../../functions/api";
-import { useParams } from "react-router";
-import { toast } from "react-toastify";
-import { useCampaign } from "../../pages/CampaignPage/index";
+import InputWrapper from "../InputWrapper";
 import ScheduleInput from "../ScheduleInput";
+
+// Description :
+// Props : ____________ , _________
+// Creator : ________
 
 export default function NewMassageForm({
   setPopUp,
@@ -22,10 +19,6 @@ export default function NewMassageForm({
   getCamp,
   campaign,
 }) {
-  // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
-  // TODO: להגביל את אורך שם ההודעה עם מספר תווים מקסימלי
-  // TODO: לעשות שהשימרה תתן התראה שההודעה נשמרה בהצלחה ולא נשלחה בהצלחה
-
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [preContent, setPreContent] = useState("");
@@ -34,8 +27,8 @@ export default function NewMassageForm({
   const textareaRef = useRef(null);
   const [time, setTime] = useState();
   const [date, setDate] = useState();
-
   const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
+
   const translations = {
     fullName: "שם",
     email: "אימייל",
@@ -43,15 +36,15 @@ export default function NewMassageForm({
     notes: "הערות",
     joinDate: "הצטרפות",
   };
+
   const hebMainFields = mainfields.map((word) => translations[word]);
+
   const extraFields = Object.entries(campaign.leads[0]["extra"] ?? {}).map(
     (ef) => ef[1].he
   );
+
   const fields = [...hebMainFields, ...extraFields];
 
-  const close = () => {
-    setPopUp(false);
-  };
   const preperText = (text) => {
     const reverseTranslations = {
       שם: "fullName",
@@ -65,16 +58,18 @@ export default function NewMassageForm({
     const regex = /@([\u0590-\u05FF]+)\s?/g;
     const matches = text.match(regex);
     console.log("matches", matches);
-    // matches.forEach((m) =>
-    //   Object.keys(reverseTranslations).forEach((i) => {
-    //     console.log("i", i);
-    //     console.log("m", m);
-    //     console.log(i, m.replace("@", ""));
-    //     if (i == m.replace("@", "").trim()) {
-    //       text = text.replace(m, `@${reverseTranslations[i.trim()]} `, 1);
-    //     }
-    //   })
-    // );
+    if (matches) {
+      matches.forEach((m) =>
+        Object.keys(reverseTranslations).forEach((i) => {
+          console.log("i", i);
+          console.log("m", m);
+          console.log(i, m.replace("@", ""));
+          if (i == m.replace("@", "").trim()) {
+            text = text.replace(m, `@${reverseTranslations[i.trim()]} `, 1);
+          }
+        })
+      );
+    }
     console.log("text:----", text);
     return text;
   };
@@ -82,11 +77,7 @@ export default function NewMassageForm({
   const handleInputChange = (e) => {
     const inputText = e.target.value;
     setPreContent(inputText);
-    if (inputText.slice(-1) === "@") {
-      setShowSelect(true);
-    } else {
-      setShowSelect(false);
-    }
+    setShowSelect(inputText.slice(-1) === "@" ? true : false);
   };
 
   const handleSelectChange = (e) => {
@@ -98,36 +89,47 @@ export default function NewMassageForm({
     } else {
       setPreContent((prevText) => prevText.slice(0, -1));
     }
-
     setShowSelect(false);
     setSelectedOption("");
-    if (textareaRef.current) {
-      textareaRef.current.focus();
-    }
+    if (textareaRef.current) textareaRef.current.focus();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setContent(preperText(preContent));
-  };
-  useEffect(() => {
-    if (content) {
-      const submmit = { subject, content };
-      console.log("submit", submmit);
-      async () => {
-        try {
-          const response = await api.post(`/campaign/${campId}/msg`, submmit);
-          toast.success(response && "נשלח בהצלחה!");
-          getCamp();
-        } catch (error) {
-          console.error("Error:", error);
-          toast.error(Error?.response?.data?.msg || "something went wrong");
-        }
-        close();
-      };
+    const t = preperText(preContent);
+    setContent(t);
+    try {
+      const submmit = { subject, content: t };
+      console.log(submmit);
+      const response = await api.post(`/campaign/${campId}/msg`, submmit);
+      toast.success(response && "נשלח בהצלחה!");
+      getCamp();
+      setPopUp();
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(Error?.response?.data?.msg || "something went wrong");
     }
-  }, [content]);
+  };
+
+  // TODO - YOSEF - should it be save on typing?
+  // useEffect(() => {
+  //   if (content) {
+  //     const submmit = { subject, content };
+  //     console.log("submit", submmit);
+  //     async () => {
+  //       try {
+  //         const response = await api.post(`/campaign/${campId}/msg`, submmit);
+  //         toast.success(response && "נשלח בהצלחה!");
+  //         getCamp();
+
+  //       } catch (error) {
+  //         console.error("Error:", error);
+  //         toast.error(Error?.response?.data?.msg || "something went wrong");
+  //       }
+  //     }
+  //   }
+  // }, [content]);
+
   return (
     <div className={styles.InputWrapper}>
       <form onSubmit={handleSubmit}>
@@ -138,6 +140,7 @@ export default function NewMassageForm({
             to={"msgName"}
             children={
               <InputText
+                maxLength={100}
                 name={"msgName"}
                 onChange={(e) => setSubject(e.target.value)}
               />
@@ -151,9 +154,9 @@ export default function NewMassageForm({
             subLabel="זוהי ההודעה שתשלח בתזמון הנבחר"
             to={"msgContent"}
             children={
-              <InputTextArea
+              <InputTextAreaRef
                 name={"msgContent"}
-                fRef={textareaRef}
+                ref={textareaRef}
                 value={preContent}
                 onChange={handleInputChange}
               />
@@ -195,3 +198,7 @@ export default function NewMassageForm({
     </div>
   );
 }
+
+const InputTextAreaRef = forwardRef(({ name, value, onChange }, ref) => (
+  <InputTextArea name={name} value={value} onChange={onChange} fRef={ref} />
+));

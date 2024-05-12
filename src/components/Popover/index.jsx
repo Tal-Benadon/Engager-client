@@ -1,38 +1,19 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
-export default function Popover({ list, children, fnName, }) {
+
+export default function Popover({ list, children, fnName,outStyle = {} }) {
     const maxHeight = (list.length * 50) + 20
     const [isClicked, setIsClicked] = useState(false)
 
-
-
-
-    let finalFunction = {}
-    if (fnName === "onClick") {
-        finalFunction = {
-            onClick: handleClick,
-            onMouseLeave: () => {
-                setIsClicked(false);
-            }
-        };
-    } else if (fnName === "onOver") {
-        finalFunction = {
-            onMouseEnter: handleClick,
-            onMouseLeave: () => {
-                setIsClicked(false);
-            }
-        };
-    } else if (fnName === "onRight") {
-        finalFunction = {
-            onContextMenu: handleClick,
-            onMouseLeave: () => {
-                setIsClicked(false);
-            }
-        }
-
+    let finalFunction = {  }
+    // finalFunction.onMouseLeave = () => setIsClicked(false)
+    if (fnName === "onClick")
+        finalFunction.onClick = handleClick
+    else if (fnName === "onOver") {   
+        finalFunction.onMouseEnter = handleClick
     }
-
-
+    else if (fnName === "onRight")
+        finalFunction.onContextMenu = handleClick
 
     function handleClick(e) {
         e.preventDefault()
@@ -43,41 +24,29 @@ export default function Popover({ list, children, fnName, }) {
         let totalWidth = screenWidth - elementWidth;
         let elmentHeight = e.screenY;
         let totalHeight = screenHeight - elmentHeight;
+
         if (isClicked) return setIsClicked(false)
 
+        if (totalWidth > 210) finalStyle.left = 15;
 
-        if (totalWidth > 210) {
-            finalStyle.left = 15;
-        }
-        else {
-            finalStyle.right = 15;
-        }
-        if(e.pageY>100){
-            finalStyle.bottom = 15;
-        }
+        else finalStyle.right = -10;
 
-        else if (totalHeight > maxHeight) {
-            finalStyle.top = 15
+        if (e.pageY > 100) finalStyle.bottom = 15;
 
-        } else {
-            finalStyle.bottom = 15
-        }
+        else if (totalHeight > maxHeight) finalStyle.top = 15
+
+        else finalStyle.bottom = -10
 
         setIsClicked(finalStyle)
     }
 
     return (
-        
         <div className={style.mainIcon} {...finalFunction} >
             <button className={style.children} >
                 {children}
             </button>
-            {!isClicked ? ""
-
-                : 
-                
-                <div className={style.Popover} style={isClicked} >
-                    <div  >
+            {!isClicked ? null :
+                (<div className={style.Popover} style={{ ...(isClicked || {}), ...outStyle}} onMouseLeave={()=>setIsClicked(false)} >
                     <ul >
                         {list?.map?.(item => (
                             <li className={item.color === "red" ? style.red : style.green}
@@ -87,12 +56,9 @@ export default function Popover({ list, children, fnName, }) {
                             </li>
                         ))}
                     </ul>
-                    </div  >
-                </div>
-              
+                </div>)
             }
         </div>
- 
     );
 }
 

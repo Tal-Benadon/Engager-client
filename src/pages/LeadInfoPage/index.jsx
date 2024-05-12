@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
 import Icon from '../../components/Icon'
+import { useNavigate } from 'react-router-dom'
 import InfoMessageList from '../../components/InfoMessageList'
 import styles from './style.module.css'
 import UpdateAndAddLead from '../../components/UpdateAndAddLead'
@@ -8,6 +9,7 @@ import { useParams } from 'react-router'
 import formatDate from "../../functions/dateFormat"
 import DataContext from "../../context/DataContext";
 import api from '../../functions/api'
+import Confirm from '../../components/Confirm'
 // Description: This component serves as a user profile page. It is designed to display user information, including first fullName, last fullName, email, phone number, registration date, and active status indicator.
 //Use of this component should pass real user data from the DB as props.
 // Props:
@@ -22,41 +24,28 @@ import api from '../../functions/api'
 // Creator: Refael
 
 export default function LeadInfoPage() {
-  // TODO: לרווח בין פרטי הליד להודעות שלנשלחו אליו
-  // TODO: לדאוג שהחלון עריכה יהיה במרכז הקומפוננטה
-  // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
-
+  const navigate = useNavigate();
   const { leadId } = useParams();
   const { campaign, getCamp } = useCampaign();
   const { setPopUp } = useContext(DataContext);
   const { user } = useContext(DataContext)
   const [lead, setLead] = useState({})
-
-  useEffect(() => {
-    if (Object.keys(campaign).length) {
-      setLead(campaign.leads.find(obj => obj._id == leadId));
-    }
-  }, [campaign.leads, leadId])
-  // useEffect(() => {
-  //   if (Object.keys(campaign).length) {
-  //     setLead(campaign.leads.find(obj => obj._id == leadId));
-  //   }
-  // }, [])
-
   const { fullName, phone, email, notes, _id, extra = {}, joinDate, isActive } = lead || {};
   const signUpDate = formatDate(joinDate)
-  const [isEdit, setIsEdite] = useState(false)
 
-  const handleEditClick = () => {
-    setIsEdite(true)
-  }
+  useEffect(() => {
+    if (Object.keys(campaign).length)
+      setLead(campaign.leads.find(obj => obj._id == leadId));
+  }, [campaign.leads, leadId])
 
-  let data = { userId: user._id }
   const handleTrash = async (leadPhone) => {
     try {
+      let data = { userId: user._id }
       await api.del(`campaign/lead/${leadPhone}/all`, data).then((res) => {
+        navigate(-1)
         getCamp();
-        console.log(res);
+        setPopUp(false)
+        console.log('delete', { res });
       }).catch((error) => {
         console.error('Error updating title:', error);
       });
@@ -64,7 +53,15 @@ export default function LeadInfoPage() {
       console.error('Error handling trash:', error);
     }
   };
-  
+
+  const handleDeleteClick =()=> setPopUp({
+    title: "מחיקת ליד",
+    component: <Confirm
+      onConfirm={() => handleTrash(phone)}
+      text="האם אתה בטוח שברצונך למחוק את פרטי הליד?"
+    />
+  })
+
   return (
     <div className={styles.layout}>
       <div className={styles.info}>
@@ -85,7 +82,7 @@ export default function LeadInfoPage() {
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
                       campaign={campaign}
-                      details={{ fullName, email, phone, notes, leadId: _id, extra}}
+                      details={{ fullName, email, phone, notes, leadId: _id, extra }}
                       isEdit={true}
                       getCamp={getCamp}
                     />
@@ -94,7 +91,7 @@ export default function LeadInfoPage() {
             }
               className={styles.edit}><Icon nameIcon={'writing'}
                 nameColor={''} />  </div>
-            <div className={styles.trash} onClick={() => handleTrash(phone)}><Icon nameIcon={"trash"} /></div>
+            <div className={styles.trash} onClick={handleDeleteClick}><Icon nameIcon={"trash"} /></div>
             {/* <div className={styles.trash} onClick={() => isActive ? !isActive : null}><Icon nameIcon={"trash"} /></div> */}
           </div>
 
@@ -119,13 +116,13 @@ export default function LeadInfoPage() {
                   <div className={styles.content}>{email}</div>
                 </div>
               </div>
-              <div  className={styles.detailsFrame}>
-              {Object.keys(extra).map((item, index) => {
-                return <div key={index} className={styles.infoBlock}>
+              <div className={styles.detailsFrame}>
+                {Object.keys(extra).map((item, index) => {
+                  return <div key={index} className={styles.infoBlock}>
                     <div className={styles.miniTitle}>{extra[item].he}</div>
                     <div className={styles.content}>{extra[item].value}</div>
                   </div>
-              })}
+                })}
               </div>
               <div className={styles.infoFullCol}>
                 <div>
@@ -142,9 +139,9 @@ export default function LeadInfoPage() {
       </div>
 
       <div className={styles.sentMessagesContainer}>
-        <div className={styles.sentTitle}>הודעות שנשלחו</div>
-        {/* ***TODO: make it only sent messages*** */}
-        <div className={styles.messages}><InfoMessageList leadId={leadId} /></div>
+        <div className={styles.messages}>
+          <InfoMessageList leadId={leadId} />
+        </div>
       </div>
     </div>
   )

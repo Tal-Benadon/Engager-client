@@ -26,7 +26,6 @@
 .link {
     border: 1px solid #DEE2E9;
     width: 100%;
-    padding: 15px;
     height: 35px;
     border: #919EAB solid 1px;
     border-radius: 7px;
@@ -36,11 +35,14 @@
 }
 
 .pLink {
-    padding-left: 15px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     direction: ltr;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 5px;
 }
 
 
@@ -61,6 +63,7 @@
     justify-content: center;
     padding: 8px;
     border-radius: 8px;
+    padding-right: 1rem;
     gap: 15px;
     background-color: var(--green-color);
 

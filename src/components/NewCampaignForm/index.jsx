@@ -1,21 +1,15 @@
-import styles from "./style.module.css";
-import axios, { Axios } from "axios";
-import InputWrapper from "../InputWrapper";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import DataContext from "../../context/DataContext";
+import api from '../../functions/api';
 import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
-import { toast } from "react-toastify";
-import React, { useContext, useEffect, useState } from "react";
-import api from '../../functions/api'
-import DataContext from "../../context/DataContext";
-import CampaignItem from "../CampaignItem";
-import { setDefaultLocale } from "react-datepicker";
-import { useNavigate } from "react-router-dom";
+import InputWrapper from "../InputWrapper";
+import styles from "./style.module.css";
 
 export default function NewCampaigenForm({ setPopUp, getCamp }) {
-
-  // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
-  // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
 
   const { user, setUser } = useContext(DataContext);
   const [campName, setCampName] = useState("");
@@ -58,6 +52,7 @@ export default function NewCampaigenForm({ setPopUp, getCamp }) {
             setIsVisible={true}
             children={
               <InputText
+                maxLength={100}
                 name="campaignMsg"
                 onChange={(e) => setCampName(e.target.value)}
               />
