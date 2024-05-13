@@ -15,13 +15,15 @@ export function ManageContext({ children }) {
 
   useEffect(() => {
     const tokenToUser = async () =>
-      await api.get("/accout/tokenToUser").then((res) => setUser(res))
+      await api.get("/accout/tokenToUser")
+        .then((res) => setUser(res))
+        .catch((err) => nav('/login'))
     if (localStorage.token && !user._id) tokenToUser()
   }, [])
 
   useEffect(() => {
     // TODO YOSEF - delete return
-    // return;
+    return;
     let userId = user._id
     if (!userId) return;
     setSocket(io("http://localhost:3000", { auth: { userData: { _id: userId, name: user.name } } }))

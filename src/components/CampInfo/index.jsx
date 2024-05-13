@@ -8,7 +8,7 @@ import { useCampaign } from "../../pages/CampaignPage";
 import DataContext from "../../context/DataContext";
 
 
-export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign ,getCamp}) {
+export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign, getCamp }) {
   const [onecampId, setoneCampId] = useState("");
   const [newTitle, setnewTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
@@ -23,7 +23,7 @@ export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign ,
     let nameMessage = { "title": newTitle }
 
     await api.put(`/campaign/${campId}`, { data: nameMessage }).then((res) => {
-      setNewCampaign(res)
+      if (getCamp) getCamp()
       getAllCamps()
     }).catch((error) => {
       console.error('Error updating title:', error);
@@ -36,7 +36,7 @@ export default function CampaignInfo({ campId, title, setPopUp, setNewCampaign ,
     setIsEditing(false);
     setPopUp(false);
   };
-   
+
   useEffect(() => {
     if (campId) {
       api.get(`/campaign/${campId}`).then((res) => {

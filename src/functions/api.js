@@ -7,7 +7,7 @@ const isProduction = import.meta.env.VITE_PRODUCTION
 //     'Authorization': 'Bearer yourAccessToken' // Example authorization header
 //   }
 
-const mainApi = async (method, path, data, headers) => {
+const mainApi = async (method, path, data, headers, options= {}) => {
   try {
     let fainlPath = path.startsWith("/") ? path.slice(1) : path;
     let auth = localStorage.token ? { Authorization: "Bearer " + localStorage.token } : {};
@@ -21,6 +21,7 @@ const mainApi = async (method, path, data, headers) => {
       url,
       data,
       headers: { ...headers, ...auth },
+      ...options
     });
 
     console.log("Response:", response.data);
@@ -31,9 +32,9 @@ const mainApi = async (method, path, data, headers) => {
   }
 };
 
-const get = async (path, data = {}, headers) => await mainApi("GET", path, data, headers);
+const get = async (path, data = {}, headers, options) => await mainApi("GET", path, data, headers, options);
 
-const post = async (path, data = {}, headers) => await mainApi("POST", path, data, headers);
+const post = async (path, data = {}, headers, options) => await mainApi("POST", path, data, headers, options);
 
 const put = async (path, data = {}, headers) => await mainApi("PUT", path, data, headers);
 

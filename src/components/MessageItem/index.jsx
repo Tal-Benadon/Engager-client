@@ -67,16 +67,15 @@ export default function MessageItem({ campaignId, msgId, content, subject, title
   ]
 
   return (
+    <Popover list={list} fnName='onRight' outStyle={{ top: '20px', bottom: 'auto', right: '20px', left: 'auto', width: '200px' }}  >
     <NavLink
       to={`/campaign/${campaignId}/messages/${msgId}`}
       className={({ isActive }) => `${isActive ? styles.messageActive : styles.message} ${styles.main}`}>
-      <Popover list={list} fnName='onRight' outStyle={{ top: '20px', bottom: 'none', right: '20px', left: 'none' }}  >
         <div className={styles.square}>
           {isCampaignActive ?
             <BiMessageRoundedDetail className={styles.activeIcon} /> :
             <MdOutlineMotionPhotosPaused className={styles.pausedIcon} />}
         </div>
-      </Popover>
       <div className={styles.titleAndDetails}>
         <p className={styles.title}>{title}</p>
         <div className={styles.DateAndTime}>
@@ -92,6 +91,7 @@ export default function MessageItem({ campaignId, msgId, content, subject, title
         </div>
       </div>
     </NavLink>
+      </Popover>
 
   );
 }

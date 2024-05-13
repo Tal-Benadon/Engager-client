@@ -1,18 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import styles from './style.module.css'
-import api from "../../functions/api";
-import InputWrapper from "../InputWrapper";
-import InputText from "../InputText/InputText";
-import Button from "../Button";
-import { redirect, useNavigate } from "react-router-dom";
-import DataContext from "../../context/DataContext";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import DataContext from "../../context/DataContext";
+import api from "../../functions/api";
+import Button from "../Button";
+import styles from './style.module.css';
 
 
-export default function DelCampaign({ campId, title,  setPopUp }) {
-  const [onecampId, setoneCampId] = useState("");
+export default function DelCampaign({ campId, title, setPopUp }) {
   const nav = useNavigate();
-  const { user, setUser,getAllCamps } = useContext(DataContext);
+  const { user, setUser, getAllCamps } = useContext(DataContext);
 
 
   const handleDelete = async () => {
@@ -31,17 +28,9 @@ export default function DelCampaign({ campId, title,  setPopUp }) {
     setPopUp(false);
   };
 
-  useEffect(() => {
-    if (campId) {
-      api.get(`/campaign/${campId}`).then((res) => {
-        setoneCampId(res.data);
-      });
-    }
-  }, [campId]);
 
   return (
     <div>
-
       <span>האם אתה בטוח שתרצה למחוק את הקמפיין '{title}'?</span>
       <div className={styles.buttons}>
         <Button
