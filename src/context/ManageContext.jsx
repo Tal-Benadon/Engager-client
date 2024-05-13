@@ -21,7 +21,7 @@ export function ManageContext({ children }) {
 
   useEffect(() => {
     // TODO YOSEF - delete return
-    return;
+    // return;
     let userId = user._id
     if (!userId) return;
     setSocket(io("http://localhost:3000", { auth: { userData: { _id: userId, name: user.name } } }))
@@ -29,7 +29,7 @@ export function ManageContext({ children }) {
   
   useEffect(() => {
     // TODO YOSEF - delete return
-    return;
+    // return;
     if (socket ) {
       socket.on('connect', () => {
         console.log('Connected to server of whatsapp');
