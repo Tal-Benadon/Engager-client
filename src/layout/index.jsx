@@ -33,6 +33,7 @@ import UserDetails from "../pages/UserDetails"
 import Test from "../tests/A_MainTest"
 import DashboardLayout from "./DashboardLayout"
 import styles from "./style.module.css"
+import MsgNotReceived from "../pages/MsgNotReceived"
 
 export default function Layout() {
 
@@ -53,6 +54,7 @@ export default function Layout() {
           <Route path="first-plan" element={<Plans />} />
           <Route element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
+            <Route path="msgqueue" element={<MsgNotReceived/>} />
             <Route path="checkOut" element={<CheckOut />} />
             <Route path="myLeads" element={<MyLeads />}>
               <Route path="all" element={<AllLeads />} />
