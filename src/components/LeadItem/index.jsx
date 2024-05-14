@@ -45,7 +45,7 @@ export default function LeadItem({ campaignId, name, email, date, id }) {
   ];
   return (
 
-    <Popover list={list} fnName='onRight'  >
+    <Popover list={list} fnName='onRight' outStyle={{ right: '60px', top: '30px' , bottom: 'auto', padding: '0 5px' }}  >
       <NavLink to={`/campaign/${campaignId}/leads/${id}`}
         className={({ isActive }) => isActive ? styles.leadActive : styles.lead}>
         <div className={styles.square}>

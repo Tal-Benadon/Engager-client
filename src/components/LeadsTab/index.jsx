@@ -12,29 +12,105 @@ import DataContext from "../../context/DataContext";
 import CampaignInfo from "../CampInfo";
 import { useNavigate } from "react-router-dom";
 import DelCampaign from '../DelCampaign';
+import { GrDocumentExcel } from "react-icons/gr";
+import api from "../../functions/api";
+import UploadExcel from "../UploadExcel";
 
 export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortType, setSortType] = useState("date");
   const { setPopUp } = useContext(DataContext);
-  const [isEdit, setIsEdite] = useState(false);
-  const nav = useNavigate();
-  const { campaign, setCampaign,getCamp } = useCampaign();
-  const [newCampaign, setNewCampaign] = useState({});
-  const { setAllCamps } = useContext(DataContext)
+  const { campaign = {}, getCamp } = useCampaign();
 
-  const handleEditClick = () => {
-    setIsEdite(true);
-  };
+  const handleDownloadExcel = async () => {
+    try {
+      const res = await api.get(`files/download/leads/${campaign._id}`, null, null, { responseType: "blob" });
+      const blob = new Blob([res], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `leads-${campaign.title}.xlsx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-
-  useEffect(() => {
-    setCampaign(newCampaign);
-  }, [newCampaign])
-
-  useEffect(() => {
-    setCampaign(campaign)
-  }, [campaign])
+  const listMenu = [
+    {
+      text: "עריכת רשימה",
+      icon: <Icon nameIcon={"writing"} />,
+      onClick: () =>
+        setPopUp({
+          title: "עריכת רשימה",
+          component: (
+            <CampaignInfo
+              getCamp={getCamp}
+              setPopUp={setPopUp}
+              title={campaign.title}
+              campId={campaign._id}
+            />
+          ),
+        }),
+    },
+    {
+      text: "הוספה ידנית",
+      icon: <Icon nameIcon={"userWithPlus"} />,
+      onClick: () =>
+        setPopUp({
+          title: "הוספת אדם לקמפיין",
+          component: (
+            <UpdateAndAddLead
+              setPopUp={setPopUp}
+              campaign={campaign}
+              getCamp={getCamp}
+              isEdit={false}
+            />
+          ),
+        }),
+    },
+    {
+      text: "ייבוא לידים",
+      icon: <Icon nameIcon={"importList"} />,
+      onClick: () =>
+      setPopUp({
+        title: "ייבוא לידים",
+        component: (
+          <UploadExcel
+            setPopUp={setPopUp}
+            title={campaign.title}
+            campId={campaign._id}
+            getCamp={getCamp}
+          />
+        ),
+      }),
+    },
+    {
+      text: "ייצוא לידים",
+      icon: <GrDocumentExcel color="#6B6B6B" />,
+      onClick: handleDownloadExcel
+    },
+    {
+      text: "מחיקת רשימה",
+      icon: <Icon nameIcon={"trash"} />,
+      color: "red",
+      onClick: () =>
+        setPopUp({
+          title: "מחיקת רשימה",
+          component: (
+            <DelCampaign
+              setPopUp={setPopUp}
+              title={campaign.title}
+              campId={campaign._id}
+            />
+          ),
+        }),
+    },
+  ]
 
   // debugger
   if (!Object.keys(campaign).length) return <></>;
@@ -50,67 +126,11 @@ export default function LeadsTab() {
           />
         </div>
         <div className={styles.popOverContainer}>
-        <Popover
-          fnName={"onClick"}
-          list={[
-            {
-              text: "עריכת רשימה",
-              icon: <Icon nameIcon={"writing"} />,
-              onClick: () =>
-                setPopUp({
-                  title: "עריכת רשימה",
-                  component: (
-                    <CampaignInfo
-                      setPopUp={setPopUp}
-                      title={campaign.title}
-                      campId={campaign._id}
-                      setNewCampaign={setNewCampaign}
-                    />
-                  ),
-                }),
-            },
-            {
-              text: "הוספה ידנית",
-              icon: <Icon nameIcon={"userWithPlus"} />,
-              onClick: () =>
-                setPopUp({
-                  title: "הוספת אדם לקמפיין",
-                  component: (
-                    <UpdateAndAddLead
-                      setPopUp={setPopUp}
-                      campaign={campaign}
-                      getCamp={getCamp}
-                      isEdit={false}
-                    />
-                  ),
-                }),
-            },
-            {
-              text: "ייבוא רשימה",
-              icon: <Icon nameIcon={"importList"} />,
-            },
-            {
-              text: "מחיקת רשימה",
-              icon: <Icon nameIcon={"trash"} />,
-              color: "red",
-              onClick: () =>
-                setPopUp({
-                  title: "מחיקת רשימה",
-                  component: (
-                    <DelCampaign
-                      setPopUp={setPopUp}
-                      title={campaign.title}
-                      campId={campaign._id}
-                    />
-                  ),
-                }),
-            },
-          ]}
-        >
-          <Icon nameIcon={"menu"} />
-        </Popover>
+          <Popover fnName={"onClick"} list={listMenu}          >
+            <Icon nameIcon={"menu"} />
+          </Popover>
         </div>
-        
+
       </div>
       <TabSwitcher rout={[
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },

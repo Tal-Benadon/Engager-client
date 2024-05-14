@@ -33,10 +33,8 @@ import UserDetails from "../pages/UserDetails"
 import Test from "../tests/A_MainTest"
 import DashboardLayout from "./DashboardLayout"
 import styles from "./style.module.css"
-import { useContext, useEffect, useState } from "react"
-import DataContext from "../context/DataContext"
+import MsgNotReceived from "../pages/MsgNotReceived"
 import MsgQueue from "../components/MsgQueue"
-
 export default function Layout() {
 
   return (
@@ -54,6 +52,7 @@ export default function Layout() {
           <Route path="first-plan" element={<Plans />} />
           <Route element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
+            <Route path="msgqueue" element={<MsgNotReceived/>} />
             <Route path="checkOut" element={<CheckOut />} />
             <Route path="myLeads" element={<MyLeads />}>
               <Route path="all" element={<AllLeads />} />

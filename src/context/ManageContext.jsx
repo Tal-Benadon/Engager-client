@@ -15,27 +15,13 @@ export function ManageContext({ children }) {
   const nav = useNavigate()
 
   useEffect(() => {
-    const tokenToUser = async () => api.get("/accout/tokenToUser").then((res) => setUser(res))
-
+    const tokenToUser = async () =>
+      await api.get("/accout/tokenToUser")
+        .then((res) => setUser(res))
+        .catch((err) => nav('/login'))
     if (localStorage.token && !user._id) tokenToUser()
   }, [])
 
-  //   useEffect(() => {
-  // console.log("useEffect socket");
-  //     if (socket) {
-  //       socket.on('connect', () => {
-  //         console.log('Connected to server of whatsapp');
-  //         socket.emit('queue')
-  //       });
-  //       socket.on(`queue`, (queue) => {
-  //         setQueueJob(queue)
-  //       })
-  //     }
-
-  //     return () => {
-  //       if (socket) socket.disconnect()
-  //     }
-  //   }, [socket])
 
   const getAllCamps = () =>
     api.get(`/campaign`).then((res) => setAllCamps(res))
