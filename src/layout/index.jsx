@@ -33,10 +33,11 @@ import UserDetails from "../pages/UserDetails"
 import Test from "../tests/A_MainTest"
 import DashboardLayout from "./DashboardLayout"
 import styles from "./style.module.css"
+import { useContext, useEffect, useState } from "react"
+import DataContext from "../context/DataContext"
+import MsgQueue from "../components/MsgQueue"
 
 export default function Layout() {
-
-  let arr = [{ campaignName: "בריכת שחייה", userName: "מרים פוני", time: "14.10.24 , 13:49" }, { campaignName: "חדר כושר", userName: "גילה שוראקי", time: "19.03.23 , 17:12" }]
 
   return (
     <div className={styles.layout}>
@@ -92,7 +93,7 @@ export default function Layout() {
         </Routes>
         <Test />
         <PopUp />
-        {/* <MsgQueue arr={arr}/> */}
+        <MsgQueue />
       </ManageContext>
     </div>
   )

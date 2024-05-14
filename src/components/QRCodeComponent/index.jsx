@@ -1,35 +1,50 @@
 import React, { useState, useEffect, useContext } from "react"
 import QRCode from "react-qr-code"
-import io from "socket.io-client"
 import InputWrapper from "../InputWrapper/index"
 import styles from "./style.module.css"
 import Loading from "../Loading"
 import DataContext from "../../context/DataContext"
-import api from "../../functions/api"
+import useSocket from "../../context/SocketContext"
+import api_whatsapp from "../../functions/api_whatsapp"
 
 export default function QRCodeComponent() {
   const [code, setCode] = useState("")
   const [isReady, setIsReady] = useState(false)
+  const { socket, connect } = useSocket()
 
-  const { user } = useContext(DataContext)
-
-  const { socket } = useContext(DataContext)
   useEffect(() => {
-    if (socket) {
-      socket.on(`qr`, (qr) => {
-        setCode(qr)
-      })
-
-      socket.on("ready", () => {
-        setIsReady(true)
-        setCode(qr);
-      });
-      socket.on('ready', () => {
-        setIsReady(true);
-      })
+    if (!socket?.connected) {
+      connect()
     }
-  },[socket])
-  
+  }, [])
+
+
+  useEffect(() => {
+    api_whatsapp.get(`/session`)
+    
+    // api_whatsapp.get(`/qr`)
+    
+    // api_whatsapp.get(`/session`).then(b => {
+    //   if(!b){
+    //     setIsReady(b)
+    //     api_whatsapp.get(`/qr`)
+    //   }
+    // })
+
+    if (!socket?.connected) return;
+    socket.on(`qr`, (qr) => {
+      setCode(qr)
+    })
+
+    // socket.on("ready", () => {
+    //   debugger;
+    //   setIsReady(true)
+    //   setCode(qr);
+    // });
+
+  }
+    , [socket])
+
   return (
     <div className={styles.QrContainer}>
       <>
@@ -38,7 +53,8 @@ export default function QRCodeComponent() {
         {!isReady && code.length > 2 ? (
           <QRCode value={code} className={styles.qrCode} />
         ) : (
-          ""
+          "" 
+          // <div className={styles.text}>קיים Session!!!</div>
         )}
         <InputWrapper
           subLabel={"נא לא לרענן את העמוד"}
