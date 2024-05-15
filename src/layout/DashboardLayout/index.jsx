@@ -18,11 +18,11 @@ export default function DashboardLayout() {
 
   useEffect(() => {
     if (token) return;
-
+    connect()
     apiWhatsapp.get('/queue').then(arr => {
       console.log('queue:', arr);
       setQueueJob(arr)
-      if(arr.length) connect();
+      // if(arr.length) connect();
     })
 
     return () => {  

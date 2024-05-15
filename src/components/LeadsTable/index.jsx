@@ -130,7 +130,7 @@ export default function LeadsTable({ filterdLeads = [], heads = [] }) {
                         )}
                     </tr>
                     {filteredData.map((lead, i) => (
-                        <tr key={lead.email}>
+                        <tr key={i+lead.email}>
                             {heads.map(h => (
                                 h.title === 'isOnline' ? (
                                     <td key={h.title} className={lead[h.title] ? styles.online : styles.offline}>
