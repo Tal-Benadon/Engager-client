@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MsgQueueItem from "../MsgQueueItem";
 import styles from './style.module.css'
 import Icon from "../Icon";
+import DataContext from "../../context/DataContext";
 
-export default function MsgQueue({ arr }) {
+export default function MsgQueue({ arr = [{ campaignName: "test", userName: "aviad" }] }) {
   const [isOpenButton, setIsOpenButton] = useState(true)
   const [isOpenList, setIsOpenList] = useState(false)
   const onclickButton = () => { setIsOpenButton(true) }
   const onclickList = () => { isOpenList ? setIsOpenList(false) : setIsOpenList(true) }
   const onclickX = () => { setIsOpenButton(false); setIsOpenList(false) }
+  const { queueJob } = useContext(DataContext)
 
-  return (
+  return queueJob.length == 0 ? <></> : (
     <div className={styles.allpage}>
       {isOpenButton ?
         <div>

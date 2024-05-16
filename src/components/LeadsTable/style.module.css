@@ -1,7 +1,25 @@
+.excel {
+        padding: .3rem .6rem;
+        border: 0;
+        border-radius: .2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+        transition: all .1s ease;
+}
+
+.excel:hover {
+        background-color: var(--main-color);
+        color: #fff;
+}
+
 .leadsTable {
         width: 100%;
         text-align: center;
 }
+
+
 
 #regularTd {
         max-width: 200px;
@@ -101,10 +119,6 @@ select {
         fill: var(--main-color);
 }
 
-.avatarTd{
+.avatarTd {}
 
-}
-
-.avatarTd img{
-        
-}
+.avatarTd img {}

@@ -33,21 +33,9 @@ import UserDetails from "../pages/UserDetails";
 import Test from "../tests/A_MainTest";
 import DashboardLayout from "./DashboardLayout";
 import styles from "./style.module.css";
-
+import MsgNotReceived from "../pages/MsgNotReceived";
+import MsgQueue from "../components/MsgQueue";
 export default function Layout() {
-  let arr = [
-    {
-      campaignName: "בריכת שחייה",
-      userName: "מרים פוני",
-      time: "14.10.24 , 13:49",
-    },
-    {
-      campaignName: "חדר כושר",
-      userName: "גילה שוראקי",
-      time: "19.03.23 , 17:12",
-    },
-  ];
-
   return (
     <div className={styles.layout}>
       <ManageContext>
@@ -72,6 +60,7 @@ export default function Layout() {
           <Route path="first-plan" element={<Plans />} />
           <Route element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
+            <Route path="msgqueue" element={<MsgNotReceived />} />
             <Route path="checkOut" element={<CheckOut />} />
             <Route path="myLeads" element={<MyLeads />}>
               <Route path="all" element={<AllLeads />} />
@@ -165,7 +154,7 @@ export default function Layout() {
         </Routes>
         <Test />
         <PopUp />
-        {/* <MsgQueue arr={arr}/> */}
+        <MsgQueue />
       </ManageContext>
     </div>
   );
