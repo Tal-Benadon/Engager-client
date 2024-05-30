@@ -13,6 +13,20 @@ import ScheduleInput from "../ScheduleInput";
 // Props : ____________ , _________
 // Creator : ________
 
+const fields = {
+  fullName: "שם",
+  email: "אימייל",
+  phone: "טלפון",
+  notes: "הערות",
+  joinDate: "הצטרפות",
+  age: "גיל",
+  class: "כיתה",
+};
+const heFields = {};
+Object.entries(fields).forEach(([key, value]) => (heFields[value] = key));
+// const enFields = Object.keys(fields);
+// const heFields = Object.values(fields);
+
 export default function NewMassageForm({
   setPopUp,
   campId,
@@ -23,94 +37,80 @@ export default function NewMassageForm({
   const [content, setContent] = useState("");
   const [preContent, setPreContent] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+  const [selectStart, setSelectStart] = useState();
   const [showSelect, setShowSelect] = useState(false);
   const textareaRef = useRef(null);
   const [time, setTime] = useState();
   const [date, setDate] = useState();
-  const mainfields = Object.keys(campaign.leads[0]).slice(0, -3);
-
-  const translations = {
-    fullName: "שם",
-    email: "אימייל",
-    phone: "טלפון",
-    notes: "הערות",
-    joinDate: "הצטרפות",
-  };
-
-  const hebMainFields = mainfields.map((word) => translations[word]);
-
-  const extraFields = Object.entries(campaign.leads[0]["extra"] ?? {}).map(
-    (ef) => ef[1].he
-  );
-
-  const fields = [...hebMainFields, ...extraFields];
 
   const preperText = (text) => {
-    const reverseTranslations = {
-      שם: "fullName",
-      אימייל: "email",
-      טלפון: "phone",
-      הערות: "notes",
-      הצטרפות: "joinDate",
-    };
     console.log("text:", text);
     // const regex = /@([\u0590-\u05FF\s]+)/g;
-    const regex = /@([\u0590-\u05FF]+)\s?/g;
-    const matches = text.match(regex);
-    console.log("matches", matches);
-    if (matches) {
-      matches.forEach((m) =>
-        Object.keys(reverseTranslations).forEach((i) => {
-          console.log("i", i);
-          console.log("m", m);
-          console.log(i, m.replace("@", ""));
-          if (i == m.replace("@", "").trim()) {
-            text = text.replace(m, `@${reverseTranslations[i.trim()]} `, 1);
-          }
-        })
-      );
+    // const regex = /@([\u0590-\u05FF]+)\s?/g
+    // const matches = text.match(regex);
+    // console.log("matches", matches);
+    // if (matches) {
+    // matches.forEach((m) => {
+    let newContent = "";
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] == "@") {
+        let f = "";
+        i++;
+        while (text[i] != " " && i < text.length) {
+          f += text[i++];
+        }
+        newContent += "@" + heFields[f];
+      } else {
+        newContent += text[i];
+      }
     }
-    console.log("text:----", text);
-    return text;
+    console.log("newContent:", newContent);
+    return newContent;
   };
 
   const handleInputChange = (e) => {
-    const inputText = e.target.value;
-    setPreContent(inputText);
-    setShowSelect(inputText.slice(-1) === "@" ? true : false);
+    setPreContent(e.target.value);
+
+    let c = e.nativeEvent?.data;
+    if (c === "@") {
+      setShowSelect(true);
+      setSelectStart(e.target.selectionStart);
+    }
   };
 
   const handleSelectChange = (e) => {
     const selectedKey = e.target.value;
-    setSelectedOption(selectedKey);
     if (selectedKey) {
-      // const selectedValue = fields[selectedKey];
-      setPreContent((prevText) => prevText.concat(selectedKey + " "));
-    } else {
-      setPreContent((prevText) => prevText.slice(0, -1));
+      setPreContent((prevText) =>
+        prevText
+          .slice(0, selectStart - 1)
+          .concat(" @", fields[selectedKey], " ", prevText.slice(selectStart))
+      );
+
+      setShowSelect(false);
+      setSelectStart();
     }
-    setShowSelect(false);
-    setSelectedOption("");
+
     if (textareaRef.current) textareaRef.current.focus();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const t = preperText(preContent);
-    setContent(t);
-    try {
-      const submmit = { subject, content: t };
-      console.log(submmit);
-      const response = await api.post(`/campaign/${campId}/msg`, submmit);
-      toast.success(response && "נשלח בהצלחה!");
-      getCamp();
-      setPopUp();
-    } catch (error) {
-      console.error("Error:", error);
-      toast.error(Error?.response?.data?.msg || "something went wrong");
-    }
+    const contentBined = preperText(preContent);
+    setContent(contentBined);
+    const data = { subject, content: preContent };
+    api
+      .post(`/campaign/${campId}/msg`, data)
+      .then((response) => {
+        toast.success(response && "נשלח בהצלחה!");
+        getCamp();
+        setPopUp();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        toast.error(error?.response?.data?.msg || "something went wrong");
+      });
   };
-
   // TODO - YOSEF - should it be save on typing?
   // useEffect(() => {
   //   if (content) {
@@ -146,12 +146,11 @@ export default function NewMassageForm({
               />
             }
             type="text"
-          ></InputWrapper>
-          {/* <br />
-          <br /> */}
+          />
           <InputWrapper
             label="הודעה"
             subLabel="זוהי ההודעה שתשלח בתזמון הנבחר"
+            type="text"
             to={"msgContent"}
             children={
               <InputTextAreaRef
@@ -161,17 +160,19 @@ export default function NewMassageForm({
                 onChange={handleInputChange}
               />
             }
-            type="text"
           />
+
           {showSelect && (
-            <select value={selectedOption} onChange={handleSelectChange}>
-              <option value="">בחר שדה דינמי</option>
-              {fields.map((field) => (
-                <option key={field} value={field}>
-                  {field}
-                </option>
-              ))}
-            </select>
+            <div>
+              <select value={selectedOption} onChange={handleSelectChange}>
+                <option value="">בחר שדה דינמי</option>
+                {Object.entries(fields).map(([en, he]) => (
+                  <option key={en} value={en}>
+                    {he}
+                  </option>
+                ))}
+              </select>
+            </div>
           )}
         </main>
         {/* <br /> */}

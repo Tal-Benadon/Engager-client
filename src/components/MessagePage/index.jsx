@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router';
 import DataContext from '../../context/DataContext';
 import api from '../../functions/api';
+import api_whatsapp from '../../functions/api_whatsapp';
 import campaignHelper from '../../functions/campaignHelper';
 import formatDate from '../../functions/dateFormat';
 import { useCampaign } from '../../pages/CampaignPage';
@@ -56,7 +57,7 @@ export default function MessagePage() {
 
     const send = async () => {
         try {
-            const res = await api.get(`/campaign/whatsapp/camp/${campaign._id}/msg/${messageId}/leads`)
+            const res = await api_whatsapp.post('/send',{campaignId: campaign._id, msgId: messageId})
         } catch (error) { console.error("Error:", error); }
     }
 
