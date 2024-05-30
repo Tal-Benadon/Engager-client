@@ -6,6 +6,7 @@ import Loading from "../Loading"
 import DataContext from "../../context/DataContext"
 import useSocket from "../../context/SocketContext"
 import api_whatsapp from "../../functions/api_whatsapp"
+import Button from "../Button"
 
 export default function QRCodeComponent() {
   const [code, setCode] = useState("")
@@ -16,7 +17,7 @@ export default function QRCodeComponent() {
     if (!socket?.connected) {
       connect()
     }
-    else{
+    else {
       api_whatsapp.get(`/session`)
     }
   }, [])
@@ -26,31 +27,20 @@ export default function QRCodeComponent() {
     if (!socket) return;
     socket.on("connect", () => {
       api_whatsapp.get(`/session`)
-
-
-      // .then(b => {
-      //   if(!b){
-      //     setIsReady(b)
-      //     api_whatsapp.get(`/qr`)
-      //   }
-      // })
-
     });
 
     console.log("status:", status, "code:", code);
 
-
     socket.on('session', ({ code }) => {
       setStatus(code)
+      setCode("")
     })
 
     socket.on('qr', (qr) => {
       setCode(qr)
       setStatus(13)
     })
-
-  }
-    , [socket])
+  }, [socket])
 
 
   const msg = {
@@ -67,13 +57,16 @@ export default function QRCodeComponent() {
     <div className={styles.QrContainer}>
       <>
         {/* // <div className={styles.container}> */}
-        {status != 11 &&status != 13 && <Loading className={styles.loading} />}
+        {status != 11 && status != 13 && <Loading className={styles.loading} />}
+
 
         <InputWrapper
           subLabel={msg[status]}
           className={styles.inputWrapper}
         />
 
+        {status == 11 && <Button content='התנתק' onClick={() => api_whatsapp.post('/disconnect')} />}
+        
         {code.length > 2 && <>
           <QRCode value={code} className={styles.qrCode} />
           <div className={styles.text}>כיצד להשתמש ב-WhatsApp באינגייג'ר:</div>
