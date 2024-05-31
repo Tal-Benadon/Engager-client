@@ -18,7 +18,10 @@ export function ManageContext({ children }) {
     const tokenToUser = async () =>
       await api.get("/accout/tokenToUser")
         .then((res) => setUser(res))
-        .catch((err) => nav('/login'))
+        .catch((err) => {
+          localStorage.clear()
+          nav('/login')
+        })
     if (localStorage.token && !user._id) tokenToUser()
   }, [])
 

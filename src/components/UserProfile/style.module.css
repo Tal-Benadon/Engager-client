@@ -14,7 +14,8 @@
 .userCircle {
     height: 36px;
     width: 36px;
-    background: black;
+    background: var(--grayElement);
+    border: 2px solid var(--main-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -25,6 +26,7 @@
 .userCircle img {
     max-width: 100%; 
     max-height: 100%; 
+    object-fit: cover;
     width: auto;
     height: auto; 
 }
