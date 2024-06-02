@@ -9,14 +9,13 @@ import { toast } from 'react-toastify';
 
 
 export default function MyUsers() {
-
     const nav = useNavigate();
     const [activeNum, setActiveNum] = useState(0);
-
     const { usersObj, setUsersObj, user } = useContext(DataContext);
 
     useEffect(() => {
         if (!user._id) return;
+        if (user?.permission !== 'admin') return nav('/');
         api.get(`/user/forTable`)
             .then(setUsersObj)
             .catch((error) => {
