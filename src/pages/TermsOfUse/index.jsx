@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 export default function TermsOfUse() {
-  const nav = useNavigate();
   return (
     <div className={styles.terms}>
       <h1>תנאי שימוש</h1>
