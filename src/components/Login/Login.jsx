@@ -23,7 +23,6 @@ export default function Login() {
   const nav = useNavigate();
   async function handleSubmit(e) {
     try {
-      console.log(formState);
       e.preventDefault();
       const { token, user } = await api.post("/login", formState);
       setUser(user);
@@ -39,7 +38,10 @@ export default function Login() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState((old) => {
-      const newData = { ...old, [name]: value };
+      const newData = {
+        ...old,
+        [name]: name === "email" ? value.toLowerCase() : value,
+      };
       // localStorage.user = JSON.stringify({ ...newData, password: '' })
       if (newData.passwordConfirm != newData.password) {
       }
@@ -67,7 +69,6 @@ export default function Login() {
         <div>
           <InputWrapper label={"אמייל"} setIsVisible={true}>
             <InputText
-              type={"email"}
               name={"email"}
               required={true}
               onChange={handleChange}
@@ -80,7 +81,6 @@ export default function Login() {
         <div>
           <InputWrapper label={"סיסמה"} className={styles.nameinput}>
             <InputText
-              type={"password"}
               name={"password"}
               required={true}
               onChange={handleChange}
