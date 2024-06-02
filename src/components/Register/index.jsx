@@ -190,11 +190,15 @@ export default function Register() {
     setFormState((old) => {
       const newData = {
         ...old,
-        [name]: name === "email" ? value.toLowerCase() : value,
+        [name]: value,
       };
       // localStorage.user = JSON.stringify({ ...newData, password: '' })
       checkInput(newData, [name]);
-      setFormState(newData);
+      const convertFormState = {
+        ...newData,
+        email: newData.email.toLowerCase(),
+      };
+      setFormState(convertFormState);
       return newData;
     });
   };

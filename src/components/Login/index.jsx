@@ -22,7 +22,11 @@ export default function Login() {
   async function handleSubmit(e) {
     try {
       e.preventDefault();
-      const { token, user } = await api.post("/login", formState);
+      const convertFormState = {
+        ...formState,
+        email: formState.email.toLowerCase(),
+      };
+      const { token, user } = await api.post("/login", convertFormState);
       setUser(user);
       localStorage.token = token;
       nav("/");
@@ -37,7 +41,7 @@ export default function Login() {
     setFormState((old) => {
       const newData = {
         ...old,
-        [name]: name === "email" ? value.toLowerCase() : value,
+        [name]: value,
       };
       // localStorage.user = JSON.stringify({ ...newData, password: '' })
       if (newData.passwordConfirm != newData.password) {
