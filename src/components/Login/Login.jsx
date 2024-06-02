@@ -67,6 +67,7 @@ export default function Login() {
         <div>
           <InputWrapper label={"אמייל"} setIsVisible={true}>
             <InputText
+              type={"email"}
               name={"email"}
               required={true}
               onChange={handleChange}
@@ -79,6 +80,7 @@ export default function Login() {
         <div>
           <InputWrapper label={"סיסמה"} className={styles.nameinput}>
             <InputText
+              type={"password"}
               name={"password"}
               required={true}
               onChange={handleChange}
