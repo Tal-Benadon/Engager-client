@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./style.module.css";
 import InputText from "../InputText/InputText";
 import Button from "../Button";
 import InputWrapper from "../InputWrapper";
-import { useState } from "react";
 import axios from "axios";
 import api from "../../functions/api";
 import DataContext from "../../context/DataContext";
@@ -11,22 +10,20 @@ import { useNavigate } from "react-router";
 import getGoogleOAuthURL from "../../functions/loginWithGoogle";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-// login page.
-// <button /> gets props of content. needs to get ruot to DB to check that user fits password
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 export default function Login() {
   const notify = () => toast(`Wrong username or password`);
-
   const [formState, setFormState] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   const { user, setUser } = useContext(DataContext);
   const nav = useNavigate();
+
   async function handleSubmit(e) {
     try {
       e.preventDefault();
       const { token, user } = await api.post("/login", formState);
       setUser(user);
-
       localStorage.token = token;
       nav("/");
     } catch (err) {
@@ -49,6 +46,10 @@ export default function Login() {
     });
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   const toregister = () => {
     nav("/register");
   };
@@ -56,10 +57,8 @@ export default function Login() {
   const forgetPassword = () => {
     nav("/forgetPassword");
   };
-  let root = "accout/signInGoogle";
 
-  // console.log({formState})
-  console.log({ user });
+  let root = "accout/signInGoogle";
 
   return (
     <div>
@@ -72,21 +71,31 @@ export default function Login() {
               name={"email"}
               required={true}
               onChange={handleChange}
-              value={formState.name}
+              value={formState.email}
               className={styles.input}
             />
           </InputWrapper>
         </div>
 
-        <div>
+        <div className={styles.passwordWrapper}>
           <InputWrapper label={"סיסמה"} className={styles.nameinput}>
-            <InputText
-              name={"password"}
-              required={true}
-              onChange={handleChange}
-              value={formState.name}
-              className={styles.input}
-            />
+            <div className={styles.passwordContainer}>
+              <InputText
+                type={showPassword ? "text" : "password"}
+                name={"password"}
+                required={true}
+                onChange={handleChange}
+                value={formState.password}
+                className={styles.input}
+              />
+              <button
+                type="button"
+                onClick={toggleShowPassword}
+                className={styles.showPasswordButton}
+              >
+                {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+              </button>
+            </div>
           </InputWrapper>
         </div>
         <div onClick={forgetPassword} className={styles.forget}>
@@ -101,7 +110,6 @@ export default function Login() {
           src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
           alt=""
         />
-        {/* <img src="google.png" alt="" /> */}
         התחברות באמצעות גוגל
       </a>
       <div className={styles.notlogin}>
