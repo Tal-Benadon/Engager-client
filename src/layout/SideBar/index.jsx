@@ -13,7 +13,7 @@ export default function SideBar() {
 
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const { setPopUp, allCamps, getAllCamps } = useContext(DataContext);
+  const { setPopUp, allCamps, getAllCamps, user } = useContext(DataContext);
 
   const nav = useNavigate();
 
@@ -52,12 +52,14 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          <li>
-            <NavLink to="myUsers">
-              כל הלקוחות שלי
-              <Icon nameIcon={"leads"} nameColor={""} />
-            </NavLink>
-          </li>
+          {user.permission === 'admin' &&
+            <li>
+              <NavLink to="myUsers">
+                כל הלקוחות שלי
+                <Icon nameIcon={"leads"} nameColor={""} />
+              </NavLink>
+            </li>
+          }
           <li>
             <NavLink to="msgqueue">
               תור עבודה
