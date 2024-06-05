@@ -2,11 +2,15 @@ import React from "react";
 import styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Back from "../../components/Back";
 
 export default function TermsOfUse() {
   return (
     <div className={styles.terms}>
-      <h1>תנאי שימוש</h1>
+      <div className={styles.header}>
+        <h1>תנאי שימוש</h1>
+        <Back />{" "}
+      </div>
       <p>
         תנאי שימוש עדכון אחרון: מרץ 2024 <br />
         חברת אינגייג'ר בע"מ, מס' חברה 516928934 (להלן: "אינגייג'ר", "אנחנו" או

@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./style.module.css";
 import { NavLink } from "react-router-dom";
+import Back from "../../components/Back";
 
 export default function PrivacyPolicy() {
   return (
     <div className={styles.privacyContainer}>
-      <h1>מדיניות פרטיות</h1>
+      <div className={styles.header}>
+        <h1>תנאי שימוש</h1>
+        <Back />{" "}
+      </div>
       <p>
         מדיניות פרטיות עדכון אחרון: מרץ 2024 <br />
         חברת אינגייג'ר בע"מ, מס' חברה 516928934, הפועלת תחת השם המסחרי אינגייג'ר
