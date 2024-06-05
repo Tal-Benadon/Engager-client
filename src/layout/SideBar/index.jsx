@@ -10,7 +10,6 @@ import NewCampaigenForm from "../../components/NewCampaignForm";
 import UserProfile from "../../components/UserProfile";
 
 export default function SideBar() {
-
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { setPopUp, allCamps, getAllCamps, user } = useContext(DataContext);
@@ -40,11 +39,12 @@ export default function SideBar() {
     }, new Date(0));
   };
 
-
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
-        <h1 onClick={() => nav('/')} className={styles.eng}>אנגייג׳ר</h1>
+        <h1 onClick={() => nav("/")} className={styles.eng}>
+          אנגייג׳ר
+        </h1>
         <ul>
           <li>
             <NavLink to="/myLeads">
@@ -52,14 +52,14 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
-          {user.permission === 'admin' &&
+          {user.permission === "admin" && (
             <li>
               <NavLink to="myUsers">
                 כל הלקוחות שלי
                 <Icon nameIcon={"leads"} nameColor={""} />
               </NavLink>
             </li>
-          }
+          )}
           <li>
             <NavLink to="msgqueue">
               תור עבודה
@@ -90,6 +90,12 @@ export default function SideBar() {
             </li>
           )}
           <li>
+            <NavLink to="/settings/plans">
+              תוכניות
+              <Icon nameIcon={"plans"} nameColor={""} strokeWidth={"35"} />
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/settings">
               הגדרות
               <Icon nameIcon={"setting"} nameColor={""} />
@@ -98,7 +104,7 @@ export default function SideBar() {
           <li>
             <NavLink to="/feedback">
               שליחת פידבק
-              <Icon nameIcon={'thumbsup'} nameColor={''} />
+              <Icon nameIcon={"thumbsup"} nameColor={""} />
             </NavLink>
           </li>
           {/* <li onClick={() =>
@@ -126,15 +132,17 @@ export default function SideBar() {
         <div className={styles.newlist}>
           <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
         </div>
-        <div className={styles.item}
+        <div
+          className={styles.item}
           onClick={() =>
-            setPopUp(
-              {
-                title: "קמפיין חדש",
-                component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
-              }
-            )
-          }>
+            setPopUp({
+              title: "קמפיין חדש",
+              component: (
+                <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
+              ),
+            })
+          }
+        >
           <Icon nameIcon={"pluscircle"} nameColor={"create"} />
           <Button className="create" content="רשימה חדשה" />
         </div>
