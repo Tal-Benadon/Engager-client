@@ -90,7 +90,7 @@ export default function SideBar() {
             </li>
           )}
           <li>
-            <NavLink to="/settings/plans">
+            <NavLink to="/plans">
               תוכניות
               <Icon nameIcon={"plans"} nameColor={""} strokeWidth={"35"} />
             </NavLink>

@@ -35,8 +35,6 @@ import DashboardLayout from "./DashboardLayout";
 import styles from "./style.module.css";
 import MsgNotReceived from "../pages/MsgNotReceived";
 import MsgQueue from "../components/MsgQueue";
-import PrivacyPolicy from "../pages/PrivacyPolicy";
-import TermsOfUse from "../pages/TermsOfUse";
 export default function Layout() {
   return (
     <div className={styles.layout}>
@@ -47,8 +45,6 @@ export default function Layout() {
             path="changePassword/:passwordToken"
             element={<ChangePasswordPage />}
           />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-use" element={<TermsOfUse />} />
           <Route path="register" element={<Register />} />
           <Route path="forgetPassword" element={<ForgetPassword />} />
           <Route path="completeDetails/:email" element={<CompleteDetails />} />
@@ -149,9 +145,9 @@ export default function Layout() {
                 }
               />
               <Route path="QrCode" element={<QRCodeComponent />} />
-              <Route path="plans" element={<Plans />} />
               <Route path="userDetails" element={<UserDetails />} />
             </Route>
+            <Route path="plans" element={<Plans />} />
             <Route path="feedback" element={<FeedBack />} />
             <Route path="payment" element={<PaymentPage />} />
           </Route>
