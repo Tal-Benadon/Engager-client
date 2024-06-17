@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Doughnut, Line, Bar } from 'react-chartjs-2';
-import { format, addMonths, subMonths, set } from 'date-fns';
-import 'chart.js/auto';
-import api from '../../functions/api';
-import styles from './style.module.css';
-import DataContext from '../../context/DataContext';
-import formatDateTime from '../../functions/timeDateFormat';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import { Doughnut, Line, Bar } from "react-chartjs-2";
+import { format, addMonths, subMonths, set } from "date-fns";
+import "chart.js/auto";
+import api from "../../functions/api";
+import styles from "./style.module.css";
+import DataContext from "../../context/DataContext";
+import formatDateTime from "../../functions/timeDateFormat";
+import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
   const [data, setData] = useState({
     broadcastMessages: {},
@@ -23,34 +23,34 @@ export default function Dashboard() {
   const [message0Left, setMessage0Left] = useState(0);
   const [broadcastMessagesLeft, setBroadcastMessagesLeft] = useState(0);
   const [campaignsLeft, setCampaignsLeft] = useState(0);
-  const [planName, setPlanName] = useState('');
-  const [userCreatedDate, setUserCreatedDate] = useState('');
+  const [planName, setPlanName] = useState("");
+  const [userCreatedDate, setUserCreatedDate] = useState("");
 
   const { user } = useContext(DataContext);
 
   const [plansData, setPlansData] = useState([]);
-  const nav = useNavigate()
+  const nav = useNavigate();
   useEffect(() => {
     const fetchPlansData = async () => {
       try {
-        const plansRes = await api.get('/plans');
+        const plansRes = await api.get("/plans");
         if (!plansRes) {
-          throw new Error('Failed to fetch data');
+          throw new Error("Failed to fetch data");
         }
         setPlansData(plansRes);
       } catch (error) {
-        console.error('Error fetching data:', error.message);
+        console.error("Error fetching data:", error.message);
       }
     };
     fetchPlansData();
     const fetchData = async () => {
       try {
-        const campaignRes = await api.get('/campaign');
-        const userRes = await api.get('/user');
-        console.log("userRes", userRes)
+        const campaignRes = await api.get("/campaign");
+        const userRes = await api.get("/user");
+        console.log("userRes", userRes);
         setUserInfo(userRes);
         if (!campaignRes || !userRes) {
-          throw new Error('Failed to fetch data');
+          throw new Error("Failed to fetch data");
         }
         const campaignData = campaignRes || [];
         const userData = userRes || null;
@@ -78,10 +78,10 @@ export default function Dashboard() {
             if (item.msg && Array.isArray(item.msg)) {
               let sentCount = 0;
               let receivedCount = 0;
-              item.msg.forEach(msg => {
-                if (msg.status === 'sent') {
+              item.msg.forEach((msg) => {
+                if (msg.status === "sent") {
                   sentCount++;
-                } else if (msg.status === 'received') {
+                } else if (msg.status === "received") {
                   receivedCount++;
                 }
               });
@@ -89,9 +89,9 @@ export default function Dashboard() {
               messagesReceived[item.title] = receivedCount;
             }
             if (item && item.msg && Array.isArray(item.msg)) {
-              item.msg.forEach(msg => {
+              item.msg.forEach((msg) => {
                 const messageDate = new Date(msg.creationDate);
-                const messageYearMonth = format(messageDate, 'yyyy-MM');
+                const messageYearMonth = format(messageDate, "yyyy-MM");
                 if (broadcastMessages[messageYearMonth]) {
                   broadcastMessages[messageYearMonth]++;
                 } else {
@@ -105,14 +105,25 @@ export default function Dashboard() {
           const userId = userData._id;
           campaignsPerUser[userId] = (userData.campaigns || []).length;
           messagesPerUser[userId] = userData.messagesSent || 0;
-          leadsPerUser[userId] = (userData.campaigns || []).reduce((total, campaign) => total + (campaign.leads && Array.isArray(campaign.leads) ? campaign.leads.length : 0), 0);
+          leadsPerUser[userId] = (userData.campaigns || []).reduce(
+            (total, campaign) =>
+              total +
+              (campaign.leads && Array.isArray(campaign.leads)
+                ? campaign.leads.length
+                : 0),
+            0
+          );
           (userData.campaigns || []).forEach((campaign) => {
             if (campaign.title && campaign.msg && Array.isArray(campaign.msg)) {
               messagesPerCampaign[campaign.title] = campaign.msg.length;
             }
           });
           (userData.campaigns || []).forEach((campaign) => {
-            if (campaign.title && campaign.leads && Array.isArray(campaign.leads)) {
+            if (
+              campaign.title &&
+              campaign.leads &&
+              Array.isArray(campaign.leads)
+            ) {
               leadsPerCampaign[campaign.title] = campaign.leads.length;
             }
           });
@@ -128,7 +139,7 @@ export default function Dashboard() {
           broadcastMessages,
         });
       } catch (error) {
-        console.error('Error fetching data:', error.message);
+        console.error("Error fetching data:", error.message);
       }
     };
     fetchData();
@@ -145,7 +156,7 @@ export default function Dashboard() {
         let maxCampaigns = 0;
         let myPlan = {};
         let itsMe = {};
-        let userCreatedDate = '';
+        let userCreatedDate = "";
 
         userInfo?.forEach?.((u) => {
           if (u._id === user._id) {
@@ -162,15 +173,13 @@ export default function Dashboard() {
 
         if (itsMe) {
           plansData.forEach((plan) => {
-            if (plan._id == itsMe.subscription)
-              myPlan = plan;
-          })
+            if (plan._id == itsMe.subscription) myPlan = plan;
+          });
         }
         if (myPlan) {
           max0messages = myPlan.opening_msg_to_new_lids;
           maxBroadcastMessages = myPlan.msg_number;
           maxCampaigns = myPlan.num_leads_in_list;
-
         }
 
         setPlanName(myPlan.name);
@@ -178,18 +187,23 @@ export default function Dashboard() {
         setMessage0Left(max0messages - message0);
         setBroadcastMessagesLeft(maxBroadcastMessages - broadcastMessages);
         setCampaignsLeft(maxCampaigns - myCampaigns);
-        setUserCreatedDate(userCreatedDate)
+        setUserCreatedDate(userCreatedDate);
       } catch (error) {
-        console.error('Error fetching message data:', error);
+        console.error("Error fetching message data:", error);
       }
     };
 
     // קריאה לפונקציה רק כאשר היא מופעלת
     fetchMessageDataLeft();
-  }, [userInfo, plansData, user])
+  }, [userInfo, plansData, user]);
 
   const createChartData = (data, label) => {
-    const colors = Object.keys(data).map(() => `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`);
+    const colors = Object.keys(data).map(
+      () =>
+        `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256
+        )}, ${Math.floor(Math.random() * 256)}, 0.5)`
+    );
     return {
       labels: Object.keys(data),
       datasets: [
@@ -197,10 +211,10 @@ export default function Dashboard() {
           label: label,
           data: Object.values(data),
           backgroundColor: colors,
-          borderColor: 'rgba(0, 0, 0, 0.5)',
+          borderColor: "rgba(0, 0, 0, 0.5)",
           borderWidth: 1,
           radius: "60%",
-        }
+        },
       ],
       options: {
         legend: {
@@ -208,31 +222,36 @@ export default function Dashboard() {
         },
         scales: {
           label: {
-            fontColor: 'white',
+            fontColor: "white",
             display: false,
-
           },
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
             },
-          }],
+          ],
         },
-      }
-    }
+      },
+    };
   };
   const createLineData = (data, title) => {
     const today = new Date();
     const sixMonthsAgo = subMonths(today, 6);
-    const labels = Array.from({ length: 7 }, (_, i) => format(addMonths(sixMonthsAgo, i), 'MMM yyyy'));
+    const labels = Array.from({ length: 7 }, (_, i) =>
+      format(addMonths(sixMonthsAgo, i), "MMM yyyy")
+    );
     return {
       labels,
       datasets: [
         {
           label: title,
-          data: labels.map(month => data[format(new Date(month), 'yyyy-MM')] || 0),
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          data: labels.map(
+            (month) => data[format(new Date(month), "yyyy-MM")] || 0
+          ),
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
         },
       ],
     };
@@ -243,32 +262,49 @@ export default function Dashboard() {
         <img src={user.avatar} alt="User Image" />
         <h2>שם משתמש: {user.name}</h2>
 
-        <h2>מספר הקמפיינים שלך: {data.campaignsPerUser ? data.campaignsPerUser[user._id] : 0}</h2>
+        <h2>
+          מספר הקמפיינים שלך:{" "}
+          {data.campaignsPerUser ? data.campaignsPerUser[user._id] : 0}
+        </h2>
         <h2>תאריך התחברות: {formatDateTime(userCreatedDate)[0]} </h2>
         {/* <Plans/> */}
-      </div >
+      </div>
       <div className={styles.user_details}>
         <h2> ברשותך חבילה מסוג: {planName}</h2>
         <h2> תאריך הצטרפות: </h2>
-        <h2> כמות הודעות אפס שנשארו:  {message0Left} </h2>
+        <h2> כמות הודעות אפס שנשארו: {message0Left} </h2>
 
-        <h2>   כמות הודעות תפוצה שנשארו החודש {broadcastMessagesLeft}</h2>
+        <h2> כמות הודעות תפוצה שנשארו החודש {broadcastMessagesLeft}</h2>
 
-        <h2>מספר קמפיינים שנשארו: {campaignsLeft}</h2>
+        {planName != "פרימיום" && planName != "אנטרפריז" > 0 ? (
+          <h2>מספר קמפיינים שנשארו: {campaignsLeft}</h2>
+        ) : (
+          <h2>קמפיינים ללא הגבלה</h2>
+        )}
 
-        <button onClick={() => { nav('/plans') }} >לשדרוג החבילה לחץ כאן</button>
+        {planName != "פרימיום" ? (
+          <button
+            onClick={() => {
+              nav("/plans");
+            }}
+          >
+            לשדרוג החבילה לחץ כאן
+          </button>
+        ) : null}
       </div>
       <div className={styles.charts_container}>
         <div className={styles.chart_wrapper}>
           <h2 className={styles.chart_title}>כמה לידים לקמפיין</h2>
-          <Bar data={createChartData(data.leadsPerCampaign, 'Leads per Campaign')}
-           options={{
-            plugins: {
-              legend: {
-                display: false // מסתיר את התוויות
-              }
-            }
-          }} />
+          <Bar
+            data={createChartData(data.leadsPerCampaign, "Leads per Campaign")}
+            options={{
+              plugins: {
+                legend: {
+                  display: false, // מסתיר את התוויות
+                },
+              },
+            }}
+          />
         </div>
         <div className={styles.chart_wrapper}>
           <h2 className={styles.chart_title}>הודעות בדרך</h2>
@@ -277,17 +313,17 @@ export default function Dashboard() {
               labels: Object.keys(data.messagesSent),
               datasets: [
                 {
-                  label: 'Messages Sent',
+                  label: "Messages Sent",
                   data: Object.values(data.messagesSent),
-                  backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                  borderColor: 'rgba(54, 162, 235, 1)',
+                  backgroundColor: "rgba(54, 162, 235, 0.5)",
+                  borderColor: "rgba(54, 162, 235, 1)",
                   borderWidth: 1,
                 },
                 {
-                  label: 'Messages Received',
+                  label: "Messages Received",
                   data: Object.values(data.messagesReceived),
-                  backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                  borderColor: 'rgba(255, 99, 132, 1)',
+                  backgroundColor: "rgba(255, 99, 132, 0.5)",
+                  borderColor: "rgba(255, 99, 132, 1)",
                   borderWidth: 1,
                 },
               ],
@@ -296,18 +332,28 @@ export default function Dashboard() {
         </div>
         <div className={styles.chart_wrapper}>
           <h2 className={styles.chart_title}>הודעות תפוצה שנשלחו</h2>
-          <Line data={createLineData(data.broadcastMessages, 'Broadcast Messages Sent')}
-           options={{
-            plugins: {
-              legend: {
-                display: false // מסתיר את התוויות
-              }
-            }
-          }} />
+          <Line
+            data={createLineData(
+              data.broadcastMessages,
+              "Broadcast Messages Sent"
+            )}
+            options={{
+              plugins: {
+                legend: {
+                  display: false, // מסתיר את התוויות
+                },
+              },
+            }}
+          />
         </div>
         <div className={styles.chart_wrapper}>
           <h2 className={styles.chart_title}>הודעות לכל קמפיין</h2>
-          <Doughnut data={createChartData(data.messagesPerCampaign, 'Messages per Campaign')} />
+          <Doughnut
+            data={createChartData(
+              data.messagesPerCampaign,
+              "Messages per Campaign"
+            )}
+          />
         </div>
       </div>
     </div>
