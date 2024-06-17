@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
 import InputWrapper from "../InputWrapper";
@@ -146,9 +146,12 @@ export default function Register() {
   const nav = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = formState;
+    const convertFormState = {
+      ...formState,
+      email: formState.email.toLowerCase(),
+    };
     try {
-      const response = await api.post("/user", data);
+      const response = await api.post("/user", convertFormState);
       if (response) nav(`/completeDetails/${response.email}`);
     } catch (error) {
       console.error({ "User creation failed": error });
@@ -188,10 +191,7 @@ export default function Register() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState((old) => {
-      const newData = {
-        ...old,
-        [name]: name === "email" ? value.toLowerCase() : value,
-      };
+      const newData = { ...old, [name]: value };
       // localStorage.user = JSON.stringify({ ...newData, password: '' })
       checkInput(newData, [name]);
       setFormState(newData);

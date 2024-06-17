@@ -1,0 +1,14 @@
+.termsContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+}
+.link {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
