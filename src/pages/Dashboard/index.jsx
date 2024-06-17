@@ -276,7 +276,7 @@ export default function Dashboard() {
 
         <h2> כמות הודעות תפוצה שנשארו החודש {broadcastMessagesLeft}</h2>
 
-        {planName != "פרימיום" && planName != "אנטרפריז" > 0 ? (
+        {planName != "פרימיום" && planName != "אנטרפריז" ? (
           <h2>מספר קמפיינים שנשארו: {campaignsLeft}</h2>
         ) : (
           <h2>קמפיינים ללא הגבלה</h2>
