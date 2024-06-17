@@ -1,44 +1,38 @@
-import styles from "./style.module.css"
-import Icon from '../Icon';
-import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import styles from "./style.module.css";
+import Icon from "../Icon";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
-
-
-
-
 
 function CustomInput({ value, onClick }) {
   return (
-    <button type='button' onClick={onClick} className={styles.timePicker}>
+    <button type="button" onClick={onClick} className={styles.timePicker}>
       {value || "בחירת שעה"}
-      <Icon nameIcon={'clock'} />
+      <Icon nameIcon={"clock"} />
     </button>
   );
 }
 
-
-export default function TimePicker({ handleTimeChange, selectedTime, selectedDate }) {
-  const [minTime, setMinTime] = useState(new Date())
+export default function TimePicker({
+  handleTimeChange,
+  selectedTime,
+  selectedDate,
+}) {
+  const [minTime, setMinTime] = useState(new Date());
   useEffect(() => {
     if (selectedDate) {
-      const today = new Date()
-      const isToday = selectedDate.getDate() === today.getDate() &&
+      const today = new Date();
+      const isToday =
+        selectedDate.getDate() === today.getDate() &&
         selectedDate.getMonth() === today.getMonth() &&
-        selectedDate.getFullYear() === today.getFullYear()
+        selectedDate.getFullYear() === today.getFullYear();
       if (isToday) {
-        setMinTime(new Date())
+        setMinTime(new Date());
       } else {
-        setMinTime(new Date().setHours(0, 0, 0, 0))
+        setMinTime(new Date().setHours(0, 0, 0, 0));
       }
     }
-
-
-  }, [selectedDate])
-
-
-
-
+  }, [selectedDate]);
 
   return (
     <div className={styles.timePickerWrapper}>
@@ -48,16 +42,13 @@ export default function TimePicker({ handleTimeChange, selectedTime, selectedDat
         showTimeSelect
         showTimeSelectOnly
         timeIntervals={15}
-        timeCaption='Time'
+        timeCaption="Time"
         dateFormat="HH:mm"
+        timeFormat="HH:mm"
         minTime={minTime}
         maxTime={new Date().setHours(23, 59, 0, 0)}
         customInput={<CustomInput />}
-
       />
-
     </div>
-
   );
 }
-
