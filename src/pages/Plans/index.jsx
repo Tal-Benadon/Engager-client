@@ -34,19 +34,22 @@ export default function Plans() {
   }
 
   const handlePlan = async (plan) => {
-    try {
-      api.get(`payment/${plan._id}`).then((res) => {
-        console.log(res);
-        nav("/checkOut", {
-          state: {
-            plan: res.plan,
-            iFrameLink: res.url,
-          },
+    if (plan._id === "65edcdf022a62790e4b5caf9") {
+      nav("/feedback");
+    } else
+      try {
+        api.get(`payment/${plan._id}`).then((res) => {
+          console.log(res);
+          nav("/checkOut", {
+            state: {
+              plan: res.plan,
+              iFrameLink: res.url,
+            },
+          });
         });
-      });
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
   };
 
   return (
@@ -82,7 +85,7 @@ export default function Plans() {
                   {plan.price < 1000000 ? (
                     <li id={styles.price}>₪{plan.price}</li>
                   ) : (
-                    <li id={styles.call}>צור קשר לקבלת הצעת מחיר</li>
+                    <li id={styles.price}>דברו איתנו</li>
                   )}
                   {plan.num_leads_in_list > 0 ? (
                     <li>
