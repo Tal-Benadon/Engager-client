@@ -1,6 +1,6 @@
 import styles from "./style.module.css";
 
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useRef, useState, forwardRef } from "react";
 import { toast } from "react-toastify";
 import api from "../../functions/api";
 import Button from "../Button";
@@ -8,10 +8,6 @@ import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import InputWrapper from "../InputWrapper";
 import ScheduleInput from "../ScheduleInput";
-
-// Description :
-// Props : ____________ , _________
-// Creator : ________
 
 const fields = {
   fullName: "שם",
