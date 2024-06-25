@@ -42,9 +42,9 @@ export default function SideBar() {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
-        <h1 onClick={() => nav("/")} className={styles.eng}>
-          אנגייג׳ר
-        </h1>
+        <div onClick={() => nav("/")} className={styles.eng}>
+          <img className={styles.engager} src="/engager.svg" alt=""></img>
+        </div>
         <ul>
           <li>
             <NavLink to="/myLeads">

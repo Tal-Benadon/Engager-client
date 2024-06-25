@@ -3,6 +3,7 @@ import InputWrapper from "../InputWrapper";
 import InputText from "../InputText/InputText";
 import styles from "./style.module.css";
 import api from "../../functions/api";
+import Logo from "../Logo";
 
 export default function ForgetPassword() {
   const fromtemplet = { phone: "" };
@@ -45,31 +46,30 @@ export default function ForgetPassword() {
     <div className={styles.container}>
       <div className={styles.circle}></div>
       <div className={styles.allin}>
-        <div className={styles.tabSwitcher}>
-          שינוי סיסמה
-          <div className={styles.line}></div>
-        </div>
+        <Logo />
 
         <form className={styles.inputSpace} onSubmit={handleSubmit}>
-          <div className={styles.inputSpace}>
-            <div className={styles.title}>אנגייג'ר</div>
-            <InputWrapper label={"טלפון"} setIsVisible={true}>
-              <InputText
-                type={"phone"}
-                name={"phone"}
-                required={true}
-                onChange={handleChange}
-                value={formState.phone}
-                className={styles.input}
-              />
-              {errorForm.phone && (
-                <div className={styles.error}>{errorForm.phone}</div>
-              )}
-            </InputWrapper>
-            <button className={styles.button} type="submit">
-              שלחו לי קישור לשינוי סיסמה
-            </button>
+          <div className={styles.tabSwitcher}>
+            שינוי סיסמה
+            {/* <div className={styles.line}></div> */}
           </div>
+
+          <InputWrapper label={"טלפון"} setIsVisible={true}>
+            <InputText
+              type={"phone"}
+              name={"phone"}
+              required={true}
+              onChange={handleChange}
+              value={formState.phone}
+              className={styles.input}
+            />
+            {errorForm.phone && (
+              <div className={styles.error}>{errorForm.phone}</div>
+            )}
+          </InputWrapper>
+          <button className={styles.button} type="submit">
+            שלחו לי קישור לשינוי סיסמה
+          </button>
         </form>
       </div>
     </div>

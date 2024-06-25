@@ -1,85 +1,84 @@
-
 .sidebar {
-    background: #F7F7F7;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    height: 100%;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100%;
 }
 
 .sidebar h1 {
-    font-family: 'Secular One', sans-serif;
-    font-size: 44px;
-    font-weight: 400;
-    line-height: 52px;
-    letter-spacing: 0em;
-    text-align: right;
-    margin: 0;
+  font-family: "Secular One", sans-serif;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 52px;
+  letter-spacing: 0em;
+  text-align: right;
+  margin: 0;
 }
 
 .sidebar ul li {
-    font-family: Heebo;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: right;
-    list-style: none;
-    margin-bottom: 15px;
-    display: flex;
-    flex-wrap: nowrap;
-    margin: 15px 0px;
+  font-family: Heebo;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  list-style: none;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 15px 0px;
 }
 
 .sidebar ul li a,
 .sidebar ul li span {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 20px;
-    text-decoration: none;
-    color: #6B6B6B;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  text-decoration: none;
+  color: #6b6b6b;
+  cursor: pointer;
 }
 
-.sidebar  svg {
-    color: #6B6B6B;
+.sidebar svg {
+  color: #6b6b6b;
 }
 
 .sidebartop {
-    padding: 32px 15px;
-    width: 100%;
+  padding: 32px 15px;
+  width: 100%;
 }
 
 .lists {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 10px 15px;
-    border-top: 2px solid var(--grayElement);
-    gap: 8px;
-    flex: 2;
-    height: 100%;
-    overflow-y: auto;
-    border-bottom: 2px solid var(--grayElement);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 10px 15px;
+  border-top: 2px solid var(--grayElement);
+  gap: 8px;
+  flex: 2;
+  height: 100%;
+  overflow-y: auto;
+  border-bottom: 2px solid var(--grayElement);
 }
 
 .liststitle {
-    font-family: Heebo;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0em;
-    color: #6B6B6B;
-    line-height: 40px;
+  font-family: Heebo;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  color: #6b6b6b;
+  line-height: 40px;
 }
 
-.newlist{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    height: 100%;
-    overflow-y: auto;
-    /* direction: rtl; */
-    /* לנסות להעביר גלילה לימין */
+.newlist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  overflow-y: auto;
+  /* direction: rtl; */
+  /* לנסות להעביר גלילה לימין */
 }
 
 /* .newlist ::-webkit-scrollbar {
@@ -95,33 +94,35 @@
   } */
 
 .item {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    line-height: 24px;
-    padding: 8px;
-    border-radius: 8px;
-    position: sticky;
-    margin: 5px 7px 10px 3px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  line-height: 24px;
+  padding: 8px;
+  border-radius: 8px;
+  position: sticky;
+  margin: 5px 7px 10px 3px;
 }
 
 .item:hover {
-    cursor: pointer;
-    background-color: var(--white-hover);
+  cursor: pointer;
+  background-color: var(--white-hover);
 }
 
 .camplist {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 30px;
 }
-
+.eng {
+  width: 165px;
+}
 .eng:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.userContainer{
-    width: 100%;
-    margin: auto;
+.userContainer {
+  width: 100%;
+  margin: auto;
 }

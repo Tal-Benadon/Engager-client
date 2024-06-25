@@ -11,6 +11,7 @@ import getGoogleOAuthURL from "../../functions/loginWithGoogle";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import Logo from "../Logo";
 
 export default function Login() {
   const notify = () => toast(`Wrong username or password`);
@@ -65,9 +66,9 @@ export default function Login() {
   let root = "accout/signInGoogle";
 
   return (
-    <div>
+    <div className={styles.container}>
+      <Logo />
       <form onSubmit={handleSubmit} className={styles.inputSpace}>
-        <div className={styles.title}>אנגייג'ר</div>
         <div className={styles.title2}>התחברות</div>
         <div>
           <InputWrapper label={"אימייל"} setIsVisible={true}>
