@@ -70,7 +70,7 @@ export default function Login() {
         <div className={styles.title}>אנגייג'ר</div>
         <div className={styles.title2}>התחברות</div>
         <div>
-          <InputWrapper label={"אמייל"} setIsVisible={true}>
+          <InputWrapper label={"אימייל"} setIsVisible={true}>
             <InputText
               name={"email"}
               required={true}
