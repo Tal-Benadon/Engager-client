@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import DataContext from "../../context/DataContext";
 import NewCampaigenForm from "../../components/NewCampaignForm";
 import UserProfile from "../../components/UserProfile";
+import Logo from "../../components/Logo";
 
 export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false);
@@ -43,7 +44,8 @@ export default function SideBar() {
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
         <div onClick={() => nav("/")} className={styles.eng}>
-          <img className={styles.engager} src="/engager.svg" alt=""></img>
+          {/* <img  src="/engager.svg" alt=""></img> */}
+          <Logo />
         </div>
         <ul>
           <li>

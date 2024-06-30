@@ -40,7 +40,7 @@ export default function Register() {
     const email = newData.email;
     const phone = newData.phone;
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
-    const phoneRegex = /^(?:0[5][2-9]\d(?:-?\d){6})$/;
+    const phoneRegex = /^(?:05[0-9]\d(?:-?\d){6})$/;
 
     if ([name] == "passwordConfirm" && newData.passwordConfirm != pas) {
       //עובד נפלא

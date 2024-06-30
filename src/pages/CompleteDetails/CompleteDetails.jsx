@@ -30,7 +30,7 @@ export default function CompleteDetails() {
 
   const checkInput = (newData = "", name) => {
     const phone = newData.phone;
-    const phoneRegex = /^(?:0[5][2-9]\d(?:-?\d){6})$/;
+    const phoneRegex = /^(?:05[0-9]\d(?:-?\d){6})$/;
 
     if ([name] == "phone" && !phoneRegex.test(phone)) {
       //עובד נפלא
@@ -52,7 +52,7 @@ export default function CompleteDetails() {
       const res = await api.put(`/user/update/${email}`, formState);
       if (res) {
         setRender(true);
-        // timeoutAndNavigate()
+        timeoutAndNavigate();
       }
     } catch (err) {
       console.error(err);
