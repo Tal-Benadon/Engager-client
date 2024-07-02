@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
   return (
     <div className={styles.privacyContainer}>
       <div className={styles.header}>
-        <h1>תנאי שימוש</h1>
+        <h1>מדיניות פרטיות</h1>
         <Back />{" "}
       </div>
       <p>
