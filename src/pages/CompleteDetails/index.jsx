@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { BrowserRouter as Router, Route, useLocation } from "react-router-dom";
 import styles from "./style.module.css";
 import InputText from "../../components/InputText/InputText";
 import Button from "../../components/Button";
@@ -14,9 +15,12 @@ import { toast } from "react-toastify";
 import Logo from "../../components/Logo";
 
 export default function CompleteDetails() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
   const [formState, setFormState] = useState({
     fullName: "",
-    phone: "",
+    phone: queryParams.get("phone") || "",
+    // phone: "",
     occupation: "",
     amountOfEmployees: null,
   });
@@ -28,17 +32,17 @@ export default function CompleteDetails() {
   const nav = useNavigate();
   const { email } = useParams();
 
-  const checkInput = (newData = "", name) => {
-    const phone = newData.phone;
-    const phoneRegex = /^(?:05[0-9]\d(?:-?\d){6})$/;
-
-    if ([name] == "phone" && !phoneRegex.test(phone)) {
-      //עובד נפלא
-      setErrorForm((old) => ({ ...old, [name]: "המספר אינו תואם ווצאפ" }));
-    } else {
-      setErrorForm(0);
-    }
-  };
+  //   const checkInput = (newData = "", name) => {
+  //     const phone = newData.phone;
+  //     const phoneRegex = /^(?:05[0-9]\d(?:-?\d){6})$/;
+  //
+  //     if ([name] == "phone" && !phoneRegex.test(phone)) {
+  //       //עובד נפלא
+  //       setErrorForm((old) => ({ ...old, [name]: "המספר אינו תואם ווצאפ" }));
+  //     } else {
+  //       setErrorForm(0);
+  //     }
+  //   };
 
   const timeoutAndNavigate = () => {
     setTimeout(() => {
@@ -122,7 +126,7 @@ export default function CompleteDetails() {
                     />
                   </InputWrapper>
                 </div>
-                <div>
+                {/* <div>
                   <InputWrapper label={"טלפון"}>
                     <InputText
                       name={"phone"}
@@ -136,7 +140,7 @@ export default function CompleteDetails() {
                       <div className={styles.error}>{errorForm.phone}</div>
                     )}
                   </InputWrapper>
-                </div>
+                </div> */}
                 <div>
                   <InputWrapper label={"תחום עיסוק"}>
                     <InputText
