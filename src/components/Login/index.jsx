@@ -63,7 +63,7 @@ export default function Login() {
     nav("/forgetPassword");
   };
 
-  let root = "accout/signInGoogle";
+  let root = "account/signInGoogle";
 
   return (
     <div className={styles.container}>
