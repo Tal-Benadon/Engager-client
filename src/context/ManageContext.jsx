@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from "react"
-import DataContext from "./DataContext"
-import api from "../functions/api"
-import { useNavigate } from "react-router"
+import React, { useEffect, useState } from "react";
+import DataContext from "./DataContext";
+import api from "../functions/api";
+import { useNavigate } from "react-router";
 // import io from "socket.io-client"
-import { SocketProvider } from "./SocketContext"
+import { SocketProvider } from "./SocketContext";
 
 export function ManageContext({ children }) {
-  const [user, setUser] = useState({})
-  const [PopUp, setPopUp] = useState(false)
-  const [allCamps, setAllCamps] = useState([])
-  const [usersObj, setUsersObj] = useState({})
-  const [queueJob, setQueueJob] = useState([])
+  const [user, setUser] = useState({});
+  const [PopUp, setPopUp] = useState(false);
+  const [allCamps, setAllCamps] = useState([]);
+  const [usersObj, setUsersObj] = useState({});
+  const [queueJob, setQueueJob] = useState([]);
   // const [socket, setSocket] = useState()
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   useEffect(() => {
     const tokenToUser = async () =>
-      await api.get("/accout/tokenToUser")
+      await api
+        .get("/account/tokenToUser")
         .then((res) => setUser(res))
         .catch((err) => {
-          localStorage.clear()
-          nav('/login')
-        })
-    if (localStorage.token && !user._id) tokenToUser()
-  }, [])
-
+          localStorage.clear();
+          nav("/login");
+        });
+    if (localStorage.token && !user._id) tokenToUser();
+  }, []);
 
   const getAllCamps = () =>
-    api.get(`/campaign`).then((res) => setAllCamps(res))
-
+    api.get(`/campaign`).then((res) => setAllCamps(res));
 
   return (
     <DataContext.Provider
@@ -47,9 +46,7 @@ export function ManageContext({ children }) {
         setUsersObj,
       }}
     >
-      <SocketProvider>
-        {children}
-      </SocketProvider>
+      <SocketProvider>{children}</SocketProvider>
     </DataContext.Provider>
-  )
+  );
 }

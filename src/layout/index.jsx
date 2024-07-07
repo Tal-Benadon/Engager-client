@@ -21,7 +21,7 @@ import ActivateAccount from "../pages/ActivateAccount";
 import CampaignPage from "../pages/CampaignPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import CheckOut from "../pages/CheckOut";
-import CompleteDetails from "../pages/CompleteDetails/CompleteDetails";
+import CompleteDetails from "../pages/CompleteDetails";
 import Dashboard from "../pages/Dashboard";
 import GoogleRegisterRedirectPage from "../pages/GoogleRegisterRedirectPage";
 import LeadInfoPage from "../pages/LeadInfoPage";

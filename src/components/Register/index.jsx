@@ -29,7 +29,8 @@ export default function Register() {
     };
     try {
       const response = await api.post("/user", convertFormState);
-      if (response) nav(`/completeDetails/${response.email}`);
+      if (response)
+        nav(`/completeDetails/${response.email}?phone=${response.phone}`);
     } catch (error) {
       console.error({ "User creation failed": error });
     }
@@ -83,7 +84,7 @@ export default function Register() {
     nav("/login");
   };
 
-  let root = "accout/signUpGoogle";
+  let root = "account/signUpGoogle";
 
   return (
     <div className={styles.container}>
@@ -100,11 +101,18 @@ export default function Register() {
                         <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} className={styles.input} />
                     </InputWrapper> */}
 
-          {/* <InputWrapper label={"טלפון"} setIsVisible={true} >
-                        <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} className={styles.input} />
-                        {errorForm.phone &&
-                            <div className={styles.error}>{errorForm.phone}</div>}
-                    </InputWrapper> */}
+          <InputWrapper label={"טלפון"} setIsVisible={true}>
+            <InputText
+              name={"phone"}
+              required={true}
+              onChange={handleChange}
+              value={formState.phone}
+              className={styles.input}
+            />
+            {errorForm.phone && (
+              <div className={styles.error}>{errorForm.phone}</div>
+            )}
+          </InputWrapper>
 
           <InputWrapper label={"אמייל"} setIsVisible={true}>
             <InputText
