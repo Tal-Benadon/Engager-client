@@ -97,11 +97,7 @@ export default function CheckOut() {
           )}
         </ul>
       </div>
-      <iframe
-        className={styles.payment}
-        src={iFrameLink}
-        frameborder="0"
-      ></iframe>
+      <iframe className={styles.payment} src={iFrameLink}></iframe>
     </div>
   );
 }
